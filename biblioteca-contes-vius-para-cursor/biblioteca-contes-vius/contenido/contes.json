@@ -1,0 +1,517 @@
+{
+  "idioma": "ca-ES",
+  "estat": "guions complets; il·lustracions interiors pendents (només hi ha una mostra de Pipa)",
+  "llibres": [
+    {
+      "id": "sopar",
+      "titol": "EL SOPAR DELS EMBULLS",
+      "categoria": "Monstres i humor",
+      "protagonista": "BRUNA",
+      "portadaEnPrestatgeria": true,
+      "doblesPagines": [
+        {
+          "numero": 1,
+          "esquerra": "BRUNA FA UN SOPAR.",
+          "dreta": "AVUI HI HA FESTA!",
+          "direccioArtistica": "Castell amb cuina, olla i tres ombres a la finestra.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 2,
+          "esquerra": "TOC, TOC!",
+          "dreta": "ÉS EN GROC!",
+          "direccioArtistica": "Llop elegant amb flors diminutes i grans ullals; porta de fusta mig oberta.",
+          "interaccioProposada": "Tocar la porta per obrir-la",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 3,
+          "esquerra": "ARRIBA EN NUS.",
+          "dreta": "QUIN EMBULL!",
+          "direccioArtistica": "Monstre blau de molts braços enredat amb plats, copes i pastís.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 4,
+          "esquerra": "QUI HI HA DAVALL?",
+          "dreta": "ÉS EN TROC!",
+          "direccioArtistica": "Sota les tovalles apareix un monstre coral menjant la targeta del menú.",
+          "interaccioProposada": "Aixecar les tovalles per descobrir en Troc",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 5,
+          "esquerra": "LA SOPA FA BOMBOLLES.",
+          "dreta": "BLOC! BLOC! BLOC!",
+          "direccioArtistica": "Sopa plena de bombolles d’estrelletes, culleretes i verdures de broma.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 6,
+          "esquerra": "LA TAULA ÉS BUIDA.",
+          "dreta": "QUIN EMBULL!",
+          "direccioArtistica": "La sopa flota al sostre, fora de l’abast dels convidats.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 7,
+          "esquerra": "TOTS AJUDEN LA BRUNA.",
+          "dreta": "JA TENIM SOPAR!",
+          "direccioArtistica": "Els convidats fan baixar l’olla i reparteixen el sopar plegats.",
+          "interaccioProposada": "Tocar el cullerot per repartir la sopa",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 8,
+          "esquerra": "QUIN SOPAR MÉS BO!",
+          "dreta": "I QUIN EMBULL!",
+          "direccioArtistica": "Final divertit amb riures, plats i una bombolla que escapa del llibre.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        }
+      ]
+    },
+    {
+      "id": "pipa",
+      "titol": "PIPA I EL MAPA DEL MAR",
+      "categoria": "Mar i amistat",
+      "protagonista": "PIPA",
+      "portadaEnPrestatgeria": true,
+      "doblesPagines": [
+        {
+          "numero": 1,
+          "esquerra": "PIPA TROBA UN MAPA.",
+          "dreta": "HI HA UNA ESTRELLA!",
+          "direccioArtistica": "Ajolota rosa descobreix pergamí dins una closca submarina gegant.",
+          "interaccioProposada": "Obrir la closca",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 2,
+          "esquerra": "ARRIBA NA NÀCAR.",
+          "dreta": "VOLS VENIR AMB MI?",
+          "direccioArtistica": "Sirena exploradora de cabells coure i cua verd aigua somriu a Pipa.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 3,
+          "esquerra": "EL MAPA HA CANVIAT!",
+          "dreta": "CAP A ON ANAM?",
+          "direccioArtistica": "Tres camins entre corall, una cova i roques lluminoses.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 4,
+          "esquerra": "BLOC! BLOC!",
+          "dreta": "UNA BOMBOLLA GEGANT!",
+          "direccioArtistica": "La bombolla reflecteix un cel i una petita pegasa entre núvols.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 5,
+          "esquerra": "ÉS NA BOIRA!",
+          "dreta": "NO POT BAIXAR!",
+          "direccioArtistica": "Pegasa lila atrapada en cintes de boira, sense fer-se mal.",
+          "interaccioProposada": "Desfer dos llaços de boira",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 6,
+          "esquerra": "PIPA ENCÉN LA LLUM.",
+          "dreta": "BOIRA JA POT VOLAR!",
+          "direccioArtistica": "Brànquies rosades de Pipa brillen i obren un caminet.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 7,
+          "esquerra": "MIRA! UNA ESTRELLA!",
+          "dreta": "ARA JA BRILLA!",
+          "direccioArtistica": "Boira retorna l’estrella al cel; el mar reflecteix la seva llum.",
+          "interaccioProposada": "Tocar l’estrella per encendre-la",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 8,
+          "esquerra": "PIPA, NÀCAR I BOIRA.",
+          "dreta": "JUNTES FAN MÀGIA!",
+          "direccioArtistica": "Comiat alegre de les tres amigues al mar sota cel rosat.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        }
+      ]
+    },
+    {
+      "id": "bosc",
+      "titol": "EL BOSC DE LES SABATES",
+      "categoria": "Bosc i descobertes",
+      "protagonista": "ONA",
+      "portadaEnPrestatgeria": true,
+      "doblesPagines": [
+        {
+          "numero": 1,
+          "esquerra": "ONA BUSCA LES BOTES.",
+          "dreta": "ON SÓN?",
+          "direccioArtistica": "Habitació amb botes sota el llit, fulleta verda amagada.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 2,
+          "esquerra": "UNA FULLA VERDA!",
+          "dreta": "D’ON SURT AIXÒ?",
+          "direccioArtistica": "Una bota amb molsa i un escarabat amb motxilla de gla.",
+          "interaccioProposada": "Tocar una fulla perquè s’obri",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 3,
+          "esquerra": "CREIX UN ARBRE.",
+          "dreta": "ARA N’HI HA DOS!",
+          "direccioArtistica": "Dos arbres petits surten de les botes, una escala de corda.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 4,
+          "esquerra": "XIU-XIU, XIU-XIU...",
+          "dreta": "QUI PARLA?",
+          "direccioArtistica": "Conillet darrere uns mitjons; un niu a punt de caure.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 5,
+          "esquerra": "EL NIU POT CAURE!",
+          "dreta": "ONA VOL AJUDAR.",
+          "direccioArtistica": "Niu petit sobre branca doblegada, ocells preocupats.",
+          "interaccioProposada": "Col·locar una branca que sostingui el niu",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 6,
+          "esquerra": "PLOU DINS EL BOSC!",
+          "dreta": "XIP! XAP! XIP!",
+          "direccioArtistica": "Un núvol miniatura rega el bosc de dins la cambra.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 7,
+          "esquerra": "QUIN BOSC MÉS BONIC!",
+          "dreta": "TOTS TENEN CASA.",
+          "direccioArtistica": "Animals petits al bosc que ja ocupa un racó de la cambra.",
+          "interaccioProposada": "Tocar una flor perquè s’obri",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 8,
+          "esquerra": "ONA JA TÉ LES BOTES.",
+          "dreta": "PERÒ... QUÈ ÉS AIXÒ?",
+          "direccioArtistica": "Cambra normal; una fulla lluent dins la butxaca d’Ona.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        }
+      ]
+    },
+    {
+      "id": "boira",
+      "titol": "EL NÚVOL PERDUT DE NA BOIRA",
+      "categoria": "Núvols i vol",
+      "protagonista": "BOIRA",
+      "portadaEnPrestatgeria": true,
+      "doblesPagines": [
+        {
+          "numero": 1,
+          "esquerra": "BOIRA VOL VOLAR.",
+          "dreta": "ON ÉS EL SEU NÚVOL?",
+          "direccioArtistica": "Pegasa lila de crin pastel sobre un turonet, cel amb núvols.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 2,
+          "esquerra": "MIRA AQUEL NÚVOL!",
+          "dreta": "NO ÉS EL SEU!",
+          "direccioArtistica": "Núvol amb forma de peix que esternuda gotes.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 3,
+          "esquerra": "BUF! BUFFF!",
+          "dreta": "EL VENT BUFA FORT.",
+          "direccioArtistica": "En Buf, petit monstre del vent, envoltat de fulles volant.",
+          "interaccioProposada": "Apartar fulles per veure una pista",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 4,
+          "esquerra": "BOIRA FA UNA VOLTA.",
+          "dreta": "TROBA UNA PISTA!",
+          "direccioArtistica": "Una cinta rosa penja de la branca d’un arbre molt alt.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 5,
+          "esquerra": "UN NÚVOL PETIT PLORA.",
+          "dreta": "TÉ POR DE VOLAR.",
+          "direccioArtistica": "Núvol de cara trista, amagat darrere una muntanya.",
+          "interaccioProposada": "Tocar el núvol per trobar-lo",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 6,
+          "esquerra": "BOIRA LI DONA LA MÀ.",
+          "dreta": "JA NO TÉ POR!",
+          "direccioArtistica": "Boira abraça el núvol, núvol recupera la llum.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 7,
+          "esquerra": "ARA VOLEN PLEGATS.",
+          "dreta": "AMUNT, AMUNT!",
+          "direccioArtistica": "Pegasa i núvol pugen en cel pastel amb ocells.",
+          "interaccioProposada": "Tocar la pegasa perquè s’enlairi",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 8,
+          "esquerra": "EL CEL JA SOMRIU.",
+          "dreta": "FINS AVIAT, NÚVOL!",
+          "direccioArtistica": "Gran cel serè, petit núvol fa un cor de vapor.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        }
+      ]
+    },
+    {
+      "id": "troc",
+      "titol": "TROC I LA MUNTANYA DE LLIBRES",
+      "categoria": "Llibres i embolics",
+      "protagonista": "TROC",
+      "portadaEnPrestatgeria": true,
+      "doblesPagines": [
+        {
+          "numero": 1,
+          "esquerra": "TROC TÉ MOLTA GANA.",
+          "dreta": "NYAM, NYAM!",
+          "direccioArtistica": "Monstre coral davall una muntanya de llibres de tots colors.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 2,
+          "esquerra": "MOSSEGA UN LLIBRE.",
+          "dreta": "OH! UNA LLETRA!",
+          "direccioArtistica": "Una lletra gegant vola de la pàgina.",
+          "interaccioProposada": "Tocar una lletra que surt",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 3,
+          "esquerra": "UNA A! UNA O!",
+          "dreta": "QUINES LLETRES!",
+          "direccioArtistica": "Lletres grosses pintades com confeti al voltant de Troc.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 4,
+          "esquerra": "EL LLIBRE FA PLOP!",
+          "dreta": "SURT UNA PAPALLONA!",
+          "direccioArtistica": "Una papallona d’aquarel·la surt del conte i vola.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 5,
+          "esquerra": "ARA FALTEN PÀGINES.",
+          "dreta": "QUIN DESASTRE!",
+          "direccioArtistica": "Tres pàgines perdudes entre la prestatgeria.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 6,
+          "esquerra": "TROC CERCA ELS FULLS.",
+          "dreta": "UN... DOS... TRES!",
+          "direccioArtistica": "Troc cerca les pàgines sota llibres i coixins.",
+          "interaccioProposada": "Cercar tres fulls amagats",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 7,
+          "esquerra": "TORNAM LES PÀGINES.",
+          "dreta": "EL CONTE ESTÀ SENCER!",
+          "direccioArtistica": "Les pàgines tornen al llibre amb petites estrelles.",
+          "interaccioProposada": "Tocar el llibre perquè es recomposi",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 8,
+          "esquerra": "TROC JA NO MOSSEGA.",
+          "dreta": "ARA LLEGEIX!",
+          "direccioArtistica": "Troc assegut, mirant les paraules i menjant una galeta.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        }
+      ]
+    },
+    {
+      "id": "nus",
+      "titol": "NUS FA MIL COSES ALHORA",
+      "categoria": "Ajuda i humor",
+      "protagonista": "NUS",
+      "portadaEnPrestatgeria": true,
+      "doblesPagines": [
+        {
+          "numero": 1,
+          "esquerra": "EN NUS VOL AJUDAR.",
+          "dreta": "A TOT EL MÓN!",
+          "direccioArtistica": "Monstre blau amb molts braços i davantal, carrer del poble.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 2,
+          "esquerra": "PORTA UNA TASSA.",
+          "dreta": "I UN PASTÍS!",
+          "direccioArtistica": "Dos braços porten una tassa i un pastís tremolós.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 3,
+          "esquerra": "AGUANTA UN PARAIGUA.",
+          "dreta": "I UNA GRAN PILOTA!",
+          "direccioArtistica": "Molts braços, objectes de diferents mides.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 4,
+          "esquerra": "AI! ELS BRAÇOS!",
+          "dreta": "TOT ÉS UN NUS!",
+          "direccioArtistica": "Braços de Nus en un embull simpàtic.",
+          "interaccioProposada": "Tocar els braços enredats",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 5,
+          "esquerra": "ELS AMICS L’AJUDEN.",
+          "dreta": "UN BRAÇ CADA VEGADA.",
+          "direccioArtistica": "Amics desenreden braços amb molta cura.",
+          "interaccioProposada": "Desfer els dos nusos",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 6,
+          "esquerra": "JA POT RESPIRAR.",
+          "dreta": "UFF! QUIN DESCANS!",
+          "direccioArtistica": "Nus està assegut i descansa amb una llimonada.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 7,
+          "esquerra": "ARA TRIA UNA COSA.",
+          "dreta": "FARÀ UN PASTÍS!",
+          "direccioArtistica": "Nus prepara la massa amb tranquil·litat.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 8,
+          "esquerra": "QUIN PASTÍS TAN BO!",
+          "dreta": "ARA EL COMPARTIM!",
+          "direccioArtistica": "Gran berenar amb amics i una sola safata.",
+          "interaccioProposada": "Tocar el pastís per repartir-lo",
+          "ilustracioFinal": null
+        }
+      ]
+    },
+    {
+      "id": "bruna",
+      "titol": "BRUNA I LA POCIÓ SORPRESA",
+      "categoria": "Bruixes i transformacions",
+      "protagonista": "BRUNA",
+      "portadaEnPrestatgeria": true,
+      "doblesPagines": [
+        {
+          "numero": 1,
+          "esquerra": "BRUNA FA UNA POCIÓ.",
+          "dreta": "MOLT MÀGICA!",
+          "direccioArtistica": "Bruixa d’ulls vius al laboratori de llums calentes.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 2,
+          "esquerra": "UNA GOTA ROSA.",
+          "dreta": "UNA GOTA VERDA.",
+          "direccioArtistica": "Flascons de colors i olla amb petites bombolles.",
+          "interaccioProposada": "Tocar dos flascons per afegir gotes",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 3,
+          "esquerra": "REMENA, REMENA!",
+          "dreta": "BLOC! BLOC! BLOC!",
+          "direccioArtistica": "Cullerot gran, estrelles que salten del calder.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 4,
+          "esquerra": "OH! EL SEU BARRET!",
+          "dreta": "ARA ÉS UNA FLOR!",
+          "direccioArtistica": "Barret transformat en flor gegant i sorprenent.",
+          "interaccioProposada": "Tocar el barret transformat",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 5,
+          "esquerra": "UNA SABATA VOLA!",
+          "dreta": "QUIN EMBULL!",
+          "direccioArtistica": "Una sabata amb ales sobre els prestatges.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 6,
+          "esquerra": "BRUNA RIU I PENSA.",
+          "dreta": "JA TÉ UNA IDEA!",
+          "direccioArtistica": "Bruixa tranquil·la, ulls brillants i recepta antiga.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 7,
+          "esquerra": "TOCA LA LLUM D’OR.",
+          "dreta": "ARA TOT TORNA!",
+          "direccioArtistica": "La poció canvia a daurat; objectes tornen al seu lloc.",
+          "interaccioProposada": "Tocar el llum daurat per desfer l’encanteri",
+          "ilustracioFinal": null
+        },
+        {
+          "numero": 8,
+          "esquerra": "QUINA POCIÓ MÉS BONA!",
+          "dreta": "FEM UNA FESTA!",
+          "direccioArtistica": "Bruna amb amics; barret amb una floreta que ha quedat.",
+          "interaccioProposada": null,
+          "ilustracioFinal": null
+        }
+      ]
+    }
+  ]
+}

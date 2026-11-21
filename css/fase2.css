@@ -1,7 +1,8 @@
 /* El nostre univers · Fase 2 — escenes integrades, jocs i aventura */
-.f2-scene{position:relative;width:100%;height:100%;display:flex;justify-content:center;align-items:center;padding:66px 14px 18px;overflow:auto;background:#1e1335}
-.f2-scene:before{content:'';position:fixed;inset:0;background-image:linear-gradient(90deg,#1d1536a6,#1d1536a3),var(--bg);background-size:cover;background-position:center;filter:saturate(.9);pointer-events:none}
+.f2-scene{position:relative;width:100%;height:100%;display:flex;justify-content:center;align-items:center;padding:66px 14px 18px;overflow:auto;background:#1e1335 center/cover no-repeat}
+.f2-scene:before{content:none}
 .f2-scene>*{position:relative}
+.f2-scene>.topbar{position:absolute;z-index:8}
 .f2-window{width:min(1080px,98%);max-height:100%;overflow:auto;border:5px solid #cba568;border-radius:30px;background:linear-gradient(135deg,#382456f2,#23193df7);box-shadow:0 15px 60px #000a;display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px 19px 20px;text-align:center}
 .f2-heading{width:100%;flex:0 0 auto}.f2-heading h2{font-size:clamp(23px,3vw,37px);line-height:1.04;color:#ffe4a8;font-family:Georgia,serif;margin:5px 0 8px}.f2-kicker{font-size:clamp(10px,1.1vw,14px);letter-spacing:.2em;color:#e6bdf7}
 .f2-illustrated{width:100%;min-height:130px;flex:0 1 auto;display:flex;justify-content:center;align-items:center;position:relative;overflow:hidden;border-radius:19px;background:radial-gradient(ellipse at center,#71509d,#2d2048 80%);box-shadow:inset 0 0 20px #1b103a}

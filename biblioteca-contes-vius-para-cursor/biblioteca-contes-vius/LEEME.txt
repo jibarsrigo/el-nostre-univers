@@ -1,0 +1,19 @@
+EL NOSTRE UNIVERS — PREPARACION DE LA BIBLIOTECA DE LOS CUENTOS VIVOS
+
+Este paquete NO es el repositorio completo ni reemplaza la web existente.
+
+Incluye:
+- INSTRUCCIONES-PARA-CURSOR.md (encargo tecnico listo para compartir)
+- contenido/contes.json (7 cuentos, 56 dobles paginas con textos y pautas de ilustracion)
+- recursos/prestatgeria-contes-vius.webp (imagen aprobada con 7 libros, 1672x941)
+- recursos/exemple-pipa-doble-pagina.webp (muestra aprobada, 1536x1024)
+- recursos/prestatgeria-tres-contes-referencia.webp (referencia previa)
+
+No incluye 56 ilustraciones interiores terminadas. No pedir a Cursor que las simule con emojis.
+El estado del repositorio local tras las correcciones de Cursor NO se incluye aqui.
+La biblioteca debe INTEGRARSE en el repositorio local, preservando modificaciones recientes.
+
+NOTA: La ilustracion de la estanteria tiene alguna irregularidad de rotulacion
+(por ejemplo «LA NUVOL» en la cuarta portada). El titulo correcto es
+EL NUVOL PERDUT DE NA BOIRA, con acento en NUVOL: «EL NÚVOL PERDUT DE NA BOIRA».
+Para corregir letras pintadas se necesita un retoque artistico, no superponer HTML.
