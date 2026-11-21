@@ -5,7 +5,7 @@ const CONTES_URL='biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/cont
 const SHELF_URL='biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/recursos/prestatgeria-contes-vius.webp';
 const PIPA_PORTADA='pipa-portada.webp';
 const PIPA_PAGINES=[
- 'biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/recursos/exemple-pipa-doble-pagina.webp'
+ 'pipa-01-llibre-sense-fusta.webp'
 ];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
