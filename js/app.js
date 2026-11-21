@@ -1,0 +1,110 @@
+'use strict';
+/* El nostre univers — Fase 1: espais i exploració. Sense dependències. */
+const app=document.getElementById('app');
+const IMG=p=>'imagenes/'+p+'.webp';
+const KEY='nostre-fase1-records';
+let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch{}
+const state={place:'welcome',previous:'map',step:0,flash:'',unlocked:{...saved},history:[],full:false};
+const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify(state.unlocked))}catch{}};
+const remember=(id)=>{state.unlocked[id]=true;persist()};
+const screens={welcome:'benvinguda',map:'mapa',library:'biblioteca',tower:'torre',workshop:'taller'};
+const titles={map:'EL NOSTRE UNIVERS',library:'LLEGIM!',tower:'INVESTIGUEM!',workshop:'INVENTEM!'};
+const hotspots={
+map:[
+ ['library','BIBLIOTECA · LLEGIM!','rect',[65,180,620,560]],
+ ['tower','TORRE · INVESTIGUEM!','rect',[760,4,1220,520]],
+ ['workshop','TALLER · INVENTEM!','rect',[1265,196,1640,560]],
+ ['secret','PORTA DIMINUTA','rect',[1195,596,1410,883]],
+ ['bridge','EL PONT','rect',[750,520,1100,720]]
+],
+library:[
+ ['book','EL LLIBRE MÀGIC','rect',[430,640,1015,907]],
+ ['chest','EL COFRE','rect',[1238,498,1416,657]],
+ ['window','LA FINESTRA','rect',[1312,16,1665,500]],
+ ['cards','LES CARTES','rect',[1110,705,1515,850]],
+ ['owl','EL MUSSOL','rect',[24,26,185,216]],
+ ['ladder','L’ESCALA','rect',[250,218,466,577]]
+],
+tower:[
+ ['telescope','EL TELESCOPI','rect',[472,220,662,410]],
+ ['orb','LA BOLA MÀGICA','rect',[670,376,867,570]],
+ ['chest','EL COFRE','rect',[1165,312,1375,465]],
+ ['map','EL MAPA','rect',[983,142,1220,300]],
+ ['small-door','LA PORTA PETITA','rect',[1350,480,1578,770]],
+ ['stairs','LES ESCALES','rect',[1380,0,1660,360]],
+ ['owl','EL MUSSOL','rect',[830,144,980,305]]
+],
+workshop:[
+ ['creature','EL DRAC','rect',[745,385,1120,739]],
+ ['colors','LES PINTURES','rect',[4,590,520,920]],
+ ['stars','LES ESTRELLES','rect',[1010,25,1250,230]],
+ ['chest','LA CAIXA','rect',[1290,440,1600,670]],
+ ['window','LA FINESTRA','rect',[0,0,430,510]]
+]};
+const rooms={library:'📖 LLEGIM!',tower:'🔎 INVESTIGUEM!',workshop:'🎨 INVENTEM!'};
+const strip=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+function nav(place){state.place=place;state.step=0;render()}
+function go(id){state.previous=state.place;state.history.push(state.place);nav(id)}
+function back(){nav(state.history.pop()||'map')}
+function topbar(place){return `<div class="topbar"><div>${place!=='map'&&place!=='welcome'?`<button class="pill icon" data-action="back" aria-label="Tornar enrere">← TORNAR</button>`:''}<button class="pill" data-action="home">⌂ INICI</button></div><div><button class="pill icon" data-action="help" aria-label="Com es juga?">?</button><button class="pill icon" data-action="fullscreen" aria-label="Pantalla completa">${document.fullscreenElement?'⤢':'⛶'}</button></div></div>`}
+function art(place){const hs=hotspots[place]||[];return `<div class="art"><img src="${IMG(screens[place])}" alt="${strip(titles[place]||'Un món màgic')}" draggable="false"><svg class="hit-layer" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Objectes per explorar">${hs.map(([id,label,shape,p])=>`<rect tabindex="0" role="button" aria-label="${strip(label)}" data-hotspot="${id}" class="hit" x="${p[0]}" y="${p[1]}" width="${p[2]-p[0]}" height="${p[3]-p[1]}" rx="24"><title>${strip(label)}</title></rect>`).join('')}${hs.filter(([id])=>!(["map", "library", "tower", "workshop"].includes(place)&&id==="window")).map(([id,label,,p],i)=>`<g class="spark-marker" transform="translate(${Math.round((p[0]+p[2])/2)} ${Math.round((p[1]+p[3])/2)})" aria-hidden="true"><circle r="19" fill="#46225a88" stroke="#ffe0a2" stroke-width="2"/><path d="M0-13L4-4 13 0 4 4 0 13-4 4-13 0-4-4Z" fill="#ffe5a0"/></g>`).join('')}</svg></div>`}
+function renderF1(){const place=state.place;
+ if(place==='welcome')app.innerHTML=`<div class="world">${art('welcome')}<div class="intro"><h1>EL NOSTRE<br>UNIVERS</h1><p>UN MÓN QUE CREIX AMB TU</p><button class="big" data-action="start">✦ COMENCEM!</button></div></div>`;
+ else if(screens[place])app.innerHTML=`<div class="world">${art(place)}${topbar(place)}<div class="footer">${place==='map'?'🦊 TOCA UN LLOC I DESCOBREIX QUÈ AMAGA':`🦊 ${rooms[place]} · TOCA ELS OBJECTES`}</div></div>`;
+ else renderScene();
+ bindF1(); if(typeof bindExtras==='function')bindExtras();}
+function sceneFrame(inner,bg='biblioteca'){if(['biblioteca','torre','taller'].includes(screens[state.previous]) && !['secret','book'].includes(state.place))bg=screens[state.previous];return `<div class="scene" style="background-image:url('${IMG(bg)}')">${topbar(state.place)}<section class="stage">${inner}</section></div>`}
+const A=(label,id='next')=>`<button class="choice" data-action="${id}">${label}</button>`;
+const B=(label,id)=>`<button class="choice" data-action="${id}">${label}</button>`;
+function openSVG(open=false){return `<svg viewBox="0 0 440 250" aria-label="Arbre amb una porta màgica"><defs><linearGradient id="tree" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#653d24"/><stop offset=".55" stop-color="#a56e39"/><stop offset="1" stop-color="#583c24"/></linearGradient></defs><path d="M100 250q45-92 34-250h190q-35 106-30 250" fill="url(#tree)"/><path d="M0 58q65-63 169-48M243 7Q332-13 440 44" fill="none" stroke="#5b863f" stroke-width="65" stroke-linecap="round"/><path d="M0 63q65-63 169-48M243 7Q332-13 440 44" fill="none" stroke="#b3cd56" stroke-width="16" stroke-linecap="round" opacity=".3"/><path d="M169 250v-86a51 51 0 0 1 102 0v86" fill="#352048" stroke="#e5c776" stroke-width="8"/>${open?'<path d="M225 245q20-36 39-42q-28-16-46-1" fill="none" stroke="#ffdc79" stroke-width="11"/>':'<path d="M169 250v-86a51 51 0 0 1 102 0v86Z" fill="#aa663f" stroke="#46263f" stroke-width="6"/><circle cx="252" cy="202" r="7" fill="#ffe28c"/>'}<path d="M25 248q20-26 48-8M360 245q30-26 65-2" fill="none" stroke="#7cae58" stroke-width="11"/><circle cx="87" cy="233" r="7" fill="#f8b5d8"/><circle cx="352" cy="237" r="7" fill="#f8b5d8"/></svg>`}
+function bookView(){const s=state.step,done=!!state.unlocked.book;return sceneFrame(`<h2>📖 EL LLIBRE DE LES SORPRESES</h2><div class="book">${s===0?`<button class="cover" data-action="next" aria-label="Obrir el llibre">✦<br>UN BOSC<br>SECRET<br><small style="font:800 18px Trebuchet MS">TOCA PER OBRIR</small></button>`:`<div class="page"><p>${s===1?'UN BOSC MÀGIC':s===2?'UNA PORTA!':'LA PORTA ÉS OBERTA!'}</p>${openSVG(s>=3)}</div><div class="page"><p>${s===1?'QUI HI VIU?':s===2?'TOCA LA PORTA':'QUINA SORPRESA!'}</p>${s>=3?`<div style="font-size:clamp(70px,12vw,130px)">🐇</div>`:`<button class="reveal" data-action="next" aria-label="Descobrir la porta">${openSVG(false)}</button>`}</div>`}</div><div class="actions">${s===0?'':s===1?A('SEGÜENT →'):s===2?A('🚪 OBRIM LA PORTA'):s===3?B('🐇 SALUDA EL CONILL','finish-book'):B('↻ TORNEM A MIRAR','reset-scene')} ${B('← BIBLIOTECA','back')}</div>${done?'<span class="badge">✦ JA CONEIXES AQUEST SECRET</span>':''}`,'biblioteca')}
+function chestView(){let s=state.step;return sceneFrame(`<h2>✦ EL COFRE ANTIC</h2><div class="drawer"><div class="inside">${s===0?'🔒':s===1?'✨ 🔑 ✨':'🌟 UNA CLAU DAURADA'}</div></div><p>${s===0?'ESTÀ TANCAT...':s===1?'CLIC! S’HA OBERT!':'GUARDAM LA CLAU!'}</p><div class="actions">${s===0?A('TOCA EL PANY'):s===1?B('🔑 AGAFAM LA CLAU','finish-key'):B('🚪 CERCAM UNA PORTA','secret-door')} ${B('← TORNAR','back')}</div>`,'torre')}
+function secretView(){const s=state.step;return sceneFrame(`<h2>🚪 LA PORTA DIMINUTA</h2><div class="portal" style="border-radius:24px;aspect-ratio:1.5;width:min(490px,70vw);height:auto">${s<3?openSVG(s>=2):'<div class="door">🐇</div>'}</div><p>${s===0?'HI HA UNA PORTA PETITONA!':s===1?'QUI LA POT OBRIR?':s===2?'LA PORTA S’OBRE!':'UN CONILL VALENT!'}</p><div class="actions">${s===0?A('TOCA LA PORTA'):s===1?(state.unlocked.key?A('🔑 OBRIM AMB LA CLAU'):B('🔎 CERCAM LA CLAU','tower-go')):s===2?A('ENTRAM →'):B('🐇 EXPLORAM JUNTS!','finish-secret')} ${B('← TORNAR','back')}</div>${s===1&&!state.unlocked.key?'<small class="hint">POTS CERCAR UNA CLAU A LA TORRE</small>':''}`,'mapa')}
+function telescopeView(){return sceneFrame(`<h2>🔭 EL TELESCOPI</h2><div class="portal"><img src="${IMG(state.step?'mapa':'benvinguda')}" alt="Vista màgica d’un paisatge llunyà"></div><p>${state.step?'UN CASTELL ENTRE NÚVOLS!':'MIRA BEN ENFORA...'}</p><div class="actions">${state.step?B('✦ HO HE VIST!','finish-telescope'):A('🔭 MIRAM MÉS A PROP')} ${B('← TORRE','back')}</div>`,'torre')}
+function owlView(){return sceneFrame(`<h2>🦉 EL MUSSOL MISSATGER</h2><div class="owl">🦉</div>${state.step?`<div class="scroll"><p>HI HA UNA ESCOLA MÀGICA!</p><p>EL MUSSOL ENS HI CONVIDA.</p></div>`:'<p>PORTA UNA CARTA!</p>'}<div class="actions">${state.step?B('✦ DESAM LA CARTA','finish-owl'):A('✉️ OBRIM LA CARTA')} ${B('← TORNAR','back')}</div>`,'torre')}
+function windowView(){return sceneFrame(`<h2>🌿 QUÈ HI HA FORA?</h2><div class="portal"><img src="${IMG('mapa')}" alt="El bosc que envolta el nostre univers"></div><p>EL BOSC ESTÀ PLE DE SECRETS!</p><div class="actions">${B('🌳 ANEM AL MAPA','map-go')} ${B('← TORNAR','back')}</div>`,'biblioteca')}
+function bridgeView(){return sceneFrame(`<h2>🌉 EL PONT DE LES LLUMS</h2><div class="portal"><img src="${IMG('mapa')}" alt="El pont del riu màgic" style="object-position:54% 70%"></div><p>ON ANIREM ARA?</p><div class="actions">${B('📖 A LA BIBLIOTECA','library-go')}${B('🚪 A LA PORTA SECRETA','secret-door')}${B('← MAPA','back')}</div>`,'mapa')}
+function atticView(){return sceneFrame(`<h2>🪜 L’ESCALA DELS LLIBRES</h2><div class="portal"><div class="door">📚</div></div><p>UN LLIBRE HA CAIGUT!</p><div class="actions">${B('📖 L’OBRIM','book-go')}${B('← BIBLIOTECA','back')}</div>`,'biblioteca')}
+function letterView(){return sceneFrame(`<h2>✉️ LA CARTA MISTERIOSA</h2><div class="scroll"><p>HOLA, EXPLORADORA!</p><p>HE VIST UNA PORTA MOLT PETITA.</p><p>LA CERCAM?</p></div><div class="actions">${B('🚪 CERCAM LA PORTA','secret-door')}${B('← BIBLIOTECA','back')}</div>`,'biblioteca')}
+function boxView(){return sceneFrame(`<h2>🎁 LA CAIXA DE LES SORPRESES</h2><div class="drawer"><div class="inside">${state.step?'🌈 🦋 ✨':'🎁'}</div></div><p>${state.step?'UNA PAPALLONA DE COLORS!':'QUÈ HI TROBAREM?'}</p><div class="actions">${state.step?B('🦋 VISCA!','finish-atelier'):A('OBRIM LA CAIXA')}${B('← TALLER','back')}</div>`,'taller')}
+function stairsView(){return sceneFrame(`<h2>🌀 LES ESCALES</h2><div class="stair">🌀🏰</div><p>ON ENS PORTARAN?</p><div class="actions">${B('🦉 SEGUIM EL MUSSOL','owl-go')}${B('🔭 VEIM EL CEL','telescope-go')}${B('← TORRE','back')}</div>`,'torre')}
+function mapView(){return sceneFrame(`<h2>🗺️ EL MAPA MISTERIÓS</h2><div class="portal"><img src="${IMG('mapa')}" alt="Mapa del món fantàstic"></div><p>TRES LLOCS PER EXPLORAR!</p><div class="actions">${B('📖 LLEGIM!','library-go')}${B('🎨 INVENTEM!','workshop-go')}${B('← TORRE','back')}</div>`,'torre')}
+function crystalView(){return sceneFrame(`<h2>🔮 LA BOLA MÀGICA</h2><div class="portal"><div class="door">${state.step?'🌟':'🔮'}</div></div><p>${state.step?'UNA ESTRELLA ENS GUIA!':'VEUS UNA LLUM A DINS?'}</p><div class="actions">${state.step?B('✨ RECORDAM LA LLUM','finish-crystal'):A('TOCA LA BOLA')} ${B('← TORNAR','back')}</div>`,'torre')}
+function atelierView(){return sceneFrame(`<h2>🎨 EL RACÓ DEL TALLER</h2><div class="drawer" style="background:linear-gradient(145deg,#8e5d7d,#432b73)"><div class="inside">${state.step===0?'🎨 🖌️ 🌈':state.step===1?'💛 💜 💙':'✨ 🎨 ✨'}</div></div><p>${state.step===0?'QUÈ PODEM INVENTAR?':state.step===1?'QUINS COLORS TAN BONICS!':'HEM OMPLERT EL TALLER DE COLORS!'}</p><div class="actions">${state.step<2?A(state.step?'PINTAM!':'OBRIM LES PINTURES'):B('✨ QUINA MERAVELLA!','finish-atelier')} ${B('← TALLER','back')}</div><small class="hint">EL TALLER CREATIU COMPLET ARRIBARÀ A LA FASE 3</small>`,'taller')}
+function dragonView(){return sceneFrame(`<h2>🐉 EL PETIT DRAC</h2><div class="owl">🐉</div><p>${state.step?'EL DRAC ENS HA VIST!':'MIRA QUI ENS ESPERA!'}</p><div class="actions">${state.step?B('⭐ BON DIA, DRAC!','finish-dragon'):A('SALUDEM EL DRAC')} ${B('← TALLER','back')}</div>`,'taller')}
+const SCENES={bridge:bridgeView,attic:atticView,letter:letterView,box:boxView,book:bookView,chest:chestView,secret:secretView,telescope:telescopeView,owl:owlView,window:windowView,stairs:stairsView,mapstudy:mapView,orb:crystalView,atelier:atelierView,dragon:dragonView};
+function renderScene(){const f=SCENES[state.place];app.innerHTML=f?f():sceneFrame(`<h2>UN SECRET PER DESCOBRIR</h2>${B('← TORNAR','back')}`);}
+function hotspotF1(id){const place=state.place;
+ if(place==='map')return go(({library:'library',tower:'tower',workshop:'workshop',secret:'secret',bridge:'bridge'})[id]||'map');
+ if(place==='library')return go(({book:'book',chest:'chest',window:'window',cards:'letter',owl:'owl',ladder:'attic'})[id]);
+ if(place==='tower')return go(({telescope:'telescope',orb:'orb',chest:'chest',map:'mapstudy','small-door':'secret',stairs:'stairs',owl:'owl'})[id]);
+ if(place==='workshop')return go(({creature:'dragon',colors:'atelier',stars:'atelier',chest:'box',window:'window'})[id]);
+}
+function notify(t){document.querySelector('.notice')?.remove();const e=document.createElement('div');e.className='notice';e.setAttribute('role','status');e.textContent=t;document.body.append(e);setTimeout(()=>e.remove(),3000)}
+function actionF1(id){switch(id){case'start':nav('map');if(document.fullscreenEnabled&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});break;
+case'next':if(state.place==='secret'&&state.step===1&&!state.unlocked.key){notify('LA CLAU ÉS AL COFRE DE LA TORRE!');break;}state.step=Math.min(state.step+1,3);render();break;
+case'reset-scene':state.step=0;render();break;
+case'back':back();break;
+case'home':state.history=[];nav('map');break;
+case'fullscreen':if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else if(document.fullscreenEnabled)document.documentElement.requestFullscreen().catch(()=>{});else notify('PANTALLA COMPLETA NO DISPONIBLE');break;
+case'help':notify('TOCA ELS OBJECTES DEL DIBUIX. POTS TORNAR ENRERE SEMPRE.');break;
+case'finish-book':remember('book');notify('HAS CONEGUT EL CONILL!');back();break;
+case'finish-key':remember('key');notify('JA TENS LA CLAU!');back();break;
+case'finish-secret':remember('secret');notify('HAS DESCOBERT LA PORTA!');back();break;
+case'finish-owl':remember('owl');notify('CARTA DESADA!');back();break;
+case'finish-crystal':remember('crystal');notify('LA LLUM T’ACOMPANYA!');back();break;
+case'finish-telescope':remember('telescope');notify('HAS VIST EL CASTELL!');back();break;
+case'finish-dragon':remember('dragon');notify('EL DRAC ÉS EL TEU AMIC!');back();break;
+case'finish-atelier':remember('atelier');notify('QUINA DESCOBERTA!');back();break;
+case'secret-door':go('secret');break;
+case'tower-go':go('tower');break;
+case'map-go':go('map');break;
+case'owl-go':go('owl');break;
+case'telescope-go':go('telescope');break;
+case'library-go':go('library');break;
+case'book-go':go('book');break;
+case'workshop-go':go('workshop');break;
+default:break;}}
+function bindF1(){app.querySelectorAll('[data-hotspot]').forEach(el=>{const run=()=>hotspot(el.dataset.hotspot);el.addEventListener('click',run);el.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();run()}})});app.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>action(el.dataset.action)))}
+document.addEventListener('fullscreenchange',()=>{const b=app.querySelector('[data-action="fullscreen"]');if(b)b.textContent=document.fullscreenElement?'⤢':'⛶'});
+renderF1();

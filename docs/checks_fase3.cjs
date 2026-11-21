@@ -1,0 +1,28 @@
+// Smoke checks sans navigateur: integration de les tres fases i dades de taller.
+const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
+const root=path.resolve(__dirname,'..');const dummy={innerHTML:'',querySelectorAll:()=>[],querySelector:()=>null};
+const mem={};const fakeDocument={getElementById:()=>dummy,querySelector:()=>null,addEventListener:()=>{},fullscreenElement:null,fullscreenEnabled:false};
+const context=vm.createContext({document:fakeDocument,localStorage:{getItem:k=>mem[k]||null,setItem:(k,v)=>mem[k]=v},console,window:{confirm:()=>true},setTimeout:()=>{},Image:function(){},Math,Date});
+for(const file of ['js/app.js','js/fase2.js','js/fase3.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
+const run=src=>vm.runInContext(src,context);
+assert(run('typeof render')==='function');
+assert(run("SCENES.f3creator().includes('f3-creature-art')"));
+assert(run("SCENES.f3maker().includes('f3-object-art')"));
+assert(run("SCENES.f3draw().includes('f3-canvas')"));
+assert(run("SCENES.f3gallery().includes('AQUÍ GUARDARÀS')"));
+run("f3.draft={...newCreature3(),name:'Espurna',id:'demo-1',wings:'papallona'};f3Save(f3.draft)");
+assert(run("f3.gallery.length")===1);
+assert(run("f3.gallery[0].name")==='Espurna');
+assert(run("SCENES.f3gallery().includes('Espurna')"));
+run("f3.object={...newObject3(),name:'Escut de la llum',id:'demo-2',power:'protecció'};f3Save(f3.object)");
+assert(run("f3.gallery.length")===2);
+assert(run("SCENES.f3gallery().includes('Escut de la llum')"));
+assert(run("SCENES.f3creator().includes('orelles')"));
+assert(run("creatureSVG3(newCreature3()).includes('<svg')"));
+run("state.place='workshop';hotspot('creature')");assert(run("state.place")==='f3creator');
+run("state.place='workshop';hotspot('colors')");assert(run("state.place")==='f3draw');
+run("state.place='workshop';hotspot('stars')");assert(run("state.place")==='f3maker');
+run("state.place='workshop';hotspot('chest')");assert(run("state.place")==='f3gallery');
+run("state.place='school';render()");
+assert(run("state.unlocked['f3-creature']===true"));
+console.log('FASE 3: 15 comprovacions de JS i flux superades.');
