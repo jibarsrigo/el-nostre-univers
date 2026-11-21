@@ -114,3 +114,18 @@ default:break;}}
 function bindF1(){app.querySelectorAll('[data-hotspot]').forEach(el=>{const run=()=>hotspot(el.dataset.hotspot);el.addEventListener('click',run);el.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();run()}})});app.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>action(el.dataset.action)))}
 document.addEventListener('fullscreenchange',()=>{const b=app.querySelector('[data-action="fullscreen"]');if(b)b.textContent=document.fullscreenElement?'⤢':'⛶'});
 renderF1();
+function setupMusic(){
+ const music=document.getElementById('music'),btn=document.getElementById('music-toggle');
+ if(!music||!btn||music===btn||typeof music.play!=='function')return;
+ const show=()=>btn.setAttribute('aria-pressed',!music.paused&&!music.ended?'true':'false');
+ btn.addEventListener('click',()=>{
+  if(!music.paused&&!music.ended){music.pause();return}
+  if(music.ended)music.currentTime=0;
+  const pending=music.play();
+  if(pending&&typeof pending.catch==='function')pending.catch(()=>{});
+ });
+ music.addEventListener('play',show);
+ music.addEventListener('pause',show);
+ music.addEventListener('ended',show);
+}
+setupMusic();
