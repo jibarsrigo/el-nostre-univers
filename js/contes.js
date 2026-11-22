@@ -6,7 +6,13 @@ const SHELF_URL='biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/recur
 const PIPA_PORTADA='pipa-portada.webp';
 const PIPA_PAGINES=[
  'PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-01-nomes-pagines.webp',
- 'PIPA-02-MATEIX-TAMANY-PER-CURSOR/pipa-02-mateix-tamany.webp'
+ 'PIPA-02-MATEIX-TAMANY-PER-CURSOR/pipa-02-mateix-tamany.webp',
+ 'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-03-nomes-pagines.webp',
+ 'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-04-nomes-pagines.webp',
+ 'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-05-nomes-pagines.webp',
+ 'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-06-nomes-pagines.webp',
+ 'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-07-nomes-pagines.webp',
+ 'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-08-nomes-pagines.webp'
 ];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
