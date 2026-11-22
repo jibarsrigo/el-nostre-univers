@@ -5,7 +5,8 @@ const CONTES_URL='biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/cont
 const SHELF_URL='biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/recursos/prestatgeria-contes-vius.webp';
 const PIPA_PORTADA='pipa-portada.webp';
 const PIPA_PAGINES=[
- 'pipa-01-llibre-sense-fusta.webp'
+ 'PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-01-nomes-pagines.webp',
+ 'PIPA-02-MATEIX-TAMANY-PER-CURSOR/pipa-02-mateix-tamany.webp'
 ];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
