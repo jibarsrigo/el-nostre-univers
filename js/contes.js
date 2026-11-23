@@ -14,6 +14,7 @@ const PIPA_PAGINES=[
  'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-07-nomes-pagines.webp',
  'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-08-nomes-pagines.webp'
 ];
+const SOPAR_PAGINES=['sopar-01-nomes-pagines.webp'];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
  ['pipa','PIPA I EL MAPA DEL MAR',605,230,906,547],
@@ -41,6 +42,7 @@ function leaveShelf(){if(state.history[state.history.length-1]==='library')state
 function openBook(id){if(id==='pipa'||conteId!==id)contePage=0;if(id==='pipa'){pipaObert=false;const primer=new Image();primer.src=PIPA_PAGINES[0]}conteId=id;conteMotion='';go('lector')}
 function backToShelf(){conteMotion='';if(state.history[state.history.length-1]==='contes')state.history.pop();nav('contes')}
 function turnPage(dir){
+ if(conteId==='sopar')return; // Fins que hi hagi més il·lustracions aprovades.
  if(conteId==='pipa'){if(!pipaObert)return;const n=PIPA_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
  const book=conteBook();if(!book)return;
  const n=(book.doblesPagines||[]).length,next=contePage+dir;
@@ -55,6 +57,12 @@ function renderPipa(){
  const fade=conteMotion==='forward'?' conte-fade':'';
  const body=pipaObert?`<figure class="conte-full${fade}"><img src="${PIPA_PAGINES[contePage]}" alt="Doble pàgina il·lustrada de Pipa i el mapa del mar" draggable="false"></figure>`:`<button type="button" class="conte-cover" data-action="contes-open" aria-label="Obrir el llibre"><img src="${PIPA_PORTADA}" alt="" draggable="false"></button><p class="conte-hint">TOCA EL LLIBRE PER OBRIR-LO</p>`;
  const controls=pipaObert?`<div class="conte-controls"><button type="button" class="conte-turn" data-action="contes-prev" aria-label="Pàgina anterior" ${contePage===0?'disabled':''}>‹</button><p class="conte-progress" aria-label="Doble pàgina ${contePage+1} de ${n}">${contePage+1} / ${n}</p><button type="button" class="conte-turn" data-action="contes-next" aria-label="Pàgina següent" ${last?'disabled':''}>›</button>${last?'<button type="button" class="conte-end" data-action="contes-close">TANCAR EL LLIBRE</button>':''}</div>`:'<div class="conte-controls" aria-hidden="true"></div>';
+ app.innerHTML=conteRoom(`<div class="conte-stage">${body}${controls}</div>`,'← CONTES','contes-shelf');
+}
+function renderSopar(){
+ const n=SOPAR_PAGINES.length;
+ const body=`<figure class="conte-full"><img src="${SOPAR_PAGINES[0]}" alt="Doble pàgina il·lustrada d'El sopar dels embulls" draggable="false"></figure>`;
+ const controls=`<div class="conte-controls"><button type="button" class="conte-turn" data-action="contes-prev" aria-label="Pàgina anterior" disabled>‹</button><p class="conte-progress" aria-label="Doble pàgina 1 de ${n}">1 / ${n}</p><button type="button" class="conte-turn" data-action="contes-next" aria-label="Pàgina següent" disabled>›</button><button type="button" class="conte-end" data-action="contes-close">TANCAR EL LLIBRE</button></div>`;
  app.innerHTML=conteRoom(`<div class="conte-stage">${body}${controls}</div>`,'← CONTES','contes-shelf');
 }
 function conteBar(label,id){
@@ -78,6 +86,7 @@ function renderReader(){
  const pages=Array.isArray(book.doblesPagines)?book.doblesPagines:[];
  if(!pages.length){app.innerHTML=conteRoom(`<p class="conte-wait">AQUEST CONTE ENCARA NO TÉ PÀGINES.</p>`,'← CONTES','contes-shelf');return}
  if(book.id==='pipa'){renderPipa();conteMotion='';return}
+ if(book.id==='sopar'){renderSopar();conteMotion='';return}
  if(contePage<0)contePage=0;
  if(contePage>pages.length-1)contePage=pages.length-1;
  const page=pages[contePage]||{};
