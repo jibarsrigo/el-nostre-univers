@@ -14,7 +14,7 @@ const PIPA_PAGINES=[
  'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-07-nomes-pagines.webp',
  'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-08-nomes-pagines.webp'
 ];
-const SOPAR_PAGINES=['sopar-01-nomes-pagines.webp','sopar-02-nomes-pagines.webp','sopar-03-nomes-pagines.webp'];
+const SOPAR_PAGINES=['sopar-01-nomes-pagines.webp','sopar-02-nomes-pagines.webp','sopar-03-nomes-pagines.webp','sopar-04-nomes-pagines.webp'];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
  ['pipa','PIPA I EL MAPA DEL MAR',605,230,906,547],
