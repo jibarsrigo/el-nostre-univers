@@ -24,7 +24,8 @@ const SOPAR_PAGINES=[
  {src:'sopar-07-nomes-pagines.webp'},
  {src:'sopar-08-nomes-pagines.webp'},
  {src:'sopar-09-nomes-pagines.webp'},
- {src:'sopar-10-nomes-pagines.webp'}
+ {src:'sopar-10-nomes-pagines.webp'},
+ {src:'sopar-11-nomes-pagines.webp',solapa:{text:"ME L'HE BEGUT!",x:28,y:73,w:16,h:11}}
 ];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
