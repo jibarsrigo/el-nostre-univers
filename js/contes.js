@@ -14,7 +14,15 @@ const PIPA_PAGINES=[
  'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-07-nomes-pagines.webp',
  'PIPA-8-PAGINAS-PARA-CURSOR/PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-08-nomes-pagines.webp'
 ];
-const SOPAR_PAGINES=['sopar-01-nomes-pagines.webp','sopar-02-nomes-pagines.webp','sopar-03-nomes-pagines.webp','sopar-04-nomes-pagines.webp','sopar-05-nomes-pagines.webp','sopar-06-nomes-pagines.webp','sopar-07-nomes-pagines.webp'];
+const SOPAR_PAGINES=[
+ {src:'sopar-01-nomes-pagines.webp'},
+ {src:'sopar-02-nomes-pagines.webp',solapa:{text:"GELAT DE CERA D'ORELLA!",x:30,y:60,w:16,h:26}},
+ {src:'sopar-03-nomes-pagines.webp',solapa:{text:"QUI L'HA AGAFAT?",x:70,y:56,w:13,h:14}},
+ {src:'sopar-04-nomes-pagines.webp',solapa:{text:'NOMÉS ERA SOPA!',x:11,y:38,w:15,h:16}},
+ {src:'sopar-05-nomes-pagines.webp'},
+ {src:'sopar-06-nomes-pagines.webp'},
+ {src:'sopar-07-nomes-pagines.webp'}
+];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
  ['pipa','PIPA I EL MAPA DEL MAR',605,230,906,547],
@@ -26,7 +34,7 @@ const SHELF=[
 ];
 hotspots.library.push(['contes','ELS CONTES VIUS','rect',[500,155,1095,405]]);
 FIREFLY.library.contes=[690,240];
-let contesData=null,contesError='',contesLoading=null,conteId='',contePage=0,conteMotion='',pipaObert=false;
+let contesData=null,contesError='',contesLoading=null,conteId='',contePage=0,conteMotion='',pipaObert=false,solapaOberta=false;
 function conteList(){return contesData&&Array.isArray(contesData.llibres)?contesData.llibres:[]}
 function conteBook(){return conteList().find(b=>b&&b.id===conteId)||null}
 function ensureContes(){
@@ -39,10 +47,10 @@ function ensureContes(){
 }
 function openShelf(){conteMotion='';go('contes')}
 function leaveShelf(){if(state.history[state.history.length-1]==='library')state.history.pop();nav('library')}
-function openBook(id){if(id==='pipa'||conteId!==id)contePage=0;if(id==='pipa'){pipaObert=false;const primer=new Image();primer.src=PIPA_PAGINES[0]}conteId=id;conteMotion='';go('lector')}
+function openBook(id){if(id==='pipa'||conteId!==id)contePage=0;if(id==='pipa'){pipaObert=false;const primer=new Image();primer.src=PIPA_PAGINES[0]}conteId=id;conteMotion='';solapaOberta=false;go('lector')}
 function backToShelf(){conteMotion='';if(state.history[state.history.length-1]==='contes')state.history.pop();nav('contes')}
 function turnPage(dir){
- if(conteId==='sopar'){const n=SOPAR_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
+ if(conteId==='sopar'){const n=SOPAR_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';solapaOberta=false;render();return}
  if(conteId==='pipa'){if(!pipaObert)return;const n=PIPA_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
  const book=conteBook();if(!book)return;
  const n=(book.doblesPagines||[]).length,next=contePage+dir;
@@ -65,9 +73,32 @@ function renderSopar(){
  if(contePage>n-1)contePage=n-1;
  const last=contePage===n-1;
  const fade=conteMotion==='forward'?' conte-fade':'';
- const body=`<figure class="conte-full${fade}"><img src="${SOPAR_PAGINES[contePage]}" alt="Doble pàgina il·lustrada d'El sopar dels embulls" draggable="false"></figure>`;
+ const page=SOPAR_PAGINES[contePage];
+ const solapa=page.solapa;
+ const flap=solapa?`<button type="button" class="conte-flap" data-action="contes-flap" data-x="${solapa.x}" data-y="${solapa.y}" data-w="${solapa.w}" data-h="${solapa.h}" aria-pressed="${solapaOberta?'true':'false'}" aria-label="${solapaOberta?solapa.text:'TOCA PER DESCOBRIR'}">${solapaOberta?solapa.text:'TOCA'}</button>`:'';
+ const body=`<figure class="conte-full${fade}"><img src="${page.src}" alt="Doble pàgina il·lustrada d'El sopar dels embulls" draggable="false">${flap}</figure>`;
  const controls=`<div class="conte-controls"><button type="button" class="conte-turn" data-action="contes-prev" aria-label="Pàgina anterior" ${contePage===0?'disabled':''}>‹</button><p class="conte-progress" aria-label="Doble pàgina ${contePage+1} de ${n}">${contePage+1} / ${n}</p><button type="button" class="conte-turn" data-action="contes-next" aria-label="Pàgina següent" ${last?'disabled':''}>›</button>${last?'<button type="button" class="conte-end" data-action="contes-close">TANCAR EL LLIBRE</button>':''}</div>`;
  app.innerHTML=conteRoom(`<div class="conte-stage">${body}${controls}</div>`,'← CONTES','contes-shelf');
+ placeSoparFlap();
+}
+function placeSoparFlap(){
+ if(typeof document.querySelector!=='function')return;
+ const img=document.querySelector('.conte-full img');
+ const btn=document.querySelector('.conte-flap');
+ if(!img||!btn||typeof img.getBoundingClientRect!=='function')return;
+ const fit=()=>{
+  const r=img.getBoundingClientRect();
+  if(!r.width)return;
+  btn.style.position='fixed';
+  btn.style.left=(r.left+r.width*btn.dataset.x/100)+'px';
+  btn.style.top=(r.top+r.height*btn.dataset.y/100)+'px';
+  btn.style.width=(r.width*btn.dataset.w/100)+'px';
+  btn.style.height=(r.height*btn.dataset.h/100)+'px';
+ };
+ const run=()=>{fit();if(typeof requestAnimationFrame==='function')requestAnimationFrame(fit)};
+ if(img.complete)run();
+ else img.addEventListener('load',run);
+ if(typeof window.addEventListener==='function'&&!placeSoparFlap.bound){window.addEventListener('resize',placeSoparFlap);placeSoparFlap.bound=true}
 }
 function conteBar(label,id){
  const full=document.fullscreenElement?'⤢':'⛶';
@@ -112,6 +143,7 @@ action=function(id){
  if(id==='contes-open'){pipaObert=true;contePage=0;conteMotion='forward';render();return}
  if(id==='contes-prev'){turnPage(-1);return}
  if(id==='contes-next'){turnPage(1);return}
+ if(id==='contes-flap'){const page=SOPAR_PAGINES[contePage];if(conteId!=='sopar'||!page||!page.solapa)return;solapaOberta=!solapaOberta;conteMotion='';render();return}
  if(id==='contes-reread'){contePage=0;conteMotion='back';render();return}
  return actionContesPrev(id);
 };
