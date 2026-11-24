@@ -53,10 +53,15 @@ library:{book:[980,730],chest:[1348,530],window:[1210,80],cards:[1148,760],owl:[
 tower:{telescope:[500,320],orb:[855,530],chest:[1255,355],map:[960,155],'small-door':[1435,545],stairs:[1370,95],owl:[785,140],nest:[370,85],pairs:[890,690],words:[48,55]},
 workshop:{creature:[845,470],colors:[80,750],stars:[1045,48],chest:[1505,505],window:[55,75],search:[1270,350]}
 };
-function art(place){const hs=hotspots[place]||[];const dots=FIREFLY[place]||{};const zones=hs.map(([id,label,,p])=>{const x=p[0],y=p[1],w=p[2]-p[0],h=p[3]-p[1];const dot=dots[id]||[x+18,y+18];return `<rect tabindex="0" role="button" aria-label="${strip(label)}" data-hotspot="${id}" class="hit" x="${x}" y="${y}" width="${w}" height="${h}"><title>${strip(label)}</title></rect><g class="firefly" aria-hidden="true"><circle cx="${dot[0]}" cy="${dot[1]}" r="13"></circle><circle cx="${dot[0]}" cy="${dot[1]}" r="5"></circle></g>`}).join('');return `<div class="art"><img src="${IMG(screens[place])}" alt="${strip(titles[place]||'Un món màgic')}" draggable="false"><svg class="hit-layer" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet">${zones}</svg></div>`}
+const SOUND_ICON='<svg viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 26h10l12-10v32L22 38H12z"/><path class="wave" d="M40 24a12 12 0 0 1 0 16M48 16a22 22 0 0 1 0 32" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>';
+const FULL_ICON='<svg class="ico-enter" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 24V12h12M52 24V12H40M12 40v12h12M52 40v12H40" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ico-exit" viewBox="0 0 64 64" aria-hidden="true"><path d="M24 12v12H12M40 12v12h12M24 52V40H12M40 52V40h12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function musicOn(){const music=document.getElementById('music');return !!(music&&music.paused===false&&music.ended===false)}
+function soundButton(ghost){return `<button type="button" class="corner-sound${ghost?' ghost':''}" data-action="music" aria-pressed="${musicOn()?'true':'false'}" aria-label="Música">${ghost?'':SOUND_ICON}</button>`}
+function welcomeCorners(){return `<div class="corner-controls">${soundButton(false)}<button type="button" class="corner-full" data-action="fullscreen" aria-label="Pantalla completa">${FULL_ICON}</button></div>`}
+function art(place){const hs=hotspots[place]||[];const dots=FIREFLY[place]||{};const zones=hs.map(([id,label,,p])=>{const x=p[0],y=p[1],w=p[2]-p[0],h=p[3]-p[1];const dot=dots[id]||[x+18,y+18];return `<rect tabindex="0" role="button" aria-label="${strip(label)}" data-hotspot="${id}" class="hit" x="${x}" y="${y}" width="${w}" height="${h}"><title>${strip(label)}</title></rect><g class="firefly" aria-hidden="true"><circle cx="${dot[0]}" cy="${dot[1]}" r="13"></circle><circle cx="${dot[0]}" cy="${dot[1]}" r="5"></circle></g>`}).join('');return `<div class="art"><img src="${IMG(screens[place])}" alt="${strip(titles[place]||'Un món màgic')}" draggable="false"><svg class="hit-layer" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet">${zones}</svg>${place==='map'?soundButton(true):''}</div>`}
 function renderF1(){document.body?.classList.toggle('welcome-open',state.place==='welcome');const place=state.place;
- if(place==='welcome')app.innerHTML=`<div class="world welcome"><div class="art"><img src="${IMG('benvinguda')}" alt="El nostre univers. Un món que creix amb tu" draggable="false"><button class="welcome-start" data-action="start" aria-label="COMENCEM!"></button></div></div>`;
- else if(screens[place])app.innerHTML=`<div class="world">${art(place)}${topbar(place)}<div class="footer">${place==='map'?'🦊 TOCA UN LLOC I DESCOBREIX QUÈ AMAGA':`🦊 ${rooms[place]} · TOCA ELS OBJECTES`}</div></div>`;
+ if(place==='welcome')app.innerHTML=`<div class="world welcome"><div class="art"><img src="${IMG('benvinguda')}" alt="El nostre univers. Un món que creix amb tu" draggable="false"><button class="welcome-start" data-action="start" aria-label="COMENCEM!"></button>${welcomeCorners()}</div></div>`;
+ else if(screens[place])app.innerHTML=`<div class="world${place==='map'?' is-map':''}">${art(place)}${topbar(place)}<div class="footer">${place==='map'?'🦊 TOCA UN LLOC I DESCOBREIX QUÈ AMAGA':`🦊 ${rooms[place]} · TOCA ELS OBJECTES`}</div></div>`;
  else renderScene();
  bindF1(); if(typeof bindExtras==='function')bindExtras();}
 function sceneFrame(inner,bg='biblioteca'){if(['biblioteca','torre','taller'].includes(screens[state.previous]) && state.place!=='book')bg=screens[state.previous];if(!bg||bg==='benvinguda')bg='mapa';return `<div class="scene" style="background-image:url('${IMG(bg)}')">${topbar(state.place)}<section class="stage">${inner}</section></div>`}
@@ -91,7 +96,8 @@ function actionF1(id){switch(id){case'start':nav('map');if(document.fullscreenEn
 case'next':if(state.place==='secret'&&state.step===1&&!state.unlocked.key){notify('LA CLAU ÉS AL COFRE DE LA TORRE!');break;}state.step=Math.min(state.step+1,3);render();break;
 case'reset-scene':state.step=0;render();break;
 case'back':back();break;
-case'home':state.history=[];nav('map');break;
+case'home':state.history=[];nav(state.place==='map'?'welcome':'map');break;
+case'music':toggleMusic();break;
 case'fullscreen':if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else if(document.fullscreenEnabled)document.documentElement.requestFullscreen().catch(()=>{});else notify('PANTALLA COMPLETA NO DISPONIBLE');break;
 case'help':notify('TOCA ELS OBJECTES DEL DIBUIX. POTS TORNAR ENRERE SEMPRE.');break;
 case'finish-book':remember('book');notify('HAS CONEGUT EL CONILL!');back();break;
@@ -112,20 +118,9 @@ case'book-go':go('book');break;
 case'workshop-go':go('workshop');break;
 default:break;}}
 function bindF1(){app.querySelectorAll('[data-hotspot]').forEach(el=>{const run=()=>hotspot(el.dataset.hotspot);el.addEventListener('click',run);el.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();run()}})});app.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>action(el.dataset.action)))}
-document.addEventListener('fullscreenchange',()=>{const b=app.querySelector('[data-action="fullscreen"]');if(b)b.textContent=document.fullscreenElement?'⤢':'⛶'});
+document.addEventListener('fullscreenchange',()=>{app.querySelectorAll('.pill[data-action="fullscreen"]').forEach(b=>{b.textContent=document.fullscreenElement?'⤢':'⛶'})});
 renderF1();
-function setupMusic(){
- const music=document.getElementById('music'),btn=document.getElementById('music-toggle');
- if(!music||!btn||music===btn||typeof music.play!=='function')return;
- const show=()=>btn.setAttribute('aria-pressed',!music.paused&&!music.ended?'true':'false');
- btn.addEventListener('click',()=>{
-  if(!music.paused&&!music.ended){music.pause();return}
-  if(music.ended)music.currentTime=0;
-  const pending=music.play();
-  if(pending&&typeof pending.catch==='function')pending.catch(()=>{});
- });
- music.addEventListener('play',show);
- music.addEventListener('pause',show);
- music.addEventListener('ended',show);
-}
+function paintMusic(){const music=document.getElementById('music'),btn=app.querySelector('[data-action="music"]');if(btn&&music&&typeof music.paused==='boolean')btn.setAttribute('aria-pressed',!music.paused&&!music.ended?'true':'false')}
+function toggleMusic(){const music=document.getElementById('music');if(!music||typeof music.play!=='function')return;if(!music.paused&&!music.ended){music.pause();return}if(music.ended)music.currentTime=0;const pending=music.play();if(pending&&typeof pending.catch==='function')pending.catch(()=>{})}
+function setupMusic(){const music=document.getElementById('music');if(!music||typeof music.play!=='function'||typeof music.addEventListener!=='function')return;['play','pause','ended'].forEach(ev=>music.addEventListener(ev,paintMusic))}
 setupMusic();
