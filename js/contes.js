@@ -30,7 +30,8 @@ const SOPAR_PAGINES=[
  {src:'sopar-12-nomes-pagines.webp'}
 ];
 const BOSC_PAGINES=[
- 'bosc-01-nomes-pagines.webp'
+ 'bosc-01-nomes-pagines.webp',
+ 'bosc-02-nomes-pagines.webp'
 ];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
