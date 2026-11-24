@@ -1,0 +1,13 @@
+---
+description: Dónde consultar la lista de pendientes e ideas de Jose para este proyecto
+alwaysApply: true
+---
+
+# Pendientes del proyecto (Jose)
+
+La lista viva de **ideas y tareas pendientes** no está en el repositorio: está en el **user store personal** del propietario.
+
+- Archivo: `PENDIENTES.md` (ruta en el entorno del agente: `/cursor/stores/user/PENDIENTES.md`).
+- Si Jose pide **revisión de pendientes**, **qué hay pendiente** o equivalente, lee ese archivo y resume las entradas activas.
+- Para **añadir** una idea nueva que diga en el chat, actualiza `PENDIENTES.md` en el user store (no commits en Git salvo que pida implementar).
+- `docs/CONTINUIDAD` u hojas de ruta del repo describen el estado técnico del código; los pendientes personales van en el user store.
