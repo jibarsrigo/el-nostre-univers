@@ -29,6 +29,9 @@ const SOPAR_PAGINES=[
  {src:'sopar-11-nomes-pagines.webp',solapa:{text:"ME L'HE BEGUT!",x:28,y:73,w:16,h:11}},
  {src:'sopar-12-nomes-pagines.webp'}
 ];
+const BOSC_PAGINES=[
+ 'bosc-01-nomes-pagines.webp'
+];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
  ['pipa','PIPA I EL MAPA DEL MAR',605,230,906,547],
@@ -53,11 +56,12 @@ function ensureContes(){
 }
 function openShelf(){conteMotion='';go('contes')}
 function leaveShelf(){if(state.history[state.history.length-1]==='library')state.history.pop();nav('library')}
-function openBook(id){if(id==='pipa'||id==='sopar'||conteId!==id)contePage=0;if(id==='pipa'){pipaObert=false;const primer=new Image();primer.src=PIPA_PAGINES[0]}if(id==='sopar'){soparObert=false;const primer=new Image();primer.src=SOPAR_PAGINES[0].src}conteId=id;conteMotion='';solapaOberta=false;go('lector')}
+function openBook(id){if(id==='pipa'||id==='sopar'||id==='bosc'||conteId!==id)contePage=0;if(id==='pipa'){pipaObert=false;const primer=new Image();primer.src=PIPA_PAGINES[0]}if(id==='sopar'){soparObert=false;const primer=new Image();primer.src=SOPAR_PAGINES[0].src}if(id==='bosc'){const primer=new Image();primer.src=BOSC_PAGINES[0]}conteId=id;conteMotion='';solapaOberta=false;go('lector')}
 function backToShelf(){conteMotion='';if(state.history[state.history.length-1]==='contes')state.history.pop();nav('contes')}
 function turnPage(dir){
  if(conteId==='sopar'){if(!soparObert)return;const n=SOPAR_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';solapaOberta=false;render();return}
  if(conteId==='pipa'){if(!pipaObert)return;const n=PIPA_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
+ if(conteId==='bosc'){const n=BOSC_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
  const book=conteBook();if(!book)return;
  const n=(book.doblesPagines||[]).length,next=contePage+dir;
  if(next<0||next>=n)return;
@@ -107,6 +111,16 @@ function placeSoparFlap(){
  else img.addEventListener('load',run);
  if(typeof window.addEventListener==='function'&&!placeSoparFlap.bound){window.addEventListener('resize',placeSoparFlap);placeSoparFlap.bound=true}
 }
+function renderBosc(){
+ const n=BOSC_PAGINES.length;
+ if(contePage<0)contePage=0;
+ if(contePage>n-1)contePage=n-1;
+ const last=contePage===n-1;
+ const fade=conteMotion==='forward'?' conte-fade':'';
+ const body=`<figure class="conte-full${fade}"><img src="${BOSC_PAGINES[contePage]}" alt="Doble pàgina il·lustrada d'El bosc de les sabates" draggable="false"></figure>`;
+ const controls=`<div class="conte-controls"><button type="button" class="conte-turn" data-action="contes-prev" aria-label="Pàgina anterior" ${contePage===0?'disabled':''}>‹</button><p class="conte-progress" aria-label="Doble pàgina ${contePage+1} de ${n}">${contePage+1} / ${n}</p><button type="button" class="conte-turn" data-action="contes-next" aria-label="Pàgina següent" ${last?'disabled':''}>›</button>${last?'<button type="button" class="conte-end" data-action="contes-close">TANCAR EL LLIBRE</button>':''}</div>`;
+ app.innerHTML=conteRoom(`<div class="conte-stage">${body}${controls}</div>`,'← CONTES','contes-shelf');
+}
 function conteBar(label,id){
  const full=document.fullscreenElement?'⤢':'⛶';
  return `<div class="topbar"><div><button type="button" class="pill" data-action="${id}">${label}</button><button type="button" class="pill" data-action="home">⌂ INICI</button></div><div><button type="button" class="pill icon" data-action="help" aria-label="Com es juga?">?</button><button type="button" class="pill icon" data-action="fullscreen" aria-label="Pantalla completa">${full}</button></div></div>`;
@@ -129,6 +143,7 @@ function renderReader(){
  if(!pages.length){app.innerHTML=conteRoom(`<p class="conte-wait">AQUEST CONTE ENCARA NO TÉ PÀGINES.</p>`,'← CONTES','contes-shelf');return}
  if(book.id==='pipa'){renderPipa();conteMotion='';return}
  if(book.id==='sopar'){renderSopar();conteMotion='';return}
+ if(book.id==='bosc'){renderBosc();conteMotion='';return}
  if(contePage<0)contePage=0;
  if(contePage>pages.length-1)contePage=pages.length-1;
  const page=pages[contePage]||{};
