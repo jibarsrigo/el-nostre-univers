@@ -5,6 +5,7 @@ const CONTES_URL='biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/cont
 const SHELF_URL='biblioteca-contes-vius-para-cursor/biblioteca-contes-vius/recursos/prestatgeria-contes-vius.webp';
 const PIPA_PORTADA='pipa-portada.webp';
 const SOPAR_PORTADA='sopar-portada.webp';
+const BOSC_PORTADA='bosc-portada.webp';
 const PIPA_PAGINES=[
  'PIPA-PAGINAS-SIN-CUBIERTA-PARA-CURSOR/pipa-01-nomes-pagines.webp',
  'PIPA-02-MATEIX-TAMANY-PER-CURSOR/pipa-02-mateix-tamany.webp',
@@ -54,7 +55,7 @@ const SHELF=[
 ];
 hotspots.library.push(['contes','ELS CONTES VIUS','rect',[500,155,1095,405]]);
 FIREFLY.library.contes=[690,240];
-let contesData=null,contesError='',contesLoading=null,conteId='',contePage=0,conteMotion='',pipaObert=false,soparObert=false,solapaOberta=false;
+let contesData=null,contesError='',contesLoading=null,conteId='',contePage=0,conteMotion='',pipaObert=false,soparObert=false,boscObert=false,solapaOberta=false;
 function conteList(){return contesData&&Array.isArray(contesData.llibres)?contesData.llibres:[]}
 function conteBook(){return conteList().find(b=>b&&b.id===conteId)||null}
 function ensureContes(){
@@ -67,12 +68,12 @@ function ensureContes(){
 }
 function openShelf(){conteMotion='';go('contes')}
 function leaveShelf(){if(state.history[state.history.length-1]==='library')state.history.pop();nav('library')}
-function openBook(id){if(id==='pipa'||id==='sopar'||id==='bosc'||conteId!==id)contePage=0;if(id==='pipa'){pipaObert=false;const primer=new Image();primer.src=PIPA_PAGINES[0]}if(id==='sopar'){soparObert=false;const primer=new Image();primer.src=SOPAR_PAGINES[0].src}if(id==='bosc'){const primer=new Image();primer.src=BOSC_PAGINES[0]}conteId=id;conteMotion='';solapaOberta=false;go('lector')}
+function openBook(id){if(id==='pipa'||id==='sopar'||id==='bosc'||conteId!==id)contePage=0;if(id==='pipa'){pipaObert=false;const primer=new Image();primer.src=PIPA_PAGINES[0]}if(id==='sopar'){soparObert=false;const primer=new Image();primer.src=SOPAR_PAGINES[0].src}if(id==='bosc'){boscObert=false;const primer=new Image();primer.src=BOSC_PAGINES[0]}conteId=id;conteMotion='';solapaOberta=false;go('lector')}
 function backToShelf(){conteMotion='';if(state.history[state.history.length-1]==='contes')state.history.pop();nav('contes')}
 function turnPage(dir){
  if(conteId==='sopar'){if(!soparObert)return;const n=SOPAR_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';solapaOberta=false;render();return}
  if(conteId==='pipa'){if(!pipaObert)return;const n=PIPA_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
- if(conteId==='bosc'){const n=BOSC_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
+ if(conteId==='bosc'){if(!boscObert)return;const n=BOSC_PAGINES.length,next=contePage+dir;if(next<0||next>=n)return;contePage=next;conteMotion=dir>0?'forward':'back';render();return}
  const book=conteBook();if(!book)return;
  const n=(book.doblesPagines||[]).length,next=contePage+dir;
  if(next<0||next>=n)return;
@@ -128,8 +129,8 @@ function renderBosc(){
  if(contePage>n-1)contePage=n-1;
  const last=contePage===n-1;
  const fade=conteMotion==='forward'?' conte-fade':'';
- const body=`<figure class="conte-full${fade}"><img src="${BOSC_PAGINES[contePage]}" alt="Doble pàgina il·lustrada d'El bosc de les sabates" draggable="false"></figure>`;
- const controls=`<div class="conte-controls"><button type="button" class="conte-turn" data-action="contes-prev" aria-label="Pàgina anterior" ${contePage===0?'disabled':''}>‹</button><p class="conte-progress" aria-label="Doble pàgina ${contePage+1} de ${n}">${contePage+1} / ${n}</p><button type="button" class="conte-turn" data-action="contes-next" aria-label="Pàgina següent" ${last?'disabled':''}>›</button>${last?'<button type="button" class="conte-end" data-action="contes-close">TANCAR EL LLIBRE</button>':''}</div>`;
+ const body=boscObert?`<figure class="conte-full${fade}"><img src="${BOSC_PAGINES[contePage]}" alt="Doble pàgina il·lustrada d'El bosc de les sabates" draggable="false"></figure>`:`<button type="button" class="conte-cover" data-action="contes-open" aria-label="Obrir el llibre"><img src="${BOSC_PORTADA}" alt="" draggable="false"></button><p class="conte-hint">TOCA EL LLIBRE PER OBRIR-LO</p>`;
+ const controls=boscObert?`<div class="conte-controls"><button type="button" class="conte-turn" data-action="contes-prev" aria-label="Pàgina anterior" ${contePage===0?'disabled':''}>‹</button><p class="conte-progress" aria-label="Doble pàgina ${contePage+1} de ${n}">${contePage+1} / ${n}</p><button type="button" class="conte-turn" data-action="contes-next" aria-label="Pàgina següent" ${last?'disabled':''}>›</button>${last?'<button type="button" class="conte-end" data-action="contes-close">TANCAR EL LLIBRE</button>':''}</div>`:'<div class="conte-controls" aria-hidden="true"></div>';
  app.innerHTML=conteRoom(`<div class="conte-stage">${body}${controls}</div>`,'← CONTES','contes-shelf');
 }
 function conteBar(label,id){
@@ -172,8 +173,8 @@ hotspot=function(id){if(state.place==='library'&&id==='contes')return openShelf(
 const actionContesPrev=action;
 action=function(id){
  if(id==='contes-library'){leaveShelf();return}
- if(id==='contes-shelf'||id==='contes-close'){pipaObert=false;soparObert=false;backToShelf();return}
- if(id==='contes-open'){if(conteId==='sopar')soparObert=true;else pipaObert=true;contePage=0;conteMotion='forward';render();return}
+ if(id==='contes-shelf'||id==='contes-close'){pipaObert=false;soparObert=false;boscObert=false;backToShelf();return}
+ if(id==='contes-open'){if(conteId==='sopar')soparObert=true;else if(conteId==='bosc')boscObert=true;else pipaObert=true;contePage=0;conteMotion='forward';render();return}
  if(id==='contes-prev'){turnPage(-1);return}
  if(id==='contes-next'){turnPage(1);return}
  if(id==='contes-flap'){const page=SOPAR_PAGINES[contePage];if(conteId!=='sopar'||!page||!page.solapa)return;solapaOberta=!solapaOberta;conteMotion='';render();return}
