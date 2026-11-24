@@ -48,7 +48,15 @@ const BOIRA_PAGINES=[
  'boira-01-nomes-pagines.webp',
  'boira-02-nomes-pagines.webp',
  'boira-03-nomes-pagines.webp',
- 'boira-04-nomes-pagines.webp'
+ 'boira-04-nomes-pagines.webp',
+ 'boira-05-nomes-pagines.webp',
+ 'boira-06-nomes-pagines.webp',
+ 'boira-07-nomes-pagines.webp',
+ 'boira-08-nomes-pagines.webp',
+ 'boira-09-nomes-pagines.webp',
+ 'boira-10-nomes-pagines.webp',
+ 'boira-11-nomes-pagines.webp',
+ 'boira-12-nomes-pagines.webp'
 ];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
