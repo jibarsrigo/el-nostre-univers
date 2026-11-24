@@ -36,7 +36,8 @@ const BOSC_PAGINES=[
  'bosc-04-nomes-pagines.webp',
  'bosc-05-nomes-pagines.webp',
  'bosc-06-nomes-pagines.webp',
- 'bosc-07-nomes-pagines.webp'
+ 'bosc-07-nomes-pagines.webp',
+ 'bosc-08-nomes-pagines.webp'
 ];
 const SHELF=[
  ['sopar','EL SOPAR DELS EMBULLS',340,228,592,547],
