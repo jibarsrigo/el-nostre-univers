@@ -5,9 +5,17 @@ alwaysApply: true
 
 # Pendientes del proyecto (Jose)
 
-La lista viva de **ideas y tareas pendientes** no está en el repositorio: está en el **user store personal** del propietario.
+El **registro que manda** en el PC es `Info para Nuevo Chat/REGISTRO.md` (no está en GitHub). En el agente en la nube, usar el user store:
 
-- Archivo: `PENDIENTES.md` (ruta en el entorno del agente: `/cursor/stores/user/PENDIENTES.md`).
-- Si Jose pide **revisión de pendientes**, **qué hay pendiente** o equivalente, lee ese archivo y resume las entradas activas.
-- Para **añadir** una idea nueva que diga en el chat, actualiza `PENDIENTES.md` en el user store (no commits en Git salvo que pida implementar).
-- `docs/CONTINUIDAD` u hojas de ruta del repo describen el estado técnico del código; los pendientes personales van en el user store.
+| Archivo | Uso |
+| --- | --- |
+| `FUENTES-PENDIENTES.md` | Prioridad entre REGISTRO, memoria, repo e ideas |
+| `REGISTRO-WEB-PULIDO.md` | Espejo pulido web (puntos, bola mundo, fase 4…) |
+| `MAPA-HOTSPOTS-Y-ESPACIOS-LIBRES.md` | Dónde se pulsa y huecos para nuevos juegos |
+| `PENDIENTES.md` | Ideas de juegos P-001… |
+
+Ruta base: `/cursor/stores/user/`.
+
+- **Revisión de pendientes:** leer `FUENTES-PENDIENTES.md` y resumir según el tipo (pulido vs ideas vs mapa).
+- Nuevas ideas de chat → actualizar `PENDIENTES.md` (o registro espejo si es pulido acordado).
+- `docs/HOJA-DE-RUTA.md` en repo: fase 4; si choca con REGISTRO, manda REGISTRO.
