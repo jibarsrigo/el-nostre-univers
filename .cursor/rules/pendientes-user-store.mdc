@@ -11,7 +11,8 @@ El **registro que manda** en el PC es `Info para Nuevo Chat/REGISTRO.md` (no est
 | --- | --- |
 | `FUENTES-PENDIENTES.md` | Prioridad entre REGISTRO, memoria, repo e ideas |
 | `REGISTRO-WEB-PULIDO.md` | Espejo pulido web (puntos, bola mundo, fase 4…) |
-| `MAPA-HOTSPOTS-Y-ESPACIOS-LIBRES.md` | Dónde se pulsa y huecos para nuevos juegos |
+| `PLAN-UBICACION-ACTIVIDADES.md` | Grupos de actividades; existente vs hub vs hotspot nuevo vs habitación |
+| `MAPA-HOTSPOTS-Y-ESPACIOS-LIBRES.md` | Listado técnico de hotspots y huecos |
 | `PENDIENTES.md` | Ideas de juegos P-001… |
 
 Ruta base: `/cursor/stores/user/`.
