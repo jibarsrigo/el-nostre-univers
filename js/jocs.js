@@ -11,7 +11,9 @@ const OMBRES_URL='data/ombres-trapelles.json';
 const OMBRES_BRICKS='<svg class="ombres-brick" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="ombg" x2="0" y2="1"><stop stop-color="#30243E"/><stop offset="1" stop-color="#0a0614"/></linearGradient></defs><rect width="800" height="500" fill="url(#ombg)"/><g fill="none" stroke="#572039" stroke-width="2" opacity=".45">'+Array.from({length:9},(_,row)=>Array.from({length:14},(_,col)=>{const w=56,h=28,x=(col*w)+(row%2?w/2:0)-20,y=row*h+18;return`<rect x="${x}" y="${y}" width="${w-4}" height="${h-4}" rx="3"/>`}).join('')).join('')+'</g></svg>';
 const OMBRES_MISSION_SIZES=[4,5,6];
 const OMBRES_MIN_POS_DIST=15;
-let ombresLastTargetId=null;
+let ombresLastTargetId=null,ombresAutoTimer=null;
+function ombresClearAuto(){if(ombresAutoTimer){clearTimeout(ombresAutoTimer);ombresAutoTimer=null}}
+function ombresScheduleAdvance(){ombresClearAuto();const ms=jocs.ombres.stars>=3?1500:1000;ombresAutoTimer=setTimeout(()=>{ombresAutoTimer=null;if(state.place!=='jocsOmbres'||jocs.ombres.phase!=='found')return;jocs.ombres.starPop=false;if(jocs.ombres.stars>=3){jocs.ombres.phase='completed';render();return}ombresAdvanceMission();render()},ms)}
 function ombresCfg(){return jocs.ombres.data||{missions:{},secrets:[]}}
 function ombresMissions(){return ombresCfg().missions||{}}
 function ombresAllSecrets(){return ombresCfg().secrets||[]}
@@ -93,7 +95,7 @@ function jocsPuzlePiece(idx){const o=jocs.puzle.order[idx],row=Math.floor(o/2),c
 function jocsPuzleScene(){if(!jocs.puzle.order.length)setupJocsPuzle();const won=jocs.puzle.order.every((v,i)=>v===i);const grid=jocs.puzle.order.map((_,i)=>jocsPuzlePiece(i)).join('');return f2Scene('PUZZLE DE PORTADA',`<div class="jocs-puzle-grid">${grid}</div>`,`<p>${won?'LA PORTADA ESTÀ COMPLETA!':'TOCA DUES PEÇES PER CANVIAR-LES DE LLOC.'}</p>`,(won?f2btn('✨ GENIAL!','end-jocs-puzle'):'')+f2btn('↻ UN ALTRE','reset-jocs-puzle')+f2back(),'taller','jocs-puzle')}
 let jocsPuzleSel=null;
 function jocsPuzleTap(i){if(jocs.puzle.order.every((v,idx)=>v===idx))return;if(jocsPuzleSel===null){jocsPuzleSel=i;return}if(jocsPuzleSel===i){jocsPuzleSel=null;return}const a=jocsPuzleSel;jocsPuzleSel=null;[jocs.puzle.order[a],jocs.puzle.order[i]]=[jocs.puzle.order[i],jocs.puzle.order[a]];render()}
-function resetOmbres(){const {data,load}=jocs.ombres;if(jocs.ombres.targetId)ombresLastTargetId=jocs.ombres.targetId;jocs.ombres={data,load,lx:42,ly:52,found:new Set(),stars:0,missionIndex:0,phase:'searching',targetId:null,usedTargets:[],activeSecrets:[],distractorNotified:new Set(),starPop:false};if(data)ombresStartMission()}
+function resetOmbres(){ombresClearAuto();const {data,load}=jocs.ombres;if(jocs.ombres.targetId)ombresLastTargetId=jocs.ombres.targetId;jocs.ombres={data,load,lx:42,ly:52,found:new Set(),stars:0,missionIndex:0,phase:'searching',targetId:null,usedTargets:[],activeSecrets:[],distractorNotified:new Set(),starPop:false};if(data)ombresStartMission()}
 function ombresDist(s){const dx=s.x-jocs.ombres.lx,dy=s.y-jocs.ombres.ly;return Math.hypot(dx,dy)}
 function ombresLight(s,prev){if(jocs.ombres.found.has(s.id))return'lit';const d=ombresDist(s),r=s.r,p=prev||'dim';if(d<=r)return'lit';if(p==='peek'){if(d<=r*1.7)return'peek';return'dim'}if(d<=r*1.35)return'peek';return'dim'}
 function ombresFigBody(s){return `<img class="ombres-silueta" src="${strip(s.img)}" alt="" decoding="async" draggable="false">`}
@@ -102,9 +104,9 @@ function ombresFigHtml(s){const st=ombresLight(s);return `<figure data-ombres-id
 function ombresPaintFoot(){}
 function ombresPaintLight(){const wall=app.querySelector('[data-ombres-wall]');if(!wall)return;wall.style.setProperty('--lx',jocs.ombres.lx+'%');wall.style.setProperty('--ly',jocs.ombres.ly+'%');const w=wall.clientWidth,h=wall.clientHeight,anchor=wall.querySelector('[data-ombres-anchor]');if(anchor&&w&&h)anchor.style.transform=`translate3d(${jocs.ombres.lx/100*w}px,${jocs.ombres.ly/100*h}px,0)`;ombresSecrets().forEach(s=>{const el=wall.querySelector(`[data-ombres-id="${s.id}"]`);if(!el)return;const prev=el.getAttribute('data-ombres-st')||'dim',st=ombresLight(s,prev);if(st!==prev){el.className=`ombres-fig ombres-fig--${st} ombres-fig--sway`;el.setAttribute('data-ombres-st',st)}const cap=el.querySelector('figcaption');if(cap)cap.textContent=ombresFigCap(s,st)})}
 function ombresBack(cfg){const w=cfg.wall?`<img class="ombres-brick-art" src="${strip(cfg.wall)}" alt="" draggable="false">`:'';return `<div class="ombres-back">${OMBRES_BRICKS}${w}</div>`}
-function ombresTryFind(){if(jocs.ombres.phase!=='searching')return false;const list=ombresSecrets(),tid=jocs.ombres.targetId;let hit=false;list.forEach(s=>{if(ombresDist(s)>s.r)return;if(s.id===tid){if(jocs.ombres.found.has(s.id))return;jocs.ombres.found.add(s.id);jocs.ombres.stars=Math.min(3,jocs.ombres.stars+1);jocs.ombres.starPop=true;jocs.ombres.phase='found';hit=true}else jocs.ombres.found.add(s.id)});return hit}
+function ombresTryFind(){if(jocs.ombres.phase!=='searching')return false;const list=ombresSecrets(),tid=jocs.ombres.targetId;let hit=false;list.forEach(s=>{if(ombresDist(s)>s.r)return;if(s.id===tid){if(jocs.ombres.found.has(s.id))return;jocs.ombres.found.add(s.id);jocs.ombres.stars=Math.min(3,jocs.ombres.stars+1);jocs.ombres.starPop=true;jocs.ombres.phase='found';hit=true}else jocs.ombres.found.add(s.id)});if(hit)ombresScheduleAdvance();return hit}
 function ombresReveal(){if(ombresTryFind())render();else ombresPaintLight()}
-function ombresMove(clientX,clientY){const wall=app.querySelector('[data-ombres-wall]');if(!wall)return;const r=wall.getBoundingClientRect();jocs.ombres.lx=Math.max(3,Math.min(97,(clientX-r.left)/r.width*100));jocs.ombres.ly=Math.max(3,Math.min(97,(clientY-r.top)/r.height*100));if(ombresTryFind()||jocs.ombres.phase!=='searching')render();else ombresPaintLight()}
+function ombresMove(clientX,clientY){const wall=app.querySelector('[data-ombres-wall]');if(!wall)return;const r=wall.getBoundingClientRect();jocs.ombres.lx=Math.max(3,Math.min(97,(clientX-r.left)/r.width*100));jocs.ombres.ly=Math.max(3,Math.min(97,(clientY-r.top)/r.height*100));if(ombresTryFind())render();else ombresPaintLight()}
 function ombresLupa(cfg){const src=cfg.lupa?`<img class="ombres-lupa-art" src="${strip(cfg.lupa)}" alt="" draggable="false">`:'';return `${src}<span class="ombres-lantern" aria-hidden="true"></span>`}
 function ombresF2Scene(headHTML,stageHTML,footHTML,actions){return `<div class="f2-scene f2-scene--ombres" style="background:#07040f">${topbar(state.place)}<div class="f2-window f2-window--ombres"><h2 class="ombres-title">LES OMBRES TRAPELLES</h2>${headHTML}<div class="f2-illustrated f2-illustrated--ombres">${stageHTML}</div><div class="f2-story f2-story--ombres">${footHTML}</div><div class="f2-actions f2-actions--ombres">${actions}</div></div></div>`}
 function jocsOmbresScene(){
@@ -119,7 +121,6 @@ function jocsOmbresScene(){
  const head=ombresHeadHtml();
  let actions='';
  if(completed)actions=f2btn('↻ TORNAR A JUGAR','ombres-replay-session')+f2btn('✨ TORNAR A LA TORRE','end-jocs-ombres');
- else if(found&&jocs.ombres.stars<3)actions=f2btn('🔍 BUSCAR UN ALTRE','ombres-next-mission')+f2btn('↩ TORNAR A LA TORRE','end-jocs-ombres');
  else actions=f2btn('↩ TORNAR A LA TORRE','end-jocs-ombres');
  return ombresF2Scene(head,stage,footMsg,actions);
 }
@@ -139,8 +140,9 @@ case'end-jocs-count':notify('HAS COMPTAT MOLT BÉ!');remember('jocs-count');nav(
 case'end-jocs-puzle':notify('PUZZLE FET!');remember('jocs-puzle');nav('workshop');return;
 case'reset-jocs-count':setupJocsCount();jocsPuzleSel=null;render();return;
 case'reset-jocs-puzle':setupJocsPuzle();jocsPuzleSel=null;render();return;
-case'end-jocs-ombres':if(jocs.ombres.stars>=3){notify(strip(ombresMissions().completedTitle||'TRES ESTRELLES!'));remember('jocs-ombres')}nav('tower');return;
-case'ombres-next-mission':jocs.ombres.starPop=false;ombresAdvanceMission();render();return;
+case'end-jocs-ombres':ombresClearAuto();if(jocs.ombres.stars>=3){notify(strip(ombresMissions().completedTitle||'TRES ESTRELLES!'));remember('jocs-ombres')}nav('tower');return;
+case'ombres-next-mission':ombresClearAuto();jocs.ombres.starPop=false;ombresAdvanceMission();render();return;
+case'ombres-complete-session':ombresClearAuto();jocs.ombres.phase='completed';render();return;
 case'ombres-replay-session':resetOmbres();render();return;
 case'reset-jocs-ombres':resetOmbres();render();return;
 }return actionJocs(id)};
