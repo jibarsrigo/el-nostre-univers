@@ -39,7 +39,8 @@
 .ombres-back:has(.ombres-brick-art[src*="jocs-ombres-paret"]) .ombres-brick{opacity:.15}
 .ombres-silueta{max-height:min(22vh,120px);width:auto;margin:0 auto}
 .ombres-lupa-art{position:absolute;left:var(--lx);top:var(--ly);transform:translate(-50%,-58%);width:clamp(44px,8.5vmin,68px);height:auto;z-index:6;pointer-events:none;filter:drop-shadow(0 0 10px #ffe7ad)}
-.ombres-lupa-art+.ombres-lantern{opacity:.25}
+.ombres-lupa-art{mix-blend-mode:screen}
+.ombres-lupa-art+.ombres-lantern{opacity:0}
 .ombres-wall--festa .ombres-glow{opacity:1;background:radial-gradient(circle 14vmin at var(--lx) var(--ly),rgba(255,231,173,.7) 0%,rgba(214,163,79,.2) 45%,transparent 68%)}
 .ombres-wall--festa .ombres-sparkles span{animation-duration:1.6s}
 .ombres-screen{z-index:1}
