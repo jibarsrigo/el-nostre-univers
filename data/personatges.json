@@ -1,0 +1,27 @@
+{
+  "title": "Cartes del univers",
+  "pairsPerRound": 5,
+  "personatges": [
+    { "id": "pipa", "label": "Pipa", "img": "imagenes/personatges/personatge-pipa.webp", "tags": ["conte"], "contes": ["pipa"], "enabled": true },
+    { "id": "bruna", "label": "Bruna", "img": "imagenes/personatges/personatge-bruna.webp", "tags": ["conte"], "contes": ["sopar", "bruna"], "enabled": true },
+    { "id": "bosc", "label": "Ona", "img": "imagenes/personatges/personatge-bosc.webp", "tags": ["conte"], "contes": ["bosc"], "enabled": true },
+    { "id": "boira", "label": "Na Boira", "img": "imagenes/personatges/personatge-boira.webp", "tags": ["conte"], "contes": ["boira"], "enabled": true },
+    { "id": "troc", "label": "Troc", "img": "imagenes/personatges/personatge-troc.webp", "tags": ["conte"], "contes": ["troc"], "enabled": true },
+    { "id": "nus", "label": "Nus", "img": "imagenes/personatges/personatge-nus.webp", "tags": ["conte"], "contes": ["nus"], "enabled": true },
+    { "id": "conill", "label": "El conill", "img": "imagenes/personatges/personatge-conill.webp", "tags": ["web", "biblioteca"], "enabled": true },
+    { "id": "gat", "label": "El gat", "img": "imagenes/personatges/personatge-gat.webp", "tags": ["web"], "enabled": true },
+    { "id": "drac", "label": "El drac", "img": "imagenes/personatges/personatge-drac.webp", "tags": ["web", "mapa", "biblioteca"], "enabled": true },
+    { "id": "moix", "label": "El moix", "img": "imagenes/personatges/personatge-moix.webp", "tags": ["web", "biblioteca"], "enabled": true },
+    { "id": "monstret", "label": "El monstret", "img": "imagenes/monstret.svg", "tags": ["web", "biblioteca", "inventem"], "enabled": true },
+    { "id": "guineu", "label": "El guineu", "img": "", "tags": ["web", "mapa", "biblioteca"], "enabled": false, "artPendent": true },
+    { "id": "nena", "label": "La nena", "img": "", "tags": ["web", "mapa"], "enabled": false, "artPendent": true },
+    { "id": "buho", "label": "El mussol", "img": "", "tags": ["web", "torre", "biblioteca"], "enabled": false, "artPendent": true },
+    { "id": "seta", "label": "La seta", "img": "", "tags": ["web", "mapa"], "enabled": false, "artPendent": true },
+    { "id": "cervol", "label": "El cérvol", "img": "", "tags": ["web", "biblioteca"], "enabled": false, "artPendent": true, "note": "Finestra Llegim" },
+    { "id": "pipa-map", "label": "Pipa al mapa", "img": "", "tags": ["web", "mapa"], "enabled": false, "artPendent": true },
+    { "id": "drac-mapa", "label": "Drac del mapa", "img": "", "tags": ["web", "mapa"], "enabled": false, "artPendent": true },
+    { "id": "drac-acces", "label": "Drac de benvinguda", "img": "", "tags": ["web", "benvinguda"], "enabled": false, "artPendent": true },
+    { "id": "bichito-estanteria", "label": "Animal de l’estanteria", "img": "", "tags": ["web", "biblioteca"], "enabled": false, "artPendent": true },
+    { "id": "bichito-estanteria-2", "label": "Altre animal de l’estanteria", "img": "", "tags": ["web", "biblioteca"], "enabled": false, "artPendent": true }
+  ]
+}
