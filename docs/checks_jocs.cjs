@@ -5,7 +5,7 @@ const pocioJSON=()=>JSON.parse(fs.readFileSync('data/pocio-reaccions.json','utf8
 const ombresJSON=()=>JSON.parse(fs.readFileSync('data/ombres-trapelles.json','utf8'));
 const fetchMock=u=>Promise.resolve({json:()=>Promise.resolve(String(u).includes('ombres')?ombresJSON():pocioJSON())});
 const body={append(){},querySelector(){return null},remove(){},classList:{toggle(){}}};
-const ctx=vm.createContext({document:{getElementById:()=>root,body,addEventListener(){},fullscreenEnabled:false,fullscreenElement:null,querySelector(){return null},createElement:makeNode},localStorage:{getItem:k=>store.get(k),setItem:(k,v)=>store.set(k,v)},fetch:fetchMock,window:{},setTimeout(cb){cb()},console});
+const ctx=vm.createContext({document:{getElementById:()=>root,body,addEventListener(){},fullscreenEnabled:false,fullscreenElement:null,querySelector(){return null},createElement:makeNode},localStorage:{getItem:k=>store.get(k),setItem:(k,v)=>store.set(k,v)},fetch:fetchMock,window:{},setTimeout(cb,ms){if(ms>=900)return;cb()},console});
 function run(s){return vm.runInContext(s,ctx)}
 run(fs.readFileSync('js/app.js','utf8'));run(fs.readFileSync('js/fase2.js','utf8'));run(fs.readFileSync('js/jocs.js','utf8'));
 run(`nav('jocs')`);assert(root.innerHTML.includes('CAPSA DE JOCS'));
@@ -15,7 +15,7 @@ run(`action('jocs-puzle')`);assert(root.innerHTML.includes('PUZZLE'));
 run(`jocs.pocio.data=${JSON.stringify(pocioJSON())}`);run(`go('jocsPocio')`);
 run(`pocioPick('platan');pocioPick('bebeta');pocioMix()`);run('render()');
 assert(root.innerHTML.includes('MEGAEXPLOSIÓ')||root.innerHTML.includes('pocio-fx'));
-run(`jocs.ombres.data=${JSON.stringify(ombresJSON())}`);run(`resetOmbres();go('jocsOmbres')`);assert(root.innerHTML.includes('OMBRES TRAPELLES'));
-run(`jocs.ombres.lx=14;jocs.ombres.ly=22;ombresReveal();render()`);assert(root.innerHTML.includes('silueta-PIP')||root.innerHTML.includes('VENGUT'));
-run(`jocs.ombres.lx=46;jocs.ombres.ly=74;ombresReveal();render()`);assert(root.innerHTML.includes('MÈU'));
+run(`jocs.ombres.data=${JSON.stringify(ombresJSON())}`);run(`resetOmbres();go('jocsOmbres')`);assert(root.innerHTML.includes('OMBRES TRAPELLES')&&root.innerHTML.includes('ombres-stars'));
+const tid=run('jocs.ombres.targetId'),act=run('jocs.ombres.activeSecrets'),ts=act.find(s=>s.id===tid);
+run(`jocs.ombres.lx=${ts.x};jocs.ombres.ly=${ts.y};ombresTryFind();render()`);assert(run('jocs.ombres.stars')===1&&run('jocs.ombres.phase')==='found');run('ombresClearAuto();ombresAdvanceMission();render()');assert(root.innerHTML.includes('BUSCA'));
 console.log('OK: jocs hub, comptar, puzle, poció, ombres.');
