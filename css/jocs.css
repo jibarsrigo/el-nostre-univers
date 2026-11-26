@@ -50,8 +50,8 @@
 .ombres-wall{position:relative;width:100%;height:100%;max-width:100%;max-height:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#0a0614;touch-action:none;user-select:none;border:4px solid #b89558;box-shadow:inset 0 0 80px #000,0 8px 24px rgba(0,0,0,.5);isolation:isolate;transform:translateZ(0);backface-visibility:hidden}
 .ombres-back,.ombres-screen,.ombres-dust-layer,.ombres-curtain{position:absolute;inset:0;pointer-events:none}
 .ombres-wall--drag .ombres-fig img,.ombres-wall--drag .ombres-brick-art{transition:none!important}
-.ombres-light-anchor{position:absolute;left:0;top:0;z-index:3;width:0;height:0;will-change:transform;pointer-events:none}
-.ombres-light-anchor .ombres-veil{position:absolute;width:400vmax;height:400vmax;left:0;top:0;transform:translate(-50%,-50%);z-index:3;background:rgba(4,2,12,.97);-webkit-mask-image:radial-gradient(circle 24vmin at 50% 50%,transparent 0%,transparent 36%,#000 70%);mask-image:radial-gradient(circle 24vmin at 50% 50%,transparent 0%,transparent 36%,#000 70%)}
+.ombres-veil-base{position:absolute;inset:0;z-index:3;pointer-events:none;background:rgba(3,1,10,.98);-webkit-mask-image:radial-gradient(circle 24vmin at var(--lx,50%) var(--ly,50%),transparent 0%,transparent 35%,#000 68%);mask-image:radial-gradient(circle 24vmin at var(--lx,50%) var(--ly,50%),transparent 0%,transparent 35%,#000 68%)}
+.ombres-light-anchor{position:absolute;left:0;top:0;z-index:4;width:0;height:0;will-change:transform;pointer-events:none}
 .ombres-light-anchor .ombres-glow{position:absolute;width:66vmin;height:66vmin;left:0;top:0;transform:translate(-50%,-50%);z-index:2;background:radial-gradient(circle 11vmin at 50% 50%,rgba(255,236,180,.48) 0%,rgba(255,220,140,.1) 42%,transparent 62%);opacity:.9}
 .ombres-brick{width:100%;height:100%;object-fit:cover;opacity:.9}
 .ombres-brick-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;transition:opacity .35s}
@@ -63,7 +63,8 @@
 .ombres-wall--festa .ombres-light-anchor .ombres-glow{opacity:1;background:radial-gradient(circle 14vmin at 50% 50%,rgba(255,231,173,.7) 0%,rgba(214,163,79,.2) 45%,transparent 68%)}
 .ombres-wall--festa .ombres-sparkles span{animation-duration:1.6s}
 .ombres-screen{z-index:1}
-.ombres-curtain{top:0;bottom:0;width:14%;z-index:4;background:linear-gradient(90deg,rgba(50,18,38,.92),rgba(80,28,48,.55),transparent)}
+.ombres-curtain{top:0;bottom:0;width:14%;z-index:5;opacity:0;transition:opacity .35s;background:linear-gradient(90deg,rgba(50,18,38,.92),rgba(80,28,48,.55),transparent)}
+.ombres-wall--festa .ombres-curtain{opacity:.85}
 .ombres-curtain--l{left:0;border-radius:14px 0 0 14px}
 .ombres-curtain--r{right:0;transform:scaleX(-1)}
 .ombres-fig{position:absolute;margin:0;width:min(26%,100px);text-align:center;color:#1a0e24;z-index:1;transform:translate(-50%,-50%)}
