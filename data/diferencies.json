@@ -60,6 +60,93 @@
           ]
         }
       ]
+    },
+    {
+      "id": "taller",
+      "label": "El taller dels invents",
+      "base": "imagenes/jocs-diferencies/jocs-diferencies-taller-base.webp",
+      "completedTitle": "TRES DIFERÈNCIES!",
+      "completedMsg": "HAS TROBAT TOTS ELS DETALLS DEL TALLER!",
+      "perRound": 3,
+      "perRoundDecoys": 1,
+      "minSpotDist": 11,
+      "diffs": [
+        {
+          "id": "aneguet-goma",
+          "img": "imagenes/univers-assets/obj-aneguet-goma.webp",
+          "message": "UN ANEGUET DE GOMA!",
+          "spots": [
+            { "x": 59, "y": 16, "w": 8, "r": 8 },
+            { "x": 71, "y": 21, "w": 8, "r": 8 },
+            { "x": 17, "y": 59, "w": 8, "r": 8 },
+            { "x": 64, "y": 66, "w": 8, "r": 8 },
+            { "x": 80, "y": 88, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "magdalena",
+          "img": "imagenes/univers-assets/obj-magdalena.webp",
+          "message": "UNA MAGDALENA!",
+          "spots": [
+            { "x": 59, "y": 16, "w": 7, "r": 8 },
+            { "x": 71, "y": 21, "w": 7, "r": 8 },
+            { "x": 78, "y": 46, "w": 7, "r": 8 },
+            { "x": 64, "y": 66, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "ploma-colors",
+          "img": "imagenes/univers-assets/obj-ploma-colors.webp",
+          "message": "UNA PLOMA DE COLORS!",
+          "spots": [
+            { "x": 15, "y": 37, "w": 8, "r": 8 },
+            { "x": 34, "y": 64, "w": 8, "r": 8 },
+            { "x": 60, "y": 84, "w": 7, "r": 8 },
+            { "x": 21, "y": 90, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "pilota-colors",
+          "img": "imagenes/univers-assets/obj-pilota-colors.webp",
+          "message": "UNA PILOTA DE COLORS!",
+          "spots": [
+            { "x": 37, "y": 91, "w": 8, "r": 8 },
+            { "x": 80, "y": 88, "w": 8, "r": 8 },
+            { "x": 95, "y": 73, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "tassa-orelles",
+          "img": "imagenes/univers-assets/obj-tassa-orelles.webp",
+          "message": "UNA TASSA AMB ORELLES!",
+          "spots": [
+            { "x": 78, "y": 46, "w": 7, "r": 8 },
+            { "x": 17, "y": 59, "w": 8, "r": 8 },
+            { "x": 64, "y": 66, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "pastanaga",
+          "img": "imagenes/univers-assets/obj-pastanaga.webp",
+          "message": "UNA PASTANAGA AL TALLER!",
+          "spots": [
+            { "x": 78, "y": 46, "w": 8, "r": 8 },
+            { "x": 17, "y": 59, "w": 8, "r": 8 },
+            { "x": 37, "y": 91, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "mitjo",
+          "img": "imagenes/univers-assets/obj-mitjo.webp",
+          "message": "UN MITJÓ AL TALLER!",
+          "spots": [
+            { "x": 34, "y": 64, "w": 9, "r": 8 },
+            { "x": 21, "y": 90, "w": 9, "r": 8 },
+            { "x": 37, "y": 91, "w": 9, "r": 8 },
+            { "x": 80, "y": 88, "w": 9, "r": 8 }
+          ]
+        }
+      ]
     }
   ]
 }
