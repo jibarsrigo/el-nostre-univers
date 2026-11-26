@@ -5,53 +5,62 @@
   "completedTitle": "TRES DIFERÈNCIES!",
   "completedMsg": "HAS TROBAT TOTS ELS DETALLS DE LA BIBLIOTECA!",
   "perRound": 3,
+  "minSpotDist": 11,
   "scene": {
     "base": "imagenes/jocs-diferencies/jocs-diferencies-biblioteca-base.webp",
     "diffs": [
       {
         "id": "ulleres-moix",
         "img": "imagenes/jocs-diferencies/dif-biblioteca-ulleres-moix.webp",
-        "x": 21,
-        "y": 34,
-        "w": 11,
-        "r": 8,
-        "message": "UN MOIX AMB ULLERES!"
+        "message": "UN MOIX AMB ULLERES!",
+        "spots": [
+          { "x": 21, "y": 34, "w": 11, "r": 8 },
+          { "x": 23, "y": 35, "w": 10, "r": 8 },
+          { "x": 19, "y": 33, "w": 11, "r": 8 }
+        ]
       },
       {
         "id": "barret-drac",
         "img": "imagenes/jocs-diferencies/dif-biblioteca-barret-drac.webp",
-        "x": 51,
-        "y": 14,
-        "w": 8,
-        "r": 8,
-        "message": "UN DRAC AMB BARRET!"
+        "message": "UN DRAC AMB BARRET!",
+        "spots": [
+          { "x": 51, "y": 14, "w": 8, "r": 8 },
+          { "x": 50, "y": 15, "w": 7, "r": 8 },
+          { "x": 52, "y": 13, "w": 8, "r": 7 }
+        ]
       },
       {
         "id": "pastanaga",
         "img": "imagenes/jocs-diferencies/dif-biblioteca-pastanaga.webp",
-        "x": 46,
-        "y": 41,
-        "w": 12,
-        "r": 8,
-        "message": "UNA PASTANAGA ENTRE LLIBRES!"
+        "message": "UNA PASTANAGA ENTRE LLIBRES!",
+        "spots": [
+          { "x": 46, "y": 41, "w": 12, "r": 8 },
+          { "x": 36, "y": 45, "w": 11, "r": 8 },
+          { "x": 55, "y": 38, "w": 11, "r": 8 },
+          { "x": 42, "y": 52, "w": 10, "r": 8 }
+        ]
       },
       {
         "id": "mitjo",
         "img": "imagenes/jocs-diferencies/dif-biblioteca-mitjo.webp",
-        "x": 85,
-        "y": 86,
-        "w": 11,
-        "r": 8,
-        "message": "UN MITJÓ A LA TAULA!"
+        "message": "UN MITJÓ A LA TAULA!",
+        "spots": [
+          { "x": 85, "y": 86, "w": 11, "r": 8 },
+          { "x": 76, "y": 88, "w": 10, "r": 8 },
+          { "x": 88, "y": 79, "w": 10, "r": 8 },
+          { "x": 68, "y": 90, "w": 11, "r": 8 }
+        ]
       },
       {
         "id": "llac-llibre",
         "img": "imagenes/jocs-diferencies/dif-biblioteca-llac-llibre.webp",
-        "x": 13,
-        "y": 91,
-        "w": 10,
-        "r": 8,
-        "message": "UN LLAÇ DAURAT!"
+        "message": "UN LLAÇ DAURAT!",
+        "spots": [
+          { "x": 13, "y": 91, "w": 10, "r": 8 },
+          { "x": 17, "y": 89, "w": 9, "r": 8 },
+          { "x": 10, "y": 93, "w": 10, "r": 8 },
+          { "x": 20, "y": 92, "w": 9, "r": 8 }
+        ]
       }
     ]
   }
