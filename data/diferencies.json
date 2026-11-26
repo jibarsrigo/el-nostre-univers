@@ -1,0 +1,58 @@
+{
+  "title": "TROBA LES DIFERÈNCIES",
+  "hint": "MIRA ELS DOS QUADRES. TOCA LA DIFERÈNCIA!",
+  "starsLabel": "Estrelles",
+  "completedTitle": "TRES DIFERÈNCIES!",
+  "completedMsg": "HAS TROBAT TOTS ELS DETALLS DE LA BIBLIOTECA!",
+  "perRound": 3,
+  "scene": {
+    "base": "imagenes/jocs-diferencies/jocs-diferencies-biblioteca-base.webp",
+    "diffs": [
+      {
+        "id": "ulleres-moix",
+        "img": "imagenes/jocs-diferencies/dif-biblioteca-ulleres-moix.webp",
+        "x": 21,
+        "y": 34,
+        "w": 11,
+        "r": 8,
+        "message": "UN MOIX AMB ULLERES!"
+      },
+      {
+        "id": "barret-drac",
+        "img": "imagenes/jocs-diferencies/dif-biblioteca-barret-drac.webp",
+        "x": 51,
+        "y": 14,
+        "w": 8,
+        "r": 8,
+        "message": "UN DRAC AMB BARRET!"
+      },
+      {
+        "id": "pastanaga",
+        "img": "imagenes/jocs-diferencies/dif-biblioteca-pastanaga.webp",
+        "x": 46,
+        "y": 41,
+        "w": 12,
+        "r": 8,
+        "message": "UNA PASTANAGA ENTRE LLIBRES!"
+      },
+      {
+        "id": "mitjo",
+        "img": "imagenes/jocs-diferencies/dif-biblioteca-mitjo.webp",
+        "x": 85,
+        "y": 86,
+        "w": 11,
+        "r": 8,
+        "message": "UN MITJÓ A LA TAULA!"
+      },
+      {
+        "id": "llac-llibre",
+        "img": "imagenes/jocs-diferencies/dif-biblioteca-llac-llibre.webp",
+        "x": 13,
+        "y": 91,
+        "w": 10,
+        "r": 8,
+        "message": "UN LLAÇ DAURAT!"
+      }
+    ]
+  }
+}
