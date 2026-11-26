@@ -18,7 +18,7 @@
     { "id": "buho", "label": "El mussol", "img": "imagenes/personatges/personatge-buho.webp", "tags": ["web", "torre", "biblioteca"], "enabled": false },
     { "id": "seta", "label": "La seta", "img": "imagenes/personatges/personatge-seta.webp", "tags": ["web", "mapa"], "enabled": false },
     { "id": "cervol", "label": "El cérvol", "img": "imagenes/personatges/personatge-cervol.webp", "tags": ["web", "biblioteca"], "enabled": false, "note": "Finestra Llegim" },
-    { "id": "pipa-map", "label": "Pipa al mapa", "img": "", "tags": ["web", "mapa"], "enabled": false, "artPendent": true },
+    { "id": "pipa-map", "label": "Na Pipa", "img": "imagenes/personatges/personatge-pipa-map.webp", "tags": ["web", "mapa"], "enabled": false },
     { "id": "drac-mapa", "label": "Drac del mapa", "img": "imagenes/personatges/personatge-drac-mapa.webp", "tags": ["web", "mapa"], "enabled": false },
     { "id": "drac-inventem", "label": "El drac de l’estanteria", "img": "imagenes/personatges/personatge-drac-inventem.webp", "tags": ["web", "inventem"], "enabled": false },
     { "id": "pelut-inventem", "label": "El pelut de l’estanteria", "img": "imagenes/personatges/personatge-pelut-inventem.webp", "tags": ["web", "inventem"], "enabled": false },
