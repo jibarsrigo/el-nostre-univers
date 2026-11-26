@@ -4,11 +4,20 @@ const JOCS_PARELLES=[
  {id:'pipa',img:'pipa-portada.webp',label:'Pipa'},
  {id:'sopar',img:'sopar-portada.webp',label:'Sopar'},
  {id:'bosc',img:'bosc-portada.webp',label:'Bosc'},
- {id:'boira',img:'boira-portada.webp',label:'Na Boira'}
+ {id:'boira',img:'boira-portada.webp',label:'Na Boira'},
+ {id:'troc',img:'troc-portada.webp',label:'Troc'}
+];
+const OMBRES_SECRETS=[
+ {id:'pipa',img:'pipa-portada.webp',x:14,y:26,r:16,text:'MIRA! ÉS LA PIPA!'},
+ {id:'boira',img:'boira-portada.webp',x:68,y:20,r:16,text:'UN PEGÀS LILA!'},
+ {id:'troc',img:'troc-portada.webp',x:36,y:62,r:17,text:'TROC FA GANYOTA!'},
+ {id:'sopar',img:'sopar-portada.webp',x:74,y:58,r:16,text:'BRUNA MENJA MAGIA!'},
+ {id:'bosc',img:'bosc-portada.webp',x:20,y:72,r:15,text:'UN CONILL CORRE!'},
+ {id:'bruna',img:'imagenes/jocs-pocio/jocs-pocio-barret.png',x:52,y:38,r:16,text:'UN BARRET VIU!'}
 ];
 function jocsPairIds(){return JOCS_PARELLES.map(p=>p.id)}
 function jocsPairMeta(id){return JOCS_PARELLES.find(p=>p.id===id)||null}
-const jocs={count:{items:[],touched:new Set(),goal:0,picked:null},puzle:{order:[0,1,2,3],size:2,img:'pipa-portada.webp'},pocio:{data:null,load:null,sel:[],mixing:false,result:null}}
+const jocs={count:{items:[],touched:new Set(),goal:0,picked:null},puzle:{order:[0,1,2,3],size:2,img:'pipa-portada.webp'},pocio:{data:null,load:null,sel:[],mixing:false,result:null},ombres:{lx:50,ly:50,found:new Set()}}
 const POCIO_URL='data/pocio-reaccions.json';
 const JOCS_COMPTAR_POOL=[
  ['🌟','🌟','🌟'],
@@ -66,9 +75,21 @@ function jocsPuzlePiece(idx){const o=jocs.puzle.order[idx],row=Math.floor(o/2),c
 function jocsPuzleScene(){if(!jocs.puzle.order.length)setupJocsPuzle();const won=jocs.puzle.order.every((v,i)=>v===i);const grid=jocs.puzle.order.map((_,i)=>jocsPuzlePiece(i)).join('');return f2Scene('PUZZLE DE PORTADA',`<div class="jocs-puzle-grid">${grid}</div>`,`<p>${won?'LA PORTADA ESTÀ COMPLETA!':'TOCA DUES PEÇES PER CANVIAR-LES DE LLOC.'}</p>`,(won?f2btn('✨ GENIAL!','end-jocs-puzle'):'')+f2btn('↻ UN ALTRE','reset-jocs-puzle')+f2back(),'taller','jocs-puzle')}
 let jocsPuzleSel=null;
 function jocsPuzleTap(i){if(jocs.puzle.order.every((v,idx)=>v===idx))return;if(jocsPuzleSel===null){jocsPuzleSel=i;return}if(jocsPuzleSel===i){jocsPuzleSel=null;return}const a=jocsPuzleSel;jocsPuzleSel=null;[jocs.puzle.order[a],jocs.puzle.order[i]]=[jocs.puzle.order[i],jocs.puzle.order[a]];render()}
-Object.assign(SCENES,{jocs:jocsMenuScene,jocsCount:jocsCountScene,jocsPuzle:jocsPuzleScene,jocsPocio:jocsPocioScene});
+function resetOmbres(){jocs.ombres={lx:50,ly:50,found:new Set()}}
+function ombresDist(s){const dx=s.x-jocs.ombres.lx,dy=s.y-jocs.ombres.ly;return Math.hypot(dx,dy)}
+function ombresReveal(){OMBRES_SECRETS.forEach(s=>{if(jocs.ombres.found.has(s.id))return;if(ombresDist(s)<=s.r)jocs.ombres.found.add(s.id)});render()}
+function ombresMove(clientX,clientY){const wall=app.querySelector('[data-ombres-wall]');if(!wall)return;const r=wall.getBoundingClientRect();jocs.ombres.lx=Math.max(4,Math.min(96,(clientX-r.left)/r.width*100));jocs.ombres.ly=Math.max(4,Math.min(96,(clientY-r.top)/r.height*100));ombresReveal()}
+function jocsOmbresScene(){
+ const n=OMBRES_SECRETS.length,f=jocs.ombres.found.size;
+ const figs=OMBRES_SECRETS.map(s=>{const lit=jocs.ombres.found.has(s.id)||ombresDist(s)<=s.r*.85;
+  return `<figure class="ombres-fig ${lit?'ombres-fig--lit':''}" style="left:${s.x}%;top:${s.y}%"><img src="${strip(s.img)}" alt=""><figcaption>${lit?strip(s.text):''}</figcaption></figure>`}).join('');
+ const art=`<div class="ombres-wall" data-ombres-wall style="--lx:${jocs.ombres.lx}%;--ly:${jocs.ombres.ly}%">${figs}<div class="ombres-veil" aria-hidden="true"></div><span class="ombres-torch" aria-hidden="true">🔦</span></div>`;
+ const done=f>=4;
+ return f2Scene('LES OMBRES TRAPELLES',art,`<p>${done?'HAS DESCOBERT LA FOSCOR!':'MOU LA LLUM AMB EL DIT!'}</p><small>${f} / ${n} OMBRES</small>`,(done?f2btn('✨ GENIAL!','end-jocs-ombres'):'')+f2btn('↻ TORNAR A MIRAR','reset-jocs-ombres')+f2back(),'torre','jocs-ombres');
+}
+Object.assign(SCENES,{jocs:jocsMenuScene,jocsCount:jocsCountScene,jocsPuzle:jocsPuzleScene,jocsPocio:jocsPocioScene,jocsOmbres:jocsOmbresScene});
 const hotspotJocs=hotspot;
-hotspot=function(id){if(state.place==='workshop'&&id==='search'){go('jocs');return}return hotspotJocs(id)};
+hotspot=function(id){if(state.place==='workshop'&&id==='search'){go('jocs');return}if(state.place==='tower'&&id==='lupa'){resetOmbres();go('jocsOmbres');return}return hotspotJocs(id)};
 const actionJocs=action;
 action=function(id){switch(id){
 case'jocs-search':go('search');return;
@@ -82,7 +103,9 @@ case'end-jocs-count':notify('HAS COMPTAT MOLT BÉ!');remember('jocs-count');nav(
 case'end-jocs-puzle':notify('PUZZLE FET!');remember('jocs-puzle');nav('workshop');return;
 case'reset-jocs-count':setupJocsCount();jocsPuzleSel=null;render();return;
 case'reset-jocs-puzle':setupJocsPuzle();jocsPuzleSel=null;render();return;
+case'end-jocs-ombres':notify('OMBRES DESVELADES!');remember('jocs-ombres');nav('tower');return;
+case'reset-jocs-ombres':resetOmbres();render();return;
 }return actionJocs(id)};
 const renderJocs=render;
 render=function(){renderJocs();jocsBind()};
-function jocsBind(){app.querySelectorAll('[data-jocs-count]').forEach(el=>el.addEventListener('click',()=>{jocs.count.touched.add(Number(el.dataset.jocsCount));render()}));app.querySelectorAll('[data-jocs-pick]').forEach(el=>el.addEventListener('click',()=>{if(jocs.count.touched.size<jocs.count.goal){notify('PRIMER TOCA TOTS ELS OBJECTES!');return}jocs.count.picked=Number(el.dataset.jocsPick);render()}));app.querySelectorAll('[data-jocs-puz]').forEach(el=>el.addEventListener('click',()=>jocsPuzleTap(Number(el.dataset.jocsPuz))));app.querySelectorAll('[data-pocio-ing]').forEach(el=>el.addEventListener('click',()=>pocioPick(el.dataset.pocioIng)))}
+function jocsBind(){app.querySelectorAll('[data-jocs-count]').forEach(el=>el.addEventListener('click',()=>{jocs.count.touched.add(Number(el.dataset.jocsCount));render()}));app.querySelectorAll('[data-jocs-pick]').forEach(el=>el.addEventListener('click',()=>{if(jocs.count.touched.size<jocs.count.goal){notify('PRIMER TOCA TOTS ELS OBJECTES!');return}jocs.count.picked=Number(el.dataset.jocsPick);render()}));app.querySelectorAll('[data-jocs-puz]').forEach(el=>el.addEventListener('click',()=>jocsPuzleTap(Number(el.dataset.jocsPuz))));app.querySelectorAll('[data-pocio-ing]').forEach(el=>el.addEventListener('click',()=>pocioPick(el.dataset.pocioIng)));const wall=app.querySelector('[data-ombres-wall]');if(wall){const mv=e=>ombresMove(e.clientX,e.clientY);wall.addEventListener('pointerdown',e=>{wall.setPointerCapture(e.pointerId);mv(e)});wall.addEventListener('pointermove',mv);wall.addEventListener('touchmove',e=>{if(e.touches[0])ombresMove(e.touches[0].clientX,e.touches[0].clientY)},{passive:true})}}

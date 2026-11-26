@@ -22,3 +22,10 @@
 .pocio-fx{max-width:min(420px,90vw);width:100%;border-radius:20px;border:4px solid #e6bb7d}
 .pocio-text{font-size:clamp(16px,2.5vw,22px);color:#ffe4a8;font-weight:800;margin:6px 0}
 .pocio-hint{font-size:clamp(14px,2vw,18px);color:#e6bdf7;margin:0}
+.ombres-wall{position:relative;width:min(720px,96vw);aspect-ratio:16/10;border-radius:22px;overflow:hidden;background:#120a22;touch-action:none;user-select:none;border:4px solid #cba568}
+.ombres-veil{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle 20vmin at var(--lx) var(--ly),transparent 0%,rgba(10,6,22,.08) 38%,rgba(10,6,22,.94) 72%)}
+.ombres-fig{position:absolute;margin:0;transform:translate(-50%,-50%);width:min(28%,110px);text-align:center;transition:transform .2s}
+.ombres-fig img{width:100%;height:auto;display:block;filter:brightness(0) contrast(1.1);opacity:.35;transition:filter .25s,opacity .25s}
+.ombres-fig--lit img{filter:brightness(1.05) drop-shadow(0 0 12px #ffe9a0);opacity:1}
+.ombres-fig figcaption{font-size:clamp(10px,1.8vw,13px);color:#ffe4a8;font-weight:800;margin-top:4px;min-height:2.2em}
+.ombres-torch{position:absolute;left:var(--lx);top:var(--ly);transform:translate(-50%,-50%);font-size:clamp(28px,6vw,42px);pointer-events:none;filter:drop-shadow(0 0 8px #fff6c8)}
