@@ -9,6 +9,7 @@
     "wrong": "UPS! NO SOM JO!",
     "completedTitle": "TRES ESTRELLES MÀGIQUES!",
     "completedMsg": "LA TORRE BRILLA GRÀCIES A TU!",
+    "celebrateTower": "imagenes/torre.webp",
     "objectives": {
       "pipa": "BUSCA NA PIPA!",
       "troc": "BUSCA EN TROC!",

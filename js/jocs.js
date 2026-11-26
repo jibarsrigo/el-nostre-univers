@@ -29,6 +29,7 @@ function ombresStartMission(){const all=ombresAllSecrets(),n=ombresMissionSize()
 function ombresStarsHtml(){const n=jocs.ombres.stars,pop=jocs.ombres.starPop;return [0,1,2].map(i=>`<span class="ombres-star ${i<n?'ombres-star--on':''} ${i===n-1&&pop?'ombres-star--pop':''}" aria-hidden="true"><svg class="ombres-star-svg" viewBox="0 0 64 64"><path d="M32 5 39 25 61 27 45 42 51 63 32 52 13 63 19 42 3 27 25 25Z"/></svg></span>`).join('')}
 function ombresTargetRow(){const id=jocs.ombres.targetId,s=ombresAllSecrets().find(x=>x.id===id);if(!s||jocs.ombres.phase==='completed')return'';const done=jocs.ombres.phase==='found';return `<div class="ombres-objective ${done?'ombres-objective--found':''}"><img class="ombres-objective-thumb" src="${strip(s.img)}" alt=""><p class="ombres-objective-text">${ombresTargetText(id)}</p></div>`}
 function ombresHeadHtml(){const m=ombresMissions();if(jocs.ombres.phase==='completed')return'';const showGoal=jocs.ombres.phase==='found'||jocs.ombres.phase==='searching';return `<div class="ombres-head"><div class="ombres-head-main">${showGoal?ombresTargetRow():''}<div class="ombres-stars" aria-label="${strip(m.starsLabel||'Estrelles')}">${ombresStarsHtml()}</div></div><p class="ombres-head-hint">${strip(m.hint||'')}</p></div>`}
+function ombresCelebrateHtml(){const m=ombresMissions(),tower=strip(m.celebrateTower||'imagenes/torre.webp');return `<div class="ombres-celebrate" role="region" aria-labelledby="ombres-celebrate-msg"><div class="ombres-celebrate-stars" aria-hidden="true">${ombresStarsHtml()}</div><p class="visually-hidden">${strip(m.completedTitle||'')}</p><p id="ombres-celebrate-msg" class="ombres-celebrate-msg">${strip(m.completedMsg||'')}</p><img class="ombres-celebrate-tower" src="${tower}" alt="La torre il·luminada" draggable="false"></div>`}
 function ombresAdvanceMission(){jocs.ombres.usedTargets.push(jocs.ombres.targetId);if(jocs.ombres.stars>=3){jocs.ombres.phase='completed';return}jocs.ombres.missionIndex=Math.min(2,jocs.ombres.missionIndex+1);ombresStartMission();jocs.ombres.lx=42;jocs.ombres.ly=52}
 function ensureOmbres(cb){
  if(jocs.ombres.data)return cb();
@@ -114,13 +115,11 @@ function jocsOmbresScene(){
  if(!jocs.ombres.data){ensureOmbres(()=>{if(state.place==='jocsOmbres')render()});return ombresF2Scene('','<p class="conte-wait">CARREGANT...</p>','',f2back())}
  if(!jocs.ombres.activeSecrets.length)ombresStartMission();
  const list=ombresSecrets(),completed=jocs.ombres.phase==='completed',found=jocs.ombres.phase==='found';
- const figs=list.map(ombresFigHtml).join('');
- const lightCore=`<div class="ombres-glow"></div><div class="ombres-sparkles">${[0,1,2,3,4].map(i=>`<span style="--mi:${i}"></span>`).join('')}</div>${ombresLupa(cfg)}`;
- const stage=`<div class="ombres-wall ${completed?'ombres-wall--festa':''}" data-ombres-wall style="--lx:${jocs.ombres.lx}%;--ly:${jocs.ombres.ly}%">${ombresBack(cfg)}<div class="ombres-screen">${figs}</div><div class="ombres-veil-base" aria-hidden="true"></div><div class="ombres-light-anchor" data-ombres-anchor aria-hidden="true">${lightCore}</div><div class="ombres-curtain ombres-curtain--l" aria-hidden="true"></div><div class="ombres-curtain ombres-curtain--r" aria-hidden="true"></div></div>`;
- const footMsg=completed?`<p class="ombres-foot-done">${strip(m.completedTitle||'')}</p><p class="ombres-foot-lead">${strip(m.completedMsg||'')}</p>`:'';
+ const stage=completed?ombresCelebrateHtml():(()=>{const figs=list.map(ombresFigHtml).join('');const lightCore=`<div class="ombres-glow"></div><div class="ombres-sparkles">${[0,1,2,3,4].map(i=>`<span style="--mi:${i}"></span>`).join('')}</div>${ombresLupa(cfg)}`;return `<div class="ombres-wall" data-ombres-wall style="--lx:${jocs.ombres.lx}%;--ly:${jocs.ombres.ly}%">${ombresBack(cfg)}<div class="ombres-screen">${figs}</div><div class="ombres-veil-base" aria-hidden="true"></div><div class="ombres-light-anchor" data-ombres-anchor aria-hidden="true">${lightCore}</div><div class="ombres-curtain ombres-curtain--l" aria-hidden="true"></div><div class="ombres-curtain ombres-curtain--r" aria-hidden="true"></div></div>`})();
+ const footMsg='';
  const head=ombresHeadHtml();
  let actions='';
- if(completed)actions=f2btn('↻ TORNAR A JUGAR','ombres-replay-session')+f2btn('✨ TORNAR A LA TORRE','end-jocs-ombres');
+ if(completed)actions=f2btn('↻ TORNA A JUGAR','ombres-replay-session')+f2btn('✨ TORNA A LA TORRE','end-jocs-ombres');
  else actions=f2btn('↩ TORNAR A LA TORRE','end-jocs-ombres');
  return ombresF2Scene(head,stage,footMsg,actions);
 }
