@@ -87,14 +87,16 @@ function ombresTryFind(){const list=ombresSecrets(),before=jocs.ombres.found.siz
 function ombresReveal(){ombresTryFind();render()}
 function ombresMove(clientX,clientY){const wall=app.querySelector('[data-ombres-wall]');if(!wall)return;const r=wall.getBoundingClientRect();jocs.ombres.lx=Math.max(3,Math.min(97,(clientX-r.left)/r.width*100));jocs.ombres.ly=Math.max(3,Math.min(97,(clientY-r.top)/r.height*100));ombresTryFind();render()}
 function ombresLupa(cfg){const src=cfg.lupa?`<img class="ombres-lupa-art" src="${strip(cfg.lupa)}" alt="" draggable="false">`:'';return `${src}<span class="ombres-lantern" aria-hidden="true"></span>`}
+function ombresF2Scene(stageHTML,footHTML,actions){return `<div class="f2-scene f2-scene--ombres" style="background:#07040f">${topbar(state.place)}<div class="f2-window f2-window--ombres"><h2 class="ombres-title">LES OMBRES TRAPELLES</h2><div class="f2-illustrated f2-illustrated--ombres">${stageHTML}</div><div class="f2-story f2-story--ombres">${footHTML}</div><div class="f2-actions f2-actions--ombres">${actions}</div></div></div>`}
 function jocsOmbresScene(){
  const cfg=ombresCfg();
- if(!jocs.ombres.data){ensureOmbres(()=>{if(state.place==='jocsOmbres')render()});return f2Scene('LES OMBRES TRAPELLES','<p class="conte-wait">CARREGANT...</p>','','',f2back(),'torre','jocs-ombres')}
+ if(!jocs.ombres.data){ensureOmbres(()=>{if(state.place==='jocsOmbres')render()});return ombresF2Scene('<p class="conte-wait">CARREGANT...</p>','',f2back())}
  const list=ombresSecrets(),n=list.length,f=jocs.ombres.found.size,g=ombresGoal(),done=f>=g;
  const figs=list.map(ombresFigHtml).join('');
- const art=`<p class="ombres-lead">${strip(cfg.lead||'')}</p><div class="ombres-wall ${done?'ombres-wall--festa':''}" data-ombres-wall style="--lx:${jocs.ombres.lx}%;--ly:${jocs.ombres.ly}%">${ombresBack(cfg)}<div class="ombres-screen">${figs}</div><div class="ombres-veil" aria-hidden="true"></div><div class="ombres-glow" aria-hidden="true"></div><div class="ombres-sparkles" aria-hidden="true">${[0,1,2,3,4].map(i=>`<span style="--mi:${i}"></span>`).join('')}</div>${ombresLupa(cfg)}<div class="ombres-curtain ombres-curtain--l" aria-hidden="true"></div><div class="ombres-curtain ombres-curtain--r" aria-hidden="true"></div></div>`;
- const hint=done?strip(cfg.doneHint||'GENIAL!'):f?`ENCARA QUEDEN OMBRES (${f}/${n})...`:'PASSA LA LLUM LENT PER LA PARET...';
- return f2Scene('LES OMBRES TRAPELLES',art,`<p>${hint}</p><small>${f} / ${n} DESCOBERTES · CALEN ${g} PER ACABAR</small>`,(done?f2btn('✨ GENIAL!','end-jocs-ombres'):'')+f2btn('↻ TORNAR A MIRAR','reset-jocs-ombres')+f2back(),'torre','jocs-ombres');
+ const stage=`<div class="ombres-wall ${done?'ombres-wall--festa':''}" data-ombres-wall style="--lx:${jocs.ombres.lx}%;--ly:${jocs.ombres.ly}%">${ombresBack(cfg)}<div class="ombres-screen">${figs}</div><div class="ombres-veil" aria-hidden="true"></div><div class="ombres-glow" aria-hidden="true"></div><div class="ombres-sparkles" aria-hidden="true">${[0,1,2,3,4].map(i=>`<span style="--mi:${i}"></span>`).join('')}</div>${ombresLupa(cfg)}<div class="ombres-curtain ombres-curtain--l" aria-hidden="true"></div><div class="ombres-curtain ombres-curtain--r" aria-hidden="true"></div></div>`;
+ const foot=`<p class="ombres-foot-lead">${strip(cfg.lead||'')}</p><p class="ombres-foot-count">${f} / ${n} DESCOBERTES</p>${done?`<p class="ombres-foot-done">${strip(cfg.doneHint||'')}</p>`:''}`;
+ const actions=(done?f2btn('✨ GENIAL!','end-jocs-ombres'):'')+f2btn('↻ TORNAR A MIRAR','reset-jocs-ombres')+f2back();
+ return ombresF2Scene(stage,foot,actions);
 }
 Object.assign(SCENES,{jocs:jocsMenuScene,jocsCount:jocsCountScene,jocsPuzle:jocsPuzleScene,jocsPocio:jocsPocioScene,jocsOmbres:jocsOmbresScene});
 const hotspotJocs=hotspot;
