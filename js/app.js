@@ -26,13 +26,13 @@ library:[
  ['ladder','L’ESCALA','rect',[248,198,455,575]]
 ],
 tower:[
- ['telescope','EL TELESCOPI','rect',[460,275,705,455]],
- ['orb','LA BOLA MÀGICA','rect',[730,470,880,600]],
- ['chest','EL COFRE','rect',[1125,330,1285,470]],
- ['map','EL MAPA','rect',[910,120,1120,300]],
- ['small-door','LA PORTA PETITA','rect',[1405,520,1545,750]],
- ['stairs','LES ESCALES','rect',[1310,0,1580,400]],
- ['owl','EL MUSSOL','rect',[660,100,800,255]]
+ ['telescope','EL TELESCOPI','rect',[478,318,668,488]],
+ ['owl','EL MUSSOL','rect',[628,88,738,178]],
+ ['map','EL MAPA','rect',[998,185,1145,365]],
+ ['stairs','LES ESCALES','rect',[1275,35,1575,400]],
+ ['chest','EL COFRE','rect',[1145,515,1315,715]],
+ ['orb','LA BOLA MÀGICA','rect',[815,575,995,705]],
+ ['small-door','LA PORTA PETITA','rect',[1375,595,1545,765]]
 ],
 workshop:[
  ['creature','EL DRAC','rect',[790,430,1040,700]],
@@ -50,7 +50,7 @@ function topbar(place){return `<div class="topbar"><div>${place!=='map'&&place!=
 const FIREFLY={
 map:{library:[150,420],tower:[840,150],workshop:[1570,250],secret:[1168,650],bridge:[810,590]},
 library:{book:[980,730],chest:[1348,530],window:[1210,80],cards:[1148,760],owl:[175,55],ladder:[235,240],monster:[470,740],rabbit:[40,850]},
-tower:{telescope:[500,320],orb:[855,530],chest:[1255,355],map:[960,155],'small-door':[1435,545],stairs:[1370,95],owl:[785,140],nest:[370,85],lupa:[775,685],pairs:[980,725],words:[48,55]},
+tower:{telescope:[555,395],owl:[670,128],map:[1070,285],stairs:[1405,220],chest:[1235,615],orb:[905,635],'small-door':[1475,675],nest:[475,185],words:[168,265],pairs:[952,642],lupa:[738,662]},
 workshop:{creature:[845,470],colors:[80,750],stars:[1045,48],chest:[1505,505],window:[55,75],search:[1270,350]}
 };
 const SOUND_ICON='<svg viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 26h10l12-10v32L22 38H12z"/><path class="wave" d="M40 24a12 12 0 0 1 0 16M48 16a22 22 0 0 1 0 32" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>';
