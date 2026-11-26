@@ -7,7 +7,7 @@
     { "id": "bosc", "label": "Ona", "img": "imagenes/personatges/personatge-bosc.webp", "tags": ["conte"], "contes": ["bosc"], "enabled": false, "note": "Portada provisional; fase 3 retrat" },
     { "id": "boira", "label": "Na Boira", "img": "imagenes/personatges/personatge-boira.webp", "tags": ["conte"], "contes": ["boira"], "enabled": false, "note": "Portada provisional; fase 3 retrat" },
     { "id": "troc", "label": "Troc", "img": "imagenes/personatges/personatge-troc.webp", "tags": ["conte"], "contes": ["troc"], "enabled": false, "note": "Portada provisional; fase 3 retrat" },
-    { "id": "nus", "label": "Nus", "img": "imagenes/personatges/personatge-nus.webp", "tags": ["conte"], "contes": ["nus"], "enabled": false, "note": "Portada provisional; fase 3 retrat" },
+    { "id": "nus", "label": "En Nus", "img": "imagenes/personatges/personatge-nus.webp", "tags": ["conte"], "contes": ["nus"], "enabled": true },
     { "id": "conill", "label": "El conill", "img": "imagenes/personatges/personatge-conill.webp", "tags": ["web", "biblioteca"], "enabled": true },
     { "id": "gat", "label": "El gat", "img": "imagenes/personatges/personatge-gat.webp", "tags": ["web"], "enabled": true },
     { "id": "moix", "label": "El moix", "img": "imagenes/personatges/personatge-moix.webp", "tags": ["web", "biblioteca"], "enabled": true },
