@@ -1,12 +1,12 @@
 {
-  "title": "TROBA LES 7 DIFERÈNCIES",
+  "title": "TROBA LES 5 DIFERÈNCIES",
   "hint": "MIRA ELS DOS QUADRES. TOCA LA DIFERÈNCIA!",
   "starsLabel": "Estrelles màgiques",
   "roundsPerSession": 3,
   "completedTitle": "TRES ESTRELLES MÀGIQUES!",
-  "completedMsg": "LA TORRE BRILLA: HAS TROBAT SET DIFERÈNCIES TRES VEGADES!",
+  "completedMsg": "LA TORRE BRILLA: HAS TROBAT CINC DIFERÈNCIES TRES VEGADES!",
   "celebrateTower": "imagenes/torre.webp",
-  "perRound": 7,
+  "perRound": 5,
   "perRoundDecoys": 1,
   "minSpotDist": 11,
   "scenes": [
@@ -14,9 +14,9 @@
       "id": "biblioteca",
       "label": "La biblioteca",
       "base": "imagenes/jocs-diferencies/jocs-diferencies-biblioteca-base.webp",
-      "completedTitle": "SET A LA BIBLIOTECA!",
+      "completedTitle": "CINC A LA BIBLIOTECA!",
       "completedMsg": "HAS TROBAT TOTS ELS DETALLS DE LA BIBLIOTECA!",
-      "perRound": 7,
+      "perRound": 5,
       "diffs": [
         {
           "id": "ulleres-moix",
@@ -68,9 +68,9 @@
       "id": "taller",
       "label": "El taller dels invents",
       "base": "imagenes/jocs-diferencies/jocs-diferencies-taller-base.webp",
-      "completedTitle": "SET AL TALLER!",
+      "completedTitle": "CINC AL TALLER!",
       "completedMsg": "HAS TROBAT TOTS ELS DETALLS DEL TALLER!",
-      "perRound": 7,
+      "perRound": 5,
       "perRoundDecoys": 1,
       "minSpotDist": 11,
       "diffs": [
