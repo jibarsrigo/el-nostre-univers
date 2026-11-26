@@ -13,4 +13,6 @@ run(`action('jocs-puzle')`);assert(root.innerHTML.includes('PUZZLE'));
 run(`jocs.pocio.data=${JSON.stringify(pocioJSON())}`);run(`go('jocsPocio')`);
 run(`pocioPick('platan');pocioPick('bebeta');pocioMix()`);run('render()');
 assert(root.innerHTML.includes('MEGAEXPLOSIÓ')||root.innerHTML.includes('pocio-fx'));
-console.log('OK: jocs hub, comptar, puzle, poció.');
+run(`resetOmbres();go('jocsOmbres')`);assert(root.innerHTML.includes('OMBRES TRAPELLES'));
+run(`jocs.ombres.lx=14;jocs.ombres.ly=26;ombresReveal();render()`);assert(root.innerHTML.includes('PIPA'));
+console.log('OK: jocs hub, comptar, puzle, poció, ombres.');

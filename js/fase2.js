@@ -7,10 +7,10 @@ const names2={school:'L’ESCOLA DE LA LLUM',monster:'EL MONSTRET MENJAPÀGINES'
 const actionOld=actionF1, hotspotOld=hotspotF1;
 // Entrades noves col·locades sobre elements visibles de la il·lustració original.
 hotspots.library.push(['monster','LLIBRES MOSSEGATS','rect',[305,698,495,855]],['rabbit','EL CONILL QUE DORM','rect',[55,755,285,932]]);
-hotspots.tower.push(['nest','LA FINESTRA DEL BOSC','rect',[308,50,630,228]],['pairs','ELS OBJECTES MÀGICS','rect',[850,640,1060,800]],['words','ELS LLIBRES DE PARAULES','rect',[8,24,220,320]]);
+hotspots.tower.push(['nest','LA FINESTRA DEL BOSC','rect',[308,50,630,228]],['pairs','ELS OBJECTES MÀGICS','rect',[850,640,1060,800]],['words','ELS LLIBRES DE PARAULES','rect',[8,24,220,320]],['lupa','LA LUPA MÀGICA','rect',[995,385,1125,525]]);
 hotspots.workshop.push(['search','LA CAPSA DE JOCS','rect',[1235,310,1455,445]]);
 // El mussol de la torre condueix a l'escola (la carta antiga és a la biblioteca).
-function hotspot(id){if(state.place==='library'&&['monster','rabbit'].includes(id)){if(id==='monster')f2.pieces.clear();return go(id)};if(state.place==='tower'&&['school','nest','pairs','words'].includes(id))return go(id);if(state.place==='workshop'&&id==='search')return go(id);if(state.place==='tower'&&id==='owl')return go('school');return hotspotOld(id)}
+function hotspot(id){if(state.place==='library'&&['monster','rabbit'].includes(id)){if(id==='monster')f2.pieces.clear();return go(id)};if(state.place==='tower'&&['school','nest','pairs','words','lupa'].includes(id))return go(id);if(state.place==='workshop'&&id==='search')return go(id);if(state.place==='tower'&&id==='owl')return go('school');return hotspotOld(id)}
 function goF2(place){go(place)}
 function art2(file,alt='',cls='story-illustration'){return `<img class="${cls}" src="imagenes/${file}" alt="${esc2(alt)}">`}
 function f2Scene(title,artHTML,caption,actions,bg='biblioteca',cls=''){const background=IMG(bg);return `<div class="f2-scene ${cls}" style="background-image:linear-gradient(90deg,#1d1536c4,#1d1536b8),url('${background}')">${topbar(state.place)}<div class="f2-window"><div class="f2-heading"><span class="f2-kicker">✦ EL NOSTRE UNIVERS ✦</span><h2>${title}</h2></div><div class="f2-illustrated">${artHTML}</div><div class="f2-story" aria-live="polite">${caption}</div><div class="f2-actions">${actions}</div></div></div>`}
