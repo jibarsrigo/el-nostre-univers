@@ -1,0 +1,89 @@
+{
+  "goal": 5,
+  "lead": "LA PARET DE LA TORRE AMGUA PETITS SECRETS. QUI S'HI ESCON?",
+  "doneHint": "LA TORRE BRILLA! CINC OMBRES HAN PARLAT.",
+  "wall": "imagenes/jocs-ombres/jocs-ombres-paret.webp",
+  "lupa": "imagenes/jocs-ombres/jocs-ombres-lupa-prop.webp",
+  "secrets": [
+    {
+      "id": "pipa",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-PIP.webp",
+      "x": 14,
+      "y": 22,
+      "r": 14,
+      "sway": 3.4,
+      "peek": "QUÈ FA XIP-XAP?",
+      "reveal": "HE VENGUT NEDANT... SENSE AIGUA!"
+    },
+    {
+      "id": "troc",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-TROC.webp",
+      "x": 36,
+      "y": 30,
+      "r": 14,
+      "sway": 4.1,
+      "peek": "UN CAP PELUT...",
+      "reveal": "AQUEST LLIBRE ÉS EL MEU BARRET!"
+    },
+    {
+      "id": "bruna",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-BRUNA.webp",
+      "x": 58,
+      "y": 24,
+      "r": 14,
+      "sway": 3.8,
+      "peek": "QUINA OLOR ESTRANYA...",
+      "reveal": "HE FET SOPA DE MITJONS!"
+    },
+    {
+      "id": "boira",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-BOIRA.webp",
+      "x": 82,
+      "y": 20,
+      "r": 13,
+      "sway": 4.5,
+      "peek": "ALES ENTRE NÚVOLS...",
+      "reveal": "HE ESTERNUDAT UN NÚVOL!"
+    },
+    {
+      "id": "conill",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-CONILL.webp",
+      "x": 18,
+      "y": 68,
+      "r": 14,
+      "sway": 4.2,
+      "peek": "DUES ORELLES LLARGUES...",
+      "reveal": "NO SOM UN BARRET AMB ORELLES!"
+    },
+    {
+      "id": "gat",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-GAT.webp",
+      "x": 46,
+      "y": 74,
+      "r": 13,
+      "sway": 3.2,
+      "peek": "UNA CUA RECARGOLADA...",
+      "reveal": "MÈU! HE PERDUT EL MEU MÈU!"
+    },
+    {
+      "id": "drac",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-DRAC.webp",
+      "x": 76,
+      "y": 56,
+      "r": 13,
+      "sway": 5,
+      "peek": "UNA PANXA MÀGICA...",
+      "reveal": "EN LLOC DE FOC, FAIG BIMBOLLES!"
+    },
+    {
+      "id": "nus",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-NUS.webp",
+      "x": 52,
+      "y": 44,
+      "r": 15,
+      "sway": 4.6,
+      "peek": "QUANTS BRAÇOS TÉ?",
+      "reveal": "TENC SIS BRAÇOS I CAP BUTXACA!"
+    }
+  ]
+}
