@@ -20,7 +20,8 @@
     { "id": "cervol", "label": "El cérvol", "img": "imagenes/personatges/personatge-cervol.webp", "tags": ["web", "biblioteca"], "enabled": false, "note": "Finestra Llegim" },
     { "id": "pipa-map", "label": "Pipa al mapa", "img": "", "tags": ["web", "mapa"], "enabled": false, "artPendent": true },
     { "id": "drac-mapa", "label": "Drac del mapa", "img": "imagenes/personatges/personatge-drac-mapa.webp", "tags": ["web", "mapa"], "enabled": false },
-    { "id": "drac-acces", "label": "Drac de benvinguda", "img": "", "tags": ["web", "benvinguda"], "enabled": false, "artPendent": true },
+    { "id": "drac-inventem", "label": "El drac de l’estanteria", "img": "imagenes/personatges/personatge-drac-inventem.webp", "tags": ["web", "inventem"], "enabled": false },
+    { "id": "pelut-inventem", "label": "El pelut de l’estanteria", "img": "imagenes/personatges/personatge-pelut-inventem.webp", "tags": ["web", "inventem"], "enabled": false },
     { "id": "bichito-estanteria", "label": "Animal de l’estanteria", "img": "", "tags": ["web", "biblioteca"], "enabled": false, "artPendent": true },
     { "id": "bichito-estanteria-2", "label": "Altre animal de l’estanteria", "img": "", "tags": ["web", "biblioteca"], "enabled": false, "artPendent": true }
   ]
