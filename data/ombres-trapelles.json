@@ -1,7 +1,25 @@
 {
-  "goal": 5,
-  "lead": "LA PARET DE LA TORRE AMGUA PETITS SECRETS. QUI S'HI ESCON?",
-  "doneHint": "LA TORRE BRILLA! CINC OMBRES HAN PARLAT.",
+  "missions": {
+    "subtitle": "LES MISSIONS DE LA TORRE",
+    "leadSearch": "HI HA OMBRES AMAGADES!",
+    "hint": "MOU LA LLUM I TROBA L'OMBRA!",
+    "starsLabel": "ESTRELLES MÀGIQUES",
+    "foundTarget": "M'HAS TROBAT!",
+    "starGain": "UNA ESTRELLA MÉS!",
+    "wrong": "UPS! NO SOM JO!",
+    "completedTitle": "TRES ESTRELLES MÀGIQUES!",
+    "completedMsg": "LA TORRE BRILLA GRÀCIES A TU!",
+    "objectives": {
+      "pipa": "BUSCA NA PIPA!",
+      "troc": "BUSCA EN TROC!",
+      "bruna": "BUSCA NA BRUNA!",
+      "boira": "BUSCA NA BOIRA!",
+      "conill": "BUSCA EL CONILL!",
+      "gat": "BUSCA EL GAT!",
+      "drac": "BUSCA EL DRAC!",
+      "nus": "BUSCA EN NUS!"
+    }
+  },
   "wall": "imagenes/jocs-ombres/jocs-ombres-paret.webp",
   "lupa": "imagenes/jocs-ombres/jocs-ombres-lupa-prop.webp",
   "secrets": [
