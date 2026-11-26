@@ -4,6 +4,7 @@
   "starsLabel": "Estrelles",
   "completedTitle": "TRES DIFERÈNCIES!",
   "perRound": 3,
+  "perRoundDecoys": 1,
   "minSpotDist": 11,
   "scenes": [
     {
