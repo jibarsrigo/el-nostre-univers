@@ -1,0 +1,22 @@
+---
+description: Dónde consultar la lista de pendientes e ideas de Jose para este proyecto
+alwaysApply: true
+---
+
+# Pendientes del proyecto (Jose)
+
+El **registro que manda** en el PC es `Info para Nuevo Chat/REGISTRO.md` (no está en GitHub). En el agente en la nube, usar el user store:
+
+| Archivo | Uso |
+| --- | --- |
+| `FUENTES-PENDIENTES.md` | Prioridad entre REGISTRO, memoria, repo e ideas |
+| `REGISTRO-WEB-PULIDO.md` | Espejo pulido web (puntos, bola mundo, fase 4…) |
+| `PLAN-UBICACION-ACTIVIDADES.md` | Grupos de actividades; existente vs hub vs hotspot nuevo vs habitación |
+| `MAPA-HOTSPOTS-Y-ESPACIOS-LIBRES.md` | Listado técnico de hotspots y huecos |
+| `PENDIENTES.md` | Ideas de juegos P-001… |
+
+Ruta base: `/cursor/stores/user/`.
+
+- **Revisión de pendientes:** leer `FUENTES-PENDIENTES.md` y resumir según el tipo (pulido vs ideas vs mapa).
+- Nuevas ideas de chat → actualizar `PENDIENTES.md` (o registro espejo si es pulido acordado).
+- `docs/HOJA-DE-RUTA.md` en repo: fase 4; si choca con REGISTRO, manda REGISTRO.

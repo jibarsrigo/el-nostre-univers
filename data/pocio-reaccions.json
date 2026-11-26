@@ -1,0 +1,29 @@
+{
+  "caldero": "imagenes/jocs-pocio/jocs-pocio-caldero.png",
+  "ingredients": [
+    {"id": "cullera", "nom": "CULLERA", "img": "imagenes/jocs-pocio/jocs-pocio-cullera.webp"},
+    {"id": "barret", "nom": "BARRET", "img": "imagenes/jocs-pocio/jocs-pocio-barret.png"},
+    {"id": "sabata", "nom": "SABATA", "img": "imagenes/jocs-pocio/jocs-pocio-sabata.png"},
+    {"id": "ploma", "nom": "PLOMA", "img": "imagenes/jocs-pocio/jocs-pocio-ploma.webp"},
+    {"id": "platan", "nom": "PLÀTAN", "img": "imagenes/jocs-pocio/jocs-pocio-platan.webp"},
+    {"id": "bebeta", "nom": "BEBETA", "img": "imagenes/jocs-pocio/jocs-pocio-bebeta.webp"}
+  ],
+  "reaccions": {
+    "barret|cullera": {"text": "EL BARRET ESTERNUDA FULLES DE COLORS!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-esternut.webp"},
+    "cullera|ploma": {"text": "LA CULLERA CANTA: MI, MI, MI!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-canta.webp"},
+    "ploma|sabata": {"text": "LA PLOMA FA VENT SUAAAAU!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-vent.webp"},
+    "barret|sabata": {"text": "SURTEN BOMBOLLES EN FORMA DE SABATES!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-bombolles.webp"},
+    "barret|ploma": {"text": "EL BARRET ES POSA LLIS I BRILLA!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-bril.webp"},
+    "cullera|sabata": {"text": "LA SABATA SALTA COM UN COIXÍ!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-salt.webp"},
+    "platan|sabata": {"text": "UPS! LLISCADA MONUMENTAL!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-lliscada.webp"},
+    "bebeta|platan": {"text": "MEGAEXPLOSIÓ DE BURXES!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-mega-burxa.png"},
+    "bebeta|sabata": {"text": "LA SABATA FA UN PET ÉPIC!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-sabata-trompa.webp"},
+    "cullera|platan": {"text": "BONK! LA CULLERA ASSALTA EL BARRET!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-colp-suma.webp"},
+    "barret|platan": {"text": "TOMBA DE CAP A PEUS!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-capa-tomba.webp"},
+    "bebeta|cullera": {"text": "ERUCTE MUSICAL!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-eructe.webp"},
+    "barret|bebeta": {"text": "NÚVOL DE PET MÀGIC!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-pet.webp"},
+    "platan|ploma": {"text": "TOT RODOLA PAT ENLLÀ!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-tomba.webp"},
+    "bebeta|ploma": {"text": "LA PLOMA ERUCTA ESTRELLES!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-eructe.webp"}
+  },
+  "defecte": {"text": "LA POCIÓ FA BOMBOLLES ESTRANYES!", "img": "imagenes/jocs-pocio/jocs-pocio-efecte-bombolles.webp"}
+}
