@@ -7,7 +7,7 @@ const app=node();
 const doc={getElementById(){return app},querySelector(){return null},addEventListener(){},createElement:node,fullscreenEnabled:false,fullscreenElement:null};
 const env={document:doc,localStorage:{getItem:k=>memory[k]||null,setItem(k,v){memory[k]=v}},window:{confirm(){return true}},setTimeout(){},Image:function(){},console,Math,Date};
 const c=vm.createContext(env),run=src=>vm.runInContext(src,c);
-for(const file of ['app.js','fase2.js','fase3.js','contes.js'])vm.runInContext(fs.readFileSync(path.join(root,'js',file),'utf8'),c,{filename:file});
+for(const file of ['app.js','fase2.js','fase3.js','contes.js','jocs.js'])vm.runInContext(fs.readFileSync(path.join(root,'js',file),'utf8'),c,{filename:file});
 let n=0;const test=(fn)=>{fn();n++};
 const get=s=>JSON.parse(JSON.stringify(run(s)));
 const places=['map','library','tower','workshop'];
@@ -39,7 +39,7 @@ test(()=>{run(`nav('workshop');hotspot('creature')`);assert.equal(run('state.pla
 test(()=>{run(`nav('workshop');hotspot('colors')`);assert.equal(run('state.place'),'f3draw')});
 test(()=>{run(`nav('workshop');hotspot('stars')`);assert.equal(run('state.place'),'f3maker')});
 test(()=>{run(`nav('workshop');hotspot('chest')`);assert.equal(run('state.place'),'f3gallery')});
-test(()=>{run(`setupPairs()`);assert.equal(run('f2.match.length'),6);assert.equal(run('new Set(f2.match).size'),3)});
+test(()=>{run(`jocs.personatges=${JSON.stringify(JSON.parse(fs.readFileSync('data/personatges.json','utf8')))}`);run(`setupPairs()`);assert.equal(run('f2.match.length'),10);assert.equal(run('new Set(f2.match).size'),5)});
 test(()=>{run(`setupWord()`);assert(run('WORDS.includes(f2.word)'))});
 test(()=>{run(`f3Save({...newCreature3(),id:'test-creature',name:'Guspira'})`);assert.equal(get('f3.gallery').length,1);assert.equal(get('f3.gallery')[0].name,'Guspira')});
 test(()=>{run(`state.place='f3creator';f3NavBack()`);assert.equal(run('state.place'),'workshop');assert.equal(get('state.history').length,0)});

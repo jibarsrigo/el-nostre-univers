@@ -1,13 +1,8 @@
 'use strict';
 /* Activitats i jocs — memòria, comptar, puzles. Els contes els fa Jose al PC. */
-const JOCS_PARELLES=[
- {id:'pipa',img:'pipa-portada.webp',label:'Pipa'},
- {id:'sopar',img:'sopar-portada.webp',label:'Sopar'},
- {id:'bosc',img:'bosc-portada.webp',label:'Bosc'},
- {id:'boira',img:'boira-portada.webp',label:'Na Boira'},
- {id:'troc',img:'troc-portada.webp',label:'Troc'}
-];
+const PERSONATGES_URL='data/personatges.json';
 const OMBRES_URL='data/ombres-trapelles.json';
+let pairsRoundIds=[],pairsLastSig='';
 const DIFERENCIES_URL='data/diferencies.json';
 const OMBRES_BRICKS='<svg class="ombres-brick" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="ombg" x2="0" y2="1"><stop stop-color="#30243E"/><stop offset="1" stop-color="#0a0614"/></linearGradient></defs><rect width="800" height="500" fill="url(#ombg)"/><g fill="none" stroke="#572039" stroke-width="2" opacity=".45">'+Array.from({length:9},(_,row)=>Array.from({length:14},(_,col)=>{const w=56,h=28,x=(col*w)+(row%2?w/2:0)-20,y=row*h+18;return`<rect x="${x}" y="${y}" width="${w-4}" height="${h-4}" rx="3"/>`}).join('')).join('')+'</g></svg>';
 const OMBRES_MISSION_SIZES=[4,5,6];
@@ -38,9 +33,14 @@ function ensureOmbres(cb){
  if(jocs.ombres.load){jocs.ombres.load.then(cb);return}
  jocs.ombres.load=fetch(OMBRES_URL).then(r=>r.json()).then(d=>{jocs.ombres.data=d;cb()}).catch(()=>{notify('NO PUC CARREGAR LES OMBRES');cb()});
 }
-function jocsPairIds(){return JOCS_PARELLES.map(p=>p.id)}
-function jocsPairMeta(id){return JOCS_PARELLES.find(p=>p.id===id)||null}
-const jocs={count:{items:[],touched:new Set(),goal:0,picked:null},puzle:{order:[0,1,2,3],size:2,img:'pipa-portada.webp'},pocio:{data:null,load:null,sel:[],mixing:false,result:null},ombres:{data:null,load:null,lx:42,ly:52,found:new Set(),stars:0,missionIndex:0,phase:'searching',targetId:null,usedTargets:[],activeSecrets:[],distractorNotified:new Set(),starPop:false},diferencies:{data:null,load:null,sceneId:null,active:[],decoys:[],found:new Set(),stars:0,phase:'searching',starPop:false,lastMsg:''}}
+function personatgeList(){return jocs.personatges?.personatges||[]}
+function personatgePool(){return personatgeList().filter(p=>p.enabled!==false&&strip(p.img))}
+function jocsPairMeta(id){return personatgeList().find(p=>p.id===id)||null}
+function jocsPairsPerRound(){const n=jocs.personatges?.pairsPerRound;return Math.max(2,Math.min(8,Math.floor(n)||5))}
+function jocsSetupPairsRound(){const pool=personatgePool(),n=Math.min(jocsPairsPerRound(),pool.length);for(let t=0;t<32;t++){const pick=jocsShuffle(pool).slice(0,n),sig=pick.map(p=>p.id).sort().join('|');if(sig!==pairsLastSig||t>24){pairsLastSig=sig;pairsRoundIds=pick.map(p=>p.id);return}}pairsRoundIds=jocsShuffle(pool).slice(0,n).map(p=>p.id)}
+function jocsPairIds(){if(!pairsRoundIds.length)jocsSetupPairsRound();return pairsRoundIds}
+function ensurePersonatges(cb){if(jocs.personatges)return cb();if(jocs.personatgesLoad){jocs.personatgesLoad.then(cb);return}jocs.personatgesLoad=fetch(PERSONATGES_URL).then(r=>r.json()).then(d=>{jocs.personatges=d;cb()}).catch(()=>{notify('NO PUC CARREGAR LES CARTES');cb()})}
+const jocs={count:{items:[],touched:new Set(),goal:0,picked:null},puzle:{order:[0,1,2,3],size:2,img:'pipa-portada.webp'},pocio:{data:null,load:null,sel:[],mixing:false,result:null},ombres:{data:null,load:null,lx:42,ly:52,found:new Set(),stars:0,missionIndex:0,phase:'searching',targetId:null,usedTargets:[],activeSecrets:[],distractorNotified:new Set(),starPop:false},personatges:null,personatgesLoad:null,diferencies:{data:null,load:null,sceneId:null,active:[],decoys:[],found:new Set(),stars:0,phase:'searching',starPop:false,lastMsg:''}}
 const POCIO_URL='data/pocio-reaccions.json';
 const JOCS_COMPTAR_POOL=[
  ['🌟','🌟','🌟'],
