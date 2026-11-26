@@ -112,8 +112,9 @@ function jocsOmbresScene(){
  const figs=list.map(ombresFigHtml).join('');
  const lightCore=`<div class="ombres-glow"></div><div class="ombres-sparkles">${[0,1,2,3,4].map(i=>`<span style="--mi:${i}"></span>`).join('')}</div>${ombresLupa(cfg)}`;
  const stage=`<div class="ombres-wall ${completed?'ombres-wall--festa':''}" data-ombres-wall style="--lx:${jocs.ombres.lx}%;--ly:${jocs.ombres.ly}%">${ombresBack(cfg)}<div class="ombres-screen">${figs}</div><div class="ombres-veil-base" aria-hidden="true"></div><div class="ombres-light-anchor" data-ombres-anchor aria-hidden="true">${lightCore}</div><div class="ombres-curtain ombres-curtain--l" aria-hidden="true"></div><div class="ombres-curtain ombres-curtain--r" aria-hidden="true"></div></div>`;
- const head=`<p class="ombres-subtitle">${strip(m.subtitle||'')}</p><div class="ombres-stars-wrap" aria-live="polite"><p class="ombres-stars-label">${strip(m.starsLabel||'')}</p><div class="ombres-stars">${ombresStarsHtml()}</div></div>${found||jocs.ombres.phase==='searching'?ombresTargetRow():''}`;
- const footMsg=completed?`<p class="ombres-foot-done">${strip(m.completedTitle||'')}</p><p class="ombres-foot-lead">${strip(m.completedMsg||'')}</p>`:found?`<p class="ombres-foot-hint">${strip(m.hint||'')}</p>`:`<p class="ombres-foot-lead">${strip(m.leadSearch||'')}</p><p class="ombres-foot-hint">${strip(m.hint||'')}</p>`;
+ const showGoal=!completed&&(found||jocs.ombres.phase==='searching');
+ const head=`<p class="ombres-head-hint">${strip(m.hint||'')}</p><div class="ombres-stars" aria-label="${strip(m.starsLabel||'Estrelles')}">${ombresStarsHtml()}</div>${showGoal?ombresTargetRow():''}`;
+ const footMsg=completed?`<p class="ombres-foot-done">${strip(m.completedTitle||'')}</p><p class="ombres-foot-lead">${strip(m.completedMsg||'')}</p>`:'';
  const foot=`<div class="ombres-head">${head}</div>${footMsg}`;
  let actions='';
  if(completed)actions=f2btn('↻ TORNAR A JUGAR','ombres-replay-session')+f2btn('✨ TORNAR A LA TORRE','end-jocs-ombres');
