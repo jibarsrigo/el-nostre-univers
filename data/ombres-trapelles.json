@@ -18,6 +18,16 @@
       "gat": "BUSCA EL GAT!",
       "drac": "BUSCA EL DRAC!",
       "nus": "BUSCA EN NUS!"
+    },
+    "foundLabels": {
+      "pipa": "HAS TROBAT NA PIPA!",
+      "troc": "HAS TROBAT EN TROC!",
+      "bruna": "HAS TROBAT NA BRUNA!",
+      "boira": "HAS TROBAT NA BOIRA!",
+      "conill": "HAS TROBAT EL CONILL!",
+      "gat": "HAS TROBAT EL GAT!",
+      "drac": "HAS TROBAT EL DRAC!",
+      "nus": "HAS TROBAT EN NUS!"
     }
   },
   "wall": "imagenes/jocs-ombres/jocs-ombres-paret.webp",

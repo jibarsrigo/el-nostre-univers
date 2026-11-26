@@ -17,13 +17,16 @@ function ombresMissions(){return ombresCfg().missions||{}}
 function ombresAllSecrets(){return ombresCfg().secrets||[]}
 function ombresSecrets(){return jocs.ombres.activeSecrets.length?jocs.ombres.activeSecrets:ombresAllSecrets()}
 function ombresObjective(id){return strip((ombresMissions().objectives||{})[id]||'BUSCA!')}
+function ombresFoundLabel(id){return strip((ombresMissions().foundLabels||{})[id]||ombresObjective(id).replace(/^BUSCA/,'HAS TROBAT'))}
+function ombresTargetText(id){return jocs.ombres.phase==='found'?ombresFoundLabel(id):ombresObjective(id)}
 function ombresMissionSize(){return OMBRES_MISSION_SIZES[jocs.ombres.missionIndex]||4}
 function ombresPositionsOk(list){for(let i=0;i<list.length;i++)for(let j=i+1;j<list.length;j++){const dx=list[i].x-list[j].x,dy=list[i].y-list[j].y;if(Math.hypot(dx,dy)<OMBRES_MIN_POS_DIST)return false}return true}
 function ombresShufflePositions(secrets){const pos=ombresAllSecrets().map(s=>({x:s.x,y:s.y}));for(let t=0;t<40;t++){const sh=jocsShuffle(pos),placed=secrets.map((s,i)=>({...s,x:sh[i].x,y:sh[i].y}));if(ombresPositionsOk(placed))return placed}return secrets.map((s,i)=>({...s,x:pos[i%pos.length].x,y:pos[i%pos.length].y}))}
 function ombresPickTarget(){const all=ombresAllSecrets().map(s=>s.id);let pool=all.filter(id=>!jocs.ombres.usedTargets.includes(id));if(!pool.length)pool=[...all];if(jocs.ombres.missionIndex===0&&!jocs.ombres.usedTargets.length&&ombresLastTargetId&&pool.length>1)pool=pool.filter(id=>id!==ombresLastTargetId);return pool[Math.floor(Math.random()*pool.length)]}
 function ombresStartMission(){const all=ombresAllSecrets(),n=ombresMissionSize(),targetId=ombresPickTarget();jocs.ombres.targetId=targetId;const others=jocsShuffle(all.filter(s=>s.id!==targetId)).slice(0,n-1),chosen=[all.find(s=>s.id===targetId),...others];jocs.ombres.activeSecrets=ombresShufflePositions(chosen);jocs.ombres.found=new Set();jocs.ombres.distractorNotified=new Set();jocs.ombres.phase='searching'}
 function ombresStarsHtml(){const n=jocs.ombres.stars,pop=jocs.ombres.starPop;return [0,1,2].map(i=>`<span class="ombres-star ${i<n?'ombres-star--on':''} ${i===n-1&&pop?'ombres-star--pop':''}" aria-hidden="true"><svg class="ombres-star-svg" viewBox="0 0 64 64"><path d="M32 5 39 25 61 27 45 42 51 63 32 52 13 63 19 42 3 27 25 25Z"/></svg></span>`).join('')}
-function ombresTargetRow(){const id=jocs.ombres.targetId,s=ombresAllSecrets().find(x=>x.id===id);if(!s||jocs.ombres.phase==='completed')return'';return `<div class="ombres-objective"><img class="ombres-objective-thumb" src="${strip(s.img)}" alt=""><p class="ombres-objective-text">${ombresObjective(id)}</p></div>`}
+function ombresTargetRow(){const id=jocs.ombres.targetId,s=ombresAllSecrets().find(x=>x.id===id);if(!s||jocs.ombres.phase==='completed')return'';const done=jocs.ombres.phase==='found';return `<div class="ombres-objective ${done?'ombres-objective--found':''}"><img class="ombres-objective-thumb" src="${strip(s.img)}" alt=""><p class="ombres-objective-text">${ombresTargetText(id)}</p></div>`}
+function ombresHeadHtml(){const m=ombresMissions();if(jocs.ombres.phase==='completed')return'';const showGoal=jocs.ombres.phase==='found'||jocs.ombres.phase==='searching';return `<div class="ombres-head"><div class="ombres-head-main">${showGoal?ombresTargetRow():''}<div class="ombres-stars" aria-label="${strip(m.starsLabel||'Estrelles')}">${ombresStarsHtml()}</div></div><p class="ombres-head-hint">${strip(m.hint||'')}</p></div>`}
 function ombresAdvanceMission(){jocs.ombres.usedTargets.push(jocs.ombres.targetId);if(jocs.ombres.stars>=3){jocs.ombres.phase='completed';return}jocs.ombres.missionIndex=Math.min(2,jocs.ombres.missionIndex+1);ombresStartMission();jocs.ombres.lx=42;jocs.ombres.ly=52}
 function ensureOmbres(cb){
  if(jocs.ombres.data)return cb();
@@ -99,28 +102,26 @@ function ombresFigHtml(s){const st=ombresLight(s);return `<figure data-ombres-id
 function ombresPaintFoot(){}
 function ombresPaintLight(){const wall=app.querySelector('[data-ombres-wall]');if(!wall)return;wall.style.setProperty('--lx',jocs.ombres.lx+'%');wall.style.setProperty('--ly',jocs.ombres.ly+'%');const w=wall.clientWidth,h=wall.clientHeight,anchor=wall.querySelector('[data-ombres-anchor]');if(anchor&&w&&h)anchor.style.transform=`translate3d(${jocs.ombres.lx/100*w}px,${jocs.ombres.ly/100*h}px,0)`;ombresSecrets().forEach(s=>{const el=wall.querySelector(`[data-ombres-id="${s.id}"]`);if(!el)return;const prev=el.getAttribute('data-ombres-st')||'dim',st=ombresLight(s,prev);if(st!==prev){el.className=`ombres-fig ombres-fig--${st} ombres-fig--sway`;el.setAttribute('data-ombres-st',st)}const cap=el.querySelector('figcaption');if(cap)cap.textContent=ombresFigCap(s,st)})}
 function ombresBack(cfg){const w=cfg.wall?`<img class="ombres-brick-art" src="${strip(cfg.wall)}" alt="" draggable="false">`:'';return `<div class="ombres-back">${OMBRES_BRICKS}${w}</div>`}
-function ombresTryFind(){if(jocs.ombres.phase!=='searching')return false;const list=ombresSecrets(),tid=jocs.ombres.targetId,m=ombresMissions();let hit=false;list.forEach(s=>{if(ombresDist(s)>s.r)return;if(s.id===tid){if(jocs.ombres.found.has(s.id))return;jocs.ombres.found.add(s.id);jocs.ombres.stars=Math.min(3,jocs.ombres.stars+1);jocs.ombres.starPop=true;jocs.ombres.phase=jocs.ombres.stars>=3?'completed':'found';notify(strip(m.foundTarget||"M'HAS TROBAT!"));notify(strip(m.starGain||'UNA ESTRELLA MÉS!'));hit=true}else{jocs.ombres.found.add(s.id);if(!jocs.ombres.distractorNotified.has(s.id)){jocs.ombres.distractorNotified.add(s.id);notify(strip(m.wrong||'UPS! NO SOM JO!'))}}});return hit}
+function ombresTryFind(){if(jocs.ombres.phase!=='searching')return false;const list=ombresSecrets(),tid=jocs.ombres.targetId;let hit=false;list.forEach(s=>{if(ombresDist(s)>s.r)return;if(s.id===tid){if(jocs.ombres.found.has(s.id))return;jocs.ombres.found.add(s.id);jocs.ombres.stars=Math.min(3,jocs.ombres.stars+1);jocs.ombres.starPop=true;jocs.ombres.phase='found';hit=true}else jocs.ombres.found.add(s.id)});return hit}
 function ombresReveal(){if(ombresTryFind())render();else ombresPaintLight()}
 function ombresMove(clientX,clientY){const wall=app.querySelector('[data-ombres-wall]');if(!wall)return;const r=wall.getBoundingClientRect();jocs.ombres.lx=Math.max(3,Math.min(97,(clientX-r.left)/r.width*100));jocs.ombres.ly=Math.max(3,Math.min(97,(clientY-r.top)/r.height*100));if(ombresTryFind()||jocs.ombres.phase!=='searching')render();else ombresPaintLight()}
 function ombresLupa(cfg){const src=cfg.lupa?`<img class="ombres-lupa-art" src="${strip(cfg.lupa)}" alt="" draggable="false">`:'';return `${src}<span class="ombres-lantern" aria-hidden="true"></span>`}
-function ombresF2Scene(stageHTML,footHTML,actions){return `<div class="f2-scene f2-scene--ombres" style="background:#07040f">${topbar(state.place)}<div class="f2-window f2-window--ombres"><h2 class="ombres-title">LES OMBRES TRAPELLES</h2><div class="f2-illustrated f2-illustrated--ombres">${stageHTML}</div><div class="f2-story f2-story--ombres">${footHTML}</div><div class="f2-actions f2-actions--ombres">${actions}</div></div></div>`}
+function ombresF2Scene(headHTML,stageHTML,footHTML,actions){return `<div class="f2-scene f2-scene--ombres" style="background:#07040f">${topbar(state.place)}<div class="f2-window f2-window--ombres"><h2 class="ombres-title">LES OMBRES TRAPELLES</h2>${headHTML}<div class="f2-illustrated f2-illustrated--ombres">${stageHTML}</div><div class="f2-story f2-story--ombres">${footHTML}</div><div class="f2-actions f2-actions--ombres">${actions}</div></div></div>`}
 function jocsOmbresScene(){
  const cfg=ombresCfg(),m=ombresMissions();
- if(!jocs.ombres.data){ensureOmbres(()=>{if(state.place==='jocsOmbres')render()});return ombresF2Scene('<p class="conte-wait">CARREGANT...</p>','',f2back())}
+ if(!jocs.ombres.data){ensureOmbres(()=>{if(state.place==='jocsOmbres')render()});return ombresF2Scene('','<p class="conte-wait">CARREGANT...</p>','',f2back())}
  if(!jocs.ombres.activeSecrets.length)ombresStartMission();
  const list=ombresSecrets(),completed=jocs.ombres.phase==='completed',found=jocs.ombres.phase==='found';
  const figs=list.map(ombresFigHtml).join('');
  const lightCore=`<div class="ombres-glow"></div><div class="ombres-sparkles">${[0,1,2,3,4].map(i=>`<span style="--mi:${i}"></span>`).join('')}</div>${ombresLupa(cfg)}`;
  const stage=`<div class="ombres-wall ${completed?'ombres-wall--festa':''}" data-ombres-wall style="--lx:${jocs.ombres.lx}%;--ly:${jocs.ombres.ly}%">${ombresBack(cfg)}<div class="ombres-screen">${figs}</div><div class="ombres-veil-base" aria-hidden="true"></div><div class="ombres-light-anchor" data-ombres-anchor aria-hidden="true">${lightCore}</div><div class="ombres-curtain ombres-curtain--l" aria-hidden="true"></div><div class="ombres-curtain ombres-curtain--r" aria-hidden="true"></div></div>`;
- const showGoal=!completed&&(found||jocs.ombres.phase==='searching');
- const head=`<p class="ombres-head-hint">${strip(m.hint||'')}</p><div class="ombres-stars" aria-label="${strip(m.starsLabel||'Estrelles')}">${ombresStarsHtml()}</div>${showGoal?ombresTargetRow():''}`;
  const footMsg=completed?`<p class="ombres-foot-done">${strip(m.completedTitle||'')}</p><p class="ombres-foot-lead">${strip(m.completedMsg||'')}</p>`:'';
- const foot=`<div class="ombres-head">${head}</div>${footMsg}`;
+ const head=ombresHeadHtml();
  let actions='';
  if(completed)actions=f2btn('↻ TORNAR A JUGAR','ombres-replay-session')+f2btn('✨ TORNAR A LA TORRE','end-jocs-ombres');
  else if(found&&jocs.ombres.stars<3)actions=f2btn('🔍 BUSCAR UN ALTRE','ombres-next-mission')+f2btn('↩ TORNAR A LA TORRE','end-jocs-ombres');
  else actions=f2btn('↩ TORNAR A LA TORRE','end-jocs-ombres');
- return ombresF2Scene(stage,foot,actions);
+ return ombresF2Scene(head,stage,footMsg,actions);
 }
 Object.assign(SCENES,{jocs:jocsMenuScene,jocsCount:jocsCountScene,jocsPuzle:jocsPuzleScene,jocsPocio:jocsPocioScene,jocsOmbres:jocsOmbresScene});
 const hotspotJocs=hotspot;
