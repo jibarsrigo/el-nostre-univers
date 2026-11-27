@@ -3,6 +3,13 @@
 const gaUi={cartaSlot:null,ready:false,err:false};
 const GA_STAR='<svg viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M32 2 37 22 52 12 42 27 62 32 42 37 52 52 37 42 32 62 27 42 12 52 22 37 2 32 22 27 12 12 27 22Z"/></svg>';
 
+function gaMissioVictoryHtml(subtitle){
+  const sub=strip(String(subtitle||'MOLT BÉ!').toUpperCase());
+  const star=`<span class="ga-missio-star f2-pairs-party-star" aria-hidden="true"><svg class="ombres-star-svg ombres-star--on" viewBox="0 0 64 64"><path d="M32 5 39 25 61 27 45 42 51 63 32 52 13 63 19 42 3 27 25 25Z"/></svg></span>`;
+  const btn=typeof ombresLevelBtn==='function'?ombresLevelBtn('TORNA A L\'AVENTURA','ga-return-hub','primary'):'';
+  return `<div class="ga-missio-victoria" role="region" aria-labelledby="ga-missio-title"><div class="ga-missio-victoria-card cartes-party-card cartes-party-card--gran-missio">${star}<p id="ga-missio-title" class="cartes-party-title">MISSIÓ FETA!</p><p class="cartes-party-sub">${sub}</p><div class="cartes-party-btns ombres-level-btns"><div class="ombres-level-btns-primary">${btn}</div></div></div></div>`;
+}
+
 function granAventuraUiEmissorMeta(id){
   if(typeof jocsPairMeta==='function'){const m=jocsPairMeta(id);if(m)return m}
   return{id,label:String(id||'').toUpperCase(),img:''}
