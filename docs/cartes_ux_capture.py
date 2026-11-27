@@ -82,14 +82,28 @@ def main():
             }}"""
             )
             page.wait_for_selector("[data-card]")
-            page.locator(".f2-pairs-board").screenshot(
-                path=str(OUT / f"cartes-n{lv + 1}-tauler.png")
+            page.locator(".f2-window").screenshot(
+                path=str(OUT / f"cartes-n{lv + 1}-partida-completa.png")
             )
             win_all_pairs(page)
             page.wait_for_selector(".f2-pairs-party")
-            page.locator(".f2-pairs-party").screenshot(
-                path=str(OUT / f"cartes-n{lv + 1}-celebracio.png")
+            party = page.locator(".f2-pairs-party")
+            win = page.locator(".f2-window")
+            win.screenshot(
+                path=str(OUT / f"cartes-n{lv + 1}-celebracio-completa.png")
             )
+            overflow = win.evaluate(
+                """(el) => {
+              const inner = el.scrollHeight - el.clientHeight;
+              const scene = el.closest('.f2-scene');
+              const outer = scene ? scene.scrollHeight - scene.clientHeight : 0;
+              return Math.max(inner, outer);
+            }"""
+            )
+            if overflow > 48:
+                raise AssertionError(
+                    f"level {lv + 1}: desbordament celebració {overflow}px"
+                )
             html = page.content()
             if "VOLS PROVAR" in html:
                 raise AssertionError(f"level {lv+1}: redundant prompt")
