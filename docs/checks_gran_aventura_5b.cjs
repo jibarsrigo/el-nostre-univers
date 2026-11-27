@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('fs'),assert=require('assert'),path=require('path');
+const root=path.resolve(__dirname,'..');
+const dies=JSON.parse(fs.readFileSync(path.join(root,'data/gran-aventura-dies-v1.json'),'utf8'));
+const d1=dies.aventures.find(a=>a.id==='ga-dia-001');
+assert(d1,'ga-dia-001');
+assert.equal(d1.slots.length,3);
+const em=new Set(d1.slots.map(s=>s.emissorId));
+assert(em.has('pipa')&&em.has('bruna')&&em.has('troc'),'emissors dia 1');
+assert(d1.slots.every(s=>String(s.cartaText||'').trim()),'cartaText dia 1');
+const prep=(av)=>av.slots.every(s=>String(s.cartaText||'').trim());
+assert(!dies.aventures.filter(a=>a.id!=='ga-dia-001').some(prep),'dies 2–7 encara sense cartes');
+console.log('OK: gran-aventura 5b — dia 1 preparat, resta bloquejada.');

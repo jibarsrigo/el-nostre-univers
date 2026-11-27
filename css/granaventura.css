@@ -1,0 +1,29 @@
+/* LA GRAN AVENTURA — hub (etapa 5b) */
+.f2-scene.f2-gran-aventura .f2-illustrated{background:radial-gradient(ellipse at 50% 28%,#5f4088,#1e1335 78%)}
+.ga-hub{width:min(920px,100%);padding:8px 10px 14px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.ga-sobres{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(10px,3vw,22px);width:100%}
+.ga-sobre{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:clamp(150px,26vw,210px);padding:10px;border:3px solid #c9a35e;border-radius:22px;background:linear-gradient(165deg,#4a326c,#2a1d45);box-shadow:0 6px 0 #1a0f2c;color:#ffe9c4;cursor:pointer;font:inherit;text-align:center}
+.ga-sobre:disabled{opacity:.45;cursor:default}
+.ga-sobre:not(:disabled):hover{filter:brightness(1.06)}
+.ga-sobre-env{display:grid;place-items:center;width:min(120px,44vw);aspect-ratio:1.15;border-radius:16px;background:linear-gradient(145deg,#ffe9b8,#d7a866);border:3px solid #fff3d0;box-shadow:inset 0 -8px 0 #b07b44;position:relative}
+.ga-sobre-env img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 4px 6px #0006)}
+.ga-sobre-star{position:absolute;top:-12px;right:-10px;width:38px;height:38px;color:#ffd86a;filter:drop-shadow(0 0 8px #ffd86a99)}
+.ga-sobre-star svg{width:100%;height:100%}
+.ga-sobre-star.off{opacity:.25;color:#8a7aa0;filter:none}
+.ga-sobre strong{font-size:clamp(14px,1.9vw,19px);letter-spacing:.06em}
+.ga-sobre small{font-size:clamp(11px,1.4vw,15px);font-weight:800;color:#e8d2ff;opacity:.9}
+.ga-festa{width:min(780px,100%);display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px}
+.ga-festa-hero{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.ga-festa-hero figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:4px}
+.ga-festa-hero img{width:clamp(72px,14vw,108px);height:clamp(72px,14vw,108px);object-fit:contain;filter:drop-shadow(0 6px 8px #0007)}
+.ga-festa-hero figcaption{font-size:clamp(11px,1.5vw,14px);font-weight:900;color:#ffe7b8}
+.ga-festa-stars{display:flex;gap:8px}
+.ga-festa-stars .ga-sobre-star{position:static;width:42px;height:42px}
+.ga-carta-mask{position:fixed;inset:0;z-index:30;background:#0a0614c7;display:flex;align-items:center;justify-content:center;padding:70px 12px 20px}
+.ga-carta{width:min(560px,96%);border:4px solid #e6bb7d;border-radius:26px;background:linear-gradient(155deg,#fff5dc,#f3d39a);color:#3d2547;padding:16px 18px 20px;box-shadow:0 18px 50px #000a;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.ga-carta-portrait{width:clamp(110px,24vw,150px);height:clamp(110px,24vw,150px);object-fit:contain;filter:drop-shadow(0 6px 10px #0005)}
+.ga-carta-nom{font-size:clamp(20px,3vw,30px);font-weight:900;letter-spacing:.12em;color:#5c2f55;margin:0}
+.ga-carta-text{font-size:clamp(17px,2.3vw,24px);font-weight:900;line-height:1.28;margin:0;white-space:pre-line;color:#2f1c3a}
+.ga-carta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;width:100%}
+.ga-wait{font-weight:900;color:#ffe9c4;padding:20px}
+.f2-btn.f2-btn--ga-map{border-color:#b8e6ff;color:#1d2a42;background:linear-gradient(#e8f7ff,#b8daf2)}

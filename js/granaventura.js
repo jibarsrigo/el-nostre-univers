@@ -51,11 +51,18 @@ function granAventuraAventuraEstat(clau){
   const bloc=granAventuraBloc();
   return bloc.aventures[clau]||{estat:'pendent',slots:[false,false,false],completadaAt:0,recompensaClaimed:false}
 }
+function granAventuraDiaPreparat(av){
+  if(!av||!Array.isArray(av.slots)||av.slots.length<3)return false;
+  return av.slots.every(s=>String(s.cartaText||'').trim().length>0)
+}
 function granAventuraProperaAventuraId(){
   const bloc=granAventuraBloc();
   const dies=granAventuraDies();
-  for(const av of dies){const clau=granAventuraClau(av.id,bloc.lap);const e=granAventuraAventuraEstat(clau);if(e.estat!=='completada')return av.id}
-  return dies[0]?.id||null
+  for(const av of dies){
+    if(!granAventuraDiaPreparat(av))continue;
+    const clau=granAventuraClau(av.id,bloc.lap);const e=granAventuraAventuraEstat(clau);if(e.estat!=='completada')return av.id
+  }
+  return null
 }
 function granAventuraTotesCompletadesLap(lap,blocOpt){
   const dies=granAventuraDies();
