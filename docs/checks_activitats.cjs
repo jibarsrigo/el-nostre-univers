@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, '..');
 const reg = JSON.parse(fs.readFileSync(path.join(root, 'data/activitats.json'), 'utf8'));
 const personatges = JSON.parse(fs.readFileSync(path.join(root, 'data/personatges.json'), 'utf8'));
 const fase2 = fs.readFileSync(path.join(root, 'js/fase2.js'), 'utf8');
+const jocs = fs.readFileSync(path.join(root, 'js/jocs.js'), 'utf8');
 
 const SALA_TO_PLACE = {
   torre: 'tower',
@@ -69,10 +70,21 @@ for (const a of activitats) {
     `${a.id} hotspot d'entrada inexistent`
   );
 
-  assert.equal(a.nivells.font, 'personatges', `${a.id} nivells.font`);
-  assert.ok(Array.isArray(a.nivells.claus) && a.nivells.claus.length, `${a.id} nivells.claus`);
-  for (const clau of a.nivells.claus) {
-    assert.ok(nivellIds.has(clau), `${a.id} nivell inexistent a personatges.json: ${clau}`);
+  if (a.nivells.font === 'personatges') {
+    assert.ok(Array.isArray(a.nivells.claus) && a.nivells.claus.length, `${a.id} nivells.claus`);
+    for (const clau of a.nivells.claus) {
+      assert.ok(nivellIds.has(clau), `${a.id} nivell inexistent a personatges.json: ${clau}`);
+    }
+  } else if (a.nivells.font === 'ombres') {
+    assert.equal(a.nivells.cerquesPerPartida, 3, `${a.id}: tres cerques objectiu, no nivells Cartes`);
+    assert.deepEqual(
+      a.nivells.midesSiluetes,
+      [4, 5, 6],
+      `${a.id} midesSiluetes`
+    );
+    assert.ok(!a.nivells.claus, `${a.id} ombres sense claus personatges`);
+  } else {
+    assert.fail(`${a.id} nivells.font desconegut: ${a.nivells.font}`);
   }
 
   const dest = PLACES_FROM_HOTSPOT[ent.hotspotId] || null;
@@ -94,7 +106,17 @@ assert.ok(cartes, 'pilot cartes obligatori');
 assert.equal(cartes.legacyRecordKey, 'pairs');
 assert.equal(cartes.granAventura.candidataMissio, true);
 assert.equal(cartes.granAventura.validadaMissio, false);
-assert.equal(activitats.length, 1, 'etapa 2 PR A: només pilot cartes');
+const ombres = activitats.find(a => a.id === 'ombres');
+assert.ok(ombres, 'ombres declaratiu obligatori');
+assert.equal(ombres.familia, 'exploracio');
+assert.equal(ombres.legacyRecordKey, 'jocs-ombres');
+assert.equal(ombres.ubicacio.hotspot, 'lupa');
+assert.equal(ombres.entrada.hotspotId, 'lupa');
+assert.equal(ombres.finalitzacio.condicio, 'tercera_ombra_objectiu');
+assert.equal(ombres.nivells.font, 'ombres');
+assert.match(jocs, /jocsOmbres:/, 'ombres: escena jocsOmbres');
+assert.match(jocs, /jocs-lupa-ombres/, 'ombres: entrada menú Lupa');
+assert.equal(activitats.length, 2, 'etapa 2: cartes + ombres (declaratiu)');
 assert.deepEqual(cartes.nivells.claus.sort(), [...nivellIds].sort(), 'cartes claus = personatges.nivells');
 assert.equal(cartes.nivells.claus.length, 4, 'cartes: quatre nivells');
 
