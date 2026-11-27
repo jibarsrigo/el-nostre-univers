@@ -55,5 +55,58 @@ module.exports=function activitatsRuntimeTests(ctx){
   run('setupPairs()');
   completePairs();
   assert.equal(run('state.unlocked.pairs'),true,'localStorage ple en sessions');
-  console.log('OK: activitats runtime — contracte Cartes.');
+  ctx.localStorage.setItem=bloquejat;
+
+  const ombresJSON=JSON.parse(fs.readFileSync('data/ombres-trapelles.json','utf8'));
+  run(`jocs.ombres.data=${JSON.stringify(ombresJSON)}`);
+  run(`activitatsReg.data=${JSON.stringify(JSON.parse(fs.readFileSync('data/activitats.json','utf8')))};activitatsReg.ready=true;activitatsReg.failed=false`);
+  function ombresFind(){const tid=run('jocs.ombres.targetId'),ts=run('jocs.ombres.activeSecrets').find(s=>s.id===tid);run(`jocs.ombres.lx=${ts.x};jocs.ombres.ly=${ts.y};ombresTryFind(true)`);run('render()')}
+  function ombresTreCerques(){for(let i=0;i<3;i++){ombresFind();assert.equal(run('jocs.ombres.stars'),i+1);if(i<2){run('ombresClearAuto();action("ombres-next-mission");render()');run(`action('ombres-begin-search');render()`)}}
+    assert.equal(run('jocs.ombres.stars'),3);
+    assert(run('jocs.ombres.levelVictoryRecorded'),'registre al 3r encert');
+  }
+  const o0=(sessions().ombres?.completedSessionIds||[]).length;
+  run('resetOmbres();go("jocsOmbres");render()');
+  run(`action('ombres-begin-search');render()`);
+  const sid0=run('jocs.ombres.sessionId');
+  assert.ok(sid0,'sessionId nivell');
+  run('ombresStartLevel(0);render()');
+  assert.notEqual(run('jocs.ombres.sessionId'),sid0,'nova partida de nivell nou sessionId');
+  run('ombresStartLevel(1);render()');
+  assert.notEqual(run('jocs.ombres.sessionId'),sid0,'canvi de nivell nou sessionId');
+  run('resetOmbres();ombresStartLevel(0);render()');
+  const sid1=run('jocs.ombres.sessionId');
+  run(`action('ombres-begin-search');render()`);
+  ombresTreCerques();
+  assert.equal((sessions().ombres?.completedSessionIds||[]).length,o0+1,'nivell 1 registrat');
+  assert.equal(run(`activitatCompleta('ombres',{sessionId:'${sid1}',nivell:0})`),false,'dedupe mateixa sessió');
+  assert.equal(run('state.unlocked["jocs-ombres"]'),undefined,'nivell 1 sense recompensa torre');
+  run('ombresClearAuto();action("ombres-finish-level");render()');
+  assert(run('jocs.ombres.phase')==='levelDone','celebració separada del registre');
+  run('resetOmbres();ombresStartLevel(0);render()');
+  run(`action('ombres-begin-search');render()`);
+  ombresFind();
+  run(`action('end-jocs-ombres');nav('tower')`);
+  assert.equal((sessions().ombres?.completedSessionIds||[]).length,o0+1,'abandonament sense victòria');
+  run('resetOmbres();ombresStartLevel(0);render()');
+  run(`action('ombres-begin-search');render()`);
+  const sidExit=run('jocs.ombres.sessionId');
+  ombresTreCerques();
+  assert.equal((sessions().ombres?.completedSessionIds||[]).length,o0+2,'sortida després 3r encert conserva');
+  run(`action('end-jocs-ombres');nav('tower')`);
+  assert.equal((sessions().ombres?.completedSessionIds||[]).length,o0+2,'end-jocs sense duplicar');
+  const sidReplay=run('jocs.ombres.sessionId');
+  run('resetOmbres();ombresStartLevel(0);render()');
+  assert.notEqual(run('jocs.ombres.sessionId'),sidReplay,'replay nou sessionId');
+  run('resetOmbres();ombresStartLevel(3);render()');
+  run(`action('ombres-begin-search');render()`);
+  ombresTreCerques();
+  assert.equal(run('state.unlocked["jocs-ombres"]'),true,'recompensa permanent nivell 4');
+  run('resetOmbres();ombresStartLevel(3);render()');
+  run(`action('ombres-begin-search');render()`);
+  ombresTreCerques();
+  run('action("ombres-nova-aventura");render()');
+  assert.equal(run('state.unlocked["jocs-ombres"]'),true,'NOVA AVENTURA no esborra recompensa');
+
+  console.log('OK: activitats runtime — contracte Cartes + Ombres.');
 };

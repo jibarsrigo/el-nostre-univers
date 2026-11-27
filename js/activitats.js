@@ -43,6 +43,11 @@ function activitatsLegacyKey(id){
   return null;
 }
 
+function activitatsRecordLegacy(id,detail){
+  if(id==='ombres')return Number(detail?.nivell)===3;
+  return true;
+}
+
 function activitatCompleta(id,detail){
   const sessionId=detail?.sessionId;
   if(!sessionId||!id)return false;
@@ -63,7 +68,7 @@ function activitatCompleta(id,detail){
   }
 
   const legacy=activitatsLegacyKey(id);
-  if(legacy&&typeof remember==='function')remember(legacy);
+  if(legacy&&typeof remember==='function'&&activitatsRecordLegacy(id,detail))remember(legacy);
   return true;
 }
 
