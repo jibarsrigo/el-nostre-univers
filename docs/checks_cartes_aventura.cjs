@@ -11,6 +11,7 @@ const fetchMock=u=>{const s=String(u);return Promise.resolve({json:()=>Promise.r
 ctx.fetch=fetchMock;
 run(fs.readFileSync('js/app.js','utf8'));
 run(fs.readFileSync('js/activitats.js','utf8'));
+run(fs.readFileSync('js/progres.js','utf8'));
 run(fs.readFileSync('js/fase2.js','utf8'));
 run(fs.readFileSync('js/jocs.js','utf8'));
 run(`jocs.personatges=${JSON.stringify(personatgesJSON)}`);
