@@ -51,7 +51,7 @@ const FIREFLY={
 map:{library:[431,405],tower:[989,333],workshop:[1450,477],secret:[1254,712],bridge:[940,614]},
 library:{book:[790,760],chest:[1325,575],window:[1430,265],cards:[1330,760],owl:[129,128],ladder:[360,380],monster:[420,790],rabbit:[215,820]},
 tower:{telescope:[592,337],orb:[745,505],chest:[1190,395],map:[1005,215],'small-door':[1470,605],stairs:[1440,170],owl:[694,170],nest:[500,200],lupa:[850,655],pairs:[972,610],words:[100,360]},
-workshop:{creature:[845,470],colors:[80,750],stars:[1045,48],chest:[1505,505],window:[55,75],search:[1270,350]}
+workshop:{creature:[870,620],colors:[345,785],stars:[1112,130],chest:[1510,535],window:[204,184],search:[1357,380]}
 };
 const SOUND_ICON='<svg viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 26h10l12-10v32L22 38H12z"/><path class="wave" d="M40 24a12 12 0 0 1 0 16M48 16a22 22 0 0 1 0 32" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>';
 const FULL_ICON='<svg class="ico-enter" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 24V12h12M52 24V12H40M12 40v12h12M52 40v12H40" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ico-exit" viewBox="0 0 64 64" aria-hidden="true"><path d="M24 12v12H12M40 12v12h12M24 52V40H12M40 52V40h12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
