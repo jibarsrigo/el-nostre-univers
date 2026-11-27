@@ -186,6 +186,17 @@
           ]
         }
       ]
+    },
+    {
+      "id": "torre",
+      "label": "L'observatori",
+      "base": "imagenes/jocs-diferencies/jocs-diferencies-torre-base.webp",
+      "completedTitle": "CINC A L'OBSERVATORI!",
+      "completedMsg": "HAS TROBAT TOTS ELS DETALLS DE LA TORRE!",
+      "perRound": 5,
+      "perRoundDecoys": 1,
+      "minSpotDist": 11,
+      "diffs": []
     }
   ]
 }

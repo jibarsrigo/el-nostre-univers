@@ -104,7 +104,8 @@ function jocsPuzleTap(i){if(jocs.puzle.order.every((v,idx)=>v===idx))return;if(j
 function resetOmbres(){ombresClearAuto();const {data,load}=jocs.ombres;if(jocs.ombres.targetId)ombresLastTargetId=jocs.ombres.targetId;jocs.ombres={data,load,lx:42,ly:52,found:new Set(),stars:0,missionIndex:0,phase:'searching',targetId:null,usedTargets:[],activeSecrets:[],distractorNotified:new Set(),starPop:false};if(data)ombresStartMission()}
 function difCfg(){return jocs.diferencies.data||{}}
 function difScenes(){const c=difCfg();if(Array.isArray(c.scenes)&&c.scenes.length)return c.scenes;if(c.scene)return [{id:'biblioteca',label:'La biblioteca',...c.scene}];return[]}
-function difPickSceneId(){const scenes=difScenes();if(!scenes.length)return null;if(scenes.length===1)return scenes[0].id;let pool=scenes.map(s=>s.id);if(difLastSceneId&&pool.length>1)pool=pool.filter(id=>id!==difLastSceneId);const id=pool[Math.floor(Math.random()*pool.length)];difLastSceneId=id;return id}
+function difScenePlayable(s){const n=s?.perRound??difCfg().perRound??5;return Array.isArray(s?.diffs)&&s.diffs.length>=n}
+function difPickSceneId(){const scenes=difScenes().filter(difScenePlayable);if(!scenes.length)return null;if(scenes.length===1)return scenes[0].id;let pool=scenes.map(s=>s.id);if(difLastSceneId&&pool.length>1)pool=pool.filter(id=>id!==difLastSceneId);const id=pool[Math.floor(Math.random()*pool.length)];difLastSceneId=id;return id}
 function difScene(){const scenes=difScenes(),id=jocs.diferencies.sceneId||scenes[0]?.id;return scenes.find(s=>s.id===id)||scenes[0]||null}
 function difAll(){return difScene()?.diffs||[]}
 function difSpots(d){return d?.spots?.length?d.spots:(d?.x!=null?[{x:d.x,y:d.y,w:d.w,r:d.r||8}]:[])}
