@@ -122,7 +122,7 @@ function granAventuraHubScene(){
   const completada=st.slots.every(Boolean);
   const body=completada?granAventuraUiFestaHtml(av,slots):`<div class="ga-hub"><p class="ga-carta-nom" style="margin:0">${strip(av.titol||'AVENTURA')}</p><div class="ga-sobres">${slots.map((s,i)=>granAventuraUiSobreHtml(av,s,i,st.slots[i])).join('')}</div><p class="ga-carta-text" style="font-size:clamp(14px,1.8vw,18px)">OBRE CADA SOBRE QUAN VULGUIS. L'ORDRE ÉS LLIURE!</p></div>`;
   const carta=(!completada&&gaUi.cartaSlot)?granAventuraUiCartaHtml(av,gaUi.cartaSlot):'';
-  const cap=completada?'<p>UNA ESTRELA DAURADA PER CADA MISSIÓ!</p>':'<p>TRES AMICS T'ESPEREN!</p>';
+  const cap=completada?'<p>UNA ESTRELA DAURADA PER CADA MISSIÓ!</p>':"<p>TRES AMICS T'ESPEREN!</p>";
   const explora=`<button type="button" class="f2-btn f2-btn--ga-map" data-action="map-go">🗺️ EXPLORA LLIUREMENT</button>`;
   return f2Scene('LA GRAN AVENTURA',body+carta,`${cap}<small>EXPLORA EL MAPA QUAN VULGUIS.</small>`,explora+f2back(),'mapa','f2-gran-aventura');
 }
