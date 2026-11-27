@@ -49,7 +49,7 @@ function back(){nav(state.history.pop()||'map')}
 function topbar(place){return `<div class="topbar"><div>${place!=='map'&&place!=='welcome'?`<button class="pill icon" data-action="back" aria-label="Tornar enrere">← TORNAR</button>`:''}<button class="pill" data-action="home">⌂ INICI</button></div><div><button class="pill icon" data-action="help" aria-label="Com es juga?">?</button><button class="pill icon" data-action="fullscreen" aria-label="Pantalla completa">${document.fullscreenElement?'⤢':'⛶'}</button></div></div>`}
 const FIREFLY={
 map:{library:[431,405],tower:[989,333],workshop:[1450,477],secret:[1254,712],bridge:[940,614]},
-library:{book:[980,730],chest:[1348,530],window:[1210,80],cards:[1148,760],owl:[175,55],ladder:[235,240],monster:[470,740],rabbit:[40,850]},
+library:{book:[790,760],chest:[1325,575],window:[1430,265],cards:[1330,760],owl:[129,128],ladder:[360,380],monster:[420,790],rabbit:[215,820]},
 tower:{telescope:[592,337],orb:[745,505],chest:[1190,395],map:[1005,215],'small-door':[1470,605],stairs:[1440,170],owl:[694,170],nest:[500,200],lupa:[850,655],pairs:[972,610],words:[100,360]},
 workshop:{creature:[845,470],colors:[80,750],stars:[1045,48],chest:[1505,505],window:[55,75],search:[1270,350]}
 };
