@@ -78,6 +78,8 @@ for (const a of activitats) {
   } else if (a.nivells.font === 'ombres') {
     assert.equal(a.nivells.comptador, 4, `${a.id}: quatre nivells de dificultat`);
     assert.equal(a.nivells.cerquesPerNivell, 3, `${a.id}: tres cerques per nivell`);
+    assert.equal(a.finalitzacio.ambit, 'nivell', `${a.id} finalitzacio.ambit`);
+    assert.equal(a.recompensaAventuraCompleta?.legacyRecordKey, 'jocs-ombres', `${a.id} recompensa torre`);
     assert.deepEqual(
       a.nivells.midesSiluetesPerNivell,
       [[4, 5, 6], [5, 6, 7], [6, 7, 8], [8, 9, 10]],

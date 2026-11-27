@@ -67,7 +67,12 @@
       "finalitzacio": {
         "tipus": "condicio",
         "condicio": "tercera_ombra_objectiu",
-        "puntUnic": "darrera_cerca_resolta"
+        "puntUnic": "darrera_cerca_resolta",
+        "ambit": "nivell"
+      },
+      "recompensaAventuraCompleta": {
+        "condicio": "nivell_4_completat",
+        "legacyRecordKey": "jocs-ombres"
       },
       "granAventura": {
         "candidataMissio": true,
