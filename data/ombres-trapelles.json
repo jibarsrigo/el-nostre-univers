@@ -19,7 +19,14 @@
       "conill": "BUSCA EL CONILL!",
       "gat": "BUSCA EL GAT!",
       "drac": "BUSCA EL DRAC!",
-      "nus": "BUSCA EN NUS!"
+      "nus": "BUSCA EN NUS!",
+      "nacar": "BUSCA NA NÀCAR!",
+      "moix": "BUSCA EL MOIX!",
+      "monstret": "BUSCA EL MONSTRET!",
+      "buho": "BUSCA EL MUSSOL!",
+      "cervol": "BUSCA EL CÉRVOL!",
+      "guineu": "BUSCA EN ROSSET!",
+      "bosc": "BUSCA LA LAIA!"
     },
     "foundLabels": {
       "pipa": "HAS TROBAT NA PIPA!",
@@ -29,7 +36,14 @@
       "conill": "HAS TROBAT EL CONILL!",
       "gat": "HAS TROBAT EL GAT!",
       "drac": "HAS TROBAT EL DRAC!",
-      "nus": "HAS TROBAT EN NUS!"
+      "nus": "HAS TROBAT EN NUS!",
+      "nacar": "HAS TROBAT NA NÀCAR!",
+      "moix": "HAS TROBAT EL MOIX!",
+      "monstret": "HAS TROBAT EL MONSTRET!",
+      "buho": "HAS TROBAT EL MUSSOL!",
+      "cervol": "HAS TROBAT EL CÉRVOL!",
+      "guineu": "HAS TROBAT EN ROSSET!",
+      "bosc": "HAS TROBAT LA LAIA!"
     },
     "nextBtn": "BUSCA EL SEGÜENT!",
     "finishBtn": "✨ CONTINUA"
@@ -40,8 +54,8 @@
     {
       "id": "pipa",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-PIP.webp",
-      "x": 14,
-      "y": 22,
+      "x": 12,
+      "y": 20,
       "r": 14,
       "sway": 3.4,
       "peek": "XIP-XAP...",
@@ -52,8 +66,8 @@
     {
       "id": "troc",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-TROC.webp",
-      "x": 36,
-      "y": 30,
+      "x": 31,
+      "y": 17,
       "r": 14,
       "sway": 4.1,
       "peek": "UN CAP PELUT...",
@@ -64,8 +78,8 @@
     {
       "id": "bruna",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-BRUNA.webp",
-      "x": 58,
-      "y": 24,
+      "x": 50,
+      "y": 17,
       "r": 14,
       "sway": 3.8,
       "peek": "QUINA OLOR...",
@@ -76,8 +90,8 @@
     {
       "id": "boira",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-BOIRA.webp",
-      "x": 82,
-      "y": 20,
+      "x": 69,
+      "y": 19,
       "r": 13,
       "sway": 4.5,
       "peek": "ALES I NÚVOLS...",
@@ -86,10 +100,82 @@
       "color": "imagenes/personatges/personatge-boira.webp"
     },
     {
+      "id": "nacar",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-NACAR.webp",
+      "x": 87,
+      "y": 21,
+      "r": 13,
+      "sway": 3.6,
+      "peek": "QUINA FORMETA...",
+      "reveal": "QUIN GUST!",
+      "name": "NA NÀCAR",
+      "color": "imagenes/personatges/personatge-nacar.webp"
+    },
+    {
+      "id": "moix",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-MOIX.webp",
+      "x": 14,
+      "y": 43,
+      "r": 13,
+      "sway": 3.3,
+      "peek": "BIGOTES FINES...",
+      "reveal": "MIAU!",
+      "name": "EL MOIX",
+      "color": "imagenes/personatges/personatge-moix.webp"
+    },
+    {
+      "id": "monstret",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-MONSTRET.webp",
+      "x": 37,
+      "y": 41,
+      "r": 13,
+      "sway": 4.4,
+      "peek": "QUI RONDA...",
+      "reveal": "BRRR!",
+      "name": "EL MONSTRET",
+      "color": "imagenes/personatges/personatge-monstret.webp"
+    },
+    {
+      "id": "bosc",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-LAIA.webp",
+      "x": 61,
+      "y": 43,
+      "r": 14,
+      "sway": 3.7,
+      "peek": "UNA NENA...",
+      "reveal": "HOLA!",
+      "name": "LA LAIA",
+      "color": "imagenes/personatges/personatge-bosc.webp"
+    },
+    {
+      "id": "guineu",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-GUINEU.webp",
+      "x": 84,
+      "y": 41,
+      "r": 13,
+      "sway": 4,
+      "peek": "UNA CUA ROJA...",
+      "reveal": "AU!",
+      "name": "EN ROSSET",
+      "color": "imagenes/personatges/personatge-guineu.webp"
+    },
+    {
+      "id": "nus",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-NUS.webp",
+      "x": 46,
+      "y": 60,
+      "r": 15,
+      "sway": 4.6,
+      "peek": "QUANTS BRAÇOS?",
+      "reveal": "SIS BRAÇOS!",
+      "name": "EN NUS",
+      "color": "imagenes/personatges/personatge-nus.webp"
+    },
+    {
       "id": "conill",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-CONILL.webp",
-      "x": 18,
-      "y": 68,
+      "x": 11,
+      "y": 69,
       "r": 14,
       "sway": 4.2,
       "peek": "ORELLES LLARGUES...",
@@ -100,8 +186,8 @@
     {
       "id": "gat",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-GAT.webp",
-      "x": 46,
-      "y": 74,
+      "x": 33,
+      "y": 75,
       "r": 13,
       "sway": 3.2,
       "peek": "UNA CUA...",
@@ -110,10 +196,22 @@
       "color": "imagenes/personatges/personatge-gat.webp"
     },
     {
+      "id": "cervol",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-CERVOL.webp",
+      "x": 55,
+      "y": 73,
+      "r": 14,
+      "sway": 4.3,
+      "peek": "BOQUES LLARGUES...",
+      "reveal": "BENVINGUT!",
+      "name": "EL CÉRVOL",
+      "color": "imagenes/personatges/personatge-cervol.webp"
+    },
+    {
       "id": "drac",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-DRAC.webp",
-      "x": 76,
-      "y": 56,
+      "x": 77,
+      "y": 75,
       "r": 13,
       "sway": 5,
       "peek": "UNA PANXA...",
@@ -122,16 +220,16 @@
       "color": "imagenes/personatges/personatge-drac-mapa.webp"
     },
     {
-      "id": "nus",
-      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-NUS.webp",
-      "x": 52,
-      "y": 44,
-      "r": 15,
-      "sway": 4.6,
-      "peek": "QUANTS BRAÇOS?",
-      "reveal": "SIS BRAÇOS!",
-      "name": "EN NUS",
-      "color": "imagenes/personatges/personatge-nus.webp"
+      "id": "buho",
+      "img": "imagenes/jocs-ombres/jocs-ombres-silueta-BUHO.webp",
+      "x": 88,
+      "y": 62,
+      "r": 13,
+      "sway": 3.9,
+      "peek": "GUUA...",
+      "reveal": "HU, HU!",
+      "name": "EL MUSSOL",
+      "color": "imagenes/personatges/personatge-buho.webp"
     }
   ]
 }
