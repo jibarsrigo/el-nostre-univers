@@ -34,6 +34,7 @@ module.exports=function activitatsRuntimeTests(ctx){
   run('setupPairs()');
   completePairs();
   assert.equal((sessions().cartes?.completedSessionIds||[]).length,n1+1,'segona partida');
+  run('f2.cartesAventura.levelUnlocked=1;f2.cartesAventura.levelsCompleted.push(0)');
   run('setupPairs()');
   const antes=run('f2.sessionId');
   run(`action('pairs-level-1')`);
