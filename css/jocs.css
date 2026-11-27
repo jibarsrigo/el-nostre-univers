@@ -32,7 +32,22 @@
 .f2-pairs-stars{display:flex;justify-content:center;gap:6px}
 .f2-pairs-star svg{width:clamp(22px,3.4vmin,30px);height:clamp(22px,3.4vmin,30px);fill:#3a2456;stroke:#e8c860;stroke-width:2.5}
 .f2-pairs-star.on svg{fill:#ffd86a;stroke:#fff2b8;filter:drop-shadow(0 0 6px #ffd86a)}
-.f2-pairs-party{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(3px,0.9vh,8px);padding:clamp(6px,1.2vw,12px);overflow:hidden;background:radial-gradient(ellipse at 50% 35%,rgba(70,40,110,.96),rgba(20,10,36,.97) 75%);animation:f2-party-in .5s ease .9s both}
+.f2-pairs-party{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.8vw,16px);overflow:hidden;background:linear-gradient(rgba(10,5,20,.55),rgba(8,4,16,.78));animation:f2-party-in .5s ease .9s both}
+.f2-pairs--won .f2-pairs-levels{display:none}
+.f2-pairs--won .f2-actions:empty{display:none;margin:0;padding:0}
+.cartes-party-card{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2.4vh,18px);width:min(94%,600px);max-height:100%;padding:clamp(16px,3vw,26px) clamp(12px,2.4vw,22px);border-radius:18px;border:3px solid #ffe4a8;background:radial-gradient(ellipse at 50% 22%,#3a2456,#140a24 78%);box-shadow:0 0 36px rgba(255,220,130,.32),0 10px 32px rgba(0,0,0,.55);text-align:center;overflow:hidden}
+.cartes-party-title,.cartes-party-headline{margin:0;font-size:clamp(20px,3.2vw,30px);font-weight:900;color:#ffe4a8;line-height:1.12;text-shadow:0 2px 14px rgba(0,0,0,.65)}
+.cartes-party-headline{font-size:clamp(22px,3.5vw,34px);max-width:16ch}
+.cartes-party-sub{margin:0;font-size:clamp(16px,2.4vw,21px);font-weight:800;color:#fff4d8;line-height:1.2;max-width:22ch}
+.cartes-party-stars{margin:2px 0}
+.cartes-party-stars .ombres-star{width:clamp(44px,11vmin,64px);height:clamp(44px,11vmin,64px)}
+.cartes-party-stars .ombres-star:not(.ombres-star--on) .ombres-star-svg{fill:rgba(20,12,32,.45);stroke:#d4ab5c;stroke-width:2.4}
+.cartes-party-btns{width:100%;margin-top:clamp(2px,0.6vh,8px)}
+.cartes-party-grid{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.4vh,12px);width:100%;max-width:min(100%,480px)}
+.cartes-party-grid-row{display:flex;flex-wrap:nowrap;justify-content:center;align-items:flex-end;gap:clamp(6px,1.4vw,10px);width:100%}
+.f2-pairs-friend--grid{width:clamp(56px,11vmin,82px)}
+.f2-pairs-friend--grid figcaption{font-size:clamp(7px,1vmin,10px)}
+.f2-pairs-party--final .cartes-party-stars .ombres-star{width:clamp(48px,12vmin,72px);height:clamp(48px,12vmin,72px)}
 @keyframes f2-party-in{from{opacity:0;visibility:hidden}to{opacity:1;visibility:visible}}
 .f2-pairs-party-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(6px,1.2vw,12px);max-width:100%}
 .f2-pairs-party-star{display:inline-flex;flex:0 0 auto;line-height:0}
