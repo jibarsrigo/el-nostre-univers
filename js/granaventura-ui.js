@@ -44,6 +44,7 @@ function granAventuraUiReturnHub(){
   granAventuraUiClearMissio();
   gaUi.cartaSlot=null;
   granAventuraUiCartaPortalClear();
+  gaUi.ready=typeof granAventuraDies==='function'&&granAventuraDies().length>0;
   nav('granAventura');
 }
 
@@ -93,11 +94,14 @@ function granAventuraUiIniciaMissio(instanciaId){
 
 function granAventuraUiSobreHtml(av,slot,idx,done){
   const em=granAventuraUiEmissorMeta(slot.emissorId);
-  const star=done?`<span class="ga-sobre-star">${GA_STAR}</span>`:`<span class="ga-sobre-star off">${GA_STAR}</span>`;
+  const star=done?`<span class="ga-sobre-star ga-sobre-star--fet">${GA_STAR}</span>`:`<span class="ga-sobre-star off">${GA_STAR}</span>`;
   const img=em.img?`<img src="${strip(em.img)}" alt="" draggable="false">`:'✉️';
-  const dis=done?' disabled':'';
   const tag=granAventuraUiActivitatLabel(slot.plantillaMissioId);
-  return `<button type="button" class="ga-sobre" data-ga-sobre="${strip(slot.instanciaId)}" aria-label="Sobre de ${strip(em.label)}"${dis}><div class="ga-sobre-env">${img}${star}</div><strong>${strip(String(em.label||'').toUpperCase())}</strong><small>${tag}</small></button>`;
+  const name=strip(String(em.label||'').toUpperCase());
+  if(done){
+    return `<div class="ga-sobre ga-sobre--fet" role="status" aria-label="Missió feta: ${name}"><div class="ga-sobre-env ga-sobre-env--fet">${img}${star}</div><strong>${name}</strong><small>${tag}</small><span class="ga-sobre-badge">★ FETA</span></div>`;
+  }
+  return `<button type="button" class="ga-sobre" data-ga-sobre="${strip(slot.instanciaId)}" aria-label="Sobre de ${name}"><div class="ga-sobre-env">${img}${star}</div><strong>${name}</strong><small>${tag}</small></button>`;
 }
 
 function granAventuraUiFestaHtml(av,slots){
