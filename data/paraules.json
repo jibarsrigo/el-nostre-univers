@@ -1,0 +1,30 @@
+{
+  "perSession": 3,
+  "maxErrors": 6,
+  "eater": {
+    "name": "En Troc",
+    "img": "imagenes/personatges/personatge-troc.webp",
+    "treat": "imagenes/univers-assets/obj-magdalena.webp"
+  },
+  "words": [
+    { "word": "GAT", "img": "imagenes/personatges/personatge-moix.webp" },
+    { "word": "DRAC", "img": "imagenes/personatges/personatge-drac-mapa.webp" },
+    { "word": "SETA", "img": "imagenes/personatges/personatge-seta.webp" },
+    { "word": "NENA", "img": "imagenes/personatges/personatge-nena.webp" },
+    { "word": "MUSSOL", "img": "imagenes/personatges/personatge-buho.webp" },
+    { "word": "GUINEU", "img": "imagenes/personatges/personatge-guineu.webp" },
+    { "word": "OLLA", "img": "imagenes/univers-assets/obj-olla-fum.webp" },
+    { "word": "MAPA", "img": "imagenes/univers-assets/obj-mapa-enrotllat.webp" },
+    { "word": "FULLA", "img": "imagenes/univers-assets/obj-fulla-verda.webp" },
+    { "word": "TASSA", "img": "imagenes/univers-assets/obj-tassa-orelles.webp" },
+    { "word": "PLOMA", "img": "imagenes/univers-assets/obj-ploma-colors.webp" },
+    { "word": "CORONA", "img": "imagenes/univers-assets/obj-corona-paper.webp" },
+    { "word": "SABATA", "img": "imagenes/univers-assets/obj-sabata-petita.webp" },
+    { "word": "PILOTA", "img": "imagenes/univers-assets/obj-pilota-colors.webp" },
+    { "word": "TARONJA", "img": "imagenes/univers-assets/obj-taronja.webp" },
+    { "word": "CULLERA", "img": "imagenes/univers-assets/obj-cullera-daurada.webp" },
+    { "word": "BOMBETA", "img": "imagenes/univers-assets/obj-bombeta-llum.webp" },
+    { "word": "ESTRELLA", "img": "imagenes/univers-assets/obj-estrella-fil.webp" },
+    { "word": "PASTANAGA", "img": "imagenes/univers-assets/obj-pastanaga.webp" }
+  ]
+}
