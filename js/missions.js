@@ -1,0 +1,18 @@
+'use strict';
+/* Etapa 3d — registre de missions LA GRAN AVENTURA (sense UI). */
+const MISSIONS_URL='data/gran-aventura-missions-v1.json';
+const MISSIONS_REG_V=1;
+const missionsCatalog={list:null,ready:false,failed:false};
+function missionsNormalizeId(id){return String(id||'').trim()}
+function missionsLoadCatalog(cb){if(missionsCatalog.list)return cb(missionsCatalog.list);if(missionsCatalog.failed)return cb(null);if(typeof fetch!=='function'){missionsCatalog.failed=true;return cb(null)}fetch(MISSIONS_URL).then(r=>r.json()).then(d=>{missionsCatalog.list=Array.isArray(d?.missions)?d.missions:[];missionsCatalog.ready=true;cb(missionsCatalog.list)}).catch(()=>{missionsCatalog.failed=true;cb(null)})}
+function missionsById(id){const mid=missionsNormalizeId(id);return(missionsCatalog.list||[]).find(m=>m.id===mid)||null}
+function missioRegistreLoad(){const p=typeof progresLoad==='function'?progresLoad():{missions:{registre:{}}};const r=p.missions?.registre;return r&&typeof r==='object'&&!Array.isArray(r)?{...r}:{}}
+function missioRegistreSave(reg){if(typeof progresLoad!=='function'||typeof progresSave!=='function')return false;const p=progresLoad();p.missions=p.missions||{v:MISSIONS_REG_V,registre:{}};p.missions.v=MISSIONS_REG_V;p.missions.registre={...reg};return progresSave(p)}
+function missioEntradaBuida(){return{estat:'pendent',completacions:[],sessioActiva:null,recompensaClaimed:false}}
+function missioGetEntrada(reg,mid){return reg[mid]||missioEntradaBuida()}
+function missioInicia(missioId,sessionId){const mid=missionsNormalizeId(missioId);const def=missionsById(mid);if(!def||!sessionId)return{ok:false,reason:'missio'};const reg=missioRegistreLoad();const e=missioGetEntrada(reg,mid);if(e.estat==='completada')return{ok:false,reason:'ja_completada'};e.estat='en_curs';e.sessioActiva=sessionId;reg[mid]=e;return missioRegistreSave(reg)?{ok:true}:{ok:false,reason:'escriptura'}}
+function missioAbandona(missioId){const mid=missionsNormalizeId(missioId);const reg=missioRegistreLoad();const e=missioGetEntrada(reg,mid);if(e.estat!=='en_curs')return{ok:false,reason:'estat'};e.estat='pendent';e.sessioActiva=null;reg[mid]=e;return missioRegistreSave(reg)?{ok:true}:{ok:false,reason:'escriptura'}}
+function missioValidaCompletada(missioId,activitatId,detail){const mid=missionsNormalizeId(missioId);const def=missionsById(mid);if(!def)return{ok:false,reason:'desconeguda'};if(def.activitatId!==activitatId)return{ok:false,reason:'activitat'};if(detail?.mode!=='missio')return{ok:false,reason:'lliure'};if(def.modeRequerit&&detail.mode!==def.modeRequerit)return{ok:false,reason:'mode'};return{ok:true,def}}
+function missioActivitatCompleta(missioId,activitatId,detail){const v=missioValidaCompletada(missioId,activitatId,detail);if(!v.ok)return v;const mid=missionsNormalizeId(missioId);const sid=detail?.sessionId;if(!sid)return{ok:false,reason:'sessio'};const reg=missioRegistreLoad();const e=missioGetEntrada(reg,mid);if(e.estat==='completada'||e.completacions.some(c=>c.sessionId===sid))return{ok:false,reason:'duplicat'};e.estat='completada';e.sessioActiva=null;e.completacions=[...e.completacions,{sessionId:sid,activitatId,ts:Date.now()}];reg[mid]=e;return missioRegistreSave(reg)?{ok:true}:{ok:false,reason:'escriptura'}}
+function missioEsCompletada(missioId){const e=missioGetEntrada(missioRegistreLoad(),missionsNormalizeId(missioId));return e.estat==='completada'}
+function missioContextLliure(mode){return mode!=='missio'}

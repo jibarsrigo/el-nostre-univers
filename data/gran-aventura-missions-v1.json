@@ -1,0 +1,37 @@
+{
+  "versio": 1,
+  "titol": "LA GRAN AVENTURA — missions pilots (declaratiu)",
+  "missions": [
+    {
+      "id": "ga-mem-cartes-exploradora-01",
+      "activitatId": "cartes",
+      "objectiu": {
+        "condicio": "totes_parelles",
+        "nivellId": "exploradora"
+      },
+      "modeRequerit": "missio",
+      "descripcio": "Completa el tauler del nivell Exploradora en mode missió."
+    },
+    {
+      "id": "ga-exp-ombres-nivell1-01",
+      "activitatId": "ombres",
+      "objectiu": {
+        "condicio": "tercera_ombra_objectiu",
+        "nivell": 0
+      },
+      "modeRequerit": "missio",
+      "descripcio": "Troba les tres ombres del primer nivell en mode missió."
+    },
+    {
+      "id": "ga-exp-dif-biblioteca-01",
+      "activitatId": "diferencies",
+      "objectiu": {
+        "condicio": "set_diferencies_objectiu",
+        "escenaId": "biblioteca",
+        "ambit": "ronda"
+      },
+      "modeRequerit": "missio",
+      "descripcio": "Troba les 7 diferències a la biblioteca en una ronda de missió."
+    }
+  ]
+}

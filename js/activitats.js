@@ -72,6 +72,7 @@ function activitatCompleta(id,detail){
 
   const legacy=activitatsLegacyKey(id);
   if(legacy&&typeof remember==='function'&&activitatsRecordLegacy(id,detail))remember(legacy);
+  if(detail?.mode==='missio'&&detail?.missioId&&typeof missioActivitatCompleta==='function')missioActivitatCompleta(detail.missioId,id,detail);
   return true;
 }
 
