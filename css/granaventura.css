@@ -26,6 +26,13 @@
 .f2-pairs--gran-missio .f2-pairs-party-star{width:clamp(48px,12vmin,72px);height:clamp(48px,12vmin,72px);display:block;margin:0 auto;color:#ffd86a;filter:drop-shadow(0 0 12px #ffd86a99)}
 .f2-pairs--gran-missio .cartes-party-btns{margin-top:14px;padding-bottom:4px}
 .f2-pairs--gran-missio .f2-window{overflow:auto}
+.jocs-diferencies--gran-missio .dif-head .ombres-stars .ombres-star:not(.ombres-star--on){display:none}
+.jocs-diferencies--gran-missio .dif-head .ombres-stars .ombres-star--on:only-of-type,.jocs-diferencies--gran-missio .dif-head .ombres-stars .ombres-star--on:first-child:nth-last-child(1){display:inline-flex}
+.dif-done--gran-missio .dif-done-card--gran-missio{display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2vh,18px);padding:clamp(18px,3vw,28px);overflow:visible;max-height:none}
+.dif-ga-star{display:inline-flex;line-height:0;width:clamp(52px,14vmin,80px);height:clamp(52px,14vmin,80px);color:#ffd86a;filter:drop-shadow(0 0 14px #ffd86a99)}
+.dif-ga-star .ombres-star-svg{width:100%;height:100%;fill:currentColor}
+.dif-done--gran-missio .dif-done-headline{margin:0}
+.dif-done--gran-missio .dif-done-final{max-width:22em;line-height:1.35}
 .ga-festa{width:min(780px,100%);display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px}
 .ga-festa-hero{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .ga-festa-hero figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:4px}
