@@ -5,14 +5,14 @@ const memory={};
 const node=()=>({innerHTML:'',textContent:'',classList:{add(){},toggle(){}},querySelectorAll(){return []},querySelector(){return null},addEventListener(){},append(){},remove(){},setAttribute(){}});
 const app=node();
 const doc={getElementById(){return app},querySelector(){return null},addEventListener(){},createElement:node,fullscreenEnabled:false,fullscreenElement:null};
-const env={document:doc,localStorage:{getItem:k=>memory[k]||null,setItem(k,v){memory[k]=v}},window:{confirm(){return true}},setTimeout(){},Image:function(){},console,Math,Date};
+const env={document:doc,localStorage:{getItem:k=>memory[k]||null,setItem(k,v){memory[k]=v}},window:{confirm(){return true}},setTimeout(){},Image:function(){},console,Math,Date,fetch:u=>Promise.resolve({json:()=>JSON.parse(fs.readFileSync(path.join(root,u),'utf8'))})};
 const c=vm.createContext(env),run=src=>vm.runInContext(src,c);
 for(const file of ['app.js','fase2.js','fase3.js','contes.js','jocs.js'])vm.runInContext(fs.readFileSync(path.join(root,'js',file),'utf8'),c,{filename:file});
 let n=0;const test=(fn)=>{fn();n++};
 const get=s=>JSON.parse(JSON.stringify(run(s)));
 const places=['map','library','tower','workshop'];
 for(const p of places){test(()=>{run(`nav('${p}')`);assert.match(app.innerHTML,/class="art"/);assert.match(app.innerHTML,/data-hotspot/)});}
-const expected={map:['library','tower','workshop','secret','bridge'],library:['book','chest','window','cards','owl','ladder','monster','rabbit','contes'],tower:['telescope','orb','chest','map','small-door','stairs','owl','nest','pairs','words'],workshop:['creature','colors','stars','chest','window','search']};
+const expected={map:['library','tower','workshop','secret','bridge'],library:['book','chest','window','cards','owl','ladder','monster','rabbit','contes'],tower:['telescope','orb','chest','map','small-door','stairs','owl','nest','pairs','words','lupa'],workshop:['creature','colors','stars','chest','window','search']};
 for(const [place,keys] of Object.entries(expected)){
  const hs=get(`hotspots.${place}`);let seen=new Set();
  for(const item of hs){test(()=>{
