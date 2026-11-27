@@ -63,6 +63,7 @@ case'school-spell':f2.starlit.clear();goF2('spell');return;
 case'school-rabbit':goF2('rabbit');return;
 case'school-nest':goF2('nest');return;
 case'open-quest':goF2('quest');return;
+case'open-gran-aventura':if(typeof granAventuraUiEnsure==='function'){granAventuraUiEnsure(()=>go('granAventura'));return}notify('NO PUC OBRIR LA GRAN AVENTURA.');return;
 case'open-finale':remember('finale');goF2('finale');return;
 case'end-monster':remember('monster');nav('library');return;
 case'end-rabbit':remember('rabbit');nav('school');return;
@@ -82,5 +83,5 @@ case'reset-search':f2.find.clear();render();return;
 function bindExtras(){app.querySelectorAll('[data-piece]').forEach(el=>el.addEventListener('click',()=>{f2.pieces.add(Number(el.dataset.piece));if(f2.pieces.size>=3)state.step=3;render()}));app.querySelectorAll('[data-spark]').forEach(el=>el.addEventListener('click',()=>{f2.starlit.add(Number(el.dataset.spark));state.step=f2.starlit.size;render()}));app.querySelectorAll('[data-card]').forEach(el=>el.addEventListener('click',()=>clickCard(Number(el.dataset.card))));app.querySelectorAll('[data-letter]').forEach(el=>el.addEventListener('click',()=>{wordsGuess(el.dataset.letter);render()}));app.querySelectorAll('[data-find]').forEach(el=>el.addEventListener('click',()=>{f2.find.add(Number(el.dataset.find));render()}))}
 // Campanya visible des del mapa (no substitueix cap altre hotspot de la il·lustració).
 const renderOld=renderF1;
-function render(){if(state.place==='map'){renderOld();const foot=app.querySelector('.footer');if(foot){let b=foot.querySelector('.f2-map-quest');if(!b){b=document.createElement('button');b.type='button';b.className='f2-map-quest';b.textContent='✨ LA GRAN AVENTURA';foot.append(b)}b.onclick=()=>{if(SCENES.granAventura)action('open-gran-aventura');else goF2('quest')}}return}return renderOld()}
+function render(){if(state.place==='map'){renderOld();const foot=app.querySelector('.footer');if(foot){let b=foot.querySelector('.f2-map-quest');if(!b){b=document.createElement('button');b.type='button';b.className='f2-map-quest';b.textContent='✨ LA GRAN AVENTURA';foot.append(b)}b.onclick=()=>action('open-gran-aventura')}return}return renderOld()}
 render();
