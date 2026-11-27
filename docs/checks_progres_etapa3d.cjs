@@ -23,6 +23,7 @@ assert(run(`missioEsCompletada('${mid}')`));
 assert.equal(run(`missioActivitatCompleta('${mid}','diferencies',{sessionId:'sess-c',mode:'missio',ambit:'ronda'}).ok`),false,'no duplicar recompensa');
 
 run(`missioAbandona('ga-mem-cartes-exploradora-01')`);
+assert.equal(run(`missioActivitatCompleta('ga-mem-cartes-exploradora-01','cartes',{sessionId:'s1',mode:'missio'}).reason`),'no_activa','després abandonar cal tornar a iniciar');
 assert.equal(run(`missioInicia('ga-mem-cartes-exploradora-01','s1')`).ok,true);
 
 const creacions=[];
