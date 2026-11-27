@@ -258,7 +258,61 @@
       "perRound": 5,
       "perRoundDecoys": 1,
       "minSpotDist": 11,
-      "diffs": []
+      "diffs": [
+        {
+          "id": "sabata-petita",
+          "img": "imagenes/univers-assets/obj-sabata-petita.webp",
+          "message": "UNA SABATA PETITA!",
+          "spots": [
+            { "x": 45, "y": 72, "w": 8, "r": 8 },
+            { "x": 35, "y": 62, "w": 8, "r": 8 },
+            { "x": 20, "y": 88, "w": 8, "r": 8 },
+            { "x": 52, "y": 45, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "sabata-gigant",
+          "img": "imagenes/univers-assets/obj-sabata-gigant.webp",
+          "message": "UNA SABATA GEGANT!",
+          "spots": [
+            { "x": 45, "y": 72, "w": 11, "r": 9 },
+            { "x": 55, "y": 90, "w": 11, "r": 9 },
+            { "x": 88, "y": 82, "w": 10, "r": 9 }
+          ]
+        },
+        {
+          "id": "fulla-verda",
+          "img": "imagenes/univers-assets/obj-fulla-verda.webp",
+          "message": "UNA FULLA VERDA!",
+          "spots": [
+            { "x": 72, "y": 67, "w": 8, "r": 8 },
+            { "x": 30, "y": 35, "w": 8, "r": 8 },
+            { "x": 73, "y": 44, "w": 7, "r": 8 },
+            { "x": 35, "y": 62, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "corona-paper",
+          "img": "imagenes/univers-assets/obj-corona-paper.webp",
+          "message": "UNA CORONA DE PAPER!",
+          "spots": [
+            { "x": 72, "y": 67, "w": 9, "r": 8 },
+            { "x": 73, "y": 44, "w": 8, "r": 8 },
+            { "x": 30, "y": 35, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "estrella-fil",
+          "img": "imagenes/univers-assets/obj-estrella-fil.webp",
+          "message": "UNA ESTRELLA DE FIL!",
+          "spots": [
+            { "x": 73, "y": 44, "w": 7, "r": 8 },
+            { "x": 88, "y": 82, "w": 7, "r": 8 },
+            { "x": 52, "y": 45, "w": 7, "r": 8 },
+            { "x": 20, "y": 88, "w": 7, "r": 8 }
+          ]
+        }
+      ]
     },
     {
       "id": "cuina-bruna",
