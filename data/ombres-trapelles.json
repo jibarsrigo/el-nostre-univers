@@ -94,7 +94,8 @@
       "sway": 4.2,
       "peek": "ORELLES LLARGUES...",
       "reveal": "HOP, HOP!",
-      "name": "EL CONILL"
+      "name": "EL CONILL",
+      "color": "imagenes/personatges/personatge-conill.webp"
     },
     {
       "id": "gat",
@@ -105,7 +106,8 @@
       "sway": 3.2,
       "peek": "UNA CUA...",
       "reveal": "MÈU!",
-      "name": "EL GAT"
+      "name": "EL GAT",
+      "color": "imagenes/personatges/personatge-gat.webp"
     },
     {
       "id": "drac",
