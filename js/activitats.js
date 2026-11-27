@@ -40,6 +40,7 @@ function activitatsLegacyKey(id){
   const meta=activitat(id);
   if(meta?.legacyRecordKey)return meta.legacyRecordKey;
   if(id==='cartes')return 'pairs';
+  if(id==='ombres')return 'jocs-ombres';
   return null;
 }
 
