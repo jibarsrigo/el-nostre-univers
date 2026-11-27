@@ -27,7 +27,7 @@ library:[
 ],
 tower:[
  ['telescope','EL TELESCOPI','rect',[460,275,705,455]],
- ['orb','LA BOLA MÀGICA','rect',[730,470,880,600]],
+ ['orb','LA BOLA MÀGICA','rect',[706,420,880,600]],
  ['chest','EL COFRE','rect',[1125,330,1285,470]],
  ['map','EL MAPA','rect',[910,120,1120,300]],
  ['small-door','LA PORTA PETITA','rect',[1405,520,1545,750]],
@@ -50,7 +50,7 @@ function topbar(place){return `<div class="topbar"><div>${place!=='map'&&place!=
 const FIREFLY={
 map:{library:[431,405],tower:[989,333],workshop:[1450,477],secret:[1254,712],bridge:[940,614]},
 library:{book:[980,730],chest:[1348,530],window:[1210,80],cards:[1148,760],owl:[175,55],ladder:[235,240],monster:[470,740],rabbit:[40,850]},
-tower:{telescope:[500,320],orb:[855,530],chest:[1255,355],map:[960,155],'small-door':[1435,545],stairs:[1370,95],owl:[785,140],nest:[370,85],lupa:[775,685],pairs:[980,725],words:[48,55]},
+tower:{telescope:[592,337],orb:[745,505],chest:[1190,395],map:[1005,215],'small-door':[1470,605],stairs:[1440,170],owl:[694,170],nest:[500,200],lupa:[850,655],pairs:[972,610],words:[100,360]},
 workshop:{creature:[845,470],colors:[80,750],stars:[1045,48],chest:[1505,505],window:[55,75],search:[1270,350]}
 };
 const SOUND_ICON='<svg viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 26h10l12-10v32L22 38H12z"/><path class="wave" d="M40 24a12 12 0 0 1 0 16M48 16a22 22 0 0 1 0 32" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>';
