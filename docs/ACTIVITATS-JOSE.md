@@ -5,7 +5,8 @@ El catàleg (`data/cataleg.json`) descriu **recursos**; aquest registre descriu 
 
 ## PR A (actual)
 
-- Pilot únic: **`cartes`** (`legacyRecordKey`: `pairs`).
+- **`cartes`** (`legacyRecordKey`: `pairs`, família `memoria`).
+- **`ombres`** (`legacyRecordKey`: `jocs-ombres`, família `exploracio`): entrada torre → hotspot **`lupa`** (LA LUPA MÀGICA → menú → Ombres). `nivells.font`: `ombres` — 3 cerques de sessió (`cerquesPerPartida`, `midesSiluetes`), **no** claus `personatges`. Finalització declarativa: `tercera_ombra_objectiu` (runtime pendent Fase B).
 - Clau tècnica de famílies: **`familles`** (sense accent). Cada activitat usa **`familia`** (id dins `familles`).
 - LA GRAN AVENTURA: `granAventura.candidataMissio` / `validadaMissio` (només declaratiu; sense UI).
 
@@ -32,7 +33,7 @@ node docs/checks_persistencia.cjs
 2. `ubicacio.sala`: `torre` | `biblioteca` | `taller` | `mapa` (nom català).
 3. `entrada.place`: `tower` | `library` | `workshop` | `map` (codi del joc; ha de correspondre a la sala).
 4. `entrada.hotspotId`: ha d'existir als hotspots d'aquella sala (`js/app.js` + `js/fase2.js`).
-5. Si `nivells.font` és `personatges`, cada clau de `nivells.claus` ha d'existir a `data/personatges.json` → `nivells[].id`.
+5. Si `nivells.font` és `personatges`, cada clau de `nivells.claus` ha d'existir a `data/personatges.json` → `nivells[].id`. Si és `ombres`, validar `cerquesPerPartida` i `midesSiluetes` (sense `claus`).
 6. PR petita + `checks_activitats.cjs` verd + tablet Jose abans de la següent.
 
 ## PR B (runtime Cartes)

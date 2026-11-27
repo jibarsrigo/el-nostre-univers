@@ -36,6 +36,36 @@
         "candidataMissio": true,
         "validadaMissio": false
       }
+    },
+    {
+      "id": "ombres",
+      "nom": "LES OMBRES TRAPELLES",
+      "familia": "exploracio",
+      "ubicacio": {
+        "sala": "torre",
+        "hotspot": "lupa"
+      },
+      "entrada": {
+        "tipus": "hotspot",
+        "place": "tower",
+        "hotspotId": "lupa"
+      },
+      "nivells": {
+        "font": "ombres",
+        "cerquesPerPartida": 3,
+        "midesSiluetes": [4, 5, 6]
+      },
+      "disponible": true,
+      "legacyRecordKey": "jocs-ombres",
+      "finalitzacio": {
+        "tipus": "condicio",
+        "condicio": "tercera_ombra_objectiu",
+        "puntUnic": "darrera_cerca_resolta"
+      },
+      "granAventura": {
+        "candidataMissio": true,
+        "validadaMissio": false
+      }
     }
   ]
 }
