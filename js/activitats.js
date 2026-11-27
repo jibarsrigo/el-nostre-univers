@@ -41,11 +41,13 @@ function activitatsLegacyKey(id){
   if(meta?.legacyRecordKey)return meta.legacyRecordKey;
   if(id==='cartes')return 'pairs';
   if(id==='ombres')return 'jocs-ombres';
+  if(id==='diferencies')return 'jocs-diferencies';
   return null;
 }
 
 function activitatsRecordLegacy(id,detail){
   if(id==='ombres')return Number(detail?.nivell)===3;
+  if(id==='diferencies')return detail?.ambit==='sessio';
   return true;
 }
 
