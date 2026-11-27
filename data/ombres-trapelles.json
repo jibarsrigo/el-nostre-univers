@@ -3,6 +3,7 @@
     "subtitle": "LES MISSIONS DE LA TORRE",
     "leadSearch": "HI HA OMBRES AMAGADES!",
     "hint": "MOU LA LLUM I TROBA L'OMBRA!",
+    "tapHint": "TOCA'M!",
     "starsLabel": "ESTRELLES MÀGIQUES",
     "foundTarget": "M'HAS TROBAT!",
     "starGain": "UNA ESTRELLA MÉS!",
@@ -93,8 +94,7 @@
       "sway": 4.2,
       "peek": "ORELLES LLARGUES...",
       "reveal": "HOP, HOP!",
-      "name": "EL CONILL",
-      "color": "imagenes/personatges/personatge-conill.webp"
+      "name": "EL CONILL"
     },
     {
       "id": "gat",
@@ -105,8 +105,7 @@
       "sway": 3.2,
       "peek": "UNA CUA...",
       "reveal": "MÈU!",
-      "name": "EL GAT",
-      "color": "imagenes/personatges/personatge-gat.webp"
+      "name": "EL GAT"
     },
     {
       "id": "drac",
@@ -118,7 +117,7 @@
       "peek": "UNA PANXA...",
       "reveal": "BIMBOLLES!",
       "name": "EL DRAC",
-      "color": "imagenes/personatges/personatge-drac.webp"
+      "color": "imagenes/personatges/personatge-drac-mapa.webp"
     },
     {
       "id": "nus",
