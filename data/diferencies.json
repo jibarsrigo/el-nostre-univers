@@ -323,7 +323,52 @@
       "perRound": 5,
       "perRoundDecoys": 1,
       "minSpotDist": 11,
-      "diffs": []
+      "diffs": [
+        {
+          "id": "olla-fum",
+          "img": "imagenes/univers-assets/obj-olla-fum.webp",
+          "message": "UNA OLLA QUE FUMEGA!",
+          "spots": [
+            { "x": 48, "y": 92, "w": 8, "r": 8 },
+            { "x": 8, "y": 78, "w": 7, "r": 8 },
+            { "x": 91, "y": 45, "w": 7, "r": 8 },
+            { "x": 84, "y": 95, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "pastisset",
+          "img": "imagenes/univers-assets/obj-pastisset.webp",
+          "message": "UN PASTISSET!",
+          "spots": [
+            { "x": 45, "y": 75, "w": 7, "r": 8 },
+            { "x": 55, "y": 47, "w": 6, "r": 8 },
+            { "x": 83, "y": 76, "w": 6, "r": 8 },
+            { "x": 89, "y": 27, "w": 5, "r": 8 }
+          ]
+        },
+        {
+          "id": "cullera-daurada",
+          "img": "imagenes/univers-assets/obj-cullera-daurada.webp",
+          "message": "UNA CULLERA DAURADA!",
+          "spots": [
+            { "x": 60, "y": 80, "w": 7, "r": 8 },
+            { "x": 96, "y": 81, "w": 6, "r": 8 },
+            { "x": 14, "y": 94, "w": 7, "r": 8 },
+            { "x": 8, "y": 76, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "magdalena",
+          "img": "imagenes/univers-assets/obj-magdalena.webp",
+          "message": "UNA MAGDALENA!",
+          "spots": [
+            { "x": 53, "y": 62, "w": 6, "r": 8 },
+            { "x": 97, "y": 60, "w": 5, "r": 8 },
+            { "x": 67, "y": 45, "w": 6, "r": 8 },
+            { "x": 31, "y": 40, "w": 5, "r": 8 }
+          ]
+        }
+      ]
     }
   ]
 }
