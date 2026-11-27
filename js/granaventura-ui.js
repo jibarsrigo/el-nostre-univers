@@ -168,17 +168,6 @@ Object.assign(SCENES,{granAventura:granAventuraHubScene});
 const renderGaUi=render;
 render=function(){
   const out=renderGaUi();
-  if(state.place==='map'){
-    const foot=app.querySelector('.footer');
-    if(foot){
-      const old=foot.querySelector('.f2-map-quest');
-      if(old)old.remove();
-      const b=document.createElement('button');
-      b.type='button';b.className='f2-map-quest';b.textContent='✨ LA GRAN AVENTURA';
-      b.addEventListener('click',()=>action('open-gran-aventura'));
-      foot.append(b);
-    }
-  }
   app.querySelectorAll('[data-ga-sobre]').forEach(el=>{
     if(el.dataset.gaBound)return;
     el.dataset.gaBound='1';
