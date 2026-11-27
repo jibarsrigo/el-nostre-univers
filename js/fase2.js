@@ -7,7 +7,7 @@ const names2={school:'L’ESCOLA DE LA LLUM',monster:'EL MONSTRET MENJAPÀGINES'
 const actionOld=actionF1, hotspotOld=hotspotF1;
 // Entrades noves col·locades sobre elements visibles de la il·lustració original.
 hotspots.library.push(['monster','LLIBRES MOSSEGATS','rect',[305,698,495,855]],['rabbit','EL CONILL QUE DORM','rect',[55,755,285,932]]);
-hotspots.tower.push(['nest','LA FINESTRA DEL BOSC','rect',[308,50,630,228]],['pairs','ELS OBJECTES MÀGICS','rect',[900,655,1065,805]],['words','ELS LLIBRES DE PARAULES','rect',[8,24,220,320]],['lupa','LA LUPA MÀGICA','rect',[680,600,870,780]]);
+hotspots.tower.push(['nest','LA FINESTRA DEL BOSC','rect',[308,50,630,228]],['pairs','ELS OBJECTES MÀGICS','rect',[900,570,1065,805]],['words','ELS LLIBRES DE PARAULES','rect',[8,24,220,420]],['lupa','LA LUPA MÀGICA','rect',[680,600,870,780]]);
 hotspots.workshop.push(['search','LA CAPSA DE JOCS','rect',[1235,310,1455,445]]);
 // El mussol de la torre condueix a l'escola (la carta antiga és a la biblioteca).
 function hotspot(id){if(state.place==='library'&&['monster','rabbit'].includes(id)){if(id==='monster')f2.pieces.clear();return go(id)};if(state.place==='tower'&&['school','nest','pairs','words'].includes(id))return go(id);if(state.place==='workshop'&&id==='search')return go(id);if(state.place==='tower'&&id==='owl')return go('school');return hotspotOld(id)}
