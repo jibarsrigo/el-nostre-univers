@@ -20,7 +20,8 @@
 .ga-sobre-env--fet{background:linear-gradient(145deg,#fff3b0,#e8b84a);border-color:#ffe680}
 .ga-sobre-star--fet{width:44px;height:44px;color:#ffd86a;filter:drop-shadow(0 0 14px #ffd86acc);animation:none}
 .ga-sobre-badge{display:inline-block;margin-top:4px;padding:4px 12px;border-radius:14px;font-size:clamp(11px,1.4vw,14px);font-weight:900;letter-spacing:.08em;color:#2a1a10;background:linear-gradient(#ffe9a8,#f0c060);border:2px solid #fff3c0}
-.f2-pairs--gran-missio .f2-pairs-board{height:auto;min-height:min(36dvh,280px)}
+.f2-pairs--gran-missio .f2-pairs-board{height:min(46dvh,400px);min-height:min(42dvh,320px)}
+.f2-pairs--gran-missio .f2-cards--contes{min-height:min(36dvh,280px)}
 .f2-pairs--gran-missio .f2-pairs-party{align-items:center;overflow:visible;padding:12px}
 .f2-pairs--gran-missio .cartes-party-card--gran-missio{overflow:visible;max-height:none;width:min(94%,520px)}
 .f2-pairs--gran-missio .f2-pairs-party-star{width:clamp(48px,12vmin,72px);height:clamp(48px,12vmin,72px);display:block;margin:0 auto;color:#ffd86a;filter:drop-shadow(0 0 12px #ffd86a99)}

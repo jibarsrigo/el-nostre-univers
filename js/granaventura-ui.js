@@ -77,8 +77,12 @@ function granAventuraUiIniciaMissio(instanciaId){
     ensurePersonatges(()=>{
       jocsCartesEnsureAdventure();
       f2.pairsLevel=0;
-      setupPairs();
+      f2.flipped=[];
       f2.matched=[];
+      f2.busy=false;
+      f2.pairsAnim={};
+      f2.match=[];
+      setupPairs();
       go('pairs');
     });
     return;
