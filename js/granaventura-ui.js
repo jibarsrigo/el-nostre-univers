@@ -3,11 +3,27 @@
 const gaUi={cartaSlot:null,ready:false,err:false};
 const GA_STAR='<svg viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M32 2 37 22 52 12 42 27 62 32 42 37 52 52 37 42 32 62 27 42 12 52 22 37 2 32 22 27 12 12 27 22Z"/></svg>';
 
+function gaDiaProgres(avOpt,stOpt){
+  const av=avOpt||granAventuraUiAventuraActiva();
+  const total=Math.max(1,av?.slots?.length||3);
+  const slots=stOpt?.slots||(av?granAventuraUiClauEstat(av).st.slots:[]);
+  let done=0;
+  for(let i=0;i<total;i++)if(slots[i])done++;
+  return{total,done};
+}
+function gaDiaProgresStarsHtml(done,total,pop){
+  const n=Math.max(1,Math.floor(total)||3);
+  const lit=Math.min(n,Math.max(0,Math.floor(done)||0));
+  const popIdx=pop&&lit>0?lit-1:-1;
+  return Array.from({length:n},(_,i)=>`<span class="ombres-star ga-dia-star ${i<lit?'ombres-star--on':''} ${i===popIdx?'ombres-star--pop':''}" aria-hidden="true"><svg class="ombres-star-svg" viewBox="0 0 64 64"><path d="M32 5 39 25 61 27 45 42 51 63 32 52 13 63 19 42 3 27 25 25Z"/></svg></span>`).join('');
+}
 function gaMissioVictoryHtml(subtitle){
   const sub=strip(String(subtitle||'MOLT BÉ!').toUpperCase());
-  const star=`<span class="ga-missio-star f2-pairs-party-star" aria-hidden="true"><svg class="ombres-star-svg ombres-star--on" viewBox="0 0 64 64"><path d="M32 5 39 25 61 27 45 42 51 63 32 52 13 63 19 42 3 27 25 25Z"/></svg></span>`;
+  const prog=gaDiaProgres();
+  const stars=`<div class="ga-dia-progres-stars ombres-celebrate-stars" aria-label="${prog.done} de ${prog.total} missions de l'aventura">${gaDiaProgresStarsHtml(prog.done,prog.total,true)}</div>`;
+  const progresTxt=`<p class="ga-dia-progres-txt">${prog.done} DE ${prog.total} MISSIONS DE L'AVENTURA!</p>`;
   const btn=typeof ombresLevelBtn==='function'?ombresLevelBtn('TORNA A L\'AVENTURA','ga-return-hub','primary'):'';
-  return `<div class="ga-missio-victoria" role="region" aria-labelledby="ga-missio-title"><div class="ga-missio-victoria-card cartes-party-card cartes-party-card--gran-missio">${star}<p id="ga-missio-title" class="cartes-party-title">MISSIÓ FETA!</p><p class="cartes-party-sub">${sub}</p><div class="cartes-party-btns ombres-level-btns"><div class="ombres-level-btns-primary">${btn}</div></div></div></div>`;
+  return `<div class="ga-missio-victoria" role="region" aria-labelledby="ga-missio-title"><div class="ga-missio-victoria-card cartes-party-card cartes-party-card--gran-missio">${stars}${progresTxt}<p id="ga-missio-title" class="cartes-party-title">MISSIÓ FETA!</p><p class="cartes-party-sub">${sub}</p><div class="cartes-party-btns ombres-level-btns"><div class="ombres-level-btns-primary">${btn}</div></div></div></div>`;
 }
 
 function granAventuraUiEmissorMeta(id){
@@ -149,10 +165,12 @@ function granAventuraHubScene(){
   }
   const {st}=granAventuraUiClauEstat(av);
   const slots=av.slots||[];
-  const completada=st.slots.every(Boolean);
+  const prog=gaDiaProgres(av,st);
+  const completada=prog.done>=prog.total&&prog.total>0;
   const cartaOpen=!completada&&!!gaUi.cartaSlot;
-  const body=completada?granAventuraUiFestaHtml(av,slots):`<div class="ga-hub"><p class="ga-hub-titol">${strip(av.titol||'AVENTURA')}</p><div class="ga-sobres">${slots.map((s,i)=>granAventuraUiSobreHtml(av,s,i,st.slots[i])).join('')}</div><p class="ga-hub-hint">OBRE CADA SOBRE QUAN VULGUIS. L'ORDRE ÉS LLIURE!</p></div>`;
-  const cap=completada?'<p>UNA ESTRELA DAURADA PER CADA MISSIÓ!</p>':"<p>TRES AMICS T'ESPEREN!</p>";
+  const hubProgres=`<div class="ga-hub-progres" aria-label="${prog.done} de ${prog.total} missions fetes">${gaDiaProgresStarsHtml(prog.done,prog.total,false)}<p class="ga-hub-progres-txt">${prog.done} DE ${prog.total} MISSIONS FETES</p></div>`;
+  const body=completada?granAventuraUiFestaHtml(av,slots):`<div class="ga-hub"><p class="ga-hub-titol">${strip(av.titol||'AVENTURA')}</p>${hubProgres}<div class="ga-sobres">${slots.map((s,i)=>granAventuraUiSobreHtml(av,s,i,!!st.slots[i])).join('')}</div><p class="ga-hub-hint">OBRE CADA SOBRE QUAN VULGUIS. L'ORDRE ÉS LLIURE!</p></div>`;
+  const cap=completada?'<p>HAS COMPLETAT TOTES LES MISSIONS!</p>':prog.done?`<p>${prog.total-prog.done} MISSION${prog.total-prog.done===1?'':'S'} PENDENT${prog.total-prog.done===1?'':'S'}!</p>`:"<p>TRES AMICS T'ESPEREN!</p>";
   const explora=`<button type="button" class="f2-btn f2-btn--ga-map" data-action="map-go">🗺️ EXPLORA LLIUREMENT</button>`;
   const cls='f2-gran-aventura'+(cartaOpen?' f2-gran-aventura--carta':'');
   return f2Scene('LA GRAN AVENTURA',body,`${cap}<small>EXPLORA EL MAPA QUAN VULGUIS.</small>`,explora+f2back(),'mapa',cls);
