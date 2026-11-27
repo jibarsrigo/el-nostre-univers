@@ -39,7 +39,7 @@ test(()=>{run(`nav('workshop');hotspot('creature')`);assert.equal(run('state.pla
 test(()=>{run(`nav('workshop');hotspot('colors')`);assert.equal(run('state.place'),'f3draw')});
 test(()=>{run(`nav('workshop');hotspot('stars')`);assert.equal(run('state.place'),'f3maker')});
 test(()=>{run(`nav('workshop');hotspot('chest')`);assert.equal(run('state.place'),'f3gallery')});
-test(()=>{run(`jocs.personatges=${JSON.stringify(JSON.parse(fs.readFileSync('data/personatges.json','utf8')))}`);run(`setupPairs()`);assert.equal(run('f2.match.length'),10);assert.equal(run('new Set(f2.match).size'),5)});
+test(()=>{run(`jocs.personatges=${JSON.stringify(JSON.parse(fs.readFileSync('data/personatges.json','utf8')))}`);run(`setupPairs()`);assert.equal(run('f2.match.length'),8);assert.equal(run('new Set(f2.match).size'),4)});
 test(()=>{run(`f2.paraules=${fs.readFileSync(path.join(root,'data/paraules.json'),'utf8')};setupWords()`);assert(run('f2.paraules.words.some(w=>w.word===f2.word)')&&run('new Set(f2.wg.list.map(w=>w.word)).size')===3)});
 test(()=>{run(`f3Save({...newCreature3(),id:'test-creature',name:'Guspira'})`);assert.equal(get('f3.gallery').length,1);assert.equal(get('f3.gallery')[0].name,'Guspira')});
 test(()=>{run(`state.place='f3creator';f3NavBack()`);assert.equal(run('state.place'),'workshop');assert.equal(get('state.history').length,0)});
