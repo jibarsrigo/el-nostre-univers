@@ -1,44 +1,37 @@
-# Registre d'activitats (etapa 2)
+# Registre d'activitats
 
 Fitxer declarativo: `data/activitats.json`.  
 El catàleg (`data/cataleg.json`) descriu **recursos**; aquest registre descriu **activitats** jugables.
 
-## PR A (actual)
+## Pilots contracte comú
 
-- **`cartes`** (`legacyRecordKey`: `pairs`, família `memoria`).
-- **`ombres`** (`legacyRecordKey`: `jocs-ombres`, família `exploracio`): entrada torre → hotspot **`lupa`** (LA LUPA MÀGICA → menú → Ombres). `nivells.font`: `ombres` — 3 cerques de sessió (`cerquesPerPartida`, `midesSiluetes`), **no** claus `personatges`. Finalització declarativa: `tercera_ombra_objectiu` (runtime pendent Fase B).
-- Clau tècnica de famílies: **`familles`** (sense accent). Cada activitat usa **`familia`** (id dins `familles`).
-- LA GRAN AVENTURA: `granAventura.candidataMissio` / `validadaMissio` (només declaratiu; sense UI).
+| `id` | `legacyRecordKey` | Finalització real | Recompensa torre |
+|------|-------------------|-------------------|------------------|
+| `cartes` | `pairs` | Darrera parella | Cada partida guanyada |
+| `ombres` | `jocs-ombres` | 3a ombra del nivell | Només nivell 4 |
+| `diferencies` | `jocs-diferencies` | 7a dif. de la 3a ronda (lliure) | Sessió lliure completa (3 rondes) |
+
+Missió futura (sense motor): una ronda, 7 diferències, un fons — `ambit: ronda`, sense `remember`.
+
+- Runtime: `js/activitats.js` — `activitatCompleta`, `nostre-activitats-sessions-v1`.
+- Fallback legacy: `pairs`, `jocs-ombres`, `jocs-diferencies`.
+- LA GRAN AVENTURA: `candidataMissio` / `validadaMissio` (sempre `false` fins motor real).
 
 ## Comprovar
 
 ```bash
 node docs/checks_activitats.cjs
-```
-
-Amb la suite habitual:
-
-```bash
-node docs/checks.cjs
-node docs/checks_cataleg.cjs
 node docs/checks_fase2.cjs
-node docs/checks_fase3.cjs
-node docs/checks_jocs.cjs
-node docs/checks_persistencia.cjs
 ```
 
-## Afegir una activitat (futur, una cada vegada)
+Suite: `node docs/checks.cjs` i `docs/checks_*.cjs`.
 
-1. Entrada nova a `activitats.json` amb `id` estable.
-2. `ubicacio.sala`: `torre` | `biblioteca` | `taller` | `mapa` (nom català).
-3. `entrada.place`: `tower` | `library` | `workshop` | `map` (codi del joc; ha de correspondre a la sala).
-4. `entrada.hotspotId`: ha d'existir als hotspots d'aquella sala (`js/app.js` + `js/fase2.js`).
-5. Si `nivells.font` és `personatges`, cada clau de `nivells.claus` ha d'existir a `data/personatges.json` → `nivells[].id`. Si és `ombres`, validar `cerquesPerPartida` i `midesSiluetes` (sense `claus`).
-6. PR petita + `checks_activitats.cjs` verd + tablet Jose abans de la següent.
+## Afegir una activitat
 
-## PR B (runtime Cartes)
+1. Entrada a `activitats.json` amb `id` estable.
+2. `entrada` coherent amb hotspots.
+3. Finalització real separada de celebració.
+4. `sessionId` + `activitatCompleta` + dedupe + fallback.
+5. Integració des de l'origen (HOJA §2.2).
 
-- `js/activitats.js` — `activitatCompleta`, clau `nostre-activitats-sessions-v1` (màx. 24 ids per activitat).
-- `fase2.js`: `setupPairs` → `sessionId`; darrera parella → `activitatCompleta('cartes',…)`; `end-pairs` només torre.
-- Proves: `node docs/checks_activitats_runtime.cjs` (via `checks_fase2.cjs`).
-- Comprovar **records** i **creacions** (`checks_persistencia.cjs`).
+**Principis:** Univers viu · Simplicitat màgica · Coherència visual · Integració des de l'origen.

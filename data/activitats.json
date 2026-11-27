@@ -78,6 +78,44 @@
         "candidataMissio": true,
         "validadaMissio": false
       }
+    },
+    {
+      "id": "diferencies",
+      "nom": "TROBA LES 7 DIFERÈNCIES",
+      "familia": "exploracio",
+      "ubicacio": {
+        "sala": "torre",
+        "hotspot": "lupa"
+      },
+      "entrada": {
+        "tipus": "hotspot",
+        "place": "tower",
+        "hotspotId": "lupa"
+      },
+      "nivells": {
+        "font": "diferencies",
+        "escenes": ["biblioteca", "taller", "torre", "bosc", "cuina-bruna"],
+        "diferenciesPerRonda": 7,
+        "rondesPerSessioLliure": 3
+      },
+      "disponible": true,
+      "legacyRecordKey": "jocs-diferencies",
+      "finalitzacio": {
+        "tipus": "condicio",
+        "condicio": "set_diferencies_objectiu",
+        "puntUnic": "setena_diferencia_trobada",
+        "ambitMissio": "ronda",
+        "ambitLliure": "sessio",
+        "condicioSessioLliure": "tres_rondes_complets"
+      },
+      "recompensaAventuraCompleta": {
+        "condicio": "sessio_lliure_completa",
+        "legacyRecordKey": "jocs-diferencies"
+      },
+      "granAventura": {
+        "candidataMissio": true,
+        "validadaMissio": false
+      }
     }
   ]
 }

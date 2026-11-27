@@ -8,6 +8,8 @@ const reg = JSON.parse(fs.readFileSync(path.join(root, 'data/activitats.json'), 
 const personatges = JSON.parse(fs.readFileSync(path.join(root, 'data/personatges.json'), 'utf8'));
 const fase2 = fs.readFileSync(path.join(root, 'js/fase2.js'), 'utf8');
 const jocs = fs.readFileSync(path.join(root, 'js/jocs.js'), 'utf8');
+const diferencies = JSON.parse(fs.readFileSync(path.join(root, 'data/diferencies.json'), 'utf8'));
+const difSceneIds = new Set((diferencies.scenes || []).map(s => s.id));
 
 const SALA_TO_PLACE = {
   torre: 'tower',
@@ -87,6 +89,17 @@ for (const a of activitats) {
     );
     assert.equal(a.nivells.poolPersonatges, 15, `${a.id} pool personatges`);
     assert.ok(!a.nivells.claus, `${a.id} ombres sense claus personatges`);
+  } else if (a.nivells.font === 'diferencies') {
+    assert.equal(a.nivells.diferenciesPerRonda, 7, `${a.id}: set diferències per ronda`);
+    assert.equal(a.nivells.rondesPerSessioLliure, 3, `${a.id}: tres rondes lliure`);
+    assert.ok(Array.isArray(a.nivells.escenes) && a.nivells.escenes.length, `${a.id} escenes`);
+    for (const sid of a.nivells.escenes) {
+      assert.ok(difSceneIds.has(sid), `${a.id} escena inexistent: ${sid}`);
+    }
+    assert.equal(a.finalitzacio.ambitLliure, 'sessio', `${a.id} ambitLliure`);
+    assert.equal(a.finalitzacio.ambitMissio, 'ronda', `${a.id} ambitMissio`);
+    assert.equal(a.recompensaAventuraCompleta?.legacyRecordKey, 'jocs-diferencies', `${a.id} recompensa torre`);
+    assert.ok(!a.nivells.claus, `${a.id} diferencies sense claus personatges`);
   } else {
     assert.fail(`${a.id} nivells.font desconegut: ${a.nivells.font}`);
   }
@@ -120,7 +133,14 @@ assert.equal(ombres.finalitzacio.condicio, 'tercera_ombra_objectiu');
 assert.equal(ombres.nivells.font, 'ombres');
 assert.match(jocs, /jocsOmbres:/, 'ombres: escena jocsOmbres');
 assert.match(jocs, /jocs-lupa-ombres/, 'ombres: entrada menú Lupa');
-assert.equal(activitats.length, 2, 'etapa 2: cartes + ombres (declaratiu)');
+const dif = activitats.find(a => a.id === 'diferencies');
+assert.ok(dif, 'diferencies declaratiu obligatori');
+assert.equal(dif.legacyRecordKey, 'jocs-diferencies');
+assert.equal(dif.finalitzacio.condicio, 'set_diferencies_objectiu');
+assert.match(jocs, /jocsDiferencies:/, 'diferencies: escena');
+assert.match(jocs, /jocs-lupa-diferencies/, 'diferencies: entrada menú Lupa');
+assert.equal(dif.granAventura.validadaMissio, false);
+assert.equal(activitats.length, 3, 'etapa 2: cartes + ombres + diferencies');
 assert.deepEqual(cartes.nivells.claus.sort(), [...nivellIds].sort(), 'cartes claus = personatges.nivells');
 assert.equal(cartes.nivells.claus.length, 4, 'cartes: quatre nivells');
 
