@@ -19,3 +19,8 @@ function progresGrupsJugables(personatgeList){const set=new Set();(personatgeLis
 function progresQuedenPerDescobrir(personatgeList){const have=new Set(progresGrupsDescoberts());return progresGrupsJugables(personatgeList).filter(g=>!have.has(g)).length}
 function progresSnapshot(){return progresLoad()}
 function progresSenseMigracioRetroactiva(){return true}
+function progresPersonatgeIdSecretOmbres(secret){return secret&&(secret.personatgeId||secret.id)||''}
+function progresPersonatgePerId(id,list){return (list||[]).find(p=>p&&p.id===id)||null}
+function progresGrupDesDeSecretOmbres(secret,personatgeList){const pid=progresPersonatgeIdSecretOmbres(secret);if(!pid)return '';const p=progresPersonatgePerId(pid,personatgeList);return p?progresGrupDesDePersonatge(p):progresNormalizeGrup(pid)}
+function progresRegistraCartesTauler(ids,metaFn){if(typeof progresRegistraDescobert!=='function')return;(ids||[]).forEach(id=>{const m=typeof metaFn==='function'?metaFn(id):null;const g=m?progresGrupDesDePersonatge(m):progresNormalizeGrup(id);if(g)progresRegistraDescobert(g,'cartes')})}
+function progresRegistraOmbresObjectiu(secret,personatgeList){const g=progresGrupDesDeSecretOmbres(secret,personatgeList);if(!g)return false;return progresRegistraDescobert(g,'ombres')}

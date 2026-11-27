@@ -8,7 +8,7 @@ const fetchMock=u=>{const s=String(u);return Promise.resolve({json:()=>Promise.r
 const body={append(){},querySelector(){return null},remove(){},classList:{toggle(){}}};
 const ctx=vm.createContext({document:{getElementById:()=>root,body,addEventListener(){},fullscreenEnabled:false,fullscreenElement:null,querySelector(){return null},createElement:makeNode},localStorage:{getItem:k=>store.get(k),setItem:(k,v)=>store.set(k,v)},fetch:fetchMock,window:{},setTimeout(cb,ms){if(ms>=900)return;cb()},console});
 function run(s){return vm.runInContext(s,ctx)}
-run(fs.readFileSync('js/app.js','utf8'));run(fs.readFileSync('js/fase2.js','utf8'));run(fs.readFileSync('js/jocs.js','utf8'));
+run(fs.readFileSync('js/app.js','utf8'));run(fs.readFileSync('js/progres.js','utf8'));run(fs.readFileSync('js/fase2.js','utf8'));run(fs.readFileSync('js/jocs.js','utf8'));
 run(`nav('jocs')`);assert(root.innerHTML.includes('CAPSA DE JOCS'));
 run(`action('jocs-count')`);assert(root.innerHTML.includes('COMPTEM'));
 run(`setupJocsCount()`);const goal=run('jocs.count.goal');for(let i=0;i<goal;i++)run(`jocs.count.touched.add(${i})`);run(`jocs.count.picked=${goal}`);run('render()');assert(root.innerHTML.includes('MOLT BÉ'));

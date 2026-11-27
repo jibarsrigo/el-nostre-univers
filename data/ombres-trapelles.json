@@ -209,6 +209,7 @@
     },
     {
       "id": "drac",
+      "personatgeId": "drac-mapa",
       "img": "imagenes/jocs-ombres/jocs-ombres-silueta-DRAC.webp",
       "x": 77,
       "y": 75,
