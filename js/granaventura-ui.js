@@ -38,9 +38,12 @@ function granAventuraUiClauEstat(av){
 
 function granAventuraUiClearMissio(){f2.granMissio=null}
 
+function granAventuraUiCartaPortalClear(){document.getElementById('ga-carta-portal')?.remove()}
+
 function granAventuraUiReturnHub(){
   granAventuraUiClearMissio();
   gaUi.cartaSlot=null;
+  granAventuraUiCartaPortalClear();
   nav('granAventura');
 }
 
@@ -103,11 +106,23 @@ function granAventuraUiFestaHtml(av,slots){
   return `<div class="ga-festa" role="region" aria-labelledby="ga-festa-title"><p id="ga-festa-title" class="ga-carta-text">GRÀCIES, AMIGA!\nHAS COMPLETAT LA GRAN AVENTURA!</p>${stars}<div class="ga-festa-hero">${heroes}</div></div>`;
 }
 
-function granAventuraUiCartaHtml(av,slot){
+function granAventuraUiCartaHtml(slot){
   const em=granAventuraUiEmissorMeta(slot.emissorId);
   const txt=strip(String(slot.cartaText||'').toUpperCase());
   const img=em.img?`<img class="ga-carta-portrait" src="${strip(em.img)}" alt="" draggable="false">`:'';
-  return `<div class="ga-carta-mask" role="dialog" aria-modal="true" aria-labelledby="ga-carta-nom"><div class="ga-carta">${img}<p id="ga-carta-nom" class="ga-carta-nom">${strip(String(em.label||'').toUpperCase())}</p><p class="ga-carta-text">${txt}</p><div class="ga-carta-actions">${f2btn('✉️ T\'AJUDO!','ga-missio-start')}${f2btn('TANCA','ga-carta-tanca')}</div></div></div>`;
+  const lines=txt.split('\n').map(l=>`<span class="ga-carta-line">${l}</span>`).join('');
+  return `<div class="ga-carta-mask" role="dialog" aria-modal="true" aria-labelledby="ga-carta-nom"><button type="button" class="ga-carta-fond" data-action="ga-carta-tanca" aria-label="Tancar la carta"></button><div class="ga-carta"><div class="ga-carta-scroll">${img}<p id="ga-carta-nom" class="ga-carta-nom">${strip(String(em.label||'').toUpperCase())}</p><div class="ga-carta-text">${lines}</div><div class="ga-carta-actions">${f2btn('✉️ T\'AJUDO!','ga-missio-start')}${f2btn('TANCA','ga-carta-tanca')}</div></div></div></div>`;
+}
+
+function granAventuraUiCartaPortalSync(){
+  const id='ga-carta-portal';
+  document.getElementById(id)?.remove();
+  if(state.place!=='granAventura'||!gaUi.cartaSlot)return;
+  const el=document.createElement('div');
+  el.id=id;
+  el.innerHTML=granAventuraUiCartaHtml(gaUi.cartaSlot);
+  el.querySelectorAll('[data-action]').forEach(bt=>bt.addEventListener('click',()=>action(bt.dataset.action)));
+  document.body.append(el);
 }
 
 function granAventuraHubScene(){
@@ -120,11 +135,12 @@ function granAventuraHubScene(){
   const {st}=granAventuraUiClauEstat(av);
   const slots=av.slots||[];
   const completada=st.slots.every(Boolean);
-  const body=completada?granAventuraUiFestaHtml(av,slots):`<div class="ga-hub"><p class="ga-carta-nom" style="margin:0">${strip(av.titol||'AVENTURA')}</p><div class="ga-sobres">${slots.map((s,i)=>granAventuraUiSobreHtml(av,s,i,st.slots[i])).join('')}</div><p class="ga-carta-text" style="font-size:clamp(14px,1.8vw,18px)">OBRE CADA SOBRE QUAN VULGUIS. L'ORDRE ÉS LLIURE!</p></div>`;
-  const carta=(!completada&&gaUi.cartaSlot)?granAventuraUiCartaHtml(av,gaUi.cartaSlot):'';
+  const cartaOpen=!completada&&!!gaUi.cartaSlot;
+  const body=completada?granAventuraUiFestaHtml(av,slots):`<div class="ga-hub"><p class="ga-hub-titol">${strip(av.titol||'AVENTURA')}</p><div class="ga-sobres">${slots.map((s,i)=>granAventuraUiSobreHtml(av,s,i,st.slots[i])).join('')}</div><p class="ga-hub-hint">OBRE CADA SOBRE QUAN VULGUIS. L'ORDRE ÉS LLIURE!</p></div>`;
   const cap=completada?'<p>UNA ESTRELA DAURADA PER CADA MISSIÓ!</p>':"<p>TRES AMICS T'ESPEREN!</p>";
   const explora=`<button type="button" class="f2-btn f2-btn--ga-map" data-action="map-go">🗺️ EXPLORA LLIUREMENT</button>`;
-  return f2Scene('LA GRAN AVENTURA',body+carta,`${cap}<small>EXPLORA EL MAPA QUAN VULGUIS.</small>`,explora+f2back(),'mapa','f2-gran-aventura');
+  const cls='f2-gran-aventura'+(cartaOpen?' f2-gran-aventura--carta':'');
+  return f2Scene('LA GRAN AVENTURA',body,`${cap}<small>EXPLORA EL MAPA QUAN VULGUIS.</small>`,explora+f2back(),'mapa',cls);
 }
 
 function granAventuraUiEnsure(cb){
@@ -153,12 +169,12 @@ function granAventuraUiOpen(instanciaId){
 const actionGaUi=action;
 action=function(id){
   switch(id){
-    case'open-gran-aventura':gaUi.cartaSlot=null;granAventuraUiEnsure(()=>go('granAventura'));return;
+    case'open-gran-aventura':gaUi.cartaSlot=null;granAventuraUiCartaPortalClear();granAventuraUiEnsure(()=>go('granAventura'));return;
     case'open-quest':goF2('quest');return;
     case'ga-missio-start':if(gaUi.cartaSlot)granAventuraUiIniciaMissio(gaUi.cartaSlot.instanciaId);return;
-    case'ga-carta-tanca':gaUi.cartaSlot=null;render();return;
+    case'ga-carta-tanca':gaUi.cartaSlot=null;granAventuraUiCartaPortalClear();render();return;
     case'ga-return-hub':granAventuraUiReturnHub();return;
-    case'map-go':gaUi.cartaSlot=null;nav('map');return;
+    case'map-go':gaUi.cartaSlot=null;granAventuraUiCartaPortalClear();nav('map');return;
   }
   return actionGaUi(id);
 };
@@ -168,6 +184,8 @@ Object.assign(SCENES,{granAventura:granAventuraHubScene});
 const renderGaUi=render;
 render=function(){
   const out=renderGaUi();
+  if(state.place==='granAventura')granAventuraUiCartaPortalSync();
+  else granAventuraUiCartaPortalClear();
   app.querySelectorAll('[data-ga-sobre]').forEach(el=>{
     if(el.dataset.gaBound)return;
     el.dataset.gaBound='1';
