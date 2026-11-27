@@ -3,27 +3,51 @@
   "titol": "Catàleg comú de l'univers",
   "etiquetesInicials": [
     "biblioteca",
-    "bosc",
+    "cartes",
     "conte",
-    "cuina-bruna",
     "diferencies",
+    "diferencies-biblioteca",
+    "diferencies-bosc",
+    "diferencies-cuina-bruna",
+    "diferencies-taller",
+    "diferencies-torre",
     "inventem",
     "mapa",
-    "taller",
     "torre",
     "web"
   ],
   "entrades": [
+    {
+      "id": "cartes-dors",
+      "tipus": "auxiliar",
+      "nom": "Dors de les cartes",
+      "etiquetes": [
+        "cartes"
+      ],
+      "estatArt": "pendent",
+      "fitxer": "imagenes/cartes-dors.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1
+    },
     {
       "id": "aneguet-goma",
       "tipus": "objecte",
       "nom": "UN ANEGUET DE GOMA",
       "etiquetes": [
         "diferencies",
-        "taller"
+        "diferencies-taller"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-aneguet-goma.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -36,10 +60,13 @@
       "nom": "UN DRAC AMB BARRET",
       "etiquetes": [
         "diferencies",
-        "biblioteca"
+        "diferencies-biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-barret-drac.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -52,10 +79,13 @@
       "nom": "UNA BOMBETA MÀGICA",
       "etiquetes": [
         "diferencies",
-        "torre"
+        "diferencies-torre"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-bombeta-llum.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -68,10 +98,13 @@
       "nom": "UN CANDELABRE ESTEL",
       "etiquetes": [
         "diferencies",
-        "torre"
+        "diferencies-torre"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-candelabre-estel.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -84,10 +117,13 @@
       "nom": "UN CLAUER MISTERIÓS",
       "etiquetes": [
         "diferencies",
-        "torre"
+        "diferencies-torre"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-clauer-misterios.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -100,10 +136,13 @@
       "nom": "UNA CORONA DE PAPER",
       "etiquetes": [
         "diferencies",
-        "bosc"
+        "diferencies-bosc"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-corona-paper.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -116,10 +155,13 @@
       "nom": "UNA CULLERA DAURADA",
       "etiquetes": [
         "diferencies",
-        "cuina-bruna"
+        "diferencies-cuina-bruna"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-cullera-daurada.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -132,10 +174,14 @@
       "nom": "UNA ESTRELLA DE FIL",
       "etiquetes": [
         "diferencies",
-        "torre"
+        "diferencies-torre",
+        "diferencies-bosc"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-estrella-fil.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -148,10 +194,13 @@
       "nom": "UNA FULLA VERDA",
       "etiquetes": [
         "diferencies",
-        "bosc"
+        "diferencies-bosc"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-fulla-verda.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -164,10 +213,13 @@
       "nom": "UN LLAÇ DAURAT",
       "etiquetes": [
         "diferencies",
-        "biblioteca"
+        "diferencies-biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-llac-llibre.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -180,10 +232,14 @@
       "nom": "UNA MAGDALENA",
       "etiquetes": [
         "diferencies",
-        "taller"
+        "diferencies-taller",
+        "diferencies-cuina-bruna"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-magdalena.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -196,10 +252,13 @@
       "nom": "UN MAPA ENROTLLAT",
       "etiquetes": [
         "diferencies",
-        "torre"
+        "diferencies-torre"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-mapa-enrotllat.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -209,13 +268,20 @@
     {
       "id": "mitjo",
       "tipus": "objecte",
-      "nom": "UN MITJÓ A LA TAULA",
+      "nom": "UN MITJÓ AL TALLER",
       "etiquetes": [
         "diferencies",
-        "biblioteca"
+        "diferencies-biblioteca",
+        "diferencies-taller",
+        "diferencies-bosc"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-mitjo.webp",
+      "fitxersRelacionats": [
+        "imagenes/univers-assets/obj-mitjo.webp"
+      ],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -228,10 +294,13 @@
       "nom": "UNA OLLA QUE FUMEGA",
       "etiquetes": [
         "diferencies",
-        "cuina-bruna"
+        "diferencies-cuina-bruna"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-olla-fum.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -241,13 +310,21 @@
     {
       "id": "pastanaga",
       "tipus": "objecte",
-      "nom": "UNA PASTANAGA ENTRE LLIBRES",
+      "nom": "UNA PASTANAGA AL TALLER",
       "etiquetes": [
         "diferencies",
-        "biblioteca"
+        "diferencies-biblioteca",
+        "diferencies-taller",
+        "diferencies-bosc",
+        "diferencies-cuina-bruna"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-pastanaga.webp",
+      "fitxersRelacionats": [
+        "imagenes/univers-assets/obj-pastanaga.webp"
+      ],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -260,10 +337,13 @@
       "nom": "UN PASTISSET",
       "etiquetes": [
         "diferencies",
-        "cuina-bruna"
+        "diferencies-cuina-bruna"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-pastisset.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -276,10 +356,13 @@
       "nom": "UNA PILOTA DE COLORS",
       "etiquetes": [
         "diferencies",
-        "taller"
+        "diferencies-taller"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-pilota-colors.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -292,10 +375,13 @@
       "nom": "UNA PLOMA DE COLORS",
       "etiquetes": [
         "diferencies",
-        "taller"
+        "diferencies-taller"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-ploma-colors.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -308,10 +394,13 @@
       "nom": "UNA SABATA GEGANT",
       "etiquetes": [
         "diferencies",
-        "bosc"
+        "diferencies-bosc"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-sabata-gigant.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -324,10 +413,13 @@
       "nom": "UNA SABATA PETITA",
       "etiquetes": [
         "diferencies",
-        "bosc"
+        "diferencies-bosc"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-sabata-petita.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -340,10 +432,13 @@
       "nom": "UNA TARONJA",
       "etiquetes": [
         "diferencies",
-        "cuina-bruna"
+        "diferencies-cuina-bruna"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-taronja.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -356,10 +451,14 @@
       "nom": "UNA TASSA AMB ORELLES",
       "etiquetes": [
         "diferencies",
-        "taller"
+        "diferencies-taller",
+        "diferencies-cuina-bruna"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/univers-assets/obj-tassa-orelles.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -372,10 +471,13 @@
       "nom": "UN MOIX AMB ULLERES",
       "etiquetes": [
         "diferencies",
-        "biblioteca"
+        "diferencies-biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-ulleres-moix.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "diferencies"
@@ -389,8 +491,11 @@
       "etiquetes": [
         "conte"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-boira.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "conte",
@@ -408,8 +513,11 @@
       "etiquetes": [
         "conte"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-bosc.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "conte"
@@ -426,8 +534,11 @@
       "etiquetes": [
         "conte"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-bruna.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "conte",
@@ -448,8 +559,11 @@
         "torre",
         "biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-buho.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes",
@@ -465,8 +579,11 @@
         "web",
         "biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-cervol.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes"
@@ -481,8 +598,11 @@
         "web",
         "biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-conill.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes",
@@ -501,6 +621,9 @@
       ],
       "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-drac.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "local",
       "actiu": false,
       "jocs": [
         "ombres"
@@ -513,13 +636,23 @@
       "nom": "El drac de l'estanteria",
       "etiquetes": [
         "web",
-        "inventem"
+        "inventem",
+        "diferencies-biblioteca",
+        "diferencies-taller",
+        "diferencies-torre",
+        "diferencies"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-drac-inventem.webp",
+      "fitxersRelacionats": [
+        "imagenes/univers-assets/obj-drac-inventem.webp"
+      ],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
-        "cartes"
+        "cartes",
+        "diferencies"
       ],
       "versio": 1
     },
@@ -531,8 +664,11 @@
         "web",
         "mapa"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-drac-mapa.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes",
@@ -549,6 +685,9 @@
       ],
       "estatArt": "aprovat",
       "fitxer": "imagenes/personatges/personatge-gat.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes",
@@ -566,8 +705,11 @@
         "mapa",
         "biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-guineu.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes",
@@ -583,8 +725,11 @@
         "web",
         "biblioteca"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-moix.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes"
@@ -600,8 +745,11 @@
         "biblioteca",
         "inventem"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-monstret.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes"
@@ -617,6 +765,9 @@
       ],
       "estatArt": "aprovat",
       "fitxer": "imagenes/personatges/personatge-nacar.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes"
@@ -631,8 +782,11 @@
         "web",
         "mapa"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-nena.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes",
@@ -647,8 +801,11 @@
       "etiquetes": [
         "conte"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-nus.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "conte",
@@ -665,13 +822,23 @@
       "nom": "El pelut de l'estanteria",
       "etiquetes": [
         "web",
-        "inventem"
+        "inventem",
+        "diferencies-biblioteca",
+        "diferencies-taller",
+        "diferencies-torre",
+        "diferencies"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-pelut-inventem.webp",
+      "fitxersRelacionats": [
+        "imagenes/univers-assets/obj-pelut-inventem.webp"
+      ],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
-        "cartes"
+        "cartes",
+        "diferencies"
       ],
       "versio": 1
     },
@@ -682,8 +849,11 @@
       "etiquetes": [
         "conte"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-pipa.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "conte",
@@ -703,8 +873,11 @@
         "web",
         "mapa"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-pipa-map.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes"
@@ -720,8 +893,11 @@
         "web",
         "mapa"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-seta.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "cartes",
@@ -736,8 +912,11 @@
       "etiquetes": [
         "conte"
       ],
-      "estatArt": "aprovat",
+      "estatArt": "pendent",
       "fitxer": "imagenes/personatges/personatge-troc.webp",
+      "fitxersRelacionats": [],
+      "fitxerDisponible": true,
+      "estatPublicacio": "publicat",
       "actiu": true,
       "jocs": [
         "conte",

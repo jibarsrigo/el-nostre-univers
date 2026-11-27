@@ -1,0 +1,20 @@
+{
+  "versio": 1,
+  "nota": "Només aprovacions explícites de Jose. Guio aprovat no equival a il·lustracio aprovada.",
+  "aprovacions": [
+    {
+      "id": "gat",
+      "tipus": "personatge",
+      "fitxer": "imagenes/personatges/personatge-gat.webp",
+      "versioFitxer": 1,
+      "data": "2026-11-27"
+    },
+    {
+      "id": "nacar",
+      "tipus": "personatge",
+      "fitxer": "imagenes/personatges/personatge-nacar.webp",
+      "versioFitxer": 1,
+      "data": "2026-11-27"
+    }
+  ]
+}
