@@ -99,7 +99,7 @@ const SHELF=[
  ['bruna','BRUNA I LA POCIÓ SORPRESA',1107,586,1455,887]
 ];
 hotspots.library.push(['contes','ELS CONTES VIUS','rect',[500,155,1095,405]]);
-FIREFLY.library.contes=[690,240];
+FIREFLY.library.contes=[694,255];
 let contesData=null,contesError='',contesLoading=null,conteId='',contePage=0,conteMotion='',pipaObert=false,soparObert=false,boscObert=false,boiraObert=false,trocObert=false,nusObert=false,solapaOberta=false;
 function conteList(){return contesData&&Array.isArray(contesData.llibres)?contesData.llibres:[]}
 function conteBook(){return conteList().find(b=>b&&b.id===conteId)||null}
