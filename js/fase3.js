@@ -2,13 +2,16 @@
 /* FASE 3 — Inventem! Un taller real, dibuix amb llapis, àlbum i memòria local.
    No modifica les activitats ni la navegació de les fases anteriors. */
 const F3_KEY='nostre-creacions-v3';
+const F3_GALLERY_UI_MAX=12;
+function f3NormalizeGallery(a){return(Array.isArray(a)?a:[]).filter(x=>x&&['creature','drawing','object'].includes(x.kind))}
+function f3LoadGalleryFromStorage(data){f3.gallery=f3NormalizeGallery(data!=null?data:JSON.parse(localStorage.getItem(F3_KEY)||'[]'))}
 const f3={gallery:[],draft:null,object:null,selected:null,color:'#7652c8',brush:8,eraser:false,paintDirty:false};
 const palette3=['#7b57d5','#ffab4b','#63bdd0','#ef6ca0','#76c36c','#e7c873','#e8e1f5','#393452'];
 const formats3={creature:'CRIATURA',drawing:'DIBUIX',object:'OBJECTE MÀGIC'};
 const safe3=strip;
 const newCreature3=()=>({kind:'creature',name:'',species:'drac',body:'#7b57d5',belly:'#f1d58a',wings:'ales',ears:'banyes',tail:'llarga',mark:'estrelles'});
 const newObject3=()=>({kind:'object',name:'',shape:'vareta',gem:'#63bdd0',power:'llum'});
-try{const data=JSON.parse(localStorage.getItem(F3_KEY)||'[]');if(Array.isArray(data)){f3.gallery=data.filter(x=>x&&['creature','drawing','object'].includes(x.kind)).slice(0,12)}}catch{}
+try{f3LoadGalleryFromStorage()}catch{}
 f3.draft=newCreature3(); f3.object=newObject3();
 const i3=(name,val,selected)=>`<button type="button" class="f3-option ${selected?'active':''}" data-f3-option="${name}" data-f3-value="${safe3(val)}" aria-pressed="${selected}">${safe3(val)}</button>`;
 function creatureSVG3(d,small=false){
@@ -31,7 +34,7 @@ function creator3(){let d=f3.draft;let colors=palette3.map(c=>color3('body',c,c=
 function maker3(){let d=f3.object;return hero3('ELS OBJECTES MÀGICS','INVENTA UN OBJECTE AMB PODERS!','f3-maker').replace('<div class="f3-body" id="f3-slot"></div>',`<div class="f3-body f3-columns"><div class="f3-preview"><div class="f3-svg-holder" id="f3-object-art">${objectSVG3(d)}</div><label class="f3-name-label" for="f3-object-name">POSA-LI NOM</label><input class="f3-name" id="f3-object-name" maxlength="22" placeholder="NOM DE L’OBJECTE" value="${safe3(d.name)}"></div><div class="f3-controls">${optionGroup3('QUÈ INVENTAM?','shape',['vareta','escut','cristall'],d.shape)}<div class="f3-choice"><span class="f3-label">COLOR MÀGIC</span><div class="f3-row">${palette3.map(c=>color3('gem',c,d.gem===c)).join('')}</div></div>${optionGroup3('QUIN PODER TÉ?','power',['llum','protecció','curar'],d.power)}<p class="f3-description" id="f3-powertext">${powerText3(d.power)}</p><div class="f3-row f3-footer">${button3('✦ DESA L’OBJECTE','save-object')}${button3('↻ UN ALTRE','new-object')}${button3('← TALLER','exit')}</div><p class="f3-help" id="f3-feedback" role="status"></p></div></div>`)}
 function powerText3(p){return ({llum:'IL·LUMINA ELS LLOCS FOSCOS.',protecció:'CUIDA ELS AMICS DEL BOSC.',curar:'AJUDA LES CRIATURES A RECUPERAR-SE.'})[p]||''}
 function draw3(){return hero3('EL QUADERN MÀGIC','DIBUIXA AMB EL DIT O EL LLAPIS!','f3-drawing').replace('<div class="f3-body" id="f3-slot"></div>',`<div class="f3-body f3-drawbody"><div class="f3-drawing-tools"><span class="f3-label">PINTURES</span><div class="f3-row">${palette3.map(c=>`<button class="f3-swatch ${f3.color===c&&!f3.eraser?'chosen':''}" type="button" data-f3-ink="${c}" style="--swatch:${c}" aria-label="Pintar de color ${c}"></button>`).join('')}</div><div class="f3-row">${button3('🖌️ PINZELL','brush')}${button3('◯ GOMA','eraser')}${button3('↶ DESFER','undo')}${button3('✧ NETEJA','clear')}</div></div><div class="f3-canvas-wrap"><canvas id="f3-canvas" width="800" height="480" aria-label="Espai per dibuixar amb el dit o amb llapis digital"></canvas></div><div class="f3-save-strip"><label class="f3-name-label" for="f3-drawing-name">NOM DEL DIBUIX</label><input id="f3-drawing-name" class="f3-name" maxlength="22" placeholder="EL MEU DIBUIX"><div class="f3-row">${button3('✦ DESA EL DIBUIX','save-drawing')}${button3('← TALLER','exit')}</div><p class="f3-help" id="f3-feedback" role="status"></p></div></div>`)}
-function gallery3(){let out=f3.gallery.length?`<div class="f3-gallery-grid">${[...f3.gallery].reverse().map(x=>`<article class="f3-card">${x.kind==='drawing'?`<img src="${x.image}" alt="Dibuix ${safe3(x.name)}" loading="lazy">`:x.kind==='object'?objectSVG3(x):creatureSVG3(x,true)}<h3>${safe3(x.name)}</h3><small>${formats3[x.kind]}</small><div class="f3-row">${x.kind!=='drawing'?button3('✎ CANVIA','edit-'+x.id):''}${button3('✕ ESBORRA','delete-'+x.id)}</div></article>`).join('')}</div>`:`<div class="f3-empty">✨<p>AQUÍ GUARDARÀS LES TEVES CREACIONS!</p></div>`;
+function gallery3(){const shown=f3.gallery.slice(-F3_GALLERY_UI_MAX);let out=shown.length?`<div class="f3-gallery-grid">${[...shown].reverse().map(x=>`<article class="f3-card">${x.kind==='drawing'?`<img src="${x.image}" alt="Dibuix ${safe3(x.name)}" loading="lazy">`:x.kind==='object'?objectSVG3(x):creatureSVG3(x,true)}<h3>${safe3(x.name)}</h3><small>${formats3[x.kind]}</small><div class="f3-row">${x.kind!=='drawing'?button3('✎ CANVIA','edit-'+x.id):''}${button3('✕ ESBORRA','delete-'+x.id)}</div></article>`).join('')}</div>`:`<div class="f3-empty">✨<p>AQUÍ GUARDARÀS LES TEVES CREACIONS!</p></div>`;
  return hero3('EL MEU RACÓ','LES COSES QUE HAS INVENTAT','f3-gallery').replace('<div class="f3-body" id="f3-slot"></div>',`<div class="f3-body">${out}<div class="f3-row f3-bottom-actions">${button3('🐉 CREA UNA CRIATURA','creator')}${button3('🖌️ DIBUIXA','draw')}${button3('← TALLER','exit')}</div><p class="f3-help" id="f3-feedback" role="status"></p></div>`)}
 Object.assign(SCENES,{f3creator:creator3,f3maker:maker3,f3draw:draw3,f3gallery:gallery3});
 // Un sol taller: objectes de la imatge, no tres menús de "posar nom".
@@ -69,8 +72,9 @@ function f3Continuity(){
 
 }
 function f3Save(x){
+ try{const raw=JSON.parse(localStorage.getItem(F3_KEY)||'[]');f3.gallery=f3NormalizeGallery(raw)}catch{f3.gallery=f3NormalizeGallery(f3.gallery)}
  let old=f3.gallery.findIndex(a=>a.id===x.id);if(old>=0)f3.gallery.splice(old,1);
- f3.gallery.push(x);f3.gallery=f3.gallery.slice(-12);
+ f3.gallery.push(x);
  try{localStorage.setItem(F3_KEY,JSON.stringify(f3.gallery))}catch(e){f3.gallery.pop();throw e}
  remember(x.kind==='creature'?'f3-creature':x.kind==='drawing'?'f3-drawing':'f3-object');
 }

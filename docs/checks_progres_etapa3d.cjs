@@ -14,10 +14,11 @@ run(`missionsCatalog.list=${JSON.stringify(missionsJSON.missions)};missionsCatal
 
 const mid='ga-exp-dif-biblioteca-01';
 run(`missioInicia('${mid}','sess-a')`);
-run(`activitatCompleta('diferencies',{sessionId:'sess-a',mode:'lliure',missioId:'${mid}',ambit:'ronda'})`);
+run(`activitatCompleta('diferencies',{sessionId:'sess-lliure',mode:'lliure',missioId:'${mid}',ambit:'ronda'})`);
 assert.equal(run(`missioEsCompletada('${mid}')`),false,'lliure no completa missió');
 
-run(`activitatCompleta('diferencies',{sessionId:'sess-b',mode:'missio',missioId:'${mid}',ambit:'ronda'})`);
+assert.equal(run(`missioActivitatCompleta('${mid}','diferencies',{sessionId:'sess-b',mode:'missio',ambit:'ronda'}).ok`),false,'sessió activa');
+run(`activitatCompleta('diferencies',{sessionId:'sess-a',mode:'missio',missioId:'${mid}',ambit:'ronda'})`);
 assert(run(`missioEsCompletada('${mid}')`));
 assert.equal(run(`missioActivitatCompleta('${mid}','diferencies',{sessionId:'sess-c',mode:'missio',ambit:'ronda'}).ok`),false,'no duplicar recompensa');
 
