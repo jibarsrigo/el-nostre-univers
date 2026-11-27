@@ -18,11 +18,13 @@ run('activitatsResetMem()');
 ls.set('nostre-fase1-records',JSON.stringify({pairs:true,spell:true}));
 ls.set('nostre-creacions-v3',JSON.stringify([{kind:'creature',id:'c1',name:'Espurna'}]));
 run('progresRegistraDescobert("pipa","cartes")');
+const abans=run('progresGrupsDescoberts().length');
 
 run(`go('pairs');setupPairs()`);
 const pairs=run('f2.match');
 for(const animal of new Set(pairs)){const inds=pairs.map((v,i)=>v===animal?i:null).filter(x=>x!==null);run(`clickCard(${inds[0]})`);run(`clickCard(${inds[1]})`);}
-assert(run('progresGrupsDescoberts().length')>=5,'3b persisteix després victòria Cartes');
+assert(run('progresGrupsDescoberts().length')>abans,'3b augmenta col·lecció després victòria Cartes');
+run('cartesRosterForLevel(0)').forEach(id=>{const g=run(`progresGrupDesDePersonatge(jocsPairMeta('${id}'))`);assert(g&&run(`progresTeGrup(${JSON.stringify(g)})`),'tauler → progrés '+id)});
 
 const exported=run('progresBackupExport()');
 assert.equal(exported.backupVersion,1);
