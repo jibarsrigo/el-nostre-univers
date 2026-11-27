@@ -197,6 +197,28 @@
       "perRoundDecoys": 1,
       "minSpotDist": 11,
       "diffs": []
+    },
+    {
+      "id": "bosc",
+      "label": "El bosc",
+      "base": "imagenes/jocs-diferencies/jocs-diferencies-bosc-base.webp",
+      "completedTitle": "CINC AL BOSC!",
+      "completedMsg": "HAS TROBAT TOTS ELS DETALLS DEL BOSC!",
+      "perRound": 5,
+      "perRoundDecoys": 1,
+      "minSpotDist": 11,
+      "diffs": []
+    },
+    {
+      "id": "cuina-bruna",
+      "label": "La cuina de na Bruna",
+      "base": "imagenes/jocs-diferencies/jocs-diferencies-cuina-bruna-base.webp",
+      "completedTitle": "CINC A LA CUINA!",
+      "completedMsg": "HAS TROBAT TOTS ELS DETALLS DEL SOPAR!",
+      "perRound": 5,
+      "perRoundDecoys": 1,
+      "minSpotDist": 11,
+      "diffs": []
     }
   ]
 }
