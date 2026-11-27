@@ -11,22 +11,22 @@
           "instanciaId": "ga-dia-001-slot-1",
           "plantillaMissioId": "ga-mem-cartes-exploradora-01",
           "emissorId": "pipa",
-          "cartaText": "",
-          "objectiuVisible": ""
+          "cartaText": "HOLA, AMIGA!\nLES MEVES CARTES S'HAN EMBULLAT!\nM'AJUDES A TROBAR LES PARELLES?",
+          "objectiuVisible": "TROBA LES PARELLES AL NIVELL EXPLORADORA"
         },
         {
           "instanciaId": "ga-dia-001-slot-2",
           "plantillaMissioId": "ga-exp-ombres-nivell1-01",
-          "emissorId": "pipa",
-          "cartaText": "",
-          "objectiuVisible": ""
+          "emissorId": "bruna",
+          "cartaText": "OH, NO!\nTRES AMICS S'HAN AMAGAT A LA FOSCOR!\nM'AJUDES A TROBAR-LOS?",
+          "objectiuVisible": "TROBA TRES OMBRES DEL PRIMER NIVELL"
         },
         {
           "instanciaId": "ga-dia-001-slot-3",
           "plantillaMissioId": "ga-exp-dif-biblioteca-01",
-          "emissorId": "pipa",
-          "cartaText": "",
-          "objectiuVisible": ""
+          "emissorId": "troc",
+          "cartaText": "QUINA TRAPELLERIA!\nALGÚ HA CANVIAT SET COSES DE LA BIBLIOTECA!\nLES POTS TROBAR?",
+          "objectiuVisible": "TROBA 7 DIFERÈNCIES A LA BIBLIOTECA"
         }
       ]
     },
