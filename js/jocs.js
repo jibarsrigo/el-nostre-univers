@@ -38,8 +38,12 @@ function ensureOmbres(cb){
 function personatgeList(){return jocs.personatges?.personatges||[]}
 function personatgePool(){return personatgeList().filter(p=>p.enabled!==false&&strip(p.img))}
 function jocsPairMeta(id){return personatgeList().find(p=>p.id===id)||null}
-function jocsPairsPerRound(){const n=jocs.personatges?.pairsPerRound;return Math.max(2,Math.min(8,Math.floor(n)||5))}
-function jocsSetupPairsRound(){const pool=personatgePool(),n=Math.min(jocsPairsPerRound(),pool.length);for(let t=0;t<32;t++){const pick=jocsShuffle(pool).slice(0,n),sig=pick.map(p=>p.id).sort().join('|');if(sig!==pairsLastSig||t>24){pairsLastSig=sig;pairsRoundIds=pick.map(p=>p.id);return}}pairsRoundIds=jocsShuffle(pool).slice(0,n).map(p=>p.id)}
+function jocsPairLevels(){const l=jocs.personatges?.nivells;return Array.isArray(l)&&l.length?l:[{id:'base',label:'',parelles:jocs.personatges?.pairsPerRound||5}]}
+function jocsPairLevelIndex(){const l=jocsPairLevels(),i=Number.isInteger(f2.pairsLevel)?f2.pairsLevel:Number(jocs.personatges?.nivellInicial)||0;return Math.max(0,Math.min(l.length-1,i))}
+function jocsPairTexts(){return jocs.personatges?.textos||{}}
+function jocsPairsPerRound(){const n=jocsPairLevels()[jocsPairLevelIndex()].parelles;return Math.max(2,Math.min(8,Math.floor(n)||5))}
+function jocsUniqueGroups(list){const seen=new Set();return list.filter(p=>{const g=p.grup||p.id;if(seen.has(g))return false;seen.add(g);return true})}
+function jocsSetupPairsRound(){const pool=personatgePool(),n=Math.min(jocsPairsPerRound(),jocsUniqueGroups(pool).length);for(let t=0;t<32;t++){const pick=jocsUniqueGroups(jocsShuffle(pool)).slice(0,n),sig=pick.map(p=>p.id).sort().join('|');if(sig!==pairsLastSig||t>24){pairsLastSig=sig;pairsRoundIds=pick.map(p=>p.id);return}}pairsRoundIds=jocsUniqueGroups(jocsShuffle(pool)).slice(0,n).map(p=>p.id)}
 function jocsPairIds(){if(!pairsRoundIds.length)jocsSetupPairsRound();return pairsRoundIds}
 function ensurePersonatges(cb){if(jocs.personatges)return cb();if(jocs.personatgesLoad){jocs.personatgesLoad.then(cb);return}jocs.personatgesLoad=fetch(PERSONATGES_URL).then(r=>r.json()).then(d=>{jocs.personatges=d;cb()}).catch(()=>{notify('NO PUC CARREGAR LES CARTES');cb()})}
 const jocs={count:{items:[],touched:new Set(),goal:0,picked:null},puzle:{order:[0,1,2,3],size:2,img:'pipa-portada.webp'},pocio:{data:null,load:null,sel:[],mixing:false,result:null},ombres:{data:null,load:null,lx:42,ly:52,found:new Set(),stars:0,missionIndex:0,phase:'searching',targetId:null,usedTargets:[],activeSecrets:[],distractorNotified:new Set(),starPop:false},personatges:null,personatgesLoad:null,diferencies:{data:null,load:null,sceneId:null,active:[],decoys:[],found:new Set(),stars:0,missionIndex:0,phase:'searching',starPop:false,lastMsg:''}}

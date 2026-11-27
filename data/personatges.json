@@ -1,8 +1,19 @@
 {
   "title": "Cartes del univers",
   "pairsPerRound": 5,
+  "nivells": [
+    { "id": "exploradora", "label": "EXPLORADORA", "parelles": 4 },
+    { "id": "aventurera", "label": "AVENTURERA", "parelles": 5 }
+  ],
+  "nivellInicial": 1,
+  "textos": {
+    "hint": "TROBA DOS CARTES IGUALS!",
+    "progress": "{n} DE {t} PARELLES",
+    "doneTitle": "HAS TROBAT TOTS ELS AMICS!",
+    "doneMsg": "QUINA MEMÒRIA MÀGICA!"
+  },
   "personatges": [
-    { "id": "pipa", "label": "Na Pipa", "img": "imagenes/personatges/personatge-pipa.webp", "tags": ["conte"], "contes": ["pipa"], "enabled": true },
+    { "id": "pipa", "label": "Na Pipa", "img": "imagenes/personatges/personatge-pipa.webp", "tags": ["conte"], "contes": ["pipa"], "grup": "pipa", "enabled": true },
     { "id": "bruna", "label": "Na Bruna", "img": "imagenes/personatges/personatge-bruna.webp", "tags": ["conte"], "contes": ["sopar", "bruna"], "enabled": true },
     { "id": "bosc", "label": "Laia", "img": "imagenes/personatges/personatge-bosc.webp", "tags": ["conte"], "contes": ["bosc"], "enabled": true },
     { "id": "boira", "label": "Na Boira", "img": "imagenes/personatges/personatge-boira.webp", "tags": ["conte"], "contes": ["boira"], "enabled": true },
@@ -10,14 +21,14 @@
     { "id": "nus", "label": "En Nus", "img": "imagenes/personatges/personatge-nus.webp", "tags": ["conte"], "contes": ["nus"], "enabled": true },
     { "id": "conill", "label": "El conill", "img": "imagenes/personatges/personatge-conill.webp", "tags": ["web", "biblioteca"], "enabled": true },
     { "id": "gat", "label": "El gat", "img": "imagenes/personatges/personatge-gat.webp", "tags": ["web"], "enabled": true },
-    { "id": "moix", "label": "El moix", "img": "imagenes/personatges/personatge-moix.webp", "tags": ["web", "biblioteca"], "enabled": true },
-    { "id": "monstret", "label": "El monstret", "img": "imagenes/monstret.svg", "tags": ["web", "biblioteca", "inventem"], "enabled": true },
+    { "id": "moix", "label": "El moix", "img": "imagenes/personatges/personatge-moix.webp", "tags": ["web", "biblioteca"], "enabled": false, "note": "La imatge són unes ulleres, no un personatge" },
+    { "id": "monstret", "label": "El monstret", "img": "imagenes/personatges/personatge-monstret.webp", "tags": ["web", "biblioteca", "inventem"], "enabled": true },
     { "id": "guineu", "label": "El guineu", "img": "imagenes/personatges/personatge-guineu.webp", "tags": ["web", "mapa", "biblioteca"], "enabled": true },
     { "id": "nena", "label": "La nena", "img": "imagenes/personatges/personatge-nena.webp", "tags": ["web", "mapa"], "enabled": true },
     { "id": "buho", "label": "El mussol", "img": "imagenes/personatges/personatge-buho.webp", "tags": ["web", "torre", "biblioteca"], "enabled": true },
     { "id": "seta", "label": "La seta", "img": "imagenes/personatges/personatge-seta.webp", "tags": ["web", "mapa"], "enabled": true },
     { "id": "cervol", "label": "El cérvol", "img": "imagenes/personatges/personatge-cervol.webp", "tags": ["web", "biblioteca"], "enabled": true, "note": "Finestra Llegim" },
-    { "id": "pipa-map", "label": "Na Pipa", "img": "imagenes/personatges/personatge-pipa-map.webp", "tags": ["web", "mapa"], "enabled": true },
+    { "id": "pipa-map", "label": "Na Pipa", "img": "imagenes/personatges/personatge-pipa-map.webp", "tags": ["web", "mapa"], "grup": "pipa", "enabled": true },
     { "id": "drac-mapa", "label": "Drac del mapa", "img": "imagenes/personatges/personatge-drac-mapa.webp", "tags": ["web", "mapa"], "enabled": true },
     { "id": "drac-inventem", "label": "El drac de l'estanteria", "img": "imagenes/personatges/personatge-drac-inventem.webp", "tags": ["web", "inventem"], "enabled": true },
     { "id": "pelut-inventem", "label": "El pelut de l'estanteria", "img": "imagenes/personatges/personatge-pelut-inventem.webp", "tags": ["web", "inventem"], "enabled": true },
