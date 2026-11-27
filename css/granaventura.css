@@ -34,6 +34,15 @@
 .ga-dia-progres-stars .ga-dia-star{display:inline-flex;width:clamp(40px,11vmin,58px);height:clamp(40px,11vmin,58px);color:#8a7aa0}
 .ga-dia-progres-stars .ga-dia-star.ombres-star--on{color:#ffd86a;filter:drop-shadow(0 0 10px #ffd86a88)}
 .ga-dia-progres-stars .ga-dia-star .ombres-star-svg{width:100%;height:100%;fill:currentColor}
+.ga-dia-progres-stars .ga-dia-star:not(.ombres-star--on) .ombres-star-svg{fill:transparent;stroke:#a898c8;stroke-width:2.2px}
+.ga-dia-progres-stars .ga-dia-star.ombres-star--on .ombres-star-svg{stroke:#fff8dc;stroke-width:1.2px}
+.ga-missio-victoria-card.cartes-party-card--gran-missio{border:3px solid #ffe4a8;border-radius:18px;background:radial-gradient(ellipse at 50% 22%,#3a2456,#140a24 78%);box-shadow:0 0 28px #ffd86a44;padding:clamp(16px,3vw,26px);color:#ffe9c4}
+.ombres-level-done--gran-missio{position:static;min-height:0;flex:1 0 auto;overflow:visible;border-radius:12px;background:transparent}
+.ombres-level-done--gran-missio::before,.ombres-level-done--gran-missio>.ombres-premi-tower{display:none}
+.f2-scene--ombres.f2-scene--gran-missio .ombres-title{color:#ffe9c4}
+.dif-done--gran-missio{position:static;min-height:0;max-height:none;height:auto;overflow:visible;padding:clamp(10px,2vh,16px);border-radius:12px}
+.dif-done--gran-missio::before{display:none}
+.jocs-diferencies--gran-missio .f2-illustrated:has(.dif-done--gran-missio){min-height:min(42dvh,420px);align-items:center;justify-content:center}
 .ga-dia-progres-txt,.ga-hub-progres-txt{margin:0;font-size:clamp(12px,1.6vw,16px);font-weight:900;letter-spacing:.08em;color:#ffe9c4;text-align:center}
 .ga-hub-progres{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;margin:2px 0 10px}
 .ga-missio-victoria-card .cartes-party-sub{max-width:22em;line-height:1.35;text-align:center}

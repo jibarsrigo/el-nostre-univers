@@ -1,0 +1,14 @@
+'use strict';
+const fs=require('fs'),assert=require('assert'),path=require('path');
+const root=path.resolve(__dirname,'..');
+const ga=fs.readFileSync(path.join(root,'js/granaventura-ui.js'),'utf8');
+const jocs=fs.readFileSync(path.join(root,'js/jocs.js'),'utf8');
+const f2=fs.readFileSync(path.join(root,'js/fase2.js'),'utf8');
+assert(ga.includes('granAventuraUiAventuraHub'),'hub resol aventura completada');
+assert(ga.includes('f2.sessionId=sid'),'cartes reutilitza sessionId missió');
+assert(ga.includes('ombresStartLevel(0,sid)'),'ombres rep sessionId');
+assert(ga.includes('sessionId:sid'),'dif rep sessionId');
+assert(ga.includes('ga-dia-progres-stars')&&!ga.includes('ombres-celebrate-stars'),'victòria sense classe torre');
+assert(jocs.includes('f2.granMissio?.sessionId'),'resetDiferencies conserva sessió GA');
+assert(f2.includes('f2.granMissio?.activitatId===\'cartes\'?f2.granMissio.sessionId'),'setupPairs conserva sessió GA');
+console.log('OK: gran-aventura — sessionId missió i victòria unificada');

@@ -3,13 +3,34 @@
 const gaUi={cartaSlot:null,ready:false,err:false};
 const GA_STAR='<svg viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M32 2 37 22 52 12 42 27 62 32 42 37 52 52 37 42 32 62 27 42 12 52 22 37 2 32 22 27 12 12 27 22Z"/></svg>';
 
+function granAventuraUiAventuraHub(){
+  const bloc=typeof granAventuraBloc==='function'?granAventuraBloc():{};
+  if(bloc.aventuraActiva){const av=typeof granAventuraById==='function'?granAventuraById(bloc.aventuraActiva):null;if(av)return av}
+  const dies=typeof granAventuraDies==='function'?granAventuraDies():[];
+  for(const av of dies){
+    if(typeof granAventuraDiaPreparat==='function'&&!granAventuraDiaPreparat(av))continue;
+    const clau=typeof granAventuraClau==='function'?granAventuraClau(av.id,bloc.lap):'';
+    const st=typeof granAventuraAventuraEstat==='function'?granAventuraAventuraEstat(clau):{estat:'pendent',slots:[]};
+    if(st.estat==='en_curs'||st.estat==='completada')return av;
+  }
+  return granAventuraUiAventuraActiva();
+}
 function gaDiaProgres(avOpt,stOpt){
-  const av=avOpt||granAventuraUiAventuraActiva();
+  const gm=f2.granMissio;
+  let av=avOpt;
+  if(!av&&gm?.aventuraId&&typeof granAventuraById==='function')av=granAventuraById(gm.aventuraId);
+  if(!av)av=granAventuraUiAventuraHub();
   const total=Math.max(1,av?.slots?.length||3);
-  const slots=stOpt?.slots||(av?granAventuraUiClauEstat(av).st.slots:[]);
+  let slots=stOpt?.slots;
+  if(!slots&&av)slots=granAventuraUiClauEstat(av).st.slots;
+  if(!Array.isArray(slots))slots=[];
   let done=0;
   for(let i=0;i<total;i++)if(slots[i])done++;
-  return{total,done};
+  if(gm?.instanciaId&&av?.slots){
+    const idx=av.slots.findIndex(s=>s?.instanciaId===gm.instanciaId);
+    if(idx>=0&&!slots[idx])done=Math.min(total,done+1);
+  }
+  return{total,done,aventuraId:av?.id||null};
 }
 function gaDiaProgresStarsHtml(done,total,pop){
   const n=Math.max(1,Math.floor(total)||3);
@@ -20,10 +41,9 @@ function gaDiaProgresStarsHtml(done,total,pop){
 function gaMissioVictoryHtml(subtitle){
   const sub=strip(String(subtitle||'MOLT BÉ!').toUpperCase());
   const prog=gaDiaProgres();
-  const stars=`<div class="ga-dia-progres-stars ombres-celebrate-stars" aria-label="${prog.done} de ${prog.total} missions de l'aventura">${gaDiaProgresStarsHtml(prog.done,prog.total,true)}</div>`;
-  const progresTxt=`<p class="ga-dia-progres-txt">${prog.done} DE ${prog.total} MISSIONS DE L'AVENTURA!</p>`;
+  const stars=`<div class="ga-dia-progres-stars" aria-label="${prog.done} de ${prog.total} missions de l'aventura">${gaDiaProgresStarsHtml(prog.done,prog.total,true)}</div>`;
   const btn=typeof ombresLevelBtn==='function'?ombresLevelBtn('TORNA A L\'AVENTURA','ga-return-hub','primary'):'';
-  return `<div class="ga-missio-victoria" role="region" aria-labelledby="ga-missio-title"><div class="ga-missio-victoria-card cartes-party-card cartes-party-card--gran-missio">${stars}${progresTxt}<p id="ga-missio-title" class="cartes-party-title">MISSIÓ FETA!</p><p class="cartes-party-sub">${sub}</p><div class="cartes-party-btns ombres-level-btns"><div class="ombres-level-btns-primary">${btn}</div></div></div></div>`;
+  return `<div class="ga-missio-victoria" role="region" aria-labelledby="ga-missio-title"><div class="ga-missio-victoria-card cartes-party-card cartes-party-card--gran-missio">${stars}<p id="ga-missio-title" class="cartes-party-title">MISSIÓ FETA!</p><p class="cartes-party-sub">${sub}</p><div class="cartes-party-btns ombres-level-btns"><div class="ombres-level-btns-primary">${btn}</div></div></div></div>`;
 }
 
 function granAventuraUiEmissorMeta(id){
@@ -86,7 +106,7 @@ function granAventuraUiIniciaMissio(instanciaId){
   const sid=typeof activitatsSessionId==='function'?activitatsSessionId():`ga${Date.now().toString(36)}`;
   const ini=typeof missioInicia==='function'?missioInicia(instanciaId,sid):{ok:false};
   if(!ini.ok)return notify('NO PUC COMENÇAR LA MISSIÓ ARA.');
-  f2.granMissio={instanciaId,missioId:instanciaId,activitatId:def?.activitatId||null,sessionId:sid};
+  f2.granMissio={instanciaId,missioId:instanciaId,activitatId:def?.activitatId||null,sessionId:sid,aventuraId:meta.aventuraId||null};
   gaUi.cartaSlot=null;
   const act=def?.activitatId;
   if(act==='cartes'){
@@ -99,18 +119,20 @@ function granAventuraUiIniciaMissio(instanciaId){
       f2.pairsAnim={};
       f2.match=[];
       setupPairs();
+      f2.sessionId=sid;
       go('pairs');
     });
     return;
   }
   if(act==='ombres'){
-    ensureOmbres(()=>{ombresStartLevel(0);go('jocsOmbres')});
+    ensureOmbres(()=>{ombresStartLevel(0,sid);go('jocsOmbres')});
     return;
   }
   if(act==='diferencies'){
     ensureDiferencies(()=>{
-      if(typeof difDiferenciesStartMission==='function')difDiferenciesStartMission({missioId:instanciaId,sceneId:'biblioteca',roundsGoal:1,returnPlace:'granAventura'});
+      if(typeof difDiferenciesStartMission==='function')difDiferenciesStartMission({missioId:instanciaId,sceneId:'biblioteca',roundsGoal:1,returnPlace:'granAventura',sessionId:sid});
       resetDiferencies();
+      jocs.diferencies.sessionId=sid;
       go('jocsDiferencies');
     });
     return;
@@ -133,7 +155,8 @@ function granAventuraUiSobreHtml(av,slot,idx,done){
 
 function granAventuraUiFestaHtml(av,slots){
   const heroes=slots.map(s=>{const em=granAventuraUiEmissorMeta(s.emissorId);return em.img?`<figure><img src="${strip(em.img)}" alt="" draggable="false"><figcaption>${strip(String(em.label||'').toUpperCase())}</figcaption></figure>`:''}).join('');
-  const stars=`<div class="ga-festa-stars" aria-hidden="true">${[0,1,2].map(()=>`<span class="ga-sobre-star">${GA_STAR}</span>`).join('')}</div>`;
+  const n=Math.max(1,slots.length||3);
+  const stars=`<div class="ga-festa-stars" aria-hidden="true">${Array.from({length:n},()=>`<span class="ga-sobre-star">${GA_STAR}</span>`).join('')}</div>`;
   return `<div class="ga-festa" role="region" aria-labelledby="ga-festa-title"><p id="ga-festa-title" class="ga-carta-text">GRÀCIES, AMIGA!\nHAS COMPLETAT LA GRAN AVENTURA!</p>${stars}<div class="ga-festa-hero">${heroes}</div></div>`;
 }
 
@@ -159,7 +182,7 @@ function granAventuraUiCartaPortalSync(){
 function granAventuraHubScene(){
   if(gaUi.err)return f2Scene('LA GRAN AVENTURA','<p class="ga-wait">NO PUC CARREGAR LES AVENTURES.</p>','',f2btn('🗺️ EXPLORA LLIUREMENT','map-go')+f2back(),'mapa','f2-gran-aventura');
   if(!gaUi.ready)return f2Scene('LA GRAN AVENTURA','<p class="ga-wait">CARREGANT...</p>','',f2back(),'mapa','f2-gran-aventura');
-  const av=granAventuraUiAventuraActiva();
+  const av=granAventuraUiAventuraHub();
   if(!av||!granAventuraDiaPreparat(av)){
     return f2Scene('LA GRAN AVENTURA','<p class="ga-wait">AVIAT HI HAURÀ MÉS AVENTURES!</p>','<small>ESTEM PREPARANT LES SEGÜENTS CARTES.</small>',f2btn('🗺️ EXPLORA LLIUREMENT','map-go')+f2back(),'mapa','f2-gran-aventura');
   }
