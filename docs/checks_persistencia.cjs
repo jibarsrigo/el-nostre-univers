@@ -9,7 +9,7 @@ const dummy={innerHTML:'',querySelectorAll:()=>[],querySelector:()=>null};
 const body={append(){},querySelector:()=>null,classList:{toggle(){}}};
 const load=()=>{
   const ctx=vm.createContext({document:{getElementById:()=>dummy,body,addEventListener(){},fullscreenEnabled:false,fullscreenElement:null,querySelector:()=>null,createElement:()=>({style:{},append(){}})},localStorage:{getItem:k=>mem[k]??null,setItem:(k,v)=>{mem[k]=v}},fetch:()=>Promise.resolve({json:()=>Promise.resolve({})}),window:{confirm:()=>true},setTimeout:()=>{},Image:function(){},console,Math,Date});
-  for(const f of ['app.js','activitats.js','fase2.js','fase3.js'])vm.runInContext(fs.readFileSync(path.join(root,'js',f),'utf8'),ctx,{filename:f});
+  for(const f of ['app.js','activitats.js','progres.js','fase2.js','fase3.js'])vm.runInContext(fs.readFileSync(path.join(root,'js',f),'utf8'),ctx,{filename:f});
   return s=>vm.runInContext(s,ctx);
 };
 const run=load();

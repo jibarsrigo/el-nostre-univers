@@ -1,3 +1,4 @@
 'use strict';
 // Punt d'entrada actual: valida la integració de les quatre fases.
+require('./checks_progres_etapa3a.cjs');
 require('../tests/fase4-regression.cjs');
