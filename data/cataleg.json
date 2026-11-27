@@ -1,0 +1,752 @@
+{
+  "versio": 1,
+  "titol": "Catàleg comú de l'univers",
+  "etiquetesInicials": [
+    "biblioteca",
+    "bosc",
+    "conte",
+    "cuina-bruna",
+    "diferencies",
+    "inventem",
+    "mapa",
+    "taller",
+    "torre",
+    "web"
+  ],
+  "entrades": [
+    {
+      "id": "aneguet-goma",
+      "tipus": "objecte",
+      "nom": "UN ANEGUET DE GOMA",
+      "etiquetes": [
+        "diferencies",
+        "taller"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-aneguet-goma.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "barret-drac",
+      "tipus": "objecte",
+      "nom": "UN DRAC AMB BARRET",
+      "etiquetes": [
+        "diferencies",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-barret-drac.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "bombeta-llum",
+      "tipus": "objecte",
+      "nom": "UNA BOMBETA MÀGICA",
+      "etiquetes": [
+        "diferencies",
+        "torre"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-bombeta-llum.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "candelabre-estel",
+      "tipus": "objecte",
+      "nom": "UN CANDELABRE ESTEL",
+      "etiquetes": [
+        "diferencies",
+        "torre"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-candelabre-estel.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "clauer-misterios",
+      "tipus": "objecte",
+      "nom": "UN CLAUER MISTERIÓS",
+      "etiquetes": [
+        "diferencies",
+        "torre"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-clauer-misterios.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "corona-paper",
+      "tipus": "objecte",
+      "nom": "UNA CORONA DE PAPER",
+      "etiquetes": [
+        "diferencies",
+        "bosc"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-corona-paper.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "cullera-daurada",
+      "tipus": "objecte",
+      "nom": "UNA CULLERA DAURADA",
+      "etiquetes": [
+        "diferencies",
+        "cuina-bruna"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-cullera-daurada.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "estrella-fil",
+      "tipus": "objecte",
+      "nom": "UNA ESTRELLA DE FIL",
+      "etiquetes": [
+        "diferencies",
+        "torre"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-estrella-fil.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "fulla-verda",
+      "tipus": "objecte",
+      "nom": "UNA FULLA VERDA",
+      "etiquetes": [
+        "diferencies",
+        "bosc"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-fulla-verda.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "llac-llibre",
+      "tipus": "objecte",
+      "nom": "UN LLAÇ DAURAT",
+      "etiquetes": [
+        "diferencies",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-llac-llibre.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "magdalena",
+      "tipus": "objecte",
+      "nom": "UNA MAGDALENA",
+      "etiquetes": [
+        "diferencies",
+        "taller"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-magdalena.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "mapa-enrotllat",
+      "tipus": "objecte",
+      "nom": "UN MAPA ENROTLLAT",
+      "etiquetes": [
+        "diferencies",
+        "torre"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-mapa-enrotllat.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "mitjo",
+      "tipus": "objecte",
+      "nom": "UN MITJÓ A LA TAULA",
+      "etiquetes": [
+        "diferencies",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-mitjo.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "olla-fum",
+      "tipus": "objecte",
+      "nom": "UNA OLLA QUE FUMEGA",
+      "etiquetes": [
+        "diferencies",
+        "cuina-bruna"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-olla-fum.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "pastanaga",
+      "tipus": "objecte",
+      "nom": "UNA PASTANAGA ENTRE LLIBRES",
+      "etiquetes": [
+        "diferencies",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-pastanaga.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "pastisset",
+      "tipus": "objecte",
+      "nom": "UN PASTISSET",
+      "etiquetes": [
+        "diferencies",
+        "cuina-bruna"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-pastisset.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "pilota-colors",
+      "tipus": "objecte",
+      "nom": "UNA PILOTA DE COLORS",
+      "etiquetes": [
+        "diferencies",
+        "taller"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-pilota-colors.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "ploma-colors",
+      "tipus": "objecte",
+      "nom": "UNA PLOMA DE COLORS",
+      "etiquetes": [
+        "diferencies",
+        "taller"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-ploma-colors.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "sabata-gigant",
+      "tipus": "objecte",
+      "nom": "UNA SABATA GEGANT",
+      "etiquetes": [
+        "diferencies",
+        "bosc"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-sabata-gigant.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "sabata-petita",
+      "tipus": "objecte",
+      "nom": "UNA SABATA PETITA",
+      "etiquetes": [
+        "diferencies",
+        "bosc"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-sabata-petita.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "taronja",
+      "tipus": "objecte",
+      "nom": "UNA TARONJA",
+      "etiquetes": [
+        "diferencies",
+        "cuina-bruna"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-taronja.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "tassa-orelles",
+      "tipus": "objecte",
+      "nom": "UNA TASSA AMB ORELLES",
+      "etiquetes": [
+        "diferencies",
+        "taller"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/univers-assets/obj-tassa-orelles.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "ulleres-moix",
+      "tipus": "objecte",
+      "nom": "UN MOIX AMB ULLERES",
+      "etiquetes": [
+        "diferencies",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/jocs-diferencies/dif-biblioteca-ulleres-moix.webp",
+      "actiu": true,
+      "jocs": [
+        "diferencies"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "boira",
+      "tipus": "personatge",
+      "nom": "Na Boira",
+      "etiquetes": [
+        "conte"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-boira.webp",
+      "actiu": true,
+      "jocs": [
+        "conte",
+        "ombres"
+      ],
+      "versio": 1,
+      "contes": [
+        "boira"
+      ]
+    },
+    {
+      "id": "bosc",
+      "tipus": "personatge",
+      "nom": "Laia",
+      "etiquetes": [
+        "conte"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-bosc.webp",
+      "actiu": true,
+      "jocs": [
+        "conte"
+      ],
+      "versio": 1,
+      "contes": [
+        "bosc"
+      ]
+    },
+    {
+      "id": "bruna",
+      "tipus": "personatge",
+      "nom": "Na Bruna",
+      "etiquetes": [
+        "conte"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-bruna.webp",
+      "actiu": true,
+      "jocs": [
+        "conte",
+        "ombres"
+      ],
+      "versio": 1,
+      "contes": [
+        "sopar",
+        "bruna"
+      ]
+    },
+    {
+      "id": "buho",
+      "tipus": "personatge",
+      "nom": "El mussol",
+      "etiquetes": [
+        "web",
+        "torre",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-buho.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes",
+        "paraules"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "cervol",
+      "tipus": "personatge",
+      "nom": "El cérvol",
+      "etiquetes": [
+        "web",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-cervol.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "conill",
+      "tipus": "personatge",
+      "nom": "El conill",
+      "etiquetes": [
+        "web",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-conill.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes",
+        "ombres"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "drac",
+      "tipus": "personatge",
+      "nom": "El drac",
+      "etiquetes": [
+        "web",
+        "mapa",
+        "biblioteca"
+      ],
+      "estatArt": "pendent",
+      "fitxer": "imagenes/personatges/personatge-drac.webp",
+      "actiu": false,
+      "jocs": [
+        "ombres"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "drac-inventem",
+      "tipus": "personatge",
+      "nom": "El drac de l'estanteria",
+      "etiquetes": [
+        "web",
+        "inventem"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-drac-inventem.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "drac-mapa",
+      "tipus": "personatge",
+      "nom": "Drac del mapa",
+      "etiquetes": [
+        "web",
+        "mapa"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-drac-mapa.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes",
+        "paraules"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "gat",
+      "tipus": "personatge",
+      "nom": "El gat",
+      "etiquetes": [
+        "web"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-gat.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes",
+        "ombres",
+        "paraules"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "guineu",
+      "tipus": "personatge",
+      "nom": "En Rosset",
+      "etiquetes": [
+        "web",
+        "mapa",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-guineu.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes",
+        "paraules"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "moix",
+      "tipus": "personatge",
+      "nom": "El moix",
+      "etiquetes": [
+        "web",
+        "biblioteca"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-moix.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "monstret",
+      "tipus": "personatge",
+      "nom": "El monstret",
+      "etiquetes": [
+        "web",
+        "biblioteca",
+        "inventem"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-monstret.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "nacar",
+      "tipus": "personatge",
+      "nom": "NA NÀCAR",
+      "etiquetes": [
+        "web"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-nacar.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "nena",
+      "tipus": "personatge",
+      "nom": "La nena",
+      "etiquetes": [
+        "web",
+        "mapa"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-nena.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes",
+        "paraules"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "nus",
+      "tipus": "personatge",
+      "nom": "En Nus",
+      "etiquetes": [
+        "conte"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-nus.webp",
+      "actiu": true,
+      "jocs": [
+        "conte",
+        "ombres"
+      ],
+      "versio": 1,
+      "contes": [
+        "nus"
+      ]
+    },
+    {
+      "id": "pelut-inventem",
+      "tipus": "personatge",
+      "nom": "El pelut de l'estanteria",
+      "etiquetes": [
+        "web",
+        "inventem"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-pelut-inventem.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "pipa",
+      "tipus": "personatge",
+      "nom": "Na Pipa",
+      "etiquetes": [
+        "conte"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-pipa.webp",
+      "actiu": true,
+      "jocs": [
+        "conte",
+        "ombres"
+      ],
+      "versio": 1,
+      "grup": "pipa",
+      "contes": [
+        "pipa"
+      ]
+    },
+    {
+      "id": "pipa-map",
+      "tipus": "personatge",
+      "nom": "Na Pipa",
+      "etiquetes": [
+        "web",
+        "mapa"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-pipa-map.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes"
+      ],
+      "versio": 1,
+      "grup": "pipa"
+    },
+    {
+      "id": "seta",
+      "tipus": "personatge",
+      "nom": "La seta",
+      "etiquetes": [
+        "web",
+        "mapa"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-seta.webp",
+      "actiu": true,
+      "jocs": [
+        "cartes",
+        "paraules"
+      ],
+      "versio": 1
+    },
+    {
+      "id": "troc",
+      "tipus": "personatge",
+      "nom": "En Troc",
+      "etiquetes": [
+        "conte"
+      ],
+      "estatArt": "aprovat",
+      "fitxer": "imagenes/personatges/personatge-troc.webp",
+      "actiu": true,
+      "jocs": [
+        "conte",
+        "ombres"
+      ],
+      "versio": 1,
+      "contes": [
+        "troc"
+      ]
+    }
+  ]
+}
