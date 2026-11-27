@@ -117,5 +117,43 @@ module.exports=function activitatsRuntimeTests(ctx){
   run('action("ombres-nova-aventura");render()');
   assert.equal(run('state.unlocked["jocs-ombres"]'),true,'NOVA AVENTURA no esborra recompensa');
 
-  console.log('OK: activitats runtime — contracte Cartes + Ombres.');
+  const difJSON=JSON.parse(fs.readFileSync('data/diferencies.json','utf8'));
+  run(`jocs.diferencies.data=${JSON.stringify(difJSON)}`);
+  run(`activitatsReg.data=${JSON.stringify(JSON.parse(fs.readFileSync('data/activitats.json','utf8')))};activitatsReg.ready=true;activitatsReg.failed=false`);
+  function difWinRound(){run(`(()=>{while(jocs.diferencies.phase==='searching'){const left=jocs.diferencies.active.filter(x=>!jocs.diferencies.found.has(x.id));if(!left.length)break;left.forEach(d=>jocs.diferencies.found.add(d.id));const goal=jocs.diferencies.active.length;if(jocs.diferencies.found.size>=goal){const goalR=difRoundsGoalEffective();jocs.diferencies.stars=Math.min(goalR,jocs.diferencies.stars+1);jocs.diferencies.phase='found';const ctx=jocs.diferencies.context||difContextLliure();if(ctx.mode==='missio')difRegisterMissionVictory();else if(jocs.diferencies.stars>=difRoundsGoal())difRegisterSessionVictory();difClearAuto();break}}})()`);}
+  function difNextRonda(){run('difAdvanceRound();render()');}
+  const d0=(sessions().diferencies?.completedSessionIds||[]).length;
+  run('activitatsResetMem()');
+  run('difPrepareFreeSession();resetDiferencies();go("jocsDiferencies")');
+  const sidD=run('jocs.diferencies.sessionId');
+  assert.ok(sidD,'diferencies sessionId');
+  difWinRound();
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0,'1 ronda no registra sessio');
+  assert.equal(run('state.unlocked["jocs-diferencies"]'),undefined,'1 ronda sense torre');
+  difNextRonda();difWinRound();
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0,'2 rondes no registra sessio');
+  difNextRonda();difWinRound();
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+1,'sessio completa al 3r encert');
+  assert.equal(run('state.unlocked["jocs-diferencies"]'),true,'recompensa tres rondes');
+  assert.equal(run(`activitatCompleta('diferencies',{sessionId:'${sidD}',ambit:'sessio'})`),false,'dedupe sessio');
+  run('action("end-jocs-diferencies");nav("tower")');
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+1,'end-jocs sense duplicar');
+  run('difPrepareFreeSession();resetDiferencies()');
+  difWinRound();
+  run('action("end-jocs-diferencies")');
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+1,'abandonament sense victoria');
+  const sidR=run('jocs.diferencies.sessionId');
+  run('difPrepareFreeSession();resetDiferencies()');
+  assert.notEqual(run('jocs.diferencies.sessionId'),sidR,'replay nou sessionId');
+  run(`difDiferenciesStartMission({sceneId:'biblioteca',roundsGoal:1});resetDiferencies();go('jocsDiferencies')`);
+  const sidM=run('jocs.diferencies.sessionId');
+  assert.equal(run('jocs.diferencies.sceneId'),'biblioteca','missio fons fix');
+  difWinRound();
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+2,'missio registra ronda');
+  assert.equal(run('state.unlocked["jocs-diferencies"]'),true,'missio no afegeix torre extra');
+  run('difPrepareFreeSession();resetDiferencies()');
+  difWinRound();difNextRonda();difWinRound();difNextRonda();difWinRound();
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+3,'lliure després missio independent');
+
+  console.log('OK: activitats runtime — Cartes + Ombres + Diferències.');
 };
