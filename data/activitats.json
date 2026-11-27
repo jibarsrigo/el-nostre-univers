@@ -52,8 +52,15 @@
       },
       "nivells": {
         "font": "ombres",
-        "cerquesPerPartida": 3,
-        "midesSiluetes": [4, 5, 6]
+        "comptador": 4,
+        "cerquesPerNivell": 3,
+        "midesSiluetesPerNivell": [
+          [4, 5, 6],
+          [5, 6, 7],
+          [6, 7, 8],
+          [8, 9, 10]
+        ],
+        "poolPersonatges": 15
       },
       "disponible": true,
       "legacyRecordKey": "jocs-ombres",

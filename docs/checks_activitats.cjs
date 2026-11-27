@@ -76,12 +76,14 @@ for (const a of activitats) {
       assert.ok(nivellIds.has(clau), `${a.id} nivell inexistent a personatges.json: ${clau}`);
     }
   } else if (a.nivells.font === 'ombres') {
-    assert.equal(a.nivells.cerquesPerPartida, 3, `${a.id}: tres cerques objectiu, no nivells Cartes`);
+    assert.equal(a.nivells.comptador, 4, `${a.id}: quatre nivells de dificultat`);
+    assert.equal(a.nivells.cerquesPerNivell, 3, `${a.id}: tres cerques per nivell`);
     assert.deepEqual(
-      a.nivells.midesSiluetes,
-      [4, 5, 6],
-      `${a.id} midesSiluetes`
+      a.nivells.midesSiluetesPerNivell,
+      [[4, 5, 6], [5, 6, 7], [6, 7, 8], [8, 9, 10]],
+      `${a.id} midesSiluetesPerNivell`
     );
+    assert.equal(a.nivells.poolPersonatges, 15, `${a.id} pool personatges`);
     assert.ok(!a.nivells.claus, `${a.id} ombres sense claus personatges`);
   } else {
     assert.fail(`${a.id} nivells.font desconegut: ${a.nivells.font}`);
