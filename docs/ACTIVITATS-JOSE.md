@@ -35,8 +35,9 @@ node docs/checks_persistencia.cjs
 5. Si `nivells.font` és `personatges`, cada clau de `nivells.claus` ha d'existir a `data/personatges.json` → `nivells[].id`.
 6. PR petita + `checks_activitats.cjs` verd + tablet Jose abans de la següent.
 
-## PR B (pendent autorització)
+## PR B (runtime Cartes)
 
-- `js/activitats.js`, integració Cartes, clau `nostre-activitats-sessions-v1`.
-- Comprovar **records** (`nostre-fase1-records`) i **creacions** (`nostre-creacions-v3`) sense pèrdua.
-- Sense canvis visuals ni nous jocs.
+- `js/activitats.js` — `activitatCompleta`, clau `nostre-activitats-sessions-v1` (màx. 24 ids per activitat).
+- `fase2.js`: `setupPairs` → `sessionId`; darrera parella → `activitatCompleta('cartes',…)`; `end-pairs` només torre.
+- Proves: `node docs/checks_activitats_runtime.cjs` (via `checks_fase2.cjs`).
+- Comprovar **records** i **creacions** (`checks_persistencia.cjs`).
