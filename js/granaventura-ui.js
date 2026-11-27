@@ -141,23 +141,29 @@ function granAventuraUiIniciaMissio(instanciaId){
   notify('MISSIÓ DESCONEGUDA.');
 }
 
+function gaHubMissioStarHtml(done){
+  const on=done?' ombres-star--on':'';
+  return `<span class="ga-sobre-missio-star ombres-star ga-dia-star${on}" aria-hidden="true"><svg class="ombres-star-svg" viewBox="0 0 64 64"><path d="M32 5 39 25 61 27 45 42 51 63 32 52 13 63 19 42 3 27 25 25Z"/></svg></span>`;
+}
 function granAventuraUiSobreHtml(av,slot,idx,done){
   const em=granAventuraUiEmissorMeta(slot.emissorId);
-  const star=done?`<span class="ga-sobre-star ga-sobre-star--fet">${GA_STAR}</span>`:`<span class="ga-sobre-star off">${GA_STAR}</span>`;
-  const img=em.img?`<img src="${strip(em.img)}" alt="" draggable="false">`:'✉️';
-  const tag=granAventuraUiActivitatLabel(slot.plantillaMissioId);
+  const star=gaHubMissioStarHtml(!!done);
+  const img=em.img?`<img class="ga-sobre-portrait" src="${strip(em.img)}" alt="" draggable="false">`:'<span class="ga-sobre-emoji" aria-hidden="true">✉️</span>';
   const name=strip(String(em.label||'').toUpperCase());
+  const envCls=done?' ga-sobre-env--fet':'';
+  const inner=`<div class="ga-sobre-col">${star}<div class="ga-sobre-env${envCls}">${img}</div><strong class="ga-sobre-nom">${name}</strong></div>`;
   if(done){
-    return `<div class="ga-sobre ga-sobre--fet" role="status" aria-label="Missió feta: ${name}"><div class="ga-sobre-env ga-sobre-env--fet">${img}${star}</div><strong>${name}</strong><small>${tag}</small><span class="ga-sobre-badge">★ FETA</span></div>`;
+    return `<div class="ga-sobre ga-sobre--fet" role="status" aria-label="Missió feta: ${name}">${inner}</div>`;
   }
-  return `<button type="button" class="ga-sobre" data-ga-sobre="${strip(slot.instanciaId)}" aria-label="Sobre de ${name}"><div class="ga-sobre-env">${img}${star}</div><strong>${name}</strong><small>${tag}</small></button>`;
+  return `<button type="button" class="ga-sobre" data-ga-sobre="${strip(slot.instanciaId)}" aria-label="Sobre de ${name}">${inner}</button>`;
 }
 
 function granAventuraUiFestaHtml(av,slots){
-  const heroes=slots.map(s=>{const em=granAventuraUiEmissorMeta(s.emissorId);return em.img?`<figure><img src="${strip(em.img)}" alt="" draggable="false"><figcaption>${strip(String(em.label||'').toUpperCase())}</figcaption></figure>`:''}).join('');
+  const heroes=slots.map(s=>{const em=granAventuraUiEmissorMeta(s.emissorId);return em.img?`<figure class="ga-festa-amic"><img src="${strip(em.img)}" alt="" draggable="false"><figcaption>${strip(String(em.label||'').toUpperCase())}</figcaption></figure>`:''}).join('');
   const n=Math.max(1,slots.length||3);
-  const stars=`<div class="ga-festa-stars" aria-hidden="true">${Array.from({length:n},()=>`<span class="ga-sobre-star">${GA_STAR}</span>`).join('')}</div>`;
-  return `<div class="ga-festa" role="region" aria-labelledby="ga-festa-title"><p id="ga-festa-title" class="ga-carta-text">GRÀCIES, AMIGA!\nHAS COMPLETAT LA GRAN AVENTURA!</p>${stars}<div class="ga-festa-hero">${heroes}</div></div>`;
+  const stars=`<div class="ga-festa-stars ga-dia-progres-stars ga-dia-progres-stars--festa" aria-hidden="true">${gaDiaProgresStarsHtml(n,n,false)}</div>`;
+  const msg=`<div id="ga-festa-title" class="ga-festa-msg"><p class="ga-festa-line">GRÀCIES, AMIGA!</p><p class="ga-festa-line">HAS COMPLETAT LA GRAN AVENTURA!</p></div>`;
+  return `<div class="ga-festa" role="region" aria-labelledby="ga-festa-title">${stars}${msg}<div class="ga-festa-hero">${heroes}</div></div>`;
 }
 
 function granAventuraUiCartaHtml(slot){
@@ -191,12 +197,12 @@ function granAventuraHubScene(){
   const prog=gaDiaProgres(av,st);
   const completada=prog.done>=prog.total&&prog.total>0;
   const cartaOpen=!completada&&!!gaUi.cartaSlot;
-  const hubProgres=`<div class="ga-hub-progres" aria-label="${prog.done} de ${prog.total} missions fetes">${gaDiaProgresStarsHtml(prog.done,prog.total,false)}<p class="ga-hub-progres-txt">${prog.done} DE ${prog.total} MISSIONS FETES</p></div>`;
-  const body=completada?granAventuraUiFestaHtml(av,slots):`<div class="ga-hub"><p class="ga-hub-titol">${strip(av.titol||'AVENTURA')}</p>${hubProgres}<div class="ga-sobres">${slots.map((s,i)=>granAventuraUiSobreHtml(av,s,i,!!st.slots[i])).join('')}</div><p class="ga-hub-hint">OBRE CADA SOBRE QUAN VULGUIS. L'ORDRE ÉS LLIURE!</p></div>`;
-  const cap=completada?'<p>HAS COMPLETAT TOTES LES MISSIONS!</p>':prog.done?`<p>${prog.total-prog.done} MISSION${prog.total-prog.done===1?'':'S'} PENDENT${prog.total-prog.done===1?'':'S'}!</p>`:"<p>TRES AMICS T'ESPEREN!</p>";
+  const body=completada?granAventuraUiFestaHtml(av,slots):`<div class="ga-hub"><p class="ga-hub-titol">${strip(av.titol||'AVENTURA')}</p><div class="ga-sobres">${slots.map((s,i)=>granAventuraUiSobreHtml(av,s,i,!!st.slots[i])).join('')}</div><p class="ga-hub-hint">OBRE CADA SOBRE QUAN VULGUIS!</p></div>`;
+  const pendent=prog.total-prog.done;
+  const cap=completada?'':pendent?`<p>${pendent} MISSI${pendent===1?'Ó':'ONS'} PENDENT${pendent===1?'':'S'}!</p>`:"<p>TRES AMICS T'ESPEREN!</p>";
   const explora=`<button type="button" class="f2-btn f2-btn--ga-map" data-action="map-go">🗺️ EXPLORA LLIUREMENT</button>`;
   const cls='f2-gran-aventura'+(cartaOpen?' f2-gran-aventura--carta':'');
-  return f2Scene('LA GRAN AVENTURA',body,`${cap}<small>EXPLORA EL MAPA QUAN VULGUIS.</small>`,explora+f2back(),'mapa',cls);
+  return f2Scene('LA GRAN AVENTURA',body,cap,explora+f2back(),'mapa',cls);
 }
 
 function granAventuraUiEnsure(cb){
