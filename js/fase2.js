@@ -82,5 +82,5 @@ case'reset-search':f2.find.clear();render();return;
 function bindExtras(){app.querySelectorAll('[data-piece]').forEach(el=>el.addEventListener('click',()=>{f2.pieces.add(Number(el.dataset.piece));if(f2.pieces.size>=3)state.step=3;render()}));app.querySelectorAll('[data-spark]').forEach(el=>el.addEventListener('click',()=>{f2.starlit.add(Number(el.dataset.spark));state.step=f2.starlit.size;render()}));app.querySelectorAll('[data-card]').forEach(el=>el.addEventListener('click',()=>clickCard(Number(el.dataset.card))));app.querySelectorAll('[data-letter]').forEach(el=>el.addEventListener('click',()=>{wordsGuess(el.dataset.letter);render()}));app.querySelectorAll('[data-find]').forEach(el=>el.addEventListener('click',()=>{f2.find.add(Number(el.dataset.find));render()}))}
 // Campanya visible des del mapa (no substitueix cap altre hotspot de la il·lustració).
 const renderOld=renderF1;
-function render(){if(state.place==='map'){renderOld();const foot=app.querySelector('.footer');if(foot){const b=document.createElement('button');b.type='button';b.className='f2-map-quest';b.textContent='✨ LA GRAN AVENTURA';b.addEventListener('click',()=>goF2('quest'));foot.append(b)}return}return renderOld()}
+function render(){if(state.place==='map'){renderOld();return}return renderOld()}
 render();
