@@ -7,7 +7,7 @@
     "foundTarget": "M'HAS TROBAT!",
     "starGain": "UNA ESTRELLA MÉS!",
     "wrong": "UPS! NO SOM JO!",
-    "completedTitle": "TRES ESTRELLES MÀGIQUES!",
+    "completedTitle": "HAS TROBAT TOTES LES OMBRES!",
     "completedMsg": "LA TORRE BRILLA GRÀCIES A TU!",
     "celebrateTower": "imagenes/torre.webp",
     "objectives": {
@@ -44,7 +44,9 @@
       "r": 14,
       "sway": 3.4,
       "peek": "XIP-XAP...",
-      "reveal": "HOLA!"
+      "reveal": "HOLA!",
+      "name": "NA PIPA",
+      "color": "imagenes/personatges/personatge-pipa.webp"
     },
     {
       "id": "troc",
@@ -54,7 +56,9 @@
       "r": 14,
       "sway": 4.1,
       "peek": "UN CAP PELUT...",
-      "reveal": "QUIN LLIBRE!"
+      "reveal": "QUIN LLIBRE!",
+      "name": "EN TROC",
+      "color": "imagenes/personatges/personatge-troc.webp"
     },
     {
       "id": "bruna",
@@ -64,7 +68,9 @@
       "r": 14,
       "sway": 3.8,
       "peek": "QUINA OLOR...",
-      "reveal": "SOPA MÀGICA!"
+      "reveal": "SOPA MÀGICA!",
+      "name": "NA BRUNA",
+      "color": "imagenes/personatges/personatge-bruna.webp"
     },
     {
       "id": "boira",
@@ -74,7 +80,9 @@
       "r": 13,
       "sway": 4.5,
       "peek": "ALES I NÚVOLS...",
-      "reveal": "ATXIM!"
+      "reveal": "ATXIM!",
+      "name": "NA BOIRA",
+      "color": "imagenes/personatges/personatge-boira.webp"
     },
     {
       "id": "conill",
@@ -84,7 +92,9 @@
       "r": 14,
       "sway": 4.2,
       "peek": "ORELLES LLARGUES...",
-      "reveal": "HOP, HOP!"
+      "reveal": "HOP, HOP!",
+      "name": "EL CONILL",
+      "color": "imagenes/personatges/personatge-conill.webp"
     },
     {
       "id": "gat",
@@ -94,7 +104,9 @@
       "r": 13,
       "sway": 3.2,
       "peek": "UNA CUA...",
-      "reveal": "MÈU!"
+      "reveal": "MÈU!",
+      "name": "EL GAT",
+      "color": "imagenes/personatges/personatge-gat.webp"
     },
     {
       "id": "drac",
@@ -104,7 +116,9 @@
       "r": 13,
       "sway": 5,
       "peek": "UNA PANXA...",
-      "reveal": "BIMBOLLES!"
+      "reveal": "BIMBOLLES!",
+      "name": "EL DRAC",
+      "color": "imagenes/personatges/personatge-drac.webp"
     },
     {
       "id": "nus",
@@ -114,7 +128,9 @@
       "r": 15,
       "sway": 4.6,
       "peek": "QUANTS BRAÇOS?",
-      "reveal": "SIS BRAÇOS!"
+      "reveal": "SIS BRAÇOS!",
+      "name": "EN NUS",
+      "color": "imagenes/personatges/personatge-nus.webp"
     }
   ]
 }
