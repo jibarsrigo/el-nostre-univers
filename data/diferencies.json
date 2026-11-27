@@ -186,6 +186,90 @@
           ]
         }
       ]
+    },
+    {
+      "id": "torre",
+      "label": "L'observatori",
+      "base": "imagenes/jocs-diferencies/jocs-diferencies-torre-base.webp",
+      "completedTitle": "CINC A L'OBSERVATORI!",
+      "completedMsg": "HAS TROBAT TOTS ELS DETALLS DE LA TORRE!",
+      "perRound": 5,
+      "perRoundDecoys": 1,
+      "minSpotDist": 11,
+      "diffs": [
+        {
+          "id": "mapa-enrotllat",
+          "img": "imagenes/univers-assets/obj-mapa-enrotllat.webp",
+          "message": "UN MAPA ENROTLLAT!",
+          "spots": [
+            { "x": 82, "y": 62, "w": 9, "r": 8 },
+            { "x": 88, "y": 48, "w": 8, "r": 8 },
+            { "x": 72, "y": 28, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "bombeta-llum",
+          "img": "imagenes/univers-assets/obj-bombeta-llum.webp",
+          "message": "UNA BOMBETA MÀGICA!",
+          "spots": [
+            { "x": 50, "y": 12, "w": 7, "r": 8 },
+            { "x": 28, "y": 18, "w": 7, "r": 8 },
+            { "x": 12, "y": 42, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "candelabre-estel",
+          "img": "imagenes/univers-assets/obj-candelabre-estel.webp",
+          "message": "UN CANDELABRE ESTEL!",
+          "spots": [
+            { "x": 44, "y": 58, "w": 8, "r": 8 },
+            { "x": 10, "y": 82, "w": 8, "r": 8 },
+            { "x": 52, "y": 78, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "estrella-fil",
+          "img": "imagenes/univers-assets/obj-estrella-fil.webp",
+          "message": "UNA ESTRELLA DE FIL!",
+          "spots": [
+            { "x": 52, "y": 78, "w": 8, "r": 8 },
+            { "x": 44, "y": 58, "w": 7, "r": 8 },
+            { "x": 10, "y": 82, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "clauer-misterios",
+          "img": "imagenes/univers-assets/obj-clauer-misterios.webp",
+          "message": "UN CLAUER MISTERIÓS!",
+          "spots": [
+            { "x": 10, "y": 82, "w": 8, "r": 8 },
+            { "x": 12, "y": 42, "w": 8, "r": 8 },
+            { "x": 82, "y": 62, "w": 8, "r": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bosc",
+      "label": "El bosc",
+      "base": "imagenes/jocs-diferencies/jocs-diferencies-bosc-base.webp",
+      "completedTitle": "CINC AL BOSC!",
+      "completedMsg": "HAS TROBAT TOTS ELS DETALLS DEL BOSC!",
+      "perRound": 5,
+      "perRoundDecoys": 1,
+      "minSpotDist": 11,
+      "diffs": []
+    },
+    {
+      "id": "cuina-bruna",
+      "label": "La cuina de na Bruna",
+      "base": "imagenes/jocs-diferencies/jocs-diferencies-cuina-bruna-base.webp",
+      "completedTitle": "CINC A LA CUINA!",
+      "completedMsg": "HAS TROBAT TOTS ELS DETALLS DEL SOPAR!",
+      "perRound": 5,
+      "perRoundDecoys": 1,
+      "minSpotDist": 11,
+      "diffs": []
     }
   ]
 }
