@@ -95,5 +95,7 @@ assert.equal(cartes.legacyRecordKey, 'pairs');
 assert.equal(cartes.granAventura.candidataMissio, true);
 assert.equal(cartes.granAventura.validadaMissio, false);
 assert.equal(activitats.length, 1, 'etapa 2 PR A: només pilot cartes');
+assert.deepEqual(cartes.nivells.claus.sort(), [...nivellIds].sort(), 'cartes claus = personatges.nivells');
+assert.equal(cartes.nivells.claus.length, 4, 'cartes: quatre nivells');
 
 console.log('OK: activitats —', activitats.length, 'activitat(s),', reg.familles.length, 'familles');

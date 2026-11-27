@@ -3,14 +3,18 @@
   "pairsPerRound": 5,
   "nivells": [
     { "id": "exploradora", "label": "EXPLORADORA", "parelles": 4 },
-    { "id": "aventurera", "label": "AVENTURERA", "parelles": 5 }
+    { "id": "aventurera", "label": "AVENTURERA", "parelles": 5 },
+    { "id": "investigadora", "label": "INVESTIGADORA", "parelles": 6 },
+    { "id": "mestra-magia", "label": "MESTRA DE LA MÀGIA", "parelles": 8 }
   ],
-  "nivellInicial": 1,
+  "nivellInicial": 0,
   "textos": {
     "hint": "TROBA DUES CARTES IGUALS!",
     "progress": "{n} DE {t} PARELLES",
     "doneTitle": "HAS TROBAT TOTS ELS AMICS!",
-    "doneMsg": "QUINA MEMÒRIA MÀGICA!"
+    "doneMsg": "QUINA MEMÒRIA MÀGICA!",
+    "nextLevelPrompt": "VOLS PROVAR EL NIVELL {n}?",
+    "nextLevelBtn": "✨ JUGA AL NIVELL {n}"
   },
   "personatges": [
     { "id": "pipa", "label": "Na Pipa", "img": "imagenes/personatges/personatge-pipa.webp", "tags": ["conte"], "contes": ["pipa"], "grup": "pipa", "enabled": true },

@@ -23,7 +23,7 @@
       },
       "nivells": {
         "font": "personatges",
-        "claus": ["exploradora", "aventurera"]
+        "claus": ["exploradora", "aventurera", "investigadora", "mestra-magia"]
       },
       "disponible": true,
       "legacyRecordKey": "pairs",

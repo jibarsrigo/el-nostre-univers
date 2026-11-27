@@ -1,7 +1,12 @@
 /* Menú i minijocs de la capsa (P-002, P-018, hub) */
 .f2-cards--contes{grid-template-columns:repeat(4,minmax(72px,1fr));max-width:720px}
-.f2-pairs .f2-cards--contes{grid-template-columns:repeat(var(--cols,5),minmax(0,1fr));width:min(920px,100%);max-width:none;gap:clamp(8px,1.4vw,16px);padding:clamp(8px,1.4vw,14px);perspective:1000px}
-.f2-pairs .f2-card{position:relative;padding:0;border:0;background:none;box-shadow:none;aspect-ratio:5/4;min-height:0;transform:none;font-size:inherit;cursor:pointer}
+.f2-pairs .f2-illustrated{flex-direction:column;align-items:center;min-height:min(52dvh,440px);justify-content:flex-start}
+.f2-pairs-board{position:relative;width:min(920px,100%);height:min(46dvh,400px);min-height:min(42dvh,320px);margin:0 auto;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.f2-pairs .f2-cards--contes{grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));grid-template-rows:repeat(var(--rows,2),minmax(0,1fr));width:100%;height:100%;max-width:none;gap:clamp(6px,1.1vw,14px);padding:clamp(6px,1.1vw,12px);perspective:1000px;box-sizing:border-box;align-content:center}
+.f2-pairs .f2-card{position:relative;padding:0;border:0;background:none;box-shadow:none;aspect-ratio:5/4;min-height:0;max-height:100%;width:100%;transform:none;font-size:inherit;cursor:pointer}
+.f2-pairs-board--dense .f2-card-name{font-size:clamp(8px,1.05vmin,12px);-webkit-line-clamp:2}
+.f2-pairs-board--dense .f2-pairs-friend{width:clamp(64px,11vw,100px)}
+.f2-pairs-party-next{margin:0;font-size:clamp(16px,2.2vw,22px);font-weight:800;color:#f3e0ff;text-align:center}
 .f2-pairs .f2-card:disabled{opacity:1;cursor:default}
 .f2-pairs .f2-card:focus-visible{outline:3px solid #ffe08a;outline-offset:3px;border-radius:16px}
 .f2-card-inner{position:absolute;inset:0;display:block;transform-style:preserve-3d}
@@ -27,8 +32,7 @@
 .f2-pairs-stars{display:flex;justify-content:center;gap:6px}
 .f2-pairs-star svg{width:clamp(22px,3.4vmin,30px);height:clamp(22px,3.4vmin,30px);fill:#3a2456;stroke:#e8c860;stroke-width:2.5}
 .f2-pairs-star.on svg{fill:#ffd86a;stroke:#fff2b8;filter:drop-shadow(0 0 6px #ffd86a)}
-.f2-pairs .f2-illustrated{flex-direction:column}
-.f2-pairs-party{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(6px,1.6vh,14px);padding:12px;background:radial-gradient(ellipse at 50% 35%,rgba(70,40,110,.96),rgba(20,10,36,.97) 75%);animation:f2-party-in .5s ease .9s both}
+.f2-pairs-party{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(4px,1.2vh,12px);padding:clamp(8px,1.5vw,14px);overflow:auto;background:radial-gradient(ellipse at 50% 35%,rgba(70,40,110,.96),rgba(20,10,36,.97) 75%);animation:f2-party-in .5s ease .9s both}
 @keyframes f2-party-in{from{opacity:0;visibility:hidden}to{opacity:1;visibility:visible}}
 .f2-pairs-party-star svg{width:clamp(56px,11vmin,90px);height:clamp(56px,11vmin,90px);fill:#ffd86a;stroke:#fff2b8;stroke-width:1.5;filter:drop-shadow(0 0 16px #ffd86a);animation:f2-party-star 2s ease-in-out infinite alternate}
 @keyframes f2-party-star{to{transform:scale(1.1) rotate(12deg)}}

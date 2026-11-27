@@ -38,4 +38,8 @@ run(`go('jocsLupa');action('jocs-lupa-ombres');render()`);assert(root.innerHTML.
 run(`action('end-jocs-ombres');nav('tower')`);
 run(`go('jocsLupa');action('jocs-lupa-ombres');render()`);assert(root.innerHTML.includes('OMBRES'));
 run(`action('end-jocs-ombres')`);
+const pj=JSON.parse(fs.readFileSync('data/personatges.json','utf8'));
+assert.equal(pj.nivells.length,4,'cartes quatre nivells');
+const pool=pj.personatges.filter(p=>p.enabled!==false&&String(p.img||'').trim());
+assert.ok(new Set(pool.map(p=>p.grup||p.id)).size>=8,'pool cartes >= 8 grups');
 console.log('OK: jocs hub, comptar, puzle, poció, ombres, diferencies.');
