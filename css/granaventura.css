@@ -44,19 +44,22 @@
 .dif-done--gran-missio{position:static;min-height:0;max-height:none;height:auto;overflow:visible;padding:clamp(10px,2vh,16px);border-radius:12px}
 .dif-done--gran-missio::before{display:none}
 .jocs-diferencies--gran-missio .f2-illustrated:has(.dif-done--gran-missio){min-height:min(42dvh,420px);align-items:center;justify-content:center}
-.ga-dia-progres-stars--festa{gap:clamp(12px,3vw,22px);margin:4px 0 6px}
-.ga-dia-progres-stars--festa .ga-dia-star{width:clamp(48px,13vmin,68px);height:clamp(48px,13vmin,68px)}
+.ga-dia-progres-stars--festa{gap:clamp(14px,3.2vw,24px);margin:2px 0}
+.ga-dia-progres-stars--festa .ga-dia-star{width:clamp(52px,14vmin,72px);height:clamp(52px,14vmin,72px)}
+.ga-dia-progres-stars--festa .ga-dia-star .ombres-star-svg{fill:#ffd86a;stroke:#fff8dc;stroke-width:1.2px}
 .ga-missio-victoria-card .cartes-party-sub{max-width:22em;line-height:1.35;text-align:center}
 .dif-done--gran-missio,.ombres-level-done--gran-missio{display:flex;justify-content:center;align-items:center;padding:12px}
 .dif-done--gran-missio .ga-missio-victoria-card,.ombres-level-done--gran-missio .ga-missio-victoria-card{width:min(94%,520px)}
 .ga-missio-star.f2-pairs-party-star .ombres-star-svg{width:100%;height:100%;fill:currentColor}
-.ga-festa{width:min(840px,100%);display:flex;flex-direction:column;align-items:center;gap:clamp(14px,3vh,22px);padding:clamp(12px,2vw,20px) 12px 16px}
-.ga-festa-msg{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.6vh,12px);text-align:center;max-width:28em}
-.ga-festa-line{margin:0;font-size:clamp(20px,3.2vw,30px);font-weight:900;line-height:1.25;letter-spacing:.06em;color:#ffe9c4;text-shadow:0 2px 12px #0008}
-.ga-festa-hero{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:clamp(16px,4vw,28px);width:100%;margin-top:4px}
-.ga-festa-amic{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px}
-.ga-festa-amic img{width:clamp(96px,22vw,148px);height:clamp(96px,22vw,148px);object-fit:contain;filter:drop-shadow(0 10px 16px #0009)}
-.ga-festa-amic figcaption{font-size:clamp(13px,1.9vw,17px);font-weight:900;letter-spacing:.08em;color:#ffe7b8}
+.ga-festa{width:100%;display:flex;justify-content:center;padding:clamp(8px,2vw,16px) 10px 18px}
+.ga-festa-panel{display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3.6vh,28px);width:min(94%,680px);max-width:680px;padding:clamp(22px,4vw,36px) clamp(16px,3vw,28px);text-align:center}
+.ga-festa-line{margin:0;font-weight:900;line-height:1.2;letter-spacing:.1em;color:#ffe9c4;text-shadow:0 2px 12px #0008}
+.ga-festa-line--intro{font-size:clamp(22px,3.8vw,34px);max-width:22ch}
+.ga-festa-line--tanc{font-size:clamp(18px,2.8vw,26px);color:#fff0cc;max-width:26ch;margin-top:2px}
+.ga-festa-hero{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:clamp(20px,5vw,36px);width:100%;padding:clamp(4px,1vh,10px) 0}
+.ga-festa-amic{margin:0;display:flex;flex-direction:column;align-items:center;gap:clamp(10px,1.8vh,14px);min-width:clamp(100px,26vw,160px)}
+.ga-festa-amic img{width:clamp(108px,26vw,172px);height:clamp(108px,26vw,172px);object-fit:contain;filter:drop-shadow(0 12px 20px #000a)}
+.ga-festa-amic figcaption{font-size:clamp(15px,2.4vw,20px);font-weight:900;letter-spacing:.12em;color:#ffe7b8}
 #ga-carta-portal{position:fixed;inset:0;z-index:9000;pointer-events:none}
 #ga-carta-portal .ga-carta-mask{pointer-events:auto}
 .ga-carta-mask{position:fixed;inset:0;z-index:9001;display:flex;align-items:center;justify-content:center;padding:max(72px,8dvh) 16px max(24px,4dvh);background:#14091ef2;backdrop-filter:blur(10px)}

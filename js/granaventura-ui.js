@@ -159,11 +159,10 @@ function granAventuraUiSobreHtml(av,slot,idx,done){
 }
 
 function granAventuraUiFestaHtml(av,slots){
-  const heroes=slots.map(s=>{const em=granAventuraUiEmissorMeta(s.emissorId);return em.img?`<figure class="ga-festa-amic"><img src="${strip(em.img)}" alt="" draggable="false"><figcaption>${strip(String(em.label||'').toUpperCase())}</figcaption></figure>`:''}).join('');
+  const heroes=slots.map(s=>{const em=granAventuraUiEmissorMeta(s.emissorId);const name=strip(String(em.label||'').toUpperCase());return em.img?`<figure class="ga-festa-amic"><img src="${strip(em.img)}" alt="" draggable="false"><figcaption>${name}</figcaption></figure>`:''}).join('');
   const n=Math.max(1,slots.length||3);
   const stars=`<div class="ga-festa-stars ga-dia-progres-stars ga-dia-progres-stars--festa" aria-hidden="true">${gaDiaProgresStarsHtml(n,n,false)}</div>`;
-  const msg=`<div id="ga-festa-title" class="ga-festa-msg"><p class="ga-festa-line">GRÀCIES, AMIGA!</p><p class="ga-festa-line">HAS COMPLETAT LA GRAN AVENTURA!</p></div>`;
-  return `<div class="ga-festa" role="region" aria-labelledby="ga-festa-title">${stars}${msg}<div class="ga-festa-hero">${heroes}</div></div>`;
+  return `<div class="ga-festa" role="region" aria-labelledby="ga-festa-intro"><div class="ga-festa-panel cartes-party-card cartes-party-card--gran-missio"><p id="ga-festa-intro" class="ga-festa-line ga-festa-line--intro">GRÀCIES PER AJUDAR-NOS!</p>${stars}<div class="ga-festa-hero">${heroes}</div><p class="ga-festa-line ga-festa-line--tanc">HAS COMPLETAT LA GRAN AVENTURA!</p></div></div>`;
 }
 
 function granAventuraUiCartaHtml(slot){
