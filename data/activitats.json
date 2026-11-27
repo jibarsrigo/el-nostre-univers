@@ -1,0 +1,41 @@
+{
+  "versio": 1,
+  "titol": "Registre d'activitats",
+  "familles": [
+    { "id": "memoria", "nom": "MEMÒRIA" },
+    { "id": "lectura", "nom": "LECTURA" },
+    { "id": "exploracio", "nom": "EXPLORACIÓ" },
+    { "id": "creativitat", "nom": "CREATIVITAT" }
+  ],
+  "activitats": [
+    {
+      "id": "cartes",
+      "nom": "CARTES DE L'UNIVERS",
+      "familia": "memoria",
+      "ubicacio": {
+        "sala": "torre",
+        "hotspot": "pairs"
+      },
+      "entrada": {
+        "tipus": "hotspot",
+        "place": "tower",
+        "hotspotId": "pairs"
+      },
+      "nivells": {
+        "font": "personatges",
+        "claus": ["exploradora", "aventurera"]
+      },
+      "disponible": true,
+      "legacyRecordKey": "pairs",
+      "finalitzacio": {
+        "tipus": "condicio",
+        "condicio": "totes_parelles",
+        "puntUnic": "darrera_parella"
+      },
+      "granAventura": {
+        "candidataMissio": true,
+        "validadaMissio": false
+      }
+    }
+  ]
+}
