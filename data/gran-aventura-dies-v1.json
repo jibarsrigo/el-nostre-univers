@@ -1,0 +1,202 @@
+{
+  "versio": 1,
+  "titol": "LA GRAN AVENTURA — aventures v1 (7 dies)",
+  "aventures": [
+    {
+      "id": "ga-dia-001",
+      "titol": "AVENTURA 1",
+      "recompensaInventemId": null,
+      "slots": [
+        {
+          "instanciaId": "ga-dia-001-slot-1",
+          "plantillaMissioId": "ga-mem-cartes-exploradora-01",
+          "emissorId": "pipa",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-001-slot-2",
+          "plantillaMissioId": "ga-exp-ombres-nivell1-01",
+          "emissorId": "pipa",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-001-slot-3",
+          "plantillaMissioId": "ga-exp-dif-biblioteca-01",
+          "emissorId": "pipa",
+          "cartaText": "",
+          "objectiuVisible": ""
+        }
+      ]
+    },
+    {
+      "id": "ga-dia-002",
+      "titol": "AVENTURA 2",
+      "recompensaInventemId": null,
+      "slots": [
+        {
+          "instanciaId": "ga-dia-002-slot-2",
+          "plantillaMissioId": "ga-exp-ombres-nivell1-01",
+          "emissorId": "bruna",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-002-slot-3",
+          "plantillaMissioId": "ga-exp-dif-biblioteca-01",
+          "emissorId": "bruna",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-002-slot-1",
+          "plantillaMissioId": "ga-mem-cartes-exploradora-01",
+          "emissorId": "bruna",
+          "cartaText": "",
+          "objectiuVisible": ""
+        }
+      ]
+    },
+    {
+      "id": "ga-dia-003",
+      "titol": "AVENTURA 3",
+      "recompensaInventemId": null,
+      "slots": [
+        {
+          "instanciaId": "ga-dia-003-slot-3",
+          "plantillaMissioId": "ga-exp-dif-biblioteca-01",
+          "emissorId": "gat",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-003-slot-1",
+          "plantillaMissioId": "ga-mem-cartes-exploradora-01",
+          "emissorId": "gat",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-003-slot-2",
+          "plantillaMissioId": "ga-exp-ombres-nivell1-01",
+          "emissorId": "gat",
+          "cartaText": "",
+          "objectiuVisible": ""
+        }
+      ]
+    },
+    {
+      "id": "ga-dia-004",
+      "titol": "AVENTURA 4",
+      "recompensaInventemId": null,
+      "slots": [
+        {
+          "instanciaId": "ga-dia-004-slot-1",
+          "plantillaMissioId": "ga-mem-cartes-exploradora-01",
+          "emissorId": "moix",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-004-slot-2",
+          "plantillaMissioId": "ga-exp-ombres-nivell1-01",
+          "emissorId": "moix",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-004-slot-3",
+          "plantillaMissioId": "ga-exp-dif-biblioteca-01",
+          "emissorId": "moix",
+          "cartaText": "",
+          "objectiuVisible": ""
+        }
+      ]
+    },
+    {
+      "id": "ga-dia-005",
+      "titol": "AVENTURA 5",
+      "recompensaInventemId": null,
+      "slots": [
+        {
+          "instanciaId": "ga-dia-005-slot-2",
+          "plantillaMissioId": "ga-exp-ombres-nivell1-01",
+          "emissorId": "nus",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-005-slot-1",
+          "plantillaMissioId": "ga-mem-cartes-exploradora-01",
+          "emissorId": "nus",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-005-slot-3",
+          "plantillaMissioId": "ga-exp-dif-biblioteca-01",
+          "emissorId": "nus",
+          "cartaText": "",
+          "objectiuVisible": ""
+        }
+      ]
+    },
+    {
+      "id": "ga-dia-006",
+      "titol": "AVENTURA 6",
+      "recompensaInventemId": null,
+      "slots": [
+        {
+          "instanciaId": "ga-dia-006-slot-3",
+          "plantillaMissioId": "ga-exp-dif-biblioteca-01",
+          "emissorId": "troc",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-006-slot-2",
+          "plantillaMissioId": "ga-exp-ombres-nivell1-01",
+          "emissorId": "troc",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-006-slot-1",
+          "plantillaMissioId": "ga-mem-cartes-exploradora-01",
+          "emissorId": "troc",
+          "cartaText": "",
+          "objectiuVisible": ""
+        }
+      ]
+    },
+    {
+      "id": "ga-dia-007",
+      "titol": "AVENTURA 7",
+      "recompensaInventemId": null,
+      "slots": [
+        {
+          "instanciaId": "ga-dia-007-slot-1",
+          "plantillaMissioId": "ga-mem-cartes-exploradora-01",
+          "emissorId": "boira",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-007-slot-3",
+          "plantillaMissioId": "ga-exp-dif-biblioteca-01",
+          "emissorId": "boira",
+          "cartaText": "",
+          "objectiuVisible": ""
+        },
+        {
+          "instanciaId": "ga-dia-007-slot-2",
+          "plantillaMissioId": "ga-exp-ombres-nivell1-01",
+          "emissorId": "boira",
+          "cartaText": "",
+          "objectiuVisible": ""
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,8 @@ require('./checks_progres_etapa3a.cjs');
 require('./checks_progres_etapa3b.cjs');
 require('./checks_progres_etapa3c.cjs');
 require('./checks_gran_aventura_missions.cjs');
+require('./checks_gran_aventura_dies.cjs');
+require('./checks_gran_aventura_5a.cjs');
 require('./checks_progres_etapa3d.cjs');
 require('./checks_racopapa_etapa4.cjs');
 require('../tests/fase4-regression.cjs');
