@@ -40,7 +40,7 @@ test(()=>{run(`nav('workshop');hotspot('colors')`);assert.equal(run('state.place
 test(()=>{run(`nav('workshop');hotspot('stars')`);assert.equal(run('state.place'),'f3maker')});
 test(()=>{run(`nav('workshop');hotspot('chest')`);assert.equal(run('state.place'),'f3gallery')});
 test(()=>{run(`jocs.personatges=${JSON.stringify(JSON.parse(fs.readFileSync('data/personatges.json','utf8')))}`);run(`setupPairs()`);assert.equal(run('f2.match.length'),10);assert.equal(run('new Set(f2.match).size'),5)});
-test(()=>{run(`setupWord()`);assert(run('WORDS.includes(f2.word)'))});
+test(()=>{run(`f2.paraules=${fs.readFileSync(path.join(root,'data/paraules.json'),'utf8')};setupWords()`);assert(run('f2.paraules.words.some(w=>w.word===f2.word)')&&run('new Set(f2.wg.list.map(w=>w.word)).size')===3)});
 test(()=>{run(`f3Save({...newCreature3(),id:'test-creature',name:'Guspira'})`);assert.equal(get('f3.gallery').length,1);assert.equal(get('f3.gallery')[0].name,'Guspira')});
 test(()=>{run(`state.place='f3creator';f3NavBack()`);assert.equal(run('state.place'),'workshop');assert.equal(get('state.history').length,0)});
 test(()=>{run(`state.history=[];nav('library');hotspot('contes')`);assert.equal(run('state.place'),'contes');assert.match(app.innerHTML,/prestatgeria-contes-vius/);for(const id of ['sopar','pipa','bosc','boira','troc','nus','bruna'])assert.match(app.innerHTML,new RegExp('data-hotspot="'+id+'"'))});
