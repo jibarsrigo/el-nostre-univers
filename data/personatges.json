@@ -1,5 +1,5 @@
 {
-  "title": "Cartes del univers",
+  "title": "Cartes de l’univers",
   "pairsPerRound": 5,
   "nivells": [
     { "id": "exploradora", "label": "EXPLORADORA", "parelles": 4 },
@@ -7,7 +7,7 @@
   ],
   "nivellInicial": 1,
   "textos": {
-    "hint": "TROBA DOS CARTES IGUALS!",
+    "hint": "TROBA DUES CARTES IGUALS!",
     "progress": "{n} DE {t} PARELLES",
     "doneTitle": "HAS TROBAT TOTS ELS AMICS!",
     "doneMsg": "QUINA MEMÒRIA MÀGICA!"
@@ -20,10 +20,10 @@
     { "id": "troc", "label": "En Troc", "img": "imagenes/personatges/personatge-troc.webp", "tags": ["conte"], "contes": ["troc"], "enabled": true },
     { "id": "nus", "label": "En Nus", "img": "imagenes/personatges/personatge-nus.webp", "tags": ["conte"], "contes": ["nus"], "enabled": true },
     { "id": "conill", "label": "El conill", "img": "imagenes/personatges/personatge-conill.webp", "tags": ["web", "biblioteca"], "enabled": true },
-    { "id": "gat", "label": "El gat", "img": "imagenes/personatges/personatge-gat.webp", "tags": ["web"], "enabled": true },
-    { "id": "moix", "label": "El moix", "img": "imagenes/personatges/personatge-moix.webp", "tags": ["web", "biblioteca"], "enabled": false, "note": "La imatge són unes ulleres, no un personatge" },
+    { "id": "gat", "label": "El gat", "img": "imagenes/personatges/personatge-gat.webp", "tags": ["web"], "enabled": false, "note": "Pendent: gat negre en color (la imatge actual és una silueta)" },
+    { "id": "moix", "label": "El moix", "img": "imagenes/personatges/personatge-moix.webp", "tags": ["web", "biblioteca"], "enabled": true },
     { "id": "monstret", "label": "El monstret", "img": "imagenes/personatges/personatge-monstret.webp", "tags": ["web", "biblioteca", "inventem"], "enabled": true },
-    { "id": "guineu", "label": "El guineu", "img": "imagenes/personatges/personatge-guineu.webp", "tags": ["web", "mapa", "biblioteca"], "enabled": true },
+    { "id": "guineu", "label": "En Rosset", "img": "imagenes/personatges/personatge-guineu.webp", "tags": ["web", "mapa", "biblioteca"], "enabled": true },
     { "id": "nena", "label": "La nena", "img": "imagenes/personatges/personatge-nena.webp", "tags": ["web", "mapa"], "enabled": true },
     { "id": "buho", "label": "El mussol", "img": "imagenes/personatges/personatge-buho.webp", "tags": ["web", "torre", "biblioteca"], "enabled": true },
     { "id": "seta", "label": "La seta", "img": "imagenes/personatges/personatge-seta.webp", "tags": ["web", "mapa"], "enabled": true },
