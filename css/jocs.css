@@ -183,6 +183,8 @@
 .ombres-pop--briefing,.ombres-pop--levels{animation:none;background:rgba(7,4,15,.82)}
 .ombres-pop-card--briefing,.ombres-pop-card--levels{gap:clamp(10px,2vh,16px);padding:clamp(16px,3vw,28px)}
 .ombres-pop--briefing .ombres-pop-next-btn,.ombres-pop-card--briefing .ombres-pop-next-btn{width:100%}
+.ombres-pop-card--briefing .ombres-briefing-room{margin:0}
+.ombres-pop-card--briefing .dif-done-tower{width:min(78%,300px);max-height:min(24vh,200px);margin:0 auto}
 .ombres-level-pick{display:flex;flex-direction:column;gap:10px;width:100%;align-items:center}
 .ombres-level-pick .ombres-level-btn{width:min(100%,340px);max-width:340px}
 .ombres-level-pick-nova{margin-top:6px;padding-top:10px;border-top:2px solid rgba(255,228,168,.25);width:100%;display:flex;justify-content:center}
