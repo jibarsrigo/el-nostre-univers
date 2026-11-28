@@ -178,9 +178,8 @@
 .ombres-lantern{position:absolute;left:0;top:0;z-index:5;width:clamp(36px,7vmin,52px);height:clamp(36px,7vmin,52px);transform:translate(-50%,-62%);pointer-events:none;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff8dc,#e8c060 55%,#a87828);border:3px solid #f5e6b8;box-shadow:0 0 22px #ffe9a0,0 0 44px rgba(255,220,130,.35)}
 .ombres-lantern::after{content:'';position:absolute;left:50%;bottom:-18%;width:9px;height:22%;transform:translateX(-50%);background:linear-gradient(#c5a16e,#8b6a3a);border-radius:2px}
 @media(max-width:700px){.f2-scene--ombres{padding:48px 4px 4px}.f2-window--ombres{padding:4px 6px 6px;gap:3px}.f2-illustrated--ombres{min-height:min(60dvh,500px)}.ombres-head-main{gap:6px}.ombres-objective{min-width:100%;max-width:100%}.f2-actions--ombres .f2-btn{min-height:40px;padding:6px 10px;font-size:clamp(12px,1.85vw,16px)}}
-.ombres-wall--briefing .ombres-veil-base{background:rgba(2,1,8,.98);-webkit-mask-image:none;mask-image:none}
-.ombres-wall--briefing .ombres-light-anchor{visibility:hidden;opacity:0}
-.ombres-wall--briefing{touch-action:auto}
+.ombres-prep{position:absolute;inset:0;width:100%;height:100%;max-width:100%;max-height:100%;aspect-ratio:16/11;margin:auto;border-radius:16px;background:#0a0614;border:4px solid #b89558;box-shadow:inset 0 0 80px #000,0 8px 24px rgba(0,0,0,.5);pointer-events:none}
+.f2-illustrated--ombres:has(.ombres-pop--briefing),.f2-illustrated--ombres:has(.ombres-pop--levels){min-height:min(50dvh,480px)}
 .ombres-pop--briefing,.ombres-pop--levels{animation:none;background:rgba(7,4,15,.82)}
 .ombres-pop-card--briefing,.ombres-pop-card--levels{gap:clamp(10px,2vh,16px);padding:clamp(16px,3vw,28px)}
 .ombres-pop--briefing .ombres-pop-next-btn,.ombres-pop-card--briefing .ombres-pop-next-btn{width:100%}
