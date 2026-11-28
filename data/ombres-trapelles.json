@@ -1,5 +1,12 @@
 {
   "missions": {
+    "title": "LES OMBRES TRAPELLES",
+    "startTitle": "PREPARA'T!",
+    "startHint": "MOU LA LLANTERNA I TROBA L'OMBRA DEL PERSONATGE!",
+    "briefingRoom": "SALA DE LA TORRE",
+    "briefingHint": "SOC EN ROSSET! LES OMBRES S'AMAGUEN AL MUR: MOU LA LLUM FINS QUE BRILLIN I TOCA-LES!",
+    "guideId": "guineu",
+    "teachSecretId": "pipa",
     "subtitle": "LES MISSIONS DE LA TORRE",
     "leadSearch": "HI HA OMBRES AMAGADES!",
     "hint": "MOU LA LLUM I TROBA L'OMBRA!",
