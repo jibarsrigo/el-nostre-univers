@@ -18,6 +18,8 @@ run(`jocs.personatges=${JSON.stringify(personatgesJSON)}`);
 run('activitatsResetMem()');
 function completePairs(){const pairs=run('f2.match');for(const animal of new Set(pairs)){const inds=pairs.map((v,i)=>v===animal?i:null).filter(x=>x!==null);run(`clickCard(${inds[0]})`);run(`clickCard(${inds[1]})`);}}
 run(`go('pairs')`);
+assert(root.innerHTML.includes('dif-ready--cartes-entry')&&root.innerHTML.includes('cartes-prep-demo')&&root.innerHTML.includes('ombres-prep-bubble')&&root.innerHTML.includes('COMENÇAR')&&root.innerHTML.includes('f2-pairs--prep')&&!root.innerHTML.includes('data-card='),'primera entrada: prep compacte amb Rosset');
+run(`action('pairs-begin')`);
 run('setupPairs()');
 assert.equal(run('cartesRosterForLevel(0)').length,4,'nivell 1 = 4 amics');
 assert.equal(run('jocsPairLevelUnlocked()'),0,'només nivell 1 al principi');
@@ -28,6 +30,7 @@ assert(!root.innerHTML.includes('VOLS PROVAR'),'celebració sense prompt redunda
 assert(root.innerHTML.includes('ombres-level-btn--primary'),'botó principal daurat');
 assert(root.innerHTML.includes('cartes-party-stars'),'quatre estrelles de progrés');
 assert(!root.innerHTML.includes('ELS TEUS AMICS'),'sense fila amics coneguts');
+assert(root.innerHTML.includes('cartes-party-card--round')&&root.innerHTML.includes('f2-pairs-party--round'),'nivell 1: celebració rodó');
 assert.equal(run('f2.cartesAventura.roster.length'),5,'+1 amic després nivell 1');
 assert.equal(run('jocsPairLevelUnlocked()'),1);
 const r0=run('f2.cartesAventura.roster.slice()');
@@ -42,6 +45,10 @@ assert.equal(run('f2.cartesAventura.roster.length'),6);
 run(`action('pairs-next-level')`);
 completePairs();
 assert.equal(run('f2.cartesAventura.roster.length'),8);
+run(`action('pairs-next-level')`);
+completePairs();
+assert.equal(run('jocsPairLevelIndex()'),3,'nivell 4 jugat');
+assert(root.innerHTML.includes('cartes-party-card--final')&&root.innerHTML.includes('dif-done-tower')&&root.innerHTML.includes('HAS COMPLETAT L\'AVENTURA'),'nivell 4: final com dif');
 run(`f2.pairsLevel=0;setupPairs()`);
 const slice0=run('cartesRosterForLevel(0)');
 assert.deepEqual(slice0,r0.slice(0,4),'baixar a nivell 1: 4 inicials');

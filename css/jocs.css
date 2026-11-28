@@ -1,5 +1,30 @@
 /* Menú i minijocs de la capsa (P-002, P-018, hub) */
 .f2-cards--contes{grid-template-columns:repeat(4,minmax(72px,1fr));max-width:720px}
+.f2-scene.f2-pairs--prep{align-items:center;padding:52px 10px 14px}
+.f2-scene.f2-pairs--prep .f2-window{width:min(560px,94%);max-height:fit-content;flex:0 0 auto;padding:0;gap:0;overflow:visible;border:none;background:transparent;box-shadow:none;border-radius:0}
+.f2-scene.f2-pairs--prep .f2-heading{display:none;margin:0;padding:0;width:0;height:0;overflow:hidden}
+.f2-scene.f2-pairs--prep .f2-illustrated{flex:0 0 auto;min-height:auto;height:auto;width:100%}
+.f2-scene.f2-pairs--prep .f2-illustrated:has(.dif-ready){min-height:auto}
+.f2-scene.f2-pairs--prep .dif-ready{min-height:auto;height:auto;padding:clamp(4px,1.2vw,10px)}
+.f2-scene.f2-pairs--prep .f2-story:empty,.f2-scene.f2-pairs--prep .f2-actions:empty{display:none;margin:0;padding:0}
+.dif-ready--cartes-entry .dif-ready-card{gap:clamp(8px,1.6vh,14px);padding:clamp(14px,2.8vw,22px) clamp(12px,2.6vw,18px);width:min(96%,480px)}
+.dif-ready--cartes-entry .cartes-prep-demo{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:clamp(10px,2.4vw,18px);width:100%;max-width:min(100%,320px);margin:0 auto;padding:4px 0}
+.dif-ready--cartes-entry .f2-card--prep{position:relative;flex:0 0 auto;width:clamp(72px,18vw,108px);aspect-ratio:5/4;pointer-events:none;touch-action:none}
+.dif-ready--cartes-entry .f2-card--prep .f2-card-inner{position:absolute;inset:0}
+.dif-ready--cartes-entry .ombres-prep-guide--entry{width:100%;max-width:min(100%,300px);margin:0 auto}
+.dif-ready--cartes-entry .ombres-prep-guide--entry .ombres-prep-friend{width:clamp(48px,9vw,64px)}
+.dif-ready--cartes-entry .ombres-prep-guide--entry .ombres-prep-friend figcaption{display:none}
+.dif-ready--cartes-entry .ombres-prep-guide--entry .ombres-prep-bubble{margin:0;padding:clamp(6px,1.4vw,9px) clamp(8px,1.8vw,11px);font-size:clamp(12px,1.75vw,14px);line-height:1.2;text-align:left;max-width:none}
+.cartes-party-card--round{gap:clamp(10px,2vh,16px);padding:clamp(12px,2.4vw,20px) clamp(10px,2vw,18px);width:min(96%,560px)}
+.cartes-party-card--round .cartes-party-stars{margin:0 0 2px;gap:clamp(12px,3vw,20px)}
+.cartes-party-card--round .cartes-party-title{margin-top:-2px}
+.cartes-party-card--final{gap:clamp(10px,2.2vh,16px);border-width:4px;box-shadow:0 0 48px rgba(255,220,130,.4),0 12px 36px rgba(0,0,0,.6)}
+.cartes-party-card--final .cartes-party-headline{max-width:20ch;font-size:clamp(22px,3.4vw,32px)}
+.cartes-party-card--final .cartes-party-stars .ombres-star{width:clamp(48px,12vmin,72px);height:clamp(48px,12vmin,72px)}
+.cartes-party-tower{width:min(72%,320px);max-height:min(18vh,160px);object-fit:contain;margin:0 auto;border-radius:12px;filter:drop-shadow(0 0 28px rgba(255,220,140,.75)) brightness(1.08)}
+.f2-pairs--won.f2-pairs--prep .f2-illustrated{min-height:auto;flex:0 0 auto}
+.f2-pairs--won.f2-pairs--prep .f2-pairs-board{min-height:min(48dvh,480px)}
+.f2-pairs--won.f2-pairs--prep:not(.f2-pairs--gran-missio) .f2-pairs-party{padding:clamp(4px,1vw,10px)}
 .f2-pairs .f2-illustrated{flex-direction:column;align-items:center;min-height:min(52dvh,440px);justify-content:flex-start}
 .f2-pairs-board{position:relative;width:min(920px,100%);height:min(46dvh,400px);min-height:min(42dvh,320px);margin:0 auto;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
 .f2-pairs .f2-cards--contes{container-type:size;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));grid-template-rows:repeat(var(--rows,2),minmax(0,1fr));width:100%;height:100%;max-width:none;--pairs-gap:clamp(6px,1.1vw,14px);gap:var(--pairs-gap);padding:clamp(6px,1.1vw,12px);perspective:1000px;box-sizing:border-box;place-items:center;align-content:center;justify-content:center}
