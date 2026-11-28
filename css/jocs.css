@@ -383,6 +383,13 @@
 .f2-scene.jocs-diferencies--prep .f2-illustrated:has(.dif-ready),.f2-scene.jocs-diferencies--prep .f2-illustrated:has(.conte-wait){min-height:auto}
 .f2-scene.jocs-diferencies--prep .dif-ready{min-height:auto;height:auto;padding:clamp(4px,1.2vw,10px)}
 .dif-ready-card .dif-prep-scene,.dif-done-card .dif-prep-scene{width:min(72%,320px);max-height:min(22vh,200px);object-fit:contain;border-radius:12px;box-shadow:0 4px 22px rgba(0,0,0,.5),0 0 24px rgba(255,220,140,.2);display:block}
+.dif-ready-card .dif-prep-stage{flex:0 0 auto;width:100%;max-height:min(28vh,240px);min-height:0;gap:clamp(4px,1vw,8px);margin:0 auto}
+.dif-ready-card .dif-prep-stage .dif-panel{flex:1 1 0;min-height:clamp(96px,16vh,168px);max-height:min(26vh,220px);align-self:center;border-width:3px}
+.dif-panel--prep{cursor:default;pointer-events:none;touch-action:none}
+.dif-panel--prep:active{background:#1a0f28}
+.dif-prep-thumbs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(6px,1.4vw,10px);width:100%;max-width:100%}
+.dif-prep-thumbs .dif-prep-thumb{max-width:clamp(44px,11vmin,68px);min-width:0;flex:0 1 auto;padding:clamp(4px,1vw,6px)}
+.dif-ready-card .ombres-prep-guide{width:100%}
 .f2-scene.jocs-diferencies--prep .f2-illustrated:has(.dif-done){min-height:auto}
 .f2-scene.jocs-diferencies--prep .dif-done{min-height:auto;height:auto;padding:clamp(4px,1.2vw,10px)}
 .f2-scene.jocs-diferencies--prep .dif-done::before{display:none}
