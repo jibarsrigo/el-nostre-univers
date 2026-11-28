@@ -162,7 +162,8 @@
 .pocio-fx{max-width:min(420px,90vw);width:100%;border-radius:20px;border:4px solid #e6bb7d}
 .pocio-text{font-size:clamp(16px,2.5vw,22px);color:#ffe4a8;font-weight:800;margin:6px 0}
 .pocio-hint{font-size:clamp(14px,2vw,18px);color:#e6bdf7;margin:0}
-.f2-scene--ombres{align-items:stretch;padding:52px 6px 4px;background:#07040f!important}
+.f2-scene--ombres{align-items:stretch;padding:52px 6px 4px}
+.f2-scene--ombres:not(.f2-scene--ombres-prep){background:#07040f!important}
 .f2-window--ombres{width:min(1180px,100%);max-height:calc(100dvh - 58px);flex:1;display:flex;flex-direction:column;gap:4px;padding:6px 10px 8px;border-color:#572039;background:linear-gradient(180deg,#120a22f5,#0a0614fa);box-shadow:inset 0 0 40px #000;overflow:hidden}
 .f2-scene--ombres .ombres-title{margin:0 0 2px;font-size:clamp(16px,2.2vw,22px);line-height:1.1;color:#ffe4a8;font-family:Georgia,serif;font-weight:700}
 .ombres-head{display:flex;flex-direction:column;margin:0 0 2px;width:100%;flex:0 0 auto}
@@ -246,7 +247,7 @@
 @media(max-width:700px){.f2-scene--ombres{padding:48px 4px 4px}.f2-window--ombres{padding:4px 6px 6px;gap:3px}.f2-illustrated--ombres{min-height:min(60dvh,500px)}.ombres-head-main{gap:6px}.ombres-objective{min-width:100%;max-width:100%}.f2-actions--ombres .f2-btn{min-height:40px;padding:6px 10px;font-size:clamp(12px,1.85vw,16px)}}
 .ombres-prep{position:absolute;inset:0;width:100%;height:100%;max-width:100%;max-height:100%;aspect-ratio:16/11;margin:auto;border-radius:16px;background:#0a0614;border:4px solid #b89558;box-shadow:inset 0 0 80px #000,0 8px 24px rgba(0,0,0,.5);pointer-events:none}
 .f2-illustrated--ombres:has(.dif-ready){min-height:min(50dvh,480px)}
-.f2-scene--ombres-prep{align-items:center;padding:52px 10px 14px;background:transparent!important}
+.f2-scene--ombres-prep{align-items:center;padding:52px 10px 14px}
 .f2-scene--ombres-prep .f2-window--ombres{width:min(560px,94%);max-height:fit-content;flex:0 0 auto;padding:0;gap:0;overflow:visible;border:none;background:transparent;box-shadow:none;border-radius:0}
 .f2-scene--ombres-prep .ombres-title{display:none}
 .f2-scene--ombres-prep .f2-illustrated--ombres{flex:0 0 auto;min-height:auto;height:auto;width:100%}
