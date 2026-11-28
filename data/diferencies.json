@@ -89,6 +89,46 @@
           "zones": [
             { "x0": 38, "y0": 38, "x1": 58, "y1": 58, "w": 9, "r": 8 }
           ]
+        },
+        {
+          "id": "decoy-magdalena",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-magdalena.webp",
+          "spots": [
+            { "x": 72, "y": 20, "w": 7, "r": 8 },
+            { "x": 44, "y": 16, "w": 7, "r": 8 },
+            { "x": 86, "y": 52, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-ploma-colors",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-ploma-colors.webp",
+          "spots": [
+            { "x": 28, "y": 48, "w": 7, "r": 8 },
+            { "x": 56, "y": 72, "w": 7, "r": 8 },
+            { "x": 14, "y": 62, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-bombeta",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-bombeta-llum.webp",
+          "spots": [
+            { "x": 76, "y": 8, "w": 6, "r": 8 },
+            { "x": 36, "y": 28, "w": 7, "r": 8 },
+            { "x": 92, "y": 38, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-estrella-fil",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-estrella-fil.webp",
+          "spots": [
+            { "x": 48, "y": 42, "w": 7, "r": 8 },
+            { "x": 18, "y": 78, "w": 7, "r": 8 },
+            { "x": 82, "y": 72, "w": 6, "r": 8 }
+          ]
         }
       ]
     },
@@ -199,6 +239,46 @@
             { "x": 64, "y": 66, "w": 8, "r": 8 },
             { "x": 78, "y": 46, "w": 7, "r": 8 }
           ]
+        },
+        {
+          "id": "decoy-mapa-taller",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-mapa-enrotllat.webp",
+          "spots": [
+            { "x": 42, "y": 28, "w": 8, "r": 8 },
+            { "x": 28, "y": 52, "w": 7, "r": 8 },
+            { "x": 88, "y": 34, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-olla-taller",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-olla-fum.webp",
+          "spots": [
+            { "x": 52, "y": 48, "w": 7, "r": 8 },
+            { "x": 8, "y": 72, "w": 7, "r": 8 },
+            { "x": 72, "y": 82, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-taronja-taller",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-taronja.webp",
+          "spots": [
+            { "x": 24, "y": 22, "w": 7, "r": 8 },
+            { "x": 46, "y": 72, "w": 6, "r": 8 },
+            { "x": 92, "y": 58, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-cullera-taller",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-cullera-daurada.webp",
+          "spots": [
+            { "x": 62, "y": 38, "w": 7, "r": 8 },
+            { "x": 18, "y": 48, "w": 7, "r": 8 },
+            { "x": 38, "y": 82, "w": 7, "r": 8 }
+          ]
         }
       ]
     },
@@ -285,6 +365,46 @@
             { "x": 75, "y": 42, "w": 6, "r": 8 },
             { "x": 30, "y": 66, "w": 7, "r": 8 },
             { "x": 66, "y": 84, "w": 8, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-sabata-petita",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-sabata-petita.webp",
+          "spots": [
+            { "x": 62, "y": 88, "w": 7, "r": 8 },
+            { "x": 22, "y": 72, "w": 7, "r": 8 },
+            { "x": 38, "y": 52, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-pilota",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-pilota-colors.webp",
+          "spots": [
+            { "x": 18, "y": 58, "w": 7, "r": 8 },
+            { "x": 72, "y": 18, "w": 6, "r": 8 },
+            { "x": 86, "y": 72, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-mapa",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-mapa-enrotllat.webp",
+          "spots": [
+            { "x": 34, "y": 36, "w": 8, "r": 8 },
+            { "x": 56, "y": 64, "w": 7, "r": 8 },
+            { "x": 8, "y": 28, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-fulla",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-fulla-verda.webp",
+          "spots": [
+            { "x": 46, "y": 32, "w": 7, "r": 8 },
+            { "x": 78, "y": 52, "w": 6, "r": 8 },
+            { "x": 24, "y": 88, "w": 7, "r": 8 }
           ]
         }
       ]
@@ -375,6 +495,46 @@
             { "x": 48, "y": 88, "w": 7, "r": 8 },
             { "x": 38, "y": 66, "w": 6, "r": 8 },
             { "x": 62, "y": 44, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-olla",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-olla-fum.webp",
+          "spots": [
+            { "x": 14, "y": 58, "w": 7, "r": 8 },
+            { "x": 58, "y": 28, "w": 7, "r": 8 },
+            { "x": 84, "y": 58, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-aneguet",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-aneguet-goma.webp",
+          "spots": [
+            { "x": 42, "y": 52, "w": 7, "r": 8 },
+            { "x": 68, "y": 82, "w": 7, "r": 8 },
+            { "x": 26, "y": 42, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-clauer",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-clauer-misterios.webp",
+          "spots": [
+            { "x": 54, "y": 78, "w": 7, "r": 8 },
+            { "x": 12, "y": 72, "w": 7, "r": 8 },
+            { "x": 76, "y": 36, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-taronja",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-taronja.webp",
+          "spots": [
+            { "x": 64, "y": 52, "w": 6, "r": 8 },
+            { "x": 32, "y": 72, "w": 7, "r": 8 },
+            { "x": 46, "y": 38, "w": 6, "r": 8 }
           ]
         }
       ]
@@ -467,6 +627,46 @@
             { "x": 92, "y": 61, "w": 6, "r": 8 },
             { "x": 36, "y": 95, "w": 7, "r": 8 },
             { "x": 76, "y": 96, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-corona",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-corona-paper.webp",
+          "spots": [
+            { "x": 22, "y": 52, "w": 7, "r": 8 },
+            { "x": 78, "y": 38, "w": 6, "r": 8 },
+            { "x": 48, "y": 22, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-candelabre",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-candelabre-estel.webp",
+          "spots": [
+            { "x": 28, "y": 72, "w": 7, "r": 8 },
+            { "x": 68, "y": 28, "w": 7, "r": 8 },
+            { "x": 92, "y": 68, "w": 6, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-sabata-gigant",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-sabata-gigant.webp",
+          "spots": [
+            { "x": 12, "y": 88, "w": 8, "r": 8 },
+            { "x": 52, "y": 52, "w": 8, "r": 8 },
+            { "x": 82, "y": 42, "w": 7, "r": 8 }
+          ]
+        },
+        {
+          "id": "decoy-drac",
+          "decoyOnly": true,
+          "img": "imagenes/univers-assets/obj-drac-inventem.webp",
+          "spots": [
+            { "x": 38, "y": 58, "w": 7, "r": 8 },
+            { "x": 64, "y": 88, "w": 7, "r": 8 },
+            { "x": 18, "y": 32, "w": 7, "r": 8 }
           ]
         }
       ]
