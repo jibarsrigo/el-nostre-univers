@@ -1,5 +1,8 @@
 {
   "title": "TROBA LES 7 DIFERÈNCIES",
+  "prepTitle": "TROBA LES 7 DIFERÈNCIES",
+  "guideChar": "imagenes/personatges/personatge-guineu.webp",
+  "guideCharName": "En Rosset",
   "startTitle": "PREPARA'T!",
   "startBtn": "COMENÇAR NIVELL 1",
   "nextRoundBtn": "BUSCA MÉS SECRETS NIVELL {n}",
