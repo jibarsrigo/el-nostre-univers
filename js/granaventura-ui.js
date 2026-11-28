@@ -200,8 +200,13 @@ function granAventuraHubScene(){
   const pendent=prog.total-prog.done;
   const cap=completada?'':pendent?`<p>${pendent} MISSI${pendent===1?'Ó':'ONS'} PENDENT${pendent===1?'':'S'}!</p>`:"<p>TRES AMICS T'ESPEREN!</p>";
   const explora=`<button type="button" class="f2-btn f2-btn--ga-map" data-action="map-go">🗺️ EXPLORA LLIUREMENT</button>`;
+  let actions=explora+f2back();
+  if(completada){
+    const nova=typeof ombresLevelBtn==='function'?ombresLevelBtn('NOVA AVENTURA','ga-nova-aventura','primary'):'';
+    actions=`<div class="ga-festa-btns ombres-level-btns"><div class="ombres-level-btns-primary">${nova}</div></div>`+actions;
+  }
   const cls='f2-gran-aventura'+(cartaOpen?' f2-gran-aventura--carta':'');
-  return f2Scene('LA GRAN AVENTURA',body,cap,explora+f2back(),'mapa',cls);
+  return f2Scene('LA GRAN AVENTURA',body,cap,actions,'mapa',cls);
 }
 
 function granAventuraUiEnsure(cb){
@@ -235,6 +240,7 @@ action=function(id){
     case'ga-missio-start':if(gaUi.cartaSlot)granAventuraUiIniciaMissio(gaUi.cartaSlot.instanciaId);return;
     case'ga-carta-tanca':gaUi.cartaSlot=null;granAventuraUiCartaPortalClear();render();return;
     case'ga-return-hub':granAventuraUiReturnHub();return;
+    case'ga-nova-aventura':gaUi.cartaSlot=null;granAventuraUiCartaPortalClear();granAventuraUiClearMissio();{const r=typeof granAventuraNovaLap==='function'?granAventuraNovaLap():{ok:false};if(!r.ok){notify('NO PUC COMENÇAR UNA NOVA AVENTURA ARA.');return}render();return}
     case'map-go':gaUi.cartaSlot=null;granAventuraUiCartaPortalClear();nav('map');return;
   }
   return actionGaUi(id);

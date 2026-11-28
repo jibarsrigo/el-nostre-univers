@@ -37,9 +37,25 @@ const amicsAbans=run('progresGrupsDescoberts().length');
 assert.equal(run('granAventuraBloc().aventuraActiva'),null);
 assert(run(`granAventuraBloc().aventures[${JSON.stringify(clau)}].estat==='completada'`));
 
+assert(run('granAventuraNovaLap()').ok);
+assert.equal(run('granAventuraBloc().lap'),2);
+assert.equal(run('granAventuraBloc().aventuraActiva'),'ga-dia-001');
+const clauL2=run('granAventuraClau("ga-dia-001",2)');
+assert.equal(run(`granAventuraBloc().aventures[${JSON.stringify(clauL2)}].estat`),'en_curs');
+const regL2=run('granAventuraMissioInstancia("ga-dia-001-slot-1").registreId');
+assert.equal(regL2,'ga-dia-001-slot-1~L2');
+
+for(let s=1;s<=3;s++){
+  const id=`ga-dia-001-slot-${s}`;
+  const act=run(`granAventuraMissioInstancia(${JSON.stringify(id)}).def.activitatId`);
+  const sid=`l2d1${s}`;
+  run(`missioInicia(${JSON.stringify(id)},${JSON.stringify(sid)})`);
+  const det=act==='diferencies'?`{sessionId:${JSON.stringify(sid)},mode:'missio',ambit:'ronda'}`:`{sessionId:${JSON.stringify(sid)},mode:'missio'}`;
+  assert(run(`missioActivitatCompleta(${JSON.stringify(id)},${JSON.stringify(act)},${det})`).ok,`lap2 ${id}`);
+}
 assert(run('granAventuraInicia("ga-dia-002")').ok);
 const r2=run('granAventuraMissioInstancia("ga-dia-002-slot-1").registreId');
-assert.equal(r2,'ga-dia-002-slot-1~L1');
+assert.equal(r2,'ga-dia-002-slot-1~L2');
 for(let d=2;d<=7;d++){
   run(`granAventuraInicia("ga-dia-00${d}")`);
   for(let s=1;s<=3;s++){
@@ -51,10 +67,10 @@ for(let d=2;d<=7;d++){
     assert(run(`missioActivitatCompleta(${JSON.stringify(id)},${JSON.stringify(act)},${det})`).ok,`${id}`);
   }
 }
-assert.equal(run('granAventuraBloc().lap'),2);
+assert.equal(run('granAventuraBloc().lap'),3);
 assert(run('granAventuraInicia("ga-dia-001")').ok);
-const lap2=run('granAventuraMissioInstancia("ga-dia-001-slot-1").registreId');
-assert.equal(lap2,'ga-dia-001-slot-1~L2');
+const lap3=run('granAventuraMissioInstancia("ga-dia-001-slot-1").registreId');
+assert.equal(lap3,'ga-dia-001-slot-1~L3');
 run(`missioInicia('ga-dia-001-slot-1','n1')`);
 assert(run(`missioActivitatCompleta('ga-dia-001-slot-1','cartes',{sessionId:'n1',mode:'missio'}).ok`));
 assert.equal(run('progresGrupsDescoberts().length'),amicsAbans);

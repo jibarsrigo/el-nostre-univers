@@ -91,6 +91,14 @@ function granAventuraIniciaPropera(){
   if(!id)return{ok:false,reason:'sense_aventures'};
   return granAventuraInicia(id)
 }
+function granAventuraNovaLap(){
+  const bloc=granAventuraBloc();
+  bloc.lap=Math.max(1,Math.floor(Number(bloc.lap))||1)+1;
+  bloc.aventuraActiva=null;
+  if(!granAventuraSaveBloc(bloc))return{ok:false,reason:'escriptura'};
+  const seg=granAventuraIniciaPropera();
+  return seg?.ok?{ok:true,lap:granAventuraBloc().lap,...seg}:{ok:false,reason:seg?.reason||'inici'}
+}
 function granAventuraReprendre(){
   const bloc=granAventuraBloc();
   if(!bloc.aventuraActiva)return granAventuraIniciaPropera();
