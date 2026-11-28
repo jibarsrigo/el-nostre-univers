@@ -37,6 +37,7 @@ assert.equal(run('cartesRosterForLevel(1)').length,5);
 run('render()');
 assert(root.innerHTML.includes('data-action="pairs-level-1"'));
 completePairs();
+assert(root.innerHTML.includes('ELS TEUS AMICS')&&root.innerHTML.includes('f2-pairs-friend--known')&&root.innerHTML.includes('f2-pairs-friend--hero'),'nivell 2+: coneguts petits i nous grans');
 assert.equal(run('f2.cartesAventura.roster.length'),6);
 run(`action('pairs-next-level')`);
 completePairs();
