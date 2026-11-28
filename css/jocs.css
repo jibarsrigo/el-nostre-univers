@@ -3,7 +3,7 @@
 .f2-scene.f2-pairs--prep{align-items:center;padding:52px 10px 14px}
 .f2-scene.f2-pairs--prep .f2-window{width:min(560px,94%);max-height:fit-content;flex:0 0 auto;padding:0;gap:0;overflow:visible;border:none;background:transparent;box-shadow:none;border-radius:0}
 .f2-scene.f2-pairs--prep .f2-heading{display:none;margin:0;padding:0;width:0;height:0;overflow:hidden}
-.f2-scene.f2-pairs--prep .f2-illustrated{flex:0 0 auto;min-height:auto;height:auto;width:100%}
+.f2-scene.f2-pairs--prep .f2-illustrated{flex:0 0 auto;min-height:auto;height:auto;width:100%;background:transparent;box-shadow:none}
 .f2-scene.f2-pairs--prep .f2-illustrated:has(.dif-ready){min-height:auto}
 .f2-scene.f2-pairs--prep .dif-ready{min-height:auto;height:auto;padding:clamp(4px,1.2vw,10px)}
 .f2-scene.f2-pairs--prep .f2-story:empty,.f2-scene.f2-pairs--prep .f2-actions:empty{display:none;margin:0;padding:0}
