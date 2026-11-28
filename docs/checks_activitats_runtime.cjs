@@ -67,6 +67,7 @@ module.exports=function activitatsRuntimeTests(ctx){
   }
   const o0=(sessions().ombres?.completedSessionIds||[]).length;
   run('resetOmbres();go("jocsOmbres");render()');
+  run(`action('ombres-play-level-0');render()`);
   run(`action('ombres-begin-search');render()`);
   const sid0=run('jocs.ombres.sessionId');
   assert.ok(sid0,'sessionId nivell');

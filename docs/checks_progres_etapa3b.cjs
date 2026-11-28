@@ -58,7 +58,8 @@ function runIntegracioOmbres(){
   const {run,ls}=mkCtx();
   run(`jocs.personatges=${JSON.stringify(personatgesJSON)}`);
   run(`jocs.ombres.data=${JSON.stringify(ombresJSON)}`);
-  run('resetOmbres();go("jocsOmbres")');
+  run('resetOmbres();go("jocsOmbres");render()');
+  run('action("ombres-play-level-0");render()');
   run('action("ombres-begin-search");render()');
   const tid=run('jocs.ombres.targetId');
   const ts=run('jocs.ombres.activeSecrets').find(s=>s.id===tid);
