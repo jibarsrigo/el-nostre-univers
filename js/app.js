@@ -92,7 +92,7 @@ function hotspotF1(id){const place=state.place;
  if(place==='workshop')return go(({creature:'dragon',colors:'atelier',stars:'atelier',chest:'box',window:'window'})[id]);
 }
 function notify(t){document.querySelector('.notice')?.remove();const e=document.createElement('div');e.className='notice';e.setAttribute('role','status');e.textContent=t;document.body.append(e);setTimeout(()=>e.remove(),3000)}
-function actionF1(id){switch(id){case'start':nav('map');if(document.fullscreenEnabled&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});break;
+function actionF1(id){switch(id){case'start':nav('map');break;
 case'next':if(state.place==='secret'&&state.step===1&&!state.unlocked.key){notify('LA CLAU ÉS AL COFRE DE LA TORRE!');break;}state.step=Math.min(state.step+1,3);render();break;
 case'reset-scene':state.step=0;render();break;
 case'back':back();break;
