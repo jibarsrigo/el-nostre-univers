@@ -213,6 +213,8 @@
 .f2-scene--ombres-prep .f2-illustrated--ombres{flex:0 0 auto;min-height:auto;height:auto;width:100%}
 .f2-scene--ombres-prep .f2-illustrated--ombres:has(.dif-ready),.f2-scene--ombres-prep .f2-illustrated--ombres:has(.conte-wait){min-height:auto}
 .f2-scene--ombres-prep .dif-ready{min-height:auto;height:auto;padding:clamp(4px,1.2vw,10px)}
+.dif-ready--ombres-entry .dif-ready-title{margin-top:2px}
+.dif-ready--ombres-entry .dif-ready-game+.dif-ready-title{margin-top:clamp(6px,1.4vh,10px)}
 .f2-scene--ombres-prep .f2-story--ombres:empty{display:none}
 .f2-scene--ombres-prep .f2-actions--ombres{margin-top:4px}
 @media(max-width:700px){.f2-scene--ombres-prep{padding:48px 8px 12px}.f2-scene--ombres-prep .f2-window--ombres{width:min(560px,96%)}}

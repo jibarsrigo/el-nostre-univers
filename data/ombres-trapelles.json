@@ -1,6 +1,7 @@
 {
   "missions": {
     "title": "LES OMBRES TRAPELLES",
+    "prepTitle": "CERCA LES SOMBRES",
     "startTitle": "PREPARA'T!",
     "startHint": "MOU LA LLANTERNA I TROBA L'OMBRA DEL PERSONATGE!",
     "briefingRoom": "SALA DE LA TORRE",
