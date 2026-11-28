@@ -1,0 +1,12 @@
+---
+description: Comprobar cambios remotos antes de tocar código
+alwaysApply: true
+---
+# Trabajo en paralelo
+
+Jose trabaja desde el PC y desde la tablet, y hay varios agentes a la vez (cuentos, juegos, tareas puntuales). El código puede haber cambiado desde la última vez.
+
+- Antes de empezar cualquier cambio: `git fetch origin` y partir de `origin/main` actualizado.
+- Si se sigue en una rama con PR abierta: comprobar si la PR sigue abierta y si `main` trae commits nuevos que toquen los mismos archivos; integrarlos antes de seguir.
+- Antes de hacer push: volver a hacer `git fetch` y resolver conflictos si los hay.
+- Si un cambio remoto choca en intención con lo pedido, avisar a Jose en lugar de sobrescribirlo.
