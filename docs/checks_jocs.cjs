@@ -18,6 +18,7 @@ run(`pocioPick('platan');pocioPick('bebeta');pocioMix()`);run('render()');
 assert(root.innerHTML.includes('MEGAEXPLOSIÓ')||root.innerHTML.includes('pocio-fx'));
 run(`jocs.ombres.data=${JSON.stringify(ombresJSON())}`);run(`resetOmbres();go('jocsOmbres');render()`);assert(root.innerHTML.includes('OMBRES TRAPELLES')&&root.innerHTML.includes('ombres-pop--levels')&&root.innerHTML.includes('NIVELL 1'),'primera entrada: tria de nivell');
 run(`action('ombres-play-level-0');render()`);assert(root.innerHTML.includes('ombres-pop--briefing')&&!root.innerHTML.includes('data-ombres-wall')&&!root.innerHTML.includes('ombres-light-anchor'),'briefing sense mur ni llanterna');
+assert(root.innerHTML.includes('ombres-briefing-room')&&root.innerHTML.includes('dif-done-tower')&&root.innerHTML.includes('imagenes/torre.webp'),'briefing amb nom de sala i foto torre');
 run(`action('ombres-begin-search');render()`);assert(root.innerHTML.includes('ombres-stars')&&root.innerHTML.includes('data-ombres-wall'));
 const tid=run('jocs.ombres.targetId'),act=run('jocs.ombres.activeSecrets'),ts=act.find(s=>s.id===tid);
 run(`jocs.ombres.lx=${ts.x};jocs.ombres.ly=${ts.y};ombresTryFind(true);render()`);assert(run('jocs.ombres.stars')===1&&run('jocs.ombres.phase')==='found');
