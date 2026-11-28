@@ -9,7 +9,7 @@
   "starsLabel": "Estrelles màgiques",
   "roundsPerSession": 3,
   "completedTitle": "TRES ESTRELLES MÀGIQUES!",
-  "completedMsg": "LA TORRE BRILLA: HAS TROBAT SET DIFERÈNCIES TRES VEGADES!",
+  "completedMsg": "LA TORRE BRILLA GRÀCIES A TU!",
   "celebrateTower": "imagenes/torre.webp",
   "perRound": 7,
   "perRoundDecoys": 1,
