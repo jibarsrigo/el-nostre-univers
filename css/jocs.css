@@ -242,6 +242,11 @@
 .dif-ready--ombres-entry .dif-ready-card{--ombres-prep-media:min(94%,300px);gap:clamp(6px,1vh,9px);padding:clamp(11px,2.2vw,16px) clamp(12px,2.6vw,18px);width:min(96%,480px)}
 .dif-ready--ombres-entry .dif-ready-title{margin:0;font-size:clamp(17px,2.7vw,24px);line-height:1.1}
 .dif-ready--ombres-entry .ombres-prep-core{width:100%;display:flex;flex-direction:column;align-items:center;gap:clamp(4px,.7vh,6px)}
+.ombres-prep-stage--entry-light .ombres-prep-light-anchor{position:absolute;left:24%;top:48%;width:0;height:0;z-index:2;animation:ombres-prep-light-drift 3.4s ease-in-out infinite}
+.ombres-prep-stage--entry-light .ombres-prep-light-glow{position:absolute;width:clamp(72px,16vmin,108px);height:clamp(72px,16vmin,108px);left:0;top:0;transform:translate(-50%,-50%);background:radial-gradient(circle at 50% 50%,rgba(255,236,180,.48) 0%,rgba(255,220,140,.1) 38%,transparent 56%);opacity:.9;pointer-events:none;z-index:1}
+.ombres-prep-stage--entry-light .ombres-lupa-art{width:clamp(40px,8vmin,56px)}
+@keyframes ombres-prep-light-drift{0%,100%{left:20%;top:52%}50%{left:64%;top:40%}}
+@media(prefers-reduced-motion:reduce){.ombres-prep-stage--entry-light .ombres-prep-light-anchor{animation:none;left:42%;top:46%}}
 .dif-ready--ombres-entry .ombres-prep-stage .dif-prep-scene{max-height:min(16vh,142px)}
 .dif-ready--ombres-entry .ombres-prep-objective{width:var(--ombres-prep-media);max-width:var(--ombres-prep-media);padding:clamp(3px,.7vw,5px) clamp(6px,1.4vw,10px);gap:clamp(6px,1.2vw,8px);border-radius:10px}
 .dif-ready--ombres-entry .ombres-prep-objective .ombres-objective-text{font-size:clamp(13px,2vw,17px)}
