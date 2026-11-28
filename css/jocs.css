@@ -320,6 +320,9 @@
 .dif-done-card--round .dif-done-headline{max-width:none;font-size:clamp(22px,3.4vw,32px)}
 .dif-done-card--round .dif-done-stars{margin:0}
 .dif-done-card--round .dif-ready-scene{margin-top:-2px}
+.dif-done-next{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.2vh,10px);width:100%}
+.dif-done-next-kicker{margin:0;font-size:clamp(11px,1.55vw,14px);color:#e8c860;font-weight:800;letter-spacing:.04em;line-height:1.2;text-transform:uppercase}
+.dif-done-card--round .dif-done-next .dif-ready-scene{margin-top:0}
 .dif-done-objs{display:flex;flex-direction:column;align-items:center;gap:clamp(10px,1.8vh,16px);width:100%;max-width:min(100%,540px)}
 .dif-done-objs.dif-done-objs--row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));align-items:center;gap:clamp(3px,.65vw,7px);width:100%;max-width:100%}
 .dif-done-objs--row .dif-done-obj{width:100%;max-width:100%;min-width:0;flex:none;padding:clamp(3px,.65vw,5px);border-radius:10px;border-width:1.5px}
