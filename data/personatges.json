@@ -9,6 +9,12 @@
   ],
   "nivellInicial": 0,
   "textos": {
+    "startTitle": "PREPARA'T!",
+    "startBtn": "COMENÇAR",
+    "startHint": "GIRA LES CARTES I TROBA DUES IGUALS!",
+    "guideId": "guineu",
+    "starsLabel": "Progrés de l'aventura",
+    "celebrateTower": "imagenes/torre.webp",
     "hint": "TROBA DUES CARTES IGUALS!",
     "progress": "{n} DE {t} PARELLES",
     "doneTitle": "HAS TROBAT TOTS ELS AMICS!",

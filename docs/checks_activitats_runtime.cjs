@@ -134,8 +134,10 @@ module.exports=function activitatsRuntimeTests(ctx){
   difNextRonda();difWinRound();
   assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0,'2 rondes no registra sessio');
   difNextRonda();difWinRound();
-  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+1,'sessio completa al 3r encert');
-  assert.equal(run('state.unlocked["jocs-diferencies"]'),true,'recompensa tres rondes');
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0,'3 rondes no registra sessio');
+  difNextRonda();difWinRound();
+  assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+1,'sessio completa al 4t encert');
+  assert.equal(run('state.unlocked["jocs-diferencies"]'),true,'recompensa quatre rondes');
   assert.equal(run(`activitatCompleta('diferencies',{sessionId:'${sidD}',ambit:'sessio'})`),false,'dedupe sessio');
   run('action("end-jocs-diferencies");nav("tower")');
   assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+1,'end-jocs sense duplicar');
@@ -153,7 +155,7 @@ module.exports=function activitatsRuntimeTests(ctx){
   assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+2,'missio registra ronda');
   assert.equal(run('state.unlocked["jocs-diferencies"]'),true,'missio no afegeix torre extra');
   run('difPrepareFreeSession();resetDiferencies()');
-  difWinRound();difNextRonda();difWinRound();difNextRonda();difWinRound();
+  difWinRound();difNextRonda();difWinRound();difNextRonda();difWinRound();difNextRonda();difWinRound();
   assert.equal((sessions().diferencies?.completedSessionIds||[]).length,d0+3,'lliure després missio independent');
 
   console.log('OK: activitats runtime — Cartes + Ombres + Diferències.');
