@@ -212,9 +212,25 @@
 .f2-scene--ombres-prep .ombres-title{display:none}
 .f2-scene--ombres-prep .f2-illustrated--ombres{flex:0 0 auto;min-height:auto;height:auto;width:100%}
 .f2-scene--ombres-prep .f2-illustrated--ombres:has(.dif-ready),.f2-scene--ombres-prep .f2-illustrated--ombres:has(.conte-wait){min-height:auto}
-.f2-scene--ombres-prep .dif-ready{min-height:auto;height:auto;padding:clamp(4px,1.2vw,10px)}
-.dif-ready--ombres-entry .dif-ready-title{margin-top:2px}
-.dif-ready--ombres-entry .dif-ready-game+.dif-ready-title{margin-top:clamp(6px,1.4vh,10px)}
+.f2-scene--ombres-prep .dif-ready{min-height:auto;height:auto;padding:clamp(2px,1vw,8px)}
+.f2-scene--ombres-prep .dif-ready--ombres-entry{min-height:auto}
+.dif-ready--ombres-entry .dif-ready-card{--ombres-prep-media:min(94%,300px);gap:clamp(6px,1vh,9px);padding:clamp(11px,2.2vw,16px) clamp(12px,2.6vw,18px);width:min(96%,480px)}
+.dif-ready--ombres-entry .dif-ready-title{margin:0;font-size:clamp(17px,2.7vw,24px);line-height:1.1}
+.dif-ready--ombres-entry .ombres-prep-core{width:100%;display:flex;flex-direction:column;align-items:center;gap:clamp(4px,.7vh,6px)}
+.dif-ready--ombres-entry .ombres-prep-stage .dif-prep-scene{max-height:min(16vh,142px)}
+.dif-ready--ombres-entry .ombres-prep-objective{width:var(--ombres-prep-media);max-width:var(--ombres-prep-media);padding:clamp(3px,.7vw,5px) clamp(6px,1.4vw,10px);gap:clamp(6px,1.2vw,8px);border-radius:10px}
+.dif-ready--ombres-entry .ombres-prep-objective .ombres-objective-text{font-size:clamp(13px,2vw,17px)}
+.dif-ready--ombres-entry .ombres-prep-objective .ombres-objective-thumb{max-height:clamp(36px,7vmin,44px);width:auto}
+.dif-ready--ombres-entry .ombres-prep-guide--entry{width:var(--ombres-prep-media);max-width:var(--ombres-prep-media);margin:0 auto}
+.dif-ready--ombres-entry .ombres-prep-guide--entry .ombres-prep-guide-row{align-items:center;gap:clamp(4px,1vw,8px)}
+.dif-ready--ombres-entry .ombres-prep-guide--entry .ombres-prep-friend{width:clamp(48px,9vw,64px)}
+.dif-ready--ombres-entry .ombres-prep-guide--entry .ombres-prep-friend figcaption{display:none}
+.dif-ready--ombres-entry .ombres-prep-guide--entry .ombres-prep-bubble{margin:0;padding:clamp(6px,1.4vw,9px) clamp(8px,1.8vw,11px);font-size:clamp(12px,1.75vw,14px);line-height:1.2;border-radius:12px;max-width:none;text-align:left}
+.dif-ready--ombres-entry .ombres-prep-guide--entry .ombres-prep-bubble::after{left:-6px;bottom:12px;border-width:6px}
+.dif-ready--ombres-entry .dif-ready-btns--entry{margin-top:clamp(2px,.5vh,4px);width:100%}
+.dif-ready--ombres-entry .ombres-level-btns--entry .ombres-level-btn--primary{min-height:clamp(46px,9.5vmin,54px);font-size:clamp(15px,2.2vw,20px)}
+.dif-ready--ombres-entry .ombres-level-pick-nova{margin-top:4px;padding-top:6px}
+@media(orientation:portrait) and (max-width:900px){.f2-scene--ombres-prep{padding:44px 8px 10px;align-items:flex-start}.f2-scene--ombres-prep .f2-window--ombres{width:min(520px,98%)}.dif-ready--ombres-entry .dif-ready-card{padding:clamp(10px,2vh,14px) clamp(10px,3vw,14px)}.dif-ready--ombres-entry .ombres-prep-stage .dif-prep-scene{max-height:min(14vh,120px)}.dif-ready--ombres-entry .ombres-prep-guide--entry .ombres-prep-friend{width:clamp(42px,11vw,52px)}}
 .f2-scene--ombres-prep .f2-story--ombres:empty{display:none}
 .f2-scene--ombres-prep .f2-actions--ombres{margin-top:4px}
 @media(max-width:700px){.f2-scene--ombres-prep{padding:48px 8px 12px}.f2-scene--ombres-prep .f2-window--ombres{width:min(560px,96%)}}
