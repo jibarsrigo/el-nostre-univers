@@ -18,7 +18,7 @@ run(`jocs.personatges=${JSON.stringify(personatgesJSON)}`);
 run('activitatsResetMem()');
 function completePairs(){const pairs=run('f2.match');for(const animal of new Set(pairs)){const inds=pairs.map((v,i)=>v===animal?i:null).filter(x=>x!==null);run(`clickCard(${inds[0]})`);run(`clickCard(${inds[1]})`);}}
 run(`go('pairs')`);
-assert(root.innerHTML.includes('dif-ready--cartes-entry')&&root.innerHTML.includes('cartes-prep-demo')&&root.innerHTML.includes('ombres-prep-bubble')&&root.innerHTML.includes('COMENÇAR')&&root.innerHTML.includes('f2-pairs--prep')&&!root.innerHTML.includes('data-card=')&&(root.innerHTML.match(/class="f2-card f2-card--prep/g)||[]).length===4&&root.innerHTML.includes('f2-card--matched'),'primera entrada: demo 2x2 amb Rosset');
+assert(root.innerHTML.includes('dif-ready--cartes-entry')&&root.innerHTML.includes('cartes-prep-wrap')&&root.innerHTML.includes('cartes-prep-demo')&&root.innerHTML.includes('cartes-prep-demo-label')&&root.innerHTML.includes('GIRA I TROBA LA PARELLA')&&root.innerHTML.includes('ombres-prep-bubble')&&root.innerHTML.includes('COMENÇAR')&&root.innerHTML.includes('f2-pairs--prep')&&!root.innerHTML.includes('data-card=')&&(root.innerHTML.match(/class="f2-card f2-card--prep/g)||[]).length===4&&root.innerHTML.includes('f2-card--matched')&&(root.innerHTML.match(/class="f2-card f2-card--prep revealed f2-card--matched/g)||[]).length===2,'primera entrada: demo 2x2 3D amb Rosset');
 run(`action('pairs-begin')`);
 run('setupPairs()');
 assert.equal(run('cartesRosterForLevel(0)').length,4,'nivell 1 = 4 amics');
