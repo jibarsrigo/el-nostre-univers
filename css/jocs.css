@@ -259,16 +259,19 @@
 .dif-done--preloading{pointer-events:none}
 .dif-done--preloading::after{content:'';position:absolute;inset:0;border-radius:inherit;background:rgba(8,4,16,.28);z-index:2}
 .f2-scene.jocs-diferencies .f2-illustrated:has(.dif-ready){min-height:min(50dvh,480px)}
-.f2-scene.jocs-diferencies--prep{align-items:center;padding:52px 10px 14px}
-.f2-scene.jocs-diferencies--prep .f2-window{width:min(560px,94%);max-height:fit-content;flex:0 0 auto;padding:0;gap:0;overflow:visible;border:none;background:transparent;box-shadow:none;border-radius:0}
-.f2-scene.jocs-diferencies--prep .f2-heading{display:none;margin:0;padding:0;width:0;height:0;overflow:hidden}
-.dif-ready-game{margin:0;font-size:clamp(11px,1.55vw,14px);color:#e8c860;font-weight:800;letter-spacing:.04em;line-height:1.2;opacity:.92;text-transform:uppercase}
-.f2-scene.jocs-diferencies--prep .f2-illustrated{flex:0 0 auto;min-height:auto;height:auto;width:100%}
+.f2-scene.jocs-diferencies--prep{align-items:center;justify-content:center;padding:52px 10px 14px;min-height:0}
+.f2-scene.jocs-diferencies--prep .f2-window{width:fit-content;max-width:min(560px,94%);max-height:fit-content;flex:0 0 auto;padding:clamp(10px,2vw,14px) clamp(12px,2.6vw,18px);gap:clamp(6px,1.2vh,10px);overflow:visible;border-width:4px;border-radius:22px;box-shadow:0 12px 40px #0009}
+.f2-scene.jocs-diferencies--prep .f2-heading{flex:0 0 auto;margin:0;padding:0 2px;width:100%}
+.f2-scene.jocs-diferencies--prep .f2-heading .f2-kicker{display:none}
+.f2-scene.jocs-diferencies--prep .f2-heading h2{margin:0;font-size:clamp(11px,1.55vw,14px);color:#e8c860;font-weight:800;letter-spacing:.04em;line-height:1.2;opacity:.95;text-transform:uppercase}
+.f2-scene.jocs-diferencies--prep .f2-illustrated{flex:0 0 auto;min-height:auto;height:auto;width:100%;max-height:none}
 .f2-scene.jocs-diferencies--prep .f2-illustrated:has(.dif-ready),.f2-scene.jocs-diferencies--prep .f2-illustrated:has(.conte-wait){min-height:auto}
-.f2-scene.jocs-diferencies--prep .dif-ready{min-height:auto;height:auto;padding:clamp(4px,1.2vw,10px)}
+.f2-scene.jocs-diferencies--prep .dif-ready{min-height:auto;height:auto;padding:0;width:100%}
+.f2-scene.jocs-diferencies--prep .dif-ready-card{border:none;background:transparent;box-shadow:none;padding:0;width:100%;gap:clamp(10px,2vh,18px)}
 .dif-ready-card .dif-prep-scene{width:min(72%,320px);max-height:min(22vh,200px);object-fit:contain;border-radius:12px;box-shadow:0 4px 22px rgba(0,0,0,.5),0 0 24px rgba(255,220,140,.2);display:block}
-.f2-scene.jocs-diferencies--prep .f2-illustrated:has(.conte-wait){padding:clamp(12px,3vh,24px) 8px}
-@media(max-width:700px){.f2-scene.jocs-diferencies--prep{padding:48px 8px 12px}.f2-scene.jocs-diferencies--prep .f2-window{width:min(560px,96%);padding:0}}
+.f2-scene.jocs-diferencies--prep .f2-illustrated:has(.conte-wait){padding:clamp(8px,2vh,16px) 4px}
+.f2-scene.jocs-diferencies--prep .f2-actions{flex:0 0 auto}
+@media(max-width:700px){.f2-scene.jocs-diferencies--prep{padding:48px 8px 12px}.f2-scene.jocs-diferencies--prep .f2-window{max-width:min(560px,96%);padding:8px 12px 12px;border-width:3px;border-radius:18px}}
 .dif-play{display:flex;flex-direction:column;align-items:stretch;justify-content:center;width:100%;height:100%;gap:4px;flex:1 1 0;min-height:0}
 .dif-stage{display:flex;flex-wrap:nowrap;gap:clamp(4px,0.8vw,10px);justify-content:center;align-items:stretch;width:100%;max-width:none;margin:0 auto;padding:0;flex:1 1 0;min-height:0}
 .dif-panel{position:relative;flex:1 1 0;min-width:0;align-self:stretch;display:flex;padding:0;border:4px solid #e6bb7d;border-radius:14px;background:#1a0f28;overflow:hidden;touch-action:manipulation;cursor:pointer}
