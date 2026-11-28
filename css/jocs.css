@@ -205,12 +205,20 @@
 .f2-scene--ombres-prep .f2-story--ombres:empty{display:none}
 .f2-scene--ombres-prep .f2-actions--ombres{margin-top:4px}
 @media(max-width:700px){.f2-scene--ombres-prep{padding:48px 8px 12px}.f2-scene--ombres-prep .f2-window--ombres{width:min(560px,96%)}}
-.dif-ready-card .ombres-prep-objective{width:100%;max-width:100%;min-width:0;flex:none}
-.ombres-prep-stage{position:relative;width:min(72%,320px);margin:0 auto;line-height:0}
+.dif-ready-card{--ombres-prep-media:min(72%,320px)}
+.dif-ready-card .ombres-prep-objective{width:var(--ombres-prep-media);max-width:var(--ombres-prep-media);min-width:0;margin-inline:auto;flex:none;padding:clamp(4px,.9vw,7px) clamp(8px,1.8vw,14px)}
+.dif-ready-card .ombres-prep-objective .ombres-objective-text{font-size:clamp(15px,2.3vw,20px)}
+.dif-ready-card .ombres-prep-objective .ombres-objective-thumb{max-height:clamp(44px,8.5vmin,52px)}
+.ombres-prep-stage{position:relative;width:var(--ombres-prep-media);margin:0 auto;line-height:0}
 .ombres-prep-stage .dif-prep-scene{width:100%;max-height:min(22vh,200px);display:block;margin:0 auto}
 .ombres-prep-stage-screen{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:12px}
-.ombres-prep-stage-screen .ombres-fig{width:min(30%,100px)}
-.ombres-prep-stage-screen .ombres-silueta{max-height:min(12vh,72px)}
+.ombres-prep-stage-screen .ombres-fig{width:min(24%,82px);transform:translate(-50%,-50%) scale(.68);transform-origin:center center}
+.ombres-prep-stage-screen .ombres-fig--sway{animation:none}
+.ombres-prep-stage-screen .ombres-silueta{max-height:min(8vh,50px);width:auto;margin:0 auto}
+.ombres-prep-stage-screen .ombres-fig figcaption{margin-top:3px;min-height:0;font-size:clamp(9px,1.35vw,12px)}
+.ombres-prep-stage-screen .ombres-fig--target.ombres-fig--lit:not(.ombres-fig--got):not(.ombres-fig--no-teach) .ombres-fig-pic::after{inset:-10%;border-width:2px;box-shadow:0 0 10px #ffd86a,inset 0 0 8px rgba(255,216,106,.45)}
+.ombres-prep-stage-screen .ombres-fig--target.ombres-fig--lit:not(.ombres-fig--got):not(.ombres-fig--no-teach) figcaption{padding:2px 8px;box-shadow:0 0 8px rgba(255,216,106,.55)}
+@media(min-width:768px) and (max-width:1200px){.dif-ready-card{--ombres-prep-media:min(78%,340px)}.ombres-prep-stage-screen .ombres-fig{transform:translate(-50%,-50%) scale(.72)}.ombres-prep-stage-screen .ombres-silueta{max-height:min(9vh,54px)}}
 .ombres-prep-guide{width:100%}
 .ombres-prep-guide-row{display:flex;align-items:flex-end;justify-content:center;gap:clamp(6px,1.6vw,12px);width:100%}
 .ombres-prep-friend{margin:0;width:clamp(64px,11vw,96px);flex:0 0 auto}
